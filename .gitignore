@@ -10,6 +10,7 @@ models/usermodels/
 
 #Projects
 projects/
+!projects/.tx
 
 #sv_host
 sv_host/.ipynb_checkpoints/
