@@ -1,0 +1,89 @@
+[
+  {
+    "section": 1,
+    "name": "01 규칙기반 자율주행",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 그리드 기초이론",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 그리드 그리고,값 출력하기",
+        "env": "type0",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 그리드 기반 주행하기",
+        "env": "type0",
+        "location": "learning/1/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 장애물 감지 주행",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 장애물 거리 도출하기",
+        "env": "type0",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 장애물 감지 주행하기",
+        "env": "type0",
+        "location": "learning/2/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "03 인공지능 기반 자율주행",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 인공지능 모델 불러오기",
+        "env": "type0",
+        "location": "learning/3/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 저장된 모델 불러오고 주행해보기",
+        "env": "type0",
+        "location": "learning/3/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 4,
+    "name": "03 통합 자율주행",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 필요한 기능 통합하기",
+        "env": "type0",
+        "location": "learning/4/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 주행하기",
+        "env": "type0",
+        "location": "learning/4/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  }
+]

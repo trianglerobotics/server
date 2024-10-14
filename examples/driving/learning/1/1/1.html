@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: left; margin-top: 10px;">
+        <img style="width: 30px; margin-right: 10px;" src="http://121.184.63.113:4000/images/drv_0.svg" alt="Placeholder image" />
+        <h1 style="margin: 0;">그리드 기초이론</h1>
+      </div>
+      
+      <h2>1.이미지 알아보기</h2>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/drv_111.svg"  alt="Placeholder image" />
+      </div>
+      <p>STEP-1 : 컴퓨터에서 이미지 정보를 픽셀로 표현할 때 왼쪽 윗부분을 0픽셀로 읽게 됩니다. </p>
+      <p>STEP-2 : 이미지의 크기는 가로 640, 세로 480 픽셀로 왼쪽 윗부분은 (0, 0) , 오른쪽 아랫부분은 (479, 639) 이 됩니다.  </p>
+      <p>STEP-3 : 그리드는 이러한 픽셀을 특정 간격으로 가로, 세로로 나눈 것을 말합니다. </p>
+      <p style="margin-top: 0%;">TIP* : 격자(Grid)의 한 칸의 크기 : 80 * 43 픽셀</p>
+      <p>STEP-4 : 결과적으로 이러한 그리드를 이용하여 차선의 데이터를 얻고자 합니다 </p>
+
+
+      <br></br>
+      <h2>2.가로선에서 데이터 얻기</h2>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/drv_112.svg"  alt="Placeholder image" />
+      </div>
+      <p>STEP-1 : 격자의 가운데 세로선(중앙선)으로부터 왼쪽으로 떨어진 거리값을 L로 표현하고, 오른쪽으로 떨어진 거리값을 R로 표현합니다. </p>
+      <p>STEP-2 : 가로선은 총 3개가 있으므로 왼쪽으로 떨어진 거리값은 총 3개가 존재합니다. </p>
+      <p>STEP-3 : 파이썬의 리스트로 표현하면 왼쪽 거리들은 L[0], L[1], L[2] , 오른쪽 거리들은 R[0], R[1], R[2]로 표현할 수 있습니다</p>
+      <br></br>
+
+      <h2>3.세로선에서 데이터 얻기</h2>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/drv_113.svg"  alt="Placeholder image" />
+      </div>
+      <p>STEP-1 : 이미지 바닥에서 차선까지의 거리를 V(연직을 의미하는 Vertical)로 표현합니다</p>
+      <p>STEP-2 : 세로줄은 총 7개가 있으므로 세로줄과 차선의 교점은 가장 많으면 7개까지 가능합니다.</p>
+      <p>STEP-3 : 차선과 첫 번째 세로줄의 교점까지의 거리를 바닥에서 떨어진 거리값을 V[0]로 표현합니다</p>
+      <p>STEP-4 : 두 번째 세로줄의 교점까지의 거리를 V[1], ..., 이미지의 바닥면에서 일곱 번째 세로줄과 차선과의 교점까지의 거리를 V[6]로 표현합니다</p>
+      <br></br>
+    </div>
+    <!-- <div class="add-comment">
+        <h2>코딩해 보세요!</h3>
+        <ul>
+            <li>삼행시를 따옴표로 묶는 걸 잊지 마세요.</li>
+            <li>[Enter]를 눌러 줄을 바꿔요!</li>
+            <p>
+                코드를 작성한 후 실행 버튼을  클릭해 보세요. 바밤바 삼행시가 짠! 하고 나타나면 성공한 거예요. 
+            </p>
+        </ul>
+    </div> -->
+  </body>
+</html>

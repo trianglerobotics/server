@@ -1,0 +1,153 @@
+[
+  {
+    "section": 1,
+    "name": "01 파이썬 코딩의 기본 재료",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 삼행시 짓기",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 신비한 자료사전",
+        "env": "type0",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 그릇의 달인 변수 만들기",
+        "env": "type0",
+        "location": "learning/1/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "04 거꾸로 계산하기",
+        "env": "type0",
+        "location": "learning/1/4/codes",
+        "target": "4.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 진실 또는 거짓 조건문",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 따라쟁이 앵무새",
+        "env": "type0",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 두 배로 불려 주는 홍학",
+        "env": "type0",
+        "location": "learning/2/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 명제 만들기",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "03 무엇이든 담아요 - 리스트",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 선착순!줄을~ 서시오",
+        "env": "type0",
+        "location": "learning/3/1/codes",
+        "target": "1.ipynb"
+        
+      },
+      {
+        "subsection": 2,
+        "name": "02 새치기의 달인 도도새",
+        "env": "type0",
+        "location": "learning/3/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 새치기의 달인 도도새 쫓아내기",
+        "env": "type0",
+        "location": "learning/3/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "04 사전순으로 줄서기",
+        "env": "type0",
+        "location": "learning/3/4/codes",
+        "target": "4.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 4,
+    "name": "04 코드의 반복 줄이기 - 반복문",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 열 마리 코끼리가 거미줄에 걸렸네",
+        "env": "type0",
+        "location": "learning/4/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 19단을 외자",
+        "env": "type0",
+        "location": "learning/4/2/codes",
+        "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "03 도도새의 적금 타기",
+        "env": "type0",
+        "location": "learning/4/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "04 위기 탈출 넘버원",
+        "env": "type0",
+        "location": "learning/4/4/codes",
+        "target": "4.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 5,
+    "name": "05 코드 꾸러미 만들기 - 함수",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "나만의 별 찍기 함수",
+        "env": "type0",
+        "location": "learning/5/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "사투리 번역기 만들기",
+        "env": "type0",
+        "location": "learning/5/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  }
+]

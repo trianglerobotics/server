@@ -1,0 +1,44 @@
+
+# Ignore .vscode folder
+.vscode/
+
+# jajucha2
+jajucha2/
+
+# UserModels
+models/usermodels/
+
+#Projects
+projects/
+
+#sv_host
+sv_host/.ipynb_checkpoints/
+sv_host/node_modules/
+
+#ui
+ui/
+
+#update
+update/node_modules
+update/package-lock.json
+
+
+
+
+
+
+
+
+# Optional: Ignore other common Node.js files and directories
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.DS_Store
+
+# Ignore environment files
+.env
+
+# Ignore logs
+logs/
+*.log
+

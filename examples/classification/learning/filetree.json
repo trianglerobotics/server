@@ -1,0 +1,61 @@
+[
+  {
+    "section": 1,
+    "name": "01 인공지능 학습 준비하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 클래스 생성하기",
+        "env": "type1"
+      },
+      {
+        "subsection": 2,
+        "name": "02 데이터 수집하기",
+        "env": "type2"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 인공지능 학습하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 인공지능 모델 가져오기",
+        "env": "type3"
+      },
+      {
+        "subsection": 2,
+        "name": "02 인공지능 모델 훈련하기",
+        "env": "type0",
+        "location": "databases",
+        "target": "train.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 인공지능 모델 테스트하기",
+        "env": "type0",
+        "location": "databases",
+        "target": "test.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "03 모델 저장하고 실행하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 인공지능 모델 저장하기",
+        "env": "type4"
+      },
+      {
+        "subsection": 2,
+        "name": "02 저장된 실행하기",
+        "env": "type0",
+        "location": "learning/3/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  }
+]

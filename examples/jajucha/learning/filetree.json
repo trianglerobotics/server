@@ -1,0 +1,43 @@
+[
+  {
+    "section": 1,
+    "name": "01 자주차 제어하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 주행모터 제어하기",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 조향모터 제어하기",
+        "env": "type0",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 환경 인지하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "RGB 이미지 받기, 화면에 표시하기",
+        "env": "type0",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "깊이 이미지 받기, 화면에 표시하기",
+        "env": "type0",
+        "location": "learning/2/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  }
+
+]

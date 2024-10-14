@@ -1,0 +1,21 @@
+{
+  "name": "update",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "helmet": "^8.0.0",
+    "helmet-csp": "^4.0.0",
+    "node-wifi": "^2.0.16",
+    "socket.io": "^4.8.0",
+    "ws": "^8.18.0"
+  }
+}
