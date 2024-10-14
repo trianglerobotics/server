@@ -130,11 +130,11 @@ function prepareBroadcastData(status, stdout, stderr) {
     };
 }
 
-const executeUpdate = async (target) => {
+const executeUpdate = async (target,command) => {
     try {
-      let { stdout, stderr } = await execAsync(`cd ${home}/server/${target} && git pull origin main`);
+      let { stdout, stderr } = await execAsync(`cd ${home}/server/${target} && ${command}`);
   
-      console.log(`cd ${home}/server/${target} && git pull origin main`)
+      console.log(`cd ${home}/server/${target} && ${command}`)
       // Log the outputs
       console.log('Finished');
       console.log("Standard Output:", stdout);
@@ -267,26 +267,33 @@ app.get('/api/control/update', async (req, res) => {
     (async () => {
       try {
         //broadcast('update examples');
-        await executeUpdate('examples');
+        //await executeUpdate('examples');
+
+        console.log('update start');
   
-        //broadcast('update models');
-        await executeUpdate('models');
-  
-        //broadcast('update ui_host');
-        await executeUpdate('ui_host');
-  
-        //broadcast('update sv_host');
-        await executeUpdate('sv_host');
-  
-        //broadcast('downloading updatedb...');
-        await executeUpdate('updatedb');
-        //broadcast('fetching updatedb...');
-        await executedbupdate();
+        // //broadcast('update models');
+        await executeUpdate('/','git pull origin main');
+
+        await executeUpdate('sv_host','npm install');
+
+        await executeUpdate('ui_host','npm install');
+
+        await executeUpdate('update','npm install');
+
+        await executeUpdate('updatedb','./updatemysql.sh');
+
+        await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_ui.service');
+
+        await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_sv.service');
+
+        //wait for 2 seconds
+        await new Promise(resolve => setTimeout(resolve, 4000));
+
 
         let broadcast_data = prepareBroadcastData('finished', 'stdout', 'stderr');
         broadcast(broadcast_data);
   
-        //broadcast('finished');
+        broadcast('finished');
         console.log('Update complete.');
   
       } catch (err) {
