@@ -9,7 +9,7 @@ jajucha2/
 models/usermodels/
 
 #Projects
-projects/
+projects/*
 !projects/.tx
 
 #sv_host
