@@ -9,8 +9,7 @@ jajucha2/
 models/usermodels/
 
 #Projects
-projects/*
-!projects/.tx
+projects/
 
 #sv_host
 sv_host/.ipynb_checkpoints/
