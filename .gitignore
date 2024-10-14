@@ -14,6 +14,7 @@ projects/
 #sv_host
 sv_host/.ipynb_checkpoints/
 sv_host/node_modules/
+sv_host/package-lock.json
 
 #ui
 ui/
