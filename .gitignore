@@ -19,6 +19,10 @@ sv_host/package-lock.json
 #ui
 ui/
 
+#ui_host
+ui_host/node_modules
+ui_host/package-lock.json
+
 #update
 update/node_modules
 update/package-lock.json
