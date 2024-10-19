@@ -52,17 +52,10 @@
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 인공지능 모델 불러오기",
+        "name": "01 저장된 모델 불러오고 주행해보기",
         "env": "type0",
         "location": "learning/3/1/codes",
         "target": "1.ipynb"
-      },
-      {
-        "subsection": 2,
-        "name": "02 저장된 모델 불러오고 주행해보기",
-        "env": "type0",
-        "location": "learning/3/2/codes",
-        "target": "2.ipynb"
       }
     ]
   },
@@ -72,17 +65,10 @@
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 필요한 기능 통합하기",
+        "name": "01 주행하기",
         "env": "type0",
         "location": "learning/4/1/codes",
         "target": "1.ipynb"
-      },
-      {
-        "subsection": 2,
-        "name": "02 주행하기",
-        "env": "type0",
-        "location": "learning/4/2/codes",
-        "target": "2.ipynb"
       }
     ]
   }

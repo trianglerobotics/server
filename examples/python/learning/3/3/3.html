@@ -5,27 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>도도새 퇴치하기</h2>
-      <p>도도새의 새치기에 잔뜩 화가 난 홍학의 얼굴이 새빨개졌습니다. 하트 여왕이 심판을 내리는군요.
-        “반칙 금지! 도도새는 퇴장하라!”
-        
-        하트 여왕의 명령에 따라 remove()를 이용하여 도도새를 쫓아내 볼까요?</p>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/remove.png" alt="Placeholder image" />
-        </div>
+      <h1>파이썬 문자열</h1>
+      <h2 style="margin-bottom: 3px;">문자열</h2>
+      <p>파이썬에서 문자열은 작은따옴표나 큰따옴표로 묶습니다.</p>
+      <p><span class="hlw">'hello'는 "hello"</span> 와 같습니다</p>
+      <p>다음 함수를 사용하여 문자열 리터럴을 표시할 수 있습니다<span class="hlw">print()</span> </p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+print("Hello")
+print('Hello')
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">인용문 안의 인용문</h2>
+      <p>문자열을 둘러싼 따옴표와 일치하지 않는 한 문자열 내부에 따옴표를 사용할 수 있습니다.</p>
+    </div>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+print("It's alright")
+print("He is called 'Johnny'")
+print('He is called "Johnny"')
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-3 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">변수에 문자열 할당</h2>
+      <p>변수에 문자열을 할당하려면 변수 이름 뒤에 등호와 문자열을 입력합니다.</p>
+    </div>
+    <!-- code-3 -->
+    <div class="code"> 
+      <h3>C</h3>
+      <div class="code_div">
+a = "Hello"
+print(a)
+      </div>
+      <br></br>
+    </div >
+    
+    <!-- explain-4 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">다중줄 문자열</h2>
+      <p>세 개의 따옴표를 사용하여 여러 줄로 된 문자열을 변수에 할당할 수 있습니다.</p>
+    </div>
+    <!-- code-4 -->
+    <div class="code"> 
+      <h3>D</h3>
+      <p>큰따옴표를 세 개 사용할 수 있습니다.</p>
+      <div class="code_div">
+a = """Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua."""
+print(a)
+      </div>
+      <br></br>
+    </div >
+
+    <!-- explain-5 -->
+    <div class="container">
+      <p>또는 세 개의 작은 따옴표:</p>
     </div>
 
-    <div class="add-comment">
-      <h2>코딩해 보세요!</h3>
-      <ul>
-          <li>remove() 괄호 안에는 인덱스 값이 아닌 삭제할 자료를 적어요.</li>
-      </ul>
-  </div>
+    <!-- code-5 -->
+    <div class="code"> 
+      <h3>E</h3>
+      <div class="code_div">
+a = '''Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.'''
+print(a)
+      </div>
+      <br></br>
+    </div >
+    <!-- copy right -->
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>
+
+
+
+    
   </body>
 </html>

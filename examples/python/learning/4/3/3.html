@@ -5,34 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>도도새의 적금 타기</h2>
-      <p>도도새가 코딩별 은행에 12개월 동안 매월 1만 원씩 적금을 넣어서 12만 원이 되었습니다. 첫 달부터 시작해 12개월까지 적금을 넣고 나면 멈춰야겠죠?
-      </p>
-      <p>은행에서 만든 다음 코드를 그대로 입력해 보면서 break의 작동 원리를 익혀 봅시다.</p>
-      <pre>
-        <code class="hljs">
-i = 1
-while True:
-    print(i, '월 1만 원을 입금했습니다.')
-    if i == 12:
-        print('입금 완료! 12만 원을 수령하세요!')
-        break
-    i = i + 1
-        </code>
-      </pre>
+      <h1>파이썬 While 반복문</h1>
+      <h2 style="margin-bottom: 3px;">파이썬 반복분</h2>
+      <p>Python에는 두 개의 기본 반복문 명령이 있습니다.</p>
+      <p><span class="hlw">while</span> 반복문</p>
+      <p><span class="hlw">for</span> 반복문</p>
+      <hr >
     </div>
 
-    <div class="add-comment">
-      <h2>코딩해 보세요!</h3>
-      <ul>
-          <!-- <li>remove() 괄호 안에는 인덱스 값이 아닌 삭제할 자료를 적어요.</li> -->
-      </ul>
-  </div>
+    <div class="container">
+      <h1> While 반복문</h1>
+      <p><span class="hlw">while</span>반복문을 사용하면 조건이 참인 동안 일련의 명령문을 실행할 수 있습니다.</p>
+      <hr >
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <p>i가 6보다 작은 경우 i를 출력합니다.</p>
+      <div class="code_div">
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <h2 style="margin-bottom: 3px;">break</h2>
+      <p><span class="hlw">break</span>문을 사용하면 while 조건이 참이더라도 루프를 중지할 수 있습니다.</p>
+    </div>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <p>i가 3일 때 루프를 종료합니다.</p>
+      <div class="code_div">
+i = 1
+while i < 6:
+  print(i)
+  if i == 3:
+    break
+  i += 1
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>
   </body>
 </html>

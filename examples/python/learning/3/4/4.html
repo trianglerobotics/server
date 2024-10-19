@@ -5,27 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>사전순으로 줄 서기</h2>
-      <p>경기가 시작되기를 기다리고 있는데 변덕이 심한 하트 여왕이 말합니다.</p>
-
-
-      <p>“사전순으로 줄을 서시오”</p>
-        
-        
-      <p>sort()를 이용하여 동물 친구들을 다시 정렬해 볼까요?</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/dict.png" alt="Placeholder image" />
+      <h1>파이썬 불린</h1>
+      <p>부울은 <span class="hlw">True</span> 또는 <span class="hlw">False</span> 두 값 중 하나를 나타냅니다 </p>
+      <h2 style="margin-bottom: 3px;">부울 값</h2>
+      <p>프로그래밍에서는 표현식이 <span class="hlw">True</span>인지<span class="hlw">False</span> 인지 알아야 하는 경우가 많습니다 False.</p>
+      <p>Python에서는 모든 표현식을 평가하여 <span class="hlw">True</span> , <span class="hlw">False</span> 두 가지 답 중 하나를 얻을 수 있습니다</p>
+      <p>두 값을 비교하면 표현식이 평가되고 Python은 부울 답을 반환합니다.</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+print(10 > 9)
+print(10 == 9)
+print(10 < 9)
       </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <p>if 문에서 조건을 실행하면 Python은 <span class="hlw">True</span> or <span class="hlw">False</span> 를 반환합니다</p>
     </div>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <p>조건이 다음과 같은지 여부에 따라 메시지를 인쇄합니다</p>
+      <div class="code_div">
+a = 200
+b = 33
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
+if b > a:
+  print("b is greater than a")
+else:
+  print("b is not greater than a")
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-3 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">값과 변수 평가</h2>
+      <p> <span class="hlw">bool()</span>기능을 사용하면 모든 값을 평가하고 그에 대한 대가를 받을 수 있습니다</p>
     </div>
+    <!-- code-3 -->
+    <div class="code"> 
+      <h3>C</h3>
+      <p>문자열과 숫자를 평가합니다.</p>
+      <div class="code_div">
+print(bool("Hello"))
+print(bool(15))
+      </div>
+      <br></br>
+    </div >
+    <!-- code-4 -->
+    <div class="code"> 
+      <h3>D</h3>
+      <p>두 가지 변수를 평가합니다.</p>
+      <div class="code_div">
+x = "Hello"
+y = 15
+
+print(bool(x))
+print(bool(y))
+      </div>
+      <br></br>
+    </div >
+    </div >
+    <!-- copy right -->
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>    
   </body>
 </html>

@@ -5,26 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>새치기의 달인 도도새</h2>
-      <p>경기장에 가장 늦게 도착한 도도새가 슬쩍 새치기를 하려고 하네요. 홍학이 고개를 잠깐 돌린 사이에 어떻게 끼어 들어갔는지 알아볼까요?
-        <code>insert()</code> 를 사용해서 홍학 앞에 도도새를 추가해 보세요.</p>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/insert.png" alt="Placeholder image" />
-        </div>
+      <h1>파이썬 숫자</h1>
+      <h2 style="margin-bottom: 3px;">파이썬 숫자</h2>
+      <p>Python에는 세 가지 숫자형이 있습니다.</p>
+      <ul>
+        <div class="box"> <span class="hlw">int</span></div>
+        <div class="box"> <span class="hlw">float</span></div>
+        <div class="box"> <span class="hlw">complex</span></div>
+      </ul>
+      <p>숫자형 변수는 값을 할당하면 생성됩니다.</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+x = 1    # int
+y = 2.8  # float
+z = 1j   # complex
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <p>Python에서 객체의 유형을 확인하려면 다음 <span class="hlw">type()</span>함수를 사용합니다.</p>
+    </div>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+print(type(x))
+print(type(y))
+print(type(z))
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-3 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">INT</h2>
+      <p>Int, 즉 정수는 소수점을 포함하지 않는 양수 또는 음수를 포함한 무한 길이의 정수입니다.</p>
+    </div>
+    <!-- code-3 -->
+    <div class="code"> 
+      <h3>C</h3>
+      <p>정수:</p>
+      <div class="code_div">
+x = 1
+y = 35656222554887711
+z = -3255522
+
+print(type(x))
+print(type(y))
+print(type(z))
+      </div>
+      <br></br>
+    </div >
+    
+    <!-- explain-4 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">FLOAT</h2>
+      <p>부동 소수점 숫자 또는 "부동 소수점 숫자"는 소수점 하나 이상을 포함하는 양수 또는 음수 숫자입니다.</p>
+    </div>
+    <!-- code-4 -->
+    <div class="code"> 
+      <h3>D</h3>
+      <p>실수:</p>
+      <div class="code_div">
+x = 1.10
+y = 1.0
+z = -35.59
+
+print(type(x))
+print(type(y))
+print(type(z))
+      </div>
+      <br></br>
+    </div >
+
+    <!-- explain-5 -->
+    <div class="container">
+      <p>Float는 10의 거듭제곱을 나타내는 "e"를 사용한 과학적 숫자일 수도 있습니다.</p>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <li>문자열을 입력할 때 따옴표를 잊지 마세요.</li>
-            <li>인덱스는 0부터 시작해요.</li>
-        </ul>
+    <!-- code-5 -->
+    <div class="code"> 
+      <h3>E</h3>
+      <p>실수:</p>
+      <div class="code_div">
+x = 35e3
+y = 12E4
+z = -87.7e100
+
+print(type(x))
+print(type(y))
+print(type(z))
+      </div>
+      <br></br>
+    </div >
+    <!-- copy right -->
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
     </div>
+
+
+
+    
   </body>
 </html>

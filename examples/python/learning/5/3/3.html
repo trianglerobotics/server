@@ -5,27 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-    <div class="container">
-      <h2>도도새 퇴치하기</h2>
-      <p>도도새의 새치기에 잔뜩 화가 난 홍학의 얼굴이 새빨개졌습니다. 하트 여왕이 심판을 내리는군요.
-        “반칙 금지! 도도새는 퇴장하라!”
-        
-        하트 여왕의 명령에 따라 remove()를 이용하여 도도새를 쫓아내 볼까요?</p>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/remove.png" alt="Placeholder image" />
-        </div>
-    </div>
 
-    <div class="add-comment">
-      <h2>코딩해 보세요!</h3>
-      <ul>
-          <li>remove() 괄호 안에는 인덱스 값이 아닌 삭제할 자료를 적어요.</li>
-      </ul>
-  </div>
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>파이썬 함수</h1>
+      <h2 style="margin-bottom: 3px;">반환 값</h2>
+      <p>함수가 값을 반환하도록 하려면 <span class="hlw"> return  </span> 다음 명령문을 사용합니다.</p>
+     
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+def my_function(x):
+  return 5 * x
+
+print(my_function(3))
+print(my_function(5))
+print(my_function(9))
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <h2 style="margin-bottom: 3px;">PASS</h2>
+      <p> <span class="hlw">function</span> 의 정의는 비어 있을 수 없지만, 어떤 이유로 <span class="hlw">function</span> 내용이 없는 정의가 있는 경우 pass 오류를 방지하기 위해 명령문에 해당 내용을 넣으세요.</p>
+    </div>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+def myfunction():
+  pass
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>
   </body>
 </html>

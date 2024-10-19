@@ -11,9 +11,16 @@
         height: 100%;
       }
 
+      .container hr {
+        width: 100%; /* Ensure the hr spans the full width */
+        border: 0; /* Remove any default borders */
+        border-top: 2px solid #eeeeee; /* Add a visible top border */
+      }
+
       .container {
         display: flex;
         flex-direction: column;
+        padding-bottom: 10px;
         /* margin: 0.5rem; */
         width: 100%; /* Restricting the width */
         max-width: 600px; /* Maximum width */
@@ -39,18 +46,67 @@
         margin-bottom: 1rem;
       }
 
+      .code_div {
+        background-color: #ffffff;
+        overflow-x: auto; 
+        padding-left: 1rem;
+        border-radius: 1rem;
+        font-size: 1rem;
+        font-family: 'Courier New', Courier, monospace;
+        line-height: 1.5rem;
+        white-space: pre-wrap;
+      }
+
+      /* General container styling for code blocks */
+      .code {
+        background-color: #eeeeee; /* Light gray background */
+        width: 100%;
+        
+        color: black;           /* Padding around the entire pre block */
+        padding-right: 8%;
+        padding-left: 8%;
+        margin-right: 8%;
+        overflow-x: auto;           /* Enable horizontal scrolling */
+        font-size: 1rem;            /* Set font size */
+      }
+
+      /* Styling for the <code> tag */
+
+
+      /* Specific styling for Python code highlighting */
       .hljs {
-        display: block;
-        color: rgb(255, 255, 255);
-        overflow-x: auto;
-        padding: 0.5em;
-        color: black;
-        background: #eeeeee;
-        border-radius: 0.375rem;
+        color: #444;                /* Main text color */
+        
+      }
+
+      .hljs-keyword {
+        color: #007acc;             /* Keywords like def, return, if */
+        font-weight: bold;
+      }
+
+      .hljs-string {
+        color: #d14;                /* String literals */
+      }
+
+      .hljs-comment {
+        color: #999;                /* Comments */
+        font-style: italic;
+      }
+
+      .hljs-function .hljs-title {
+        color: #795da3;             /* Function names */
+      }
+
+      .hljs-number {
+        color: #098658;             /* Numbers */
+      }
+
+      .hljs-built_in {
+        color: #d35400;             /* Built-in Python functions like print() */
       }
 
       /* Ensuring the text and headings fit within the restricted width */
-      p, pre, code {
+      p {
         max-width: 100%;
         /* margin-left: 10%; */
         margin-top: 5%;
@@ -58,8 +114,8 @@
         word-wrap: break-word;
         font-family: Arial, Helvetica, sans-serif;
         /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-        font-size: 0.85rem;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 300;
       }
 
       img{
@@ -105,6 +161,9 @@
         padding: 10px; /* Padding inside the box */
         border-radius: 5px; /* Optional: Rounded corners */
       }
+
+
+
       li {
         font-size: 15px; /* Adjust text size */
         margin: 0px;
@@ -120,6 +179,19 @@
         margin: 5px 0; /* Space between list items */
         padding: 10px; /* Padding inside the box */
         border-radius: 5px; /* Optional: Rounded corners */
+      }
+
+      .box {
+        background-color: #f0f0f0; /* Light gray background for each list item */
+        color: #333; /* Dark text color */
+        margin: 5px 0; /* Space between list items */
+        padding: 10px; /* Padding inside the box */
+        border-radius: 5px; /* Optional: Rounded corners */
+        font-size: 15px; /* Adjust text size */
+        margin: 0px;
+        text-align: left;
+        line-height: 1.5;
+        margin-bottom: 10px;
       }
 
       ol li::marker {

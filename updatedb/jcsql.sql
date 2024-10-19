@@ -933,6 +933,15 @@ WHERE NOT EXISTS (
     WHERE `e2`.`id` = 5
 );
 
+-- Insert YOLO9N if it doesn't exist
+INSERT INTO `Models` (`id`, `Name`, `Type`, `shape`, `Description`)
+SELECT 6, 'YOLO11N', 'objectdetection', '[1,3,640,640]', 'YOLO11N은 Object Detection 경량화된 딥러닝 모델로, YOLO 모델의 최신 버전 중 하나입니다.'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Models` AS `e2`
+    WHERE `e2`.`id` = 6
+);
+
 -- Re-enable keys
 ALTER TABLE `Models` ENABLE KEYS;
 

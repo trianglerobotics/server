@@ -5,29 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-    <div class="container">
-      <h2>열 마리 코끼리가 거미줄에 걸렸네</h2>
-      <p>아기 코끼리 열 마리가 거미줄 그네를 타려고 줄을 서 있습니다. 아기 코끼리를 일일이 그네에 태우려면 엄마 코끼리가 무척 힘들겠지요? 앞에서 배운 for 문을 이용하면 쉽습니다.</p>
-      <pre>
-        <code class="hljs">
-nums = [1,2,3,4,5,6,7,8,9,10]
 
-for i in nums:
-    print(i,"번째 코끼리가 거미줄에 걸렸네♪")
-        </code>
-      </pre>
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>파이썬 조건문</h1>
+      <h2 style="margin-bottom: 3px;">파이썬 조건문과 if 문</h2>
+      <p>Python은 수학의 일반적인 논리적 조건을 지원합니다.</p>
+      <ul>
+        <div class="box"> 같음: <span class="hlw">a == b</span></div>
+        <div class="box"> 같지 않음: <span class="hlw">a != b</span></div>
+        <div class="box"> 보다 작음: <span class="hlw">a < b</span></b></div>
+        <div class="box"> 보다 작거나 같음: <span class="hlw">a <= b</span></div>
+        <div class="box"> 보다 크다: <span class="hlw">a > b</span></div>
+        <div class="box"> 보다 크거나 같음: <span class="hlw">a >= b</span></div>
+      </ul>
+      <p>이러한 조건은 여러 가지 방법으로 사용될 수 있지만, 가장 일반적으로는 "if 문"과 루프에서 사용됩니다.</p>
+      <p><span class="hlw">"if 문"은 if</span> 키워드를 사용하여 작성됩니다</p>
+      <hr >
+
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <p>if 문:</p>
+      <div class="code_div">
+a = 33
+b = 200
+if b > a:
+  print("b is greater than a")
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <p>이 예에서 우리는 두 개의 변수 a 와 b를 사용하는데 , 이는 if 문의 일부로 사용되어 b 가 a 보다 큰지 여부를 테스트합니다 . a 는 33 이고 b 는 200 이므로 200이 33보다 크다는 것을 알고 있으므로 "b는 a보다 크다"를 화면에 인쇄합니다.
+      </p>
+      <h2 style="margin-bottom: 3px;">들여쓰기</h2>
+      <p>파이썬은 들여쓰기(줄의 시작 부분에 있는 공백)를 사용하여 코드의 범위를 정의합니다. 다른 프로그래밍 언어는 종종 이 목적을 위해 중괄호를 사용합니다.</p>
+    </div>
+    <!-- code-2 -->
+    <div class="code" style="background-color: pink;"> 
+      <h3>B</h3>
+      <p>들여쓰기 없는 if 문(오류 발생):</p>
+      <div class="code_div">
+a = 33
+b = 200
+if b > a:
+print("b is greater than a") # you will get an error
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-3 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">elif</h2>
+      <p><span class="hlw">elif</span> 키워드 는 "이전 조건이 참이 아니면 이 조건을 시도하세요"라고 말하는 Python 방식입니다.</p>
+    </div>
+    <!-- code-3 -->
+    <div class="code"> 
+      <h3>C</h3>
+      <div class="code_div">
+a = 33
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+      </div>
+      <p>이 예에서 a는 b 와 같으 므로 첫 번째 조건은 참이 아니지만 elif 조건은 참이므로 "a와 b는 같다"를 화면에 인쇄합니다.</p>
+      <br></br>
+    </div >
+
+    <!-- explain-4 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">else</h2>
+      <p><span class="hlw">else</span> 키워드 는 이전 조건에 해당되지 않는 모든 것을 포착합니다.</p>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <li>주어진 for 문을 그대로 따라서 입력해 보세요</li>
-        </ul>
+    <!-- code-4 -->
+    <div class="code"> 
+      <h3>D</h3>
+      <div class="code_div">
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+else:
+  print("a is greater than b")
+      </div>
+      <br></br>
+    </div>
+    
+    <!-- explain-5 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">and</h2>
+      <p><span class="hlw">and</span> 키워드 는 논리 연산자이며 조건문을 결합하는 데 사용됩니다.</p>
+    </div>
+
+    <!-- code-5 -->
+    <div class="code"> 
+      <h3>E</h3>
+      <p>a가 b 보다 큰지 그리고 c 가 a 보다 큰지 테스트합니다</p>
+      <div class="code_div">
+a = 200
+b = 33
+c = 500
+if a > b and c > a:
+  print("Both conditions are True")
+      </div>
+      <br></br>
+    </div>
+
+    <!-- explain-6 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">or</h2>
+      <p>키워드는 <span class="hlw">or</span> 논리 연산자이며 조건문을 결합하는 데 사용됩니다.</p>
+    </div>
+
+    <!-- code-6 -->
+    <div class="code"> 
+      <h3>F</h3>
+      <p>a가 B 보다 크거나 a가 c 보다 큰지 테스트합니다 c.</p>
+      <div class="code_div">
+a = 200
+b = 33
+c = 500
+if a > b or a > c:
+  print("At least one of the conditions is True")
+      </div>
+      <br></br>
+    </div>
+
+    <!-- explain-7 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">not</h2>
+      <p>키워드는 <span class="hlw">not</span> 논리 연산자이며 조건문의 결과를 반전하는 데 사용됩니다.</p>
+    </div>
+
+    <!-- code-7 -->
+    <div class="code"> 
+      <h3>G</h3>
+      <p>a 보다 b가 크지 않은지 테스트합니다 </p>
+      <div class="code_div">
+a = 33
+b = 200
+if not a > b:
+  print("a is NOT greater than b")
+      </div>
+      <br></br>
+    </div>
+    
+
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
     </div>
   </body>
 </html>

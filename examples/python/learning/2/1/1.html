@@ -5,22 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>따라쟁이 앵무새</h2>
+      <h1>파이썬 변수</h1>
+      <h2 style="margin-bottom: 3px;">변수</h2>
+      <p>변수는 데이터 값을 저장하는 컨테이너입니다.</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">변수생성</h2>
+      <p>Python에는 변수를 선언하는 명령이 없습니다.</p>
+      <p>변수는 처음으로 값을 할당하는 순간 생성됩니다.</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+x = 5
+y = "John"
+print(x)
+print(y)
+      </div>
       <br></br>
-      <p>input()으로 정보를 입력하면 print()로 출력할 수 있어요. 키보드로 입력한 값을 그대로 출력하는 앵무새를 만들어 보세요.</p>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <p>변수는 특정 유형 으로 선언될 필요가 없으며 , 설정된 후에도 유형을 변경할 수 있습니다.</p>
+    </div>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+x = 4       # x is of type int
+x = "Sally" # x is now of type str
+print(x)
+      </div>
       <br></br>
+    </div >
+    <!-- explain-3 -->
+    <div class="container">
+      <h2 style="margin-bottom: 3px;">캐스팅</h2>
+      <p>변수의 데이터 유형을 지정하려면 캐스팅을 사용하면 됩니다.</p>
+    </div>
+    <!-- code-3 -->
+    <div class="code"> 
+      <h3>C</h3>
+      <div class="code_div">
+x = str(3)    # x will be '3'
+y = int(3)    # y will be 3
+z = float(3)  # z will be 3.0
+      </div>
+      <br></br>
+    </div >
+    
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-        </ul>
-    </div>
+
+    
   </body>
 </html>

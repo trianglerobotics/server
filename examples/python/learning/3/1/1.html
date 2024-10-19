@@ -5,27 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>선착순! 줄을~ 서시오</h2>
-      <p>하트 여왕의 경기에 참여하기 위해 동물 친구들이 하나둘 모여듭니다. 동물들이 도착한 순서대로 줄을 세워 볼까요?
-
-        append()를 사용하여 빈 리스트 line_up에 동물을 추가해 주세요.</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/append.png" alt="Placeholder image" />
+      <h1>파이썬 데이터 유형</h1>
+      <h2 style="margin-bottom: 3px;">내장 데이터 유형</h2>
+      <p>프로그래밍에서 데이터 유형은 중요한 개념입니다.</p>
+      <p>변수는 다양한 유형의 데이터를 저장할 수 있으며, 다양한 유형은 다양한 작업을 수행할 수 있습니다.</p>
+      <p>Python에는 기본적으로 다음 카테고리의 데이터 유형이 내장되어 있습니다.</p>
+      <hr >
+      <p>텍스트 유형: <span class="hlw">str</span></p>
+      <p>숫자 유형: <span class="hlw">int</span>, <span class="hlw">float</span>, <span class="hlw">complex</span></p>
+      <p>시퀀스 유형: <span class="hlw">list</span>, <span class="hlw">tuple</span>, <span class="hlw">range</span></p>
+      <p>매핑 유형: <span class="hlw">dict</span></p>
+      <p>세트 유형: <span class="hlw">set</span>, <span class="hlw">frozenset</span></p>
+      <p>부울 유형: <span class="hlw">bool</span></p>
+      <p>이진 유형: <span class="hlw">bytes</span>, <span class="hlw">bytearray</span>, <span class="hlw">memoryview</span></p>
+      <p>없음 유형: <span class="hlw">NoneType</span></p>
+      <hr>
+      <h2 style="margin-bottom: 3px;">데이터 유형 가져오기</h2>
+      <p>다음 함수를 사용하면 모든 객체의 데이터 유형을 가져올 수 있습니다 <span class="hlw">type()</span></p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <p>변수 x의 데이터 유형을 인쇄하세요.</p>
+      <div class="code_div">
+x = 5
+print(type(x))
       </div>
+      <br></br>
+    </div >
+
+    
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <li>빈 리스트 line_up에 줄을 세울 거예요.</li>
-            <li>줄을 세울 때 .append()를 사용하세요.</li>
-        </ul>
-    </div>
+
+    
   </body>
 </html>
