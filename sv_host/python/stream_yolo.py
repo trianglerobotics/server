@@ -17,8 +17,14 @@ elif(platform.machine() == 'x86_64'):
 
 while True:
     frame = jajucha2.camera.get_image()
+    
     resized_frame = cv2.resize(frame, (640, 640))
-    _, buffer = cv2.imencode('.jpg', resized_frame)
+
+    compression_rate = 30  # Set this between 0 to 100 (higher means better quality, less compression)
+    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
+    _, buffer = cv2.imencode('.jpg', resized_frame, encode_param)
+
+   # _, buffer = cv2.imencode('.jpg', resized_frame)
     jpg_as_text = base64.b64encode(buffer).decode('utf-8')
 
     data = {'image': jpg_as_text}

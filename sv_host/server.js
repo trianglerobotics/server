@@ -196,9 +196,33 @@ app.get('/stop', (req, res) => {
         console.log(`Message sent to ${destIP}:${destPort}`);
         res.sendStatus(200);
     }
-    //motorserver.close(); // Close the socket after sending the message
   });
+  console.log("stop signal sent");
+});
 
+app.post('/set/motor', (req, res) => {
+
+  const steer = req.body.steer+45;
+  const speed = req.body.speed+50;
+  
+  //make value to the required format
+  const steerstr = steer.toString();
+  const speedstr = speed.toString();
+  const steerstterspeed = steerstr +steerstr+  speedstr +'09';
+  console.log(steerstterspeed);
+
+  const destIP = '121.184.63.113';
+  const destPort = 22222;
+  //send udp signal to stop
+  const message = Buffer.from(steerstterspeed);
+  motorserver.send(message, 0, message.length, destPort, destIP, (err) => {
+    if (err) {
+        console.log('Error sending message:', err);
+    } else {
+        console.log(`Message sent to ${destIP}:${destPort}:${message}`);
+        res.sendStatus(200);
+    }
+  });
   console.log("stop signal sent");
 });
 
@@ -206,6 +230,8 @@ app.get('/stop', (req, res) => {
 const wss = new WebSocket.Server({ port: 1122 });
 wss.on('connection', ws => {
   });
+
+
 
 function broadcast(message) {
   wss.clients.forEach(client => {
