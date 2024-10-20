@@ -218,20 +218,6 @@ router.get('/api/control/disk', async (req, res) => {
   }
 });
 
-//Watch the file changes
-// const wssupdate = new WebSocket.Server({ port: 1125 });
-// wssupdate.on('connection', ws => {
-//   });
-
-// function broadcast(message) {
-// wssupdate.clients.forEach(client => {
-//     if (client.readyState === WebSocket.OPEN) {
-//     client.send(message);
-//     }
-// });
-// }
-
-
 export async function generateDataset(trainCount, testCount, validCount, images, classes, projectpath, trainImagesPath, trainLabelsPath, testImagesPath, testLabelsPath, validImagesPath, validLabelsPath) {
   // Helper function to process each image
   async function processImage(image, imagePath, newImagePath, newLabelPath) {
@@ -546,21 +532,6 @@ router.post('/api/control/generate', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 
-
-  
-  // try {
-  //   console.log('disk');
-  //   disk.check('/', (error, info) => {
-  //     if (error) {
-  //       res.status(500).json({ error: 'Failed to check disk usage' });
-  //     } else {
-  //       res.json(info);
-  //       console.log(info);
-  //     }
-  //   });
-  // } catch (error) {
-  //   res.status(500).json({ error: 'An unexpected error occurred' });
-  // }
 });
 
 

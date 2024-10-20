@@ -76,24 +76,6 @@ const allowedOrigins = [
   
 app.use(cors());
 
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     // Allow requests with no origin (like mobile apps or curl requests)
-//     if (!origin) return callback(null, true);
-
-//     if (allowedOrigins.indexOf(origin) === -1) {
-//       // If the origin isn't in the allowed list, block the request
-//       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-//       return callback(new Error(msg), false);
-//     }
-
-//     // If the origin is in the allowed list, allow the request
-//     return callback(null, true);
-//   },
-//   credentials: true,          // Allow credentials (cookies, authorization headers, etc.)
-//   optionsSuccessStatus: 200   // For legacy browser support
-// }));
-
 console.log("started");
 
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -124,18 +106,6 @@ app.get('/api/version', (req, res) => {
 });
 
 app.post('/api/login', async (req, res) => {
-  // const { email, password } = req.body;
-  // const user = await User.findOne({ where: { email } });
-
-  // if (!user) return res.status(400).send('Invalid email or password.');
-
-  // const validPassword = await bcrypt.compare(password, user.password);
-  // if (!validPassword) return res.status(400).send('Invalid email or password.');
-
-  // // Store user info in session
-  // req.session.userId = user.id;
-
-  // res.send({ message: 'Logged in successfully' });
   if (req.session.num === undefined)
     {
       req.session.num = 1; // 세션 등록
@@ -219,11 +189,11 @@ app.post('/set/motor', (req, res) => {
     if (err) {
         console.log('Error sending message:', err);
     } else {
-        console.log(`Message sent to ${destIP}:${destPort}:${message}`);
+        // console.log(`Message sent to ${destIP}:${destPort}:${message}`);
         res.sendStatus(200);
     }
   });
-  console.log("stop signal sent");
+  // console.log("stop signal sent");
 });
 
 //Watch the file changes

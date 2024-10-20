@@ -27,6 +27,12 @@ function startPythonScript(dbtype) {
     {
         pythonScriptPath = path.resolve(__dirname, '../python/stream_yolo.py');
     }
+    else if(dbtype === 'classification')
+    {
+        pythonScriptPath = path.resolve(__dirname, '../python/stream.py');
+    }
+
+    console.log('Starting Python script:', pythonScriptPath);
 
     pythonProcess = spawn('python3', [pythonScriptPath]);
 
