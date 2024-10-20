@@ -54,7 +54,7 @@ const app = express();
 const server = http.createServer(app);
 const port = 4000;
 
-const version = 1.04;
+const version = 1.05;
 
 import { fileURLToPath } from 'url';
 
@@ -172,8 +172,19 @@ app.get('/stop', (req, res) => {
 
 app.post('/set/motor', (req, res) => {
 
-  const steer = req.body.steer+45;
-  const speed = req.body.speed+50;
+  let steer = req.body.steer+45;
+  let speed = req.body.speed+50;
+
+  if(steer <= 37)
+  {
+    steer = 37;
+  }
+  else if(steer >= 53)
+  {
+    steer = 53;
+  }
+
+  speed = 100-speed;
   
   //make value to the required format
   const steerstr = steer.toString();
