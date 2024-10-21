@@ -32,6 +32,11 @@ function startPythonScript(dbtype) {
         pythonScriptPath = path.resolve(__dirname, '../python/stream.py');
     }
 
+    else if(dbtype === 'racing')
+    {
+        pythonScriptPath = path.resolve(__dirname, '../python/stream_racing.py');
+    }
+
     console.log('Starting Python script:', pythonScriptPath);
 
     pythonProcess = spawn('python3', [pythonScriptPath]);

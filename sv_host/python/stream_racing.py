@@ -21,7 +21,7 @@ while True:
     start_time = time.time()  # Track time before sending the image
 
     frame = jajucha2.camera.get_image()
-
+    
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
     _, buffer = cv2.imencode('.jpg', frame, encode_param)
 
