@@ -56,6 +56,4 @@ while True:
 
     if response.status_code != 200:
         print('Failed to send data')
-        
-    time.sleep(0.05)
 
