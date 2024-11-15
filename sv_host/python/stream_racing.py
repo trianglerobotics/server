@@ -15,7 +15,7 @@ if architecture == 'aarch64':
 elif architecture == 'x86_64':
     url = 'http://121.184.63.113:4000/center'
 
-compression_rate = 20  # Initial compression rate
+compression_rate = 40  # Initial compression rate
 
 while True:
     start_time = time.time()  # Track time before sending the image
@@ -33,4 +33,4 @@ while True:
     if response.status_code != 200:
         print('Failed to send data')
 
-    time.sleep(0.05)
+    # time.sleep(0.05)
