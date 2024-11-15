@@ -16,6 +16,8 @@ elif architecture == 'x86_64':
     url = 'http://121.184.63.113:4000/center'
 
 compression_rate = 50  # Initial compression rate
+desired_fps = 10      # Set the desired frames per second
+frame_interval = 1 / desired_fps  # Calculate time interval between frames
 
 def center_crop(image):
     h, w = image.shape[:2]
@@ -35,26 +37,30 @@ def center_crop(image):
     
     return cropped_image
 
+last_frame_time = 0  # Track the last frame's timestamp
+
 while True:
-    start_time = time.time()  # Track time before sending the image
+    current_time = time.time()
+    elapsed_time = current_time - last_frame_time
 
-    frame = jajucha2.camera.get_image()
+    if elapsed_time >= frame_interval:
+        last_frame_time = current_time
 
-    # Center crop the image to make it square
-    cropped_frame = center_crop(frame)
+        frame = jajucha2.camera.get_image()
 
-    # Resize the cropped image to 640x640
-    resized_frame = cv2.resize(cropped_frame, (640, 640))
-    
-    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
-    _, buffer = cv2.imencode('.jpg', resized_frame, encode_param)
+        # Center crop the image to make it square
+        cropped_frame = center_crop(frame)
 
-    jpg_as_text = base64.b64encode(buffer).decode('utf-8')
+        # Resize the cropped image to 640x640
+        resized_frame = cv2.resize(cropped_frame, (640, 640))
+        
+        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
+        _, buffer = cv2.imencode('.jpg', resized_frame, encode_param)
 
-    data = {'image': jpg_as_text}
-    response = requests.post(url, json=data)
+        jpg_as_text = base64.b64encode(buffer).decode('utf-8')
 
-    if response.status_code != 200:
-        print('Failed to send data')
+        data = {'image': jpg_as_text}
+        response = requests.post(url, json=data)
 
-    time.sleep(0.05)
+        if response.status_code != 200:
+            print('Failed to send data')
