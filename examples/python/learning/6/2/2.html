@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>파이썬 import</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">모듈에서 특정 항목만 가져오기</h2>
+      <p>모듈의 일부만 가져와 사용하는 방식입니다.</p>
+      <p>필요한 기능만 가져오기 때문에 코드가 간결해집니다.</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+from math import sqrt
+print(sqrt(16))  # sqrt 함수만 사용 가능
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+from datetime import datetime, timedelta
+
+# 현재 시간 출력
+now = datetime.now()
+print(f"현재 시간: {now}")
+
+# 하루 더한 날짜 계산
+tomorrow = now + timedelta(days=1)
+print(f"내일 날짜: {tomorrow}")        
+      </div>
+      <br></br>
+    </div >
+
+    <div class="code"> 
+      <h3>C</h3>
+      <div class="code_div">
+from os import getcwd, listdir
+
+# 현재 디렉토리 가져오기
+current_dir = getcwd()
+print(f"현재 디렉토리: {current_dir}")
+
+# 디렉토리 목록 가져오기
+files = listdir(current_dir)
+print(f"디렉토리 파일 목록: {files}")
+            
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>
+  </body>
+</html>

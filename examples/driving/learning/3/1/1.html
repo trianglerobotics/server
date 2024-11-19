@@ -12,12 +12,43 @@
   <body class="api-docs" >
     <div class="container">
        
-        <h2>인공지능 모델 불러오기</h2>
-        <div class="box"> 저장했던 인공지능 모델의 이름을 입력합니다 </div>
-        <p>TIP* : 인공지능 모델을 미리 저장하지 않았다면 진행이 불가능합니다 </p>
-        <br></br>
+        <h1>인공지능 모델 불러오기</h1>
+        <hr>
+        <h2 style="margin-bottom: 3px;">인공지능 모델 이름 입력하기</h2>
+        <p> 저장했던 인공지능 모델의 이름을 입력합니다 </p>
+        <p>TIP* : 인공지능 모델을 미리 저장하지 않았다면 진행이 불가능합니다 </p>       
+    </div>
+    <div class="code"> 
+      <h3>A</h3>
+      <p>저장했던 모델의 이름을 입력합니다</p>
+      <div class="code_div">
+# Set Hyper Parameters
+NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'
+      </div>
+      <br></br>
+    </div >
 
-        <div class="box"> B 를 실행하여 학습한 인공지능 모델의 출력을 프린트 합니다</div>
-       
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">인공지능 모델 가져오고 출력하기</h2>   
+    </div>
+    <div class="code"> 
+      <h3>B</h3>
+      <p>저장했던 모델의 이름을 입력합니다</p>
+      <div class="code_div">
+# jajucha2 라이브러리를 가져옵니다 (카메라 및 AI 처리를 위한 모듈 포함)
+import jajucha2
+
+# 카메라 모듈을 사용해 이미지를 캡처합니다
+image = jajucha2.camera.get_image()
+
+# 캡처한 이미지와 모델 이름 (변수 NAME)을 전달하여 AI 모델의 출력을 얻습니다
+output = jajucha2.ai.get_model_output(image, NAME)
+
+# AI 모델의 출력 결과를 출력합니다
+print(output)
+      </div>
+      <br></br>
+    </div >
   </body>
 </html>

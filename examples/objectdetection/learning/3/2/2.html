@@ -11,28 +11,63 @@
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>저장된 모델 불러오고 테스트 하기</h2>
+      <h1>저장된 모델 실행하기</h1>
+      <hr>
+      <h2>저장된 모델 이름으로 불러오기</h2>
 
-       
-        <div class="box"> 저장된 모델을 불러오고 모델에 넣어서 결과를 출력합니다</div>
-        <div class="box"> NAME 에 해당하는 이름은 전 과정에서 유저가 설정했던 모델의 이름입니다 이름을 모를 경우 
-          Database -> Model Manager 에서 확인 가능합니다</div>
-        <div class="box"> NAME에 사용할 모델의 이름을 입력합니다</div>
-        <div class="box"> A 코드를 실행합니다</div>
-      
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/obj_321.svg"  alt="Placeholder image" />
+      <ol type='A'>
+        <div class="box"> NAME 에 해당하는 이름은 전 과정에서 유저가 설정했던 모델의 이름입니다 </div>
+        <div class="box"> NAME 에 이름을 입력합니다</div>
+        <div class="box"> 저장된 모델은 <strong>DataBase/AI</strong> - <strong>Model Manager</strong>에서 관리 할 수 있습니다</div>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/obj_321.svg"  alt="Placeholder image" />
+        </div>
+    </div>
+    <div class="code"> 
+      <h3>A 를 실행합니다</h3>
+      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
+      <div class="code_div">
+NAME = '1234' #모델의 이름을 입력합니다 예시: '1234'
       </div>
-
-        <br></br>
-        <div class="box"> 자주차 이미지 뷰어를 활성화 합니다</div>
-        <div class="box"> B 코드를 실행합니다</div>
-
+      <br></br>
+    </div >
+      
+      <div class="container">
+        <hr>
+        <h2>모델 로드및 출력값 프린트</h2>
+        <div class="box">  B 코드를 실행하기전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 를 클릭하여 이미지 뷰어를 실행합니다</div>
         <div class="image-div">
           <img src="http://121.184.63.113:4000/images/obj_322.svg"  alt="Placeholder image" />
         </div>
-       
+      </div>
+      <div class="code"> 
+        <h3>B 를 실행합니다</h3>
+        <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
+        <div class="code_div">
+import jajucha2
+import time
+import cv2
 
+while True:
+    frame = jajucha2.camera.get_image()
+
+    # Run YOLOv8 inference on the frame
+    results = jajucha2.ai.get_model_output(frame,NAME)
+
+    # Extract the detection information and visualize
+    for result in results:
+        for box in result.boxes:
+            # Extract bounding box coordinates
+            x1, y1, x2, y2 = map(int, box.xyxy[0])  # Bounding box corners
+            confidence = box.conf[0]  # Confidence score
+            class_id = int(box.cls[0])  # Class label
+            # Draw bounding box
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+    jajucha2.camera.show_image(frame)
+        </div>
+        <br></br>
+      </div >
       <br></br>
   </body>
 </html>

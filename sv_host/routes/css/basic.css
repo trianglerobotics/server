@@ -55,6 +55,7 @@
         font-family: 'Courier New', Courier, monospace;
         line-height: 1.5rem;
         white-space: pre-wrap;
+        margin-top: 10px;
       }
 
       /* General container styling for code blocks */

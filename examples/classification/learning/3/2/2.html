@@ -11,26 +11,61 @@
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>저장된 모델 실행하기</h2>
+      <h1>저장된 모델 실행하기</h1>
+      <hr>
+      <h2>저장된 모델 이름으로 불러오기</h2>
 
       <ol type='A'>
         <div class="box"> NAME 에 해당하는 이름은 전 과정에서 유저가 설정했던 모델의 이름입니다 </div>
         <div class="box"> NAME 에 이름을 입력합니다</div>
         <div class="box"> 저장된 모델은 <strong>DataBase/AI</strong> - <strong>Model Manager</strong>에서 관리 할 수 있습니다</div>
+    </div>
+    <div class="code"> 
+      <h3>A 를 실행합니다</h3>
+      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
+      <div class="code_div">
+NAME = '' #모델의 이름을 입력합니다 예시: '12'
+      </div>
+      <br></br>
+    </div >
+    
 
+    <div class="container">
 
 
       <br></br>
-
-      <div class="box">  C 코드를 실행하기전에 자주차의 이미지 뷰어를 실행합니다</div>
+      <hr>
+      <h2>모델 로드및 출력값 프린트</h2>
+      <div class="box">  B 코드를 실행하기전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 를 클릭하여 이미지 뷰어를 실행합니다</div>
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/cls_322.png"  alt="Placeholder image" />
       </div>
       <br></br>
+    </div>
 
-      <div class="box">  <img src="http://121.184.63.113:4000/images/flag.svg" style="width:20px; margin-right: 10px; margin-left: 10px;"></img> 버튼을 눌러 init을 진행합니다</div>
-      <div class="box">  <img src="http://121.184.63.113:4000/images/playall.svg" style="width:20px; margin-right: 10px; margin-left: 10px;"></img> 버튼을 눌러 전체 코드를 실행합니다</div>
-          
+<div class="code"> 
+  <h3>B 를 실행합니다</h3>
+  <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
+  <div class="code_div">
+import jajucha2
+
+# 무한 반복문으로 실시간 이미지 처리
+while True:
+    # 카메라에서 이미지를 가져옴
+    image = jajucha2.camera.get_image()
+    
+    # 가져온 이미지를 AI 모델에 입력하여 결과를 얻음
+    # NAME은 사용할 AI 모델의 이름
+    output = jajucha2.ai.get_model_output(image, NAME)
+    
+    # 현재 이미지를 화면에 출력
+    jajucha2.camera.show_image(image)
+    
+    # 모델의 출력 결과를 동일한 라인에 갱신하여 출력
+    print(f"\r {output}", end="")
+  </div>
+  <br></br>
+</div >
     <!-- <div class="add-comment">
         <h2>코딩해 보세요!</h3>
         <ul>

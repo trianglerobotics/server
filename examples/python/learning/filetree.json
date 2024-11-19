@@ -1,7 +1,7 @@
 [
   {
     "section": 1,
-    "name": "01 파이썬 구문",
+    "name": "01 파이썬 학습 시작하기",
     "subsections": [
       {
         "subsection": 1,
@@ -12,17 +12,10 @@
       },
       {
         "subsection": 2,
-        "name": "02 파이썬 들여쓰기",
+        "name": "02 파이썬 주석",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
-      },
-      {
-        "subsection": 3,
-        "name": "03 파이썬 주석",
-        "env": "type0",
-        "location": "learning/1/3/codes",
-        "target": "3.ipynb"
       }
     ]
   },
@@ -123,14 +116,14 @@
         "subsection": 1,
         "name": "01 파이썬 함수 1 ",
         "env": "type0",
-        "location": "learning/4/1/codes",
+        "location": "learning/5/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
         "name": "02 파이썬 함수 2",
         "env": "type0",
-        "location": "learning/4/2/codes",
+        "location": "learning/5/2/codes",
         "target": "2.ipynb"
         
       },
@@ -138,7 +131,35 @@
         "subsection": 3,
         "name": "03 파이썬 함수 3",
         "env": "type0",
-        "location": "learning/4/3/codes",
+        "location": "learning/5/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 6,
+    "name": "06 파이썬 import",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 import의 기본 개념 ",
+        "env": "type0",
+        "location": "learning/6/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 from 키워드 활용",
+        "env": "type0",
+        "location": "learning/6/2/codes",
+        "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "03 별칭을 사용하여 import하기",
+        "env": "type0",
+        "location": "learning/6/3/codes",
         "target": "3.ipynb"
       }
     ]

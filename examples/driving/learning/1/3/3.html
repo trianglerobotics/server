@@ -11,26 +11,72 @@
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>그리드 기반 주행하기</h2>
-
-
-       
-
-      <div class="box"> 자주차 트랙 TYPE-0 2장, TYPE-A 1장을 준비합니다 </div>
-      <div class="box"> 자주차가 트랙을 반시계 방향으로 돌도록 세팅 합니다 </div>
+      <h1>그리드 기반 주행하기</h1>
+      <hr>
+      <h2>트랙 준비하기</h2>
+      <p> 자주차 트랙 TYPE-0 2장, TYPE-A 1장을 준비합니다 </p>
+      <p> 자주차가 트랙을 반시계 방향으로 돌도록 세팅 합니다 </p>
 
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/drv_131.svg"  alt="Placeholder image" />
       </div>
+    </div>
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">자주차 모듈 가져오기</h2>
+      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+    </div>
+    <div class="code"> 
+      <h3>A</h3>
+      <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
+      <div class="code_div">
+import jajucha2
+      </div>
+      <br></br>
+    </div >
 
-      <div class="box"> C 을 실행하여 자주차 라이브러리를 가져옵니다 </div>
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">주행하기</h2>
+      <p>그리드 기반의 알고리즘으로 자주차를 주행합니다</p>
+    </div>
+
+    <div class="code"> 
+      <h3>B</h3>
+      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
+      <div class="code_div">
+while True:
+  image = jajucha2.camera.get_image()
+  (V, L, R), grid = jajucha2.camera.gridFront(image)
+  jajucha2.camera.show_image(grid)
+
+  if(V[5] < 100):
+      jajucha2.control.set_motor(-10,-10,5)
+  else:
+      jajucha2.control.set_motor(0,0,5)
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p><strong>while True:</strong> -> 무한 반복합니다</p>
+      <p><strong>image = jajucha2.camera.get_image()</strong> -> 중간 카메라에서 이미지를 가져옵니다</p>
+      <p><strong>(V, L, R), grid = jajucha2.camera.gridFront(image)</strong> -> 이미지에 그리드를 그리고 V,L,R 그리드 이미지를 가져옵니다</p>
+      <p><strong>if(V[5] < 100):</strong> -> 만약 V[5]의 값이 100보다 작다면</p>
+      <p><strong>jajucha2.control.set_motor(-10,-10,5)</strong> -> 조향각을 왼쪽으로 조정합니다</p>
+      <p><strong>else:</strong> -> if를 충족하지 않는다면</p>
+      <p><strong>jajucha2.control.set_motor(0,0,5)</strong> -> 자주차를 직진합니다</p>
+    </div>
+
+
+      <!-- <div class="box"> C 을 실행하여 자주차 라이브러리를 가져옵니다 </div>
 
       <div class="box"> E 를 실행하기전 이미지 뷰어를 열어준다음 E 코드를 실행합니다 </div>
       <div class="box"> 자주차가 트랙을 주행하는 것을 확인 합니다 </div>
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/drv_132.svg"  alt="Placeholder image" />
       </div>
-      <br></br>
+      <br></br> -->
 
        
   </body>

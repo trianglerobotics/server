@@ -11,26 +11,88 @@
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>그리드,값 출력하기</h2>
-       
-
-      <div class="box"> A 를 실행하여 자주차 라이브러리를 import 합니다 </div>
+      <h1>그리드 그리고,값 출력하기</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">자주차 모듈 가져오기</h2>
+      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+      <!-- <div class="box"> A 를 실행하여 자주차 라이브러리를 import 합니다 </div>
       <div class="box"> C 를 실행하기전 이미지 뷰어를 열어준다음 C 코드를 실행합니다 </div>
-      <div class="box"> 이미지에 격자가 생긴것을 확인 할 수 있습니다 </div>
-      
+      <div class="box"> 이미지에 격자가 생긴것을 확인 할 수 있습니다 </div> -->
+    </div>
+    <div class="code"> 
+      <h3>A</h3>
+      <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
+      <div class="code_div">
+import jajucha2
+      </div>
       <br></br>
+    </div >
 
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">그리드 그리기</h2>
+      <p>B를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 이미지 뷰어를 활성화 홥니다</p>
       <div class="image-div" >
         <img src="http://121.184.63.113:4000/images/drv_121.svg"  alt="Placeholder image" />
       </div>
+    </div>
 
-
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+image = jajucha2.camera.get_image()
+(V, L, R), grid = jajucha2.camera.gridFront(image)
+jajucha2.camera.show_image(grid)
+      </div>
       <br></br>
-      <div class="box"> D 를 실행하여 V (세로선) 출력값을 확인 합니다 </div>
-      <div class="box"> E 를 실행하여 L (왼쪽 가로선) 출력값을 확인 합니다 </div>
-      <div class="box"> F 를 실행하여 R (오른쪽 가로선) 출력값을 확인 합니다</div>
+    </div >
+    <div class="container"
       <br></br>
+      <p><strong>image = jajucha2.camera.get_image()</strong> -> 자주차 에서 이미지를 가져옵니다</p>
+      <p><strong>(V, L, R), grid = jajucha2.camera.gridFront(image)</strong> -> 자주차 에서 그리드 이미지와 V,L,R값을 가져옵니다</p>
+      <p><strong>jajucha2.camera.show_image(grid)</strong> -> 그리드 이미지를 출력합니다</p>
+      <br></br>
+    </div>
 
-       
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">값 출력하기</h2>
+      <p>C를 실행하여 V값 전체를 출력합니다</p>
+    </div>
+    <div class="code"> 
+      <h3>C</h3>
+      <div class="code_div">
+print(V)
+print("V0 : ",V[0],"V1 : ",V[1],"V2 : ",V[2],"V3 : ",V[3],"V4 : ",V[4],"V5 : ",V[5],"V6 : ",V[6])
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>D를 실행하여 L값 전체를 출력합니다</p>
+    </div>
+    <div class="code"> 
+      <h3>D</h3>
+      <div class="code_div">
+print(L)
+print("L0 : ",L[0],"L1 : ",L[1],"L2 : ",L[2])
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>E를 실행하여 R값 전체를 출력합니다</p>
+    </div>
+    <div class="code"> 
+      <h3>E</h3>
+      <div class="code_div">
+print(R)
+print("R0 : ",R[0],"R1 : ",R[1],"R2 : ",R[2])
+      </div>
+      <br></br>
+    </div >
+
+
+
   </body>
 </html>

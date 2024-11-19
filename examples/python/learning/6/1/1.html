@@ -15,47 +15,57 @@
 
      <!-- explain-1 -->
     <div class="container">
-      <h1>파이썬 주석</h1>
-      <p>주석은 Python 코드를 설명하는 데 사용될 수 있습니다.</p>
-      <p>주석을 사용하면 코드를 더 읽기 쉽게 만들 수 있습니다.</p>
-      <p>주석은 코드를 테스트할 때 실행을 방지하는 데 사용될 수 있습니다.</p>
+      <h1>파이썬 import</h1>
       <hr>
-      <h2 style="margin-bottom: 3px;">주석 만들기</h2>
-      <p>주석은 #으로 시작하며 Python은 이를 무시합니다.</p>
+      <h2 style="margin-bottom: 3px;">전체모듈 가져오기</h2>
+      <p>모듈 전체를 가져와 사용할 때 사용하는 방식입니다.</p>
+      <p>모듈 이름을 명시적으로 작성해야 하므로 코드 가독성이 좋지만, 길이가 길어질 수 있습니다.</p>
     </div>
     <!-- code-1 -->
     <div class="code"> 
       <h3>A</h3>
       <div class="code_div">
-#This is a comment
-print("Hello, World!")
+import math
+print(math.sqrt(16))  # math 모듈의 sqrt 함수 사용
       </div>
       <br></br>
     </div >
     <!-- explain-2 -->
-    <div class="container">
-      <p>주석은 줄의 끝에 넣을 수 있으며, Python은 줄의 나머지 부분을 무시합니다.</p>
-    </div>
     <!-- code-2 -->
     <div class="code"> 
       <h3>B</h3>
       <div class="code_div">
-print("Hello, World!") #This is a comment
+import datetime
+
+# 현재 날짜와 시간 가져오기
+now = datetime.datetime.now()
+print(f"현재 시간: {now}")
+
+# 특정 날짜 생성
+specific_date = datetime.datetime(2023, 11, 18)
+print(f"특정 날짜: {specific_date}")
+        
       </div>
       <br></br>
     </div >
-    <!-- explain-3 -->
-    <div class="container">
-      <p>주석은 코드를 설명하는 텍스트일 필요는 없으며 Python이 코드를 실행하지 못하도록 하는 데에도 사용할 수 있습니다.</p>
-    </div>
-    <!-- code-3 -->
+
     <div class="code"> 
       <h3>C</h3>
       <div class="code_div">
-#print("Hello, World!")
-print("Cheers, Mate!")
+import os
+
+# 현재 작업 디렉토리 확인
+current_directory = os.getcwd()
+print(f"현재 디렉토리: {current_directory}")
+
+# 디렉토리 목록 출력
+print(f"디렉토리 목록: {os.listdir(current_directory)}")        
       </div>
       <br></br>
     </div >
+
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>
   </body>
 </html>

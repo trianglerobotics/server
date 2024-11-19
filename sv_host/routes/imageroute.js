@@ -192,12 +192,35 @@ router.post('/api/image/save/image', (req, res) => {
         //save to database
         res.json({ success: true, message: 'Image saved successfully', filePath });
       });
-
-
-
 });
 
+router.post('/api/image/delete/image', (req, res) => {
+    const image = req.body.image; // Ensure you are accessing image from body
+    const project = req.body.project;
+    const dbtype = req.body.dbtype;
+    const home = os.homedir();
 
+    //console.log(project,image);
+    const imagePath = path.join(home,'server','projects', project, 'databases', 'data', image);
+    console.log(imagePath);
+    fs.access(imagePath, fs.constants.F_OK, (err) => {
+        if (err) {
+            // Sends a response if the file is not found
+            return res.status(404).json({ success: false, message: 'File not found' });
+        }
+    
+        // Attempts to delete the file
+        fs.unlink(imagePath, (unlinkErr) => {
+            if (unlinkErr) {
+                // Sends a second response if the deletion fails
+                return res.status(500).json({ success: false, message: 'Failed to delete file' });
+            }
+    
+            // Sends a third response if the file is deleted successfully
+            res.json({ success: true, message: 'Image deleted successfully' });
+        });
+    });
+});
 
 // module.exports = router;
 export default router;

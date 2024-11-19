@@ -28,7 +28,6 @@
       </ul>
       <p>이러한 조건은 여러 가지 방법으로 사용될 수 있지만, 가장 일반적으로는 "if 문"과 루프에서 사용됩니다.</p>
       <p><span class="hlw">"if 문"은 if</span> 키워드를 사용하여 작성됩니다</p>
-      <hr >
 
     </div>
     <!-- code-1 -->
@@ -47,12 +46,70 @@ if b > a:
     <div class="container">
       <p>이 예에서 우리는 두 개의 변수 a 와 b를 사용하는데 , 이는 if 문의 일부로 사용되어 b 가 a 보다 큰지 여부를 테스트합니다 . a 는 33 이고 b 는 200 이므로 200이 33보다 크다는 것을 알고 있으므로 "b는 a보다 크다"를 화면에 인쇄합니다.
       </p>
-      <h2 style="margin-bottom: 3px;">들여쓰기</h2>
-      <p>파이썬은 들여쓰기(줄의 시작 부분에 있는 공백)를 사용하여 코드의 범위를 정의합니다. 다른 프로그래밍 언어는 종종 이 목적을 위해 중괄호를 사용합니다.</p>
+    </div>
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">파이썬 들여쓰기</h2>
+      <p>들여쓰기는 코드 줄의 시작 부분에 있는 공백을 말합니다.</p>
+      <p>다른 프로그래밍 언어에서는 코드의 들여쓰기가 가독성을 높이기 위한 것일 뿐이지만, Python에서는 들여쓰기가 매우 중요합니다.</p>
+      <p>파이썬은 들여쓰기를 사용하여 코드 블록을 나타냅니다.</p>
+      <p>*들여쓰기는 tab 키를 통하여 구현 할 수 있습니다*</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+if 5 > 2:
+  print("Five is greater than two!")
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <p>들여쓰기를 건너뛰면 Python에서 오류가 발생합니다.</p>
     </div>
     <!-- code-2 -->
     <div class="code" style="background-color: pink;"> 
-      <h3>B</h3>
+      <h3>C</h3>
+      <div class="code_div">
+if 5 > 2:
+print("Five is greater than two!")
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-3 -->
+    <div class="container">
+      <p>공백의 개수는 프로그래머의 취향에 따라 결정되며, 가장 일반적인 사용은 4개이지만 적어도 1개는 있어야 합니다.</p>
+    </div>
+    <!-- code-3 -->
+    <div class="code"> 
+      <h3>D</h3>
+      <div class="code_div">
+if 5 > 2:
+  print("Five is greater than two!") 
+if 5 > 2:
+        print("Five is greater than two!") 
+      </div>
+      <br></br>
+    </div >
+
+    <!-- explain-4 -->
+    <div class="container">
+      <p>동일한 코드 블록에서 동일한 수의 공백을 사용해야 합니다. 그렇지 않으면 Python에서 오류가 발생합니다.</p>
+    </div>
+    <!-- code-4 -->
+    <div class="code" style="background-color: pink;"> 
+      <h3>E</h3>
+      <div class="code_div">
+if 5 > 2:
+  print("Five is greater than two!")
+          print("Five is greater than two!")
+      </div>
+      <br></br>
+    </div >
+    <!-- code-2 -->
+    <div class="code" style="background-color: pink;"> 
+      <h3>F</h3>
       <p>들여쓰기 없는 if 문(오류 발생):</p>
       <div class="code_div">
 a = 33
@@ -70,7 +127,7 @@ print("b is greater than a") # you will get an error
     </div>
     <!-- code-3 -->
     <div class="code"> 
-      <h3>C</h3>
+      <h3>G</h3>
       <div class="code_div">
 a = 33
 b = 33
@@ -92,7 +149,7 @@ elif a == b:
 
     <!-- code-4 -->
     <div class="code"> 
-      <h3>D</h3>
+      <h3>H</h3>
       <div class="code_div">
 a = 200
 b = 33
@@ -115,7 +172,7 @@ else:
 
     <!-- code-5 -->
     <div class="code"> 
-      <h3>E</h3>
+      <h3>I</h3>
       <p>a가 b 보다 큰지 그리고 c 가 a 보다 큰지 테스트합니다</p>
       <div class="code_div">
 a = 200
@@ -136,7 +193,7 @@ if a > b and c > a:
 
     <!-- code-6 -->
     <div class="code"> 
-      <h3>F</h3>
+      <h3>J</h3>
       <p>a가 B 보다 크거나 a가 c 보다 큰지 테스트합니다 c.</p>
       <div class="code_div">
 a = 200
@@ -157,7 +214,7 @@ if a > b or a > c:
 
     <!-- code-7 -->
     <div class="code"> 
-      <h3>G</h3>
+      <h3>K</h3>
       <p>a 보다 b가 크지 않은지 테스트합니다 </p>
       <div class="code_div">
 a = 33

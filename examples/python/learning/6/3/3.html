@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>파이썬 import</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">별칭을 사용하여 가져오기</h2>
+      <p>모듈 이름이 길거나 반복되는 경우, 별칭을 지정하여 사용할 수 있습니다.</p>
+      <p>주로 데이터 과학 라이브러리(Pandas, NumPy 등)에서 많이 사용됩니다.</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <div class="code_div">
+import numpy as np
+array = np.array([1, 2, 3])  # numpy의 별칭 'np'로 사용        
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+import matplotlib.pyplot as plt
+
+# 데이터
+x = [1, 2, 3, 4]
+y = [2, 4, 6, 8]
+
+# 그래프 그리기
+plt.plot(x, y)
+plt.title('Line Plot Example')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.show()   
+      </div>
+      <br></br>
+    </div >
+
+    <div class="code"> 
+      <h3>C</h3>
+      <div class="code_div">
+import torch as th
+
+# GPU 사용 가능한지 확인
+device = th.device('cuda' if th.cuda.is_available() else 'cpu')
+print(f"사용 중인 디바이스: {device}")
+
+# GPU에서 텐서 생성
+gpu_tensor = th.tensor([1.0, 2.0, 3.0], device=device)
+print(f"GPU 텐서:\n{gpu_tensor}")  
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© W3Schools, www.w3schools.com</p>
+    </div>
+  </body>
+</html>

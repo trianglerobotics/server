@@ -11,12 +11,18 @@
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>이미지에 바운딩 박스 그리기</h2>
-       
-        <div class="box"> 이미지에서 분류할 영역을 지정하고자 합니다</div>
-        <br></br>
+      <h1>이미지에 바운딩 박스 그리기</h1>
+      <hr>
+      <h2>YOLO</h2>
+      <div class="box"> YOLO(You Only Look Once)에서 바운딩 박스를 그리는 이유는 객체 검출(Object Detection) 결과를 시각적으로 표현하기 위함입니다. 바운딩 박스는 이미지나 영상에서 검출된 객체의 위치와 크기를 나타내는 사각형 입니다</div>
+      <div class="image-div">
+        <img style='width:400px' src="http://121.184.63.113:4000/images/obj_225.png"  alt="Placeholder image" />
+      </div> 
+    </div>
+    <div class="container">
+        <hr>
+        <h2>이미지에 바운딩 박스 그리기</h2>
         <div class="box"> 분류할 사물에 마우스를 클릭하여 움직이면 박스가 만들어지게 됩니다</div>
-      
         <div class="image-div">
           <img src="http://121.184.63.113:4000/images/obj_221.svg"  alt="Placeholder image" />
         </div>
@@ -24,7 +30,8 @@
         <div class="box"> 박스가 만들어지게 되면 클래스 선택창이 표시됩니다 박스에 부여할 클래스를 선택한 후 <span class="blue">Finish</span> 버튼을 눌러 
           박스를 저장하세요
         </div>
-      
+    </div>
+    <div class="container">
       <div class="image-div">
         <img style='width:200px' src="http://121.184.63.113:4000/images/obj_222.svg"  alt="Placeholder image" />
       </div>
@@ -40,10 +47,13 @@
       <div class="image-div">
         <img style='width:200px' src="http://121.184.63.113:4000/images/obj_224.svg"  alt="Placeholder image" />
       </div>
-      
-      <br></br>
+    </div>
+  <div class="container">
+    <hr>
+    <h2>데이터 생성하기</h2>
       <div class="box">  모든 이미지에 대해서 박스를 그렸다면 <span class="blue">Generate</span> 버튼을 눌러 
         데이터를 생성하세요  </div>
+      <p>*데이터 생성 과정은 현재 그린 바운딩 박스를 학습에 필요한 텍스트 파일로 만드는 과정입니다</p>
       
       <br></br>
       <div class="box">  <span class="blue">Next</span> 버튼을 눌러 

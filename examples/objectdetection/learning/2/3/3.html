@@ -11,23 +11,54 @@
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>모델 훈련하기</h2>
+      <h1>모델 훈련하기</h1>
+      <hr>
+      <h2>훈련 시작하기</h2>
        
         <div class="box"> 라벨링을 완료한 데이터를 이용하여 학습을 진행하고자 합니다</div>
         <div class="box">
           <img style="width: 20px; " src="http://121.184.63.113:4000/images/flag.svg"  alt="Placeholder image" /> 버튼을 눌러 커널을 초기화 합니다
         </div>
-        <div class="box">  코드 영역을 선택 한 후 <img style="width: 20px; " src="http://121.184.63.113:4000/images/play.svg"  alt="Placeholder image"/> 버튼을 눌러 학습을 시작합니다</div>
+        <div class="box">  코드 영역을 선택 한 후 <img style="width: 20px; " src="http://121.184.63.113:4000/images/playall.svg"  alt="Placeholder image"/> 버튼을 눌러 학습을 시작합니다</div>
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/obj_231.svg"  alt="Placeholder image" />
       </div>
-      <br></br>
+      <hr>
+      <h2>EPOCH</h2>
+      <p>에포크는 훈련 데이터 전체를 한 번 완전히 통과한 횟수를 의미합니다.</p>
+      <p>에포크 동안 모델은 모든 데이터를 한 번씩 학습합니다.</p>
+      <p>예를 들어, 데이터셋이 1,000개 샘플로 이루어져 있고 배치 크기(batch size)가 100이라면, 10번의 이테레이션(iteration)이 모여 1 에포크를 구성합니다.</p>
+      <p>일반적으로 모델이 효과적으로 학습하려면 여러 번의 에포크를 거쳐야 합니다.</p>
 
-      <div class="box"> 다음과 같이 Epoch가 100/100 값이 되면 학습이 완료된 것입니다</div>
+      <hr>
+      <h2>Box Loss</h2>
+      <p>Box Loss는 모델이 예측한 바운딩 박스와 실제 정답 바운딩 박스 간의 차이를 평가합니다.</p>
+      <p>바운딩 박스의 위치와 크기를 얼마나 정확히 예측했는지를 판단합니다.</p>
+      <p>IoU(Intersection over Union)나 L1/L2 손실 값을 사용해 계산합니다.</p>
+      <p>훈련이 진행될수록 Box Loss는 점차 감소하며, 모델이 바운딩 박스를 더 정확히 예측하게 됩니다.</p>
+
+      <hr>
+      <h2>Cls Loss</h2>
+      <p>Cls Loss는 바운딩 박스 안의 객체가 어떤 클래스인지 예측하는 정확도를 평가합니다.</p>
+      <p>객체 검출에서 모델이 클래스 분류를 올바르게 수행하도록 학습시킵니다.</p>
+      <p>주로 Cross Entropy Loss를 사용해 손실 값을 계산합니다.</p>
+      <p>훈련이 진행될수록 Cls Loss는 감소하며, 이는 모델이 클래스를 더 정확히 분류하고 있음을 나타냅니다.</p>
+
+      <hr>
+      <h2>DFL Loss</h2>
+      <p>DFL Loss(Distribution Focal Loss)는 객체 검출에서 바운딩 박스의 좌표를 더 정확히 예측하기 위해 사용되는 손실 함수입니다.</p>
+      <p>DFL은 각 좌표값에 대한 분포(Distribution)를 학습시켜 좌표 예측을 더욱 정밀하게 만듭니다.</p>
+      <p>기존의 바운딩 박스 회귀 방식이 좌표 값을 직접 예측하는 것과 달리, DFL은 좌표가 연속적인 분포로 표현된다고 가정합니다.</p>
+      <p>이 방식을 통해 예측값에 대한 불확실성을 모델링할 수 있으며, 더 높은 정확도를 제공합니다.</p>
+
+      <hr>
+      <h2>훈련 중지하기</h2>
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/obj_232.svg"  alt="Placeholder image" />
       </div>
-      <br></br>
+      <div class="box"> 다음과 같이 Epoch가 100/100 값이 되면 <img src="http://121.184.63.113:4000/images/stop.svg" style="width:20px; margin-right: 10px; margin-left: 10px;"></img> 버튼을 눌러 학습을 중단합니다</div>
+
+
 
         
 

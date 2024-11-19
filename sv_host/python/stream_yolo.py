@@ -41,10 +41,10 @@ while True:
     frame = jajucha2.camera.get_image()
 
     # Center crop the image to make it square
-    cropped_frame = center_crop(frame)
+    #cropped_frame = center_crop(frame)
 
     # Resize the cropped image to 640x640
-    resized_frame = cv2.resize(cropped_frame, (640, 640))
+    resized_frame = cv2.resize(frame, (640, 400))
     
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
     _, buffer = cv2.imencode('.jpg', resized_frame, encode_param)

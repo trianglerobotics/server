@@ -5,36 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-    <div class="container">
-      <h2>환경 인지하기 - RGB 이미지 받기</h2>
-      
-      <div class="box">자주차 프로그램에는 이미지 뷰어가 내장되어 있습니다. 오른쪽 창을 열면 이미지 뷰어를 확인 할 수 있습니다 </div>
-      <div class="box">A,B,C를 실행하여 이미지가 창에 전송되는 것을 확인합니다 </div>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/jaju_211.svg"  alt="Placeholder image" />
-      </div>
-      <br></br>
 
-      <div class="box">D 는 연속적으로 이미지를 전송하는 예제 입니다 D 를 이용하여 연속적으로 이미지를 전송하세요</div>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/jaju_212.svg"  alt="Placeholder image" />
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>RGB 이미지 받기, 화면에 표시하기</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">자주차 모듈 가져오기</h2>
+      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A</h3>
+      <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
+      <div class="code_div">
+import jajucha2
       </div>
       <br></br>
+    </div >
+    <!-- explain-2 -->
+
+    <!-- explain-3 -->
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">이미지 받아오기</h2>
     </div>
-    <!-- <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <div class="box"> 삼행시를 따옴표로 묶는 걸 잊지 마세요.</div>
-            <div class="box"> [Enter]를 눌러 줄을 바꿔요!</div>
-            <p>
-                코드를 작성한 후 실행 버튼을  클릭해 보세요. 바밤바 삼행시가 짠! 하고 나타나면 성공한 거예요. 
-            </p>
-        </ul>
-    </div> -->
+
+    <div class="code"> 
+      <h3>B</h3>
+      <p>왼쪽,가운데,오른쪽 이미지를 받아와서 각각의 변수에 저장합니다</p>
+      <div class="code_div">
+left = jajucha2.camera.get_image('left')
+center = jajucha2.camera.get_image('center')
+right = jajucha2.camera.get_image('right')   
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p><strong>left = jajucha2.camera.get_image('left')</strong> -> 왼쪽 카메라의 이미지를 받아옵니다</p>
+      <p><strong>center = jajucha2.camera.get_image('center')</strong> -> 중간 카메라의 이미지를 받아옵니다</p>
+      <p><strong>right = jajucha2.camera.get_image('right')</strong> -> 오른쪽 카메라의 이미지를 받아옵니다</p>
+    </div>
+
+
+      <!-- explain-3 -->
+      <div class="container">
+        <hr>
+        <h2 style="margin-bottom: 3px;">이미지 표시하기</h2>
+        <p>C를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 이미지 뷰어를 활성화 홥니다</p>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/jaju_211.svg"  alt="Placeholder image" />
+        </div>
+      </div>
+
+
+    <div class="code"> 
+      <h3>C</h3>
+      <p>받아온 이미지를 이미지 뷰어로 전송합니다</p>
+      <div class="code_div">
+jajucha2.camera.show_image(left,'left')
+jajucha2.camera.show_image(center,'center')
+jajucha2.camera.show_image(right,'right')
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p><strong>jajucha2.camera.show_image(left,'left')</strong> -> 왼쪽이미지를 'left' 창으로 전송합니다</p>
+      <p><strong>jajucha2.camera.show_image(center,'center')</strong> -> 중간 'center' 창으로 전송합니다</p>
+      <p><strong>jajucha2.camera.show_image(right,'right')</strong> -> 오른쪽 'right' 창으로 전송합니다</p>
+    </div>
+
+
+    <div class="code"> 
+      <h3>D</h3>
+      <p>연속적으로 이미지를 전송합니다</p>
+      <div class="code_div">
+import jajucha2
+
+while True:
+    center = jajucha2.camera.get_image('center')
+    jajucha2.camera.show_image(center,'center')  
+      </div>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
   </body>
 </html>

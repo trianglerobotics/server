@@ -5,14 +5,14 @@
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 주행모터 제어하기",
+        "name": "01 조향모터 제어하기",
         "env": "type0",
         "location": "learning/1/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 조향모터 제어하기",
+        "name": "02 주행모터 제어하기",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
