@@ -915,6 +915,22 @@ WHERE NOT EXISTS (
     WHERE `e2`.`id` = 1 
 );
 
+INSERT INTO `Models` (`id`, `Name`, `Type`, `shape`, `Description`)
+SELECT 2, 'RESNET34', 'classification', '[1, 3, 224, 224]', 'ResNet34은 잔차 연결을 사용해 깊은 신경망의 기울기 소실 문제를 해결한 34층 딥러닝 모델입니다.'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Models` AS `e2`
+    WHERE `e2`.`id` = 2
+);
+
+INSERT INTO `Models` (`id`, `Name`, `Type`, `shape`, `Description`)
+SELECT 3, 'RESNET50', 'classification', '[1, 3, 224, 224]', 'ResNet50은 잔차 연결을 사용해 깊은 신경망의 기울기 소실 문제를 해결한 50층 딥러닝 모델입니다.'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Models` AS `e2`
+    WHERE `e2`.`id` = 3
+);
+
 -- Insert YOLO8N if it doesn't exist
 INSERT INTO `Models` (`id`, `Name`, `Type`, `shape`, `Description`)
 SELECT 4, 'YOLO8N', 'objectdetection', '[1,3,640,640]', 'YOLOv8n은 Object Detection 경량화된 딥러닝 모델로, YOLO 모델의 최신 버전 중 하나입니다.'
@@ -940,6 +956,14 @@ FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Models` AS `e2`
     WHERE `e2`.`id` = 6
+);
+
+INSERT INTO `Models` (`id`, `Name`, `Type`, `shape`, `Description`)
+SELECT 7, 'RESNET50', 'classification', '[1, 3, 224, 224]', 'ResNet101은 잔차 연결을 사용해 깊은 신경망의 기울기 소실 문제를 해결한 101층 딥러닝 모델입니다.'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Models` AS `e2`
+    WHERE `e2`.`id` = 7
 );
 
 -- Re-enable keys
