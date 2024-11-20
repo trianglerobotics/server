@@ -54,7 +54,7 @@ const app = express();
 const server = http.createServer(app);
 const port = 4000;
 
-const version = 1.23;
+const version = 1.24;
 
 import { fileURLToPath } from 'url';
 

@@ -11,11 +11,11 @@ url = ''
 architecture = platform.machine()
 
 if architecture == 'aarch64':
-    url = 'http://121.184.63.113:4000/yolo'
+    url = 'http://121.184.63.113:4000/center'
 elif architecture == 'x86_64':
-    url = 'http://121.184.63.113:4000/yolo'
+    url = 'http://121.184.63.113:4000/center'
 
-compression_rate = 100  # Initial compression rate
+compression_rate = 95  # Initial compression rate
 
 def center_crop(image):
     h, w = image.shape[:2]
@@ -38,7 +38,7 @@ def center_crop(image):
 while True:
     start_time = time.time()  # Track time before sending the image
 
-    frame = jajucha2.camera.get_image()
+    frame = jajucha2.camera.get_image('yolo')
 
     # Center crop the image to make it square
     #cropped_frame = center_crop(frame)

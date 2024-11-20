@@ -286,6 +286,8 @@ app.get('/api/control/update', async (req, res) => {
 
         await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_sv.service');
 
+        await executeUpdate('','pip install jajucha2 --upgrade');
+
         //wait for 2 seconds
         await new Promise(resolve => setTimeout(resolve, 4000));
 
