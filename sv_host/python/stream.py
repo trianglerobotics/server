@@ -15,7 +15,7 @@ if architecture == 'aarch64':
 elif architecture == 'x86_64':
     url = 'http://121.184.63.113:4000/center'
 
-compression_rate = 90  # Initial compression rate
+compression_rate = 95  # Initial compression rate
 
 def center_crop(image):
     h, w = image.shape[:2]
