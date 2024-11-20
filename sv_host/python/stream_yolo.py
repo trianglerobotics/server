@@ -15,7 +15,7 @@ if architecture == 'aarch64':
 elif architecture == 'x86_64':
     url = 'http://121.184.63.113:4000/center'
 
-compression_rate = 50  # Initial compression rate
+compression_rate = 90  # Initial compression rate
 
 def center_crop(image):
     h, w = image.shape[:2]
@@ -38,13 +38,13 @@ def center_crop(image):
 while True:
     start_time = time.time()  # Track time before sending the image
 
-    frame = jajucha2.camera.get_image()
+    resized_frame = jajucha2.camera.get_image()
 
     # Center crop the image to make it square
     #cropped_frame = center_crop(frame)
 
     # Resize the cropped image to 640x640
-    resized_frame = cv2.resize(frame, (640, 400))
+    #resized_frame = cv2.resize(frame, (640, 640))
     
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
     _, buffer = cv2.imencode('.jpg', resized_frame, encode_param)

@@ -15,7 +15,7 @@ if architecture == 'aarch64':
 elif architecture == 'x86_64':
     url = 'http://121.184.63.113:4000/center'
 
-compression_rate = 40  # Initial compression rate
+compression_rate = 50  # Initial compression rate
 
 while True:
     start_time = time.time()  # Track time before sending the image

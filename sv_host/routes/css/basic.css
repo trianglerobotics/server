@@ -22,7 +22,7 @@
         flex-direction: column;
         padding-bottom: 10px;
         width: 100%; /* Restricting the width */
-        max-width: 600px; 
+        max-width: 500px; 
         height: auto; /* Adjust the height */
         overflow-y: auto; /* Enable vertical scrolling if content overflows */
         background: white; /* Slightly lighter background for the container */
