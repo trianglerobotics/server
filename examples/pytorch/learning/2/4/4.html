@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>딥러닝 구조 및 용어</h1>
+      <hr></hr>
+      <h2 style="margin-bottom: 3px;">가중합<img src="http://121.184.63.113:4000/images/torch_241.svg" style="width:15px; margin-right: 5px; margin-left: 5px;"></h2>
+      <p>각 노드에서 들어오는 신호에 가중치를 곱한 후에 바이어스를 더해서 활성화 함수로 전달 되는데 이 값들을 모두 더한 것을 가중합 이라고 합니다</p>
+      <br></br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_242.svg" alt="Placeholder image" />
+      </div>
+    </div>
+    
+    <!-- code-1 --> 
+    <div class="code"> 
+      <h3>A에 있는 빈칸을 채워 아래 결과를 출력하세요</h3>
+      <div class="answer-top">입력값: [2. 3. 5.]</div>
+      <div class="answer">가중치: [0.1 0.2 0.3]</div>
+      <div class="answer-bottom"> 가중합: 2.3</div>
+      <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import numpy as np
+
+# 입력 데이터 (예: 세 개의 특징값)
+inputs = np.array([2.0, 3.0, 5.0])
+
+# 가중치 (weights): 각 입력에 대응되는 가중치 값
+weights = np.array([0.1, 0.2, 0.3])
+
+# 가중합 계산: 각 입력값 * 가중치를 모두 더함
+# weighted_sum = (입력1 * 가중치1) + (입력2 * 가중치2) + (입력3 * 가중치3)
+weighted_sum = np.dot(inputs, weights)
+
+# 결과 출력
+print("입력값:", inputs)
+print("가중치:", weights)
+print("가중합:", weighted_sum)
+</code>
+</pre>
+</div>
+</details>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© JAJUCHA www.jajucha.com</p>
+    </div>
+
+
+    </div >
+
+
+    
+  </body>
+</html>

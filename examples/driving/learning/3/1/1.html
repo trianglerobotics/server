@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs" >
     <div class="container">
@@ -19,11 +19,13 @@
         <p>TIP* : 인공지능 모델을 미리 저장하지 않았다면 진행이 불가능합니다 </p>       
     </div>
     <div class="code"> 
-      <h3>A</h3>
-      <p>저장했던 모델의 이름을 입력합니다</p>
+      <h3>A 를 실행하여 모델 이름 변수를 생성합니다</h3>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 # Set Hyper Parameters
-NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'
+NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'</code>
+        </pre>  
       </div>
       <br></br>
     </div >
@@ -33,9 +35,10 @@ NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'
       <h2 style="margin-bottom: 3px;">인공지능 모델 가져오고 출력하기</h2>   
     </div>
     <div class="code"> 
-      <h3>B</h3>
-      <p>저장했던 모델의 이름을 입력합니다</p>
+      <h3>B를 실행하여 저장한 모델에 이미지를 넣어 출력합니다</h3>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 # jajucha2 라이브러리를 가져옵니다 (카메라 및 AI 처리를 위한 모듈 포함)
 import jajucha2
 
@@ -46,7 +49,8 @@ image = jajucha2.camera.get_image()
 output = jajucha2.ai.get_model_output(image, NAME)
 
 # AI 모델의 출력 결과를 출력합니다
-print(output)
+print(output)</code>
+        </pre>
       </div>
       <br></br>
     </div >

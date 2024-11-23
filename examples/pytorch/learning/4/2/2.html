@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>합성곱 신경망</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">입력층</h2>
+    </div>
+    <div class="container">
+      <p>합성공 신경망에는 일반적으로 컬러 이미지가 입력 됩니다. 컬러 이미지는 일반적으로 RGB 채널을 가진 3차원 데이터입니다. 입력층의 역할은 이 데이터를 CNN의 계산 구조로 받아들이고, 다음 계층(예: 합성곱 층)으로 전달하기 위한 준비를 합니다.</p>
+      <p>컬러 이미지는 (Height,Width,Channels) 형식으로 표현됩니다.</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_412.svg" style="width: 200px;" alt="Placeholder image" />
+      </div>
+    </div>
+
+    <div class="code">
+      <h3>A 실행하여 이미지 크기를 출력하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import cv2
+import numpy as np
+
+image = cv2.imread("example.jpg")
+print(image.shape)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>

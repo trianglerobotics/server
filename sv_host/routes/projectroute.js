@@ -85,6 +85,7 @@ router.get('/api/markdown/:name/:section/:subsection', (req, res) => {
 router.use('/images', express.static(path.join(__dirname, 'images')));
 router.use('/css', express.static(path.join(__dirname, 'css')));
 router.use('/js', express.static(path.join(__dirname, 'js')));
+router.use('/fonts', express.static(path.join(__dirname, 'fonts')));
 
 router.post('/api/user/project/file-lists', (req, res) => {
   console.log("filecalled");

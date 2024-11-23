@@ -22,10 +22,13 @@
     </div>
     <!-- code-1 -->
     <div class="code"> 
-      <h3>A</h3>
+      <h3>A 를 실행하여 자주차 라이브러리를 가져옵니다</h3>
       <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
       <div class="code_div">
-import jajucha2
+        <pre>
+          <code class="language-python">
+import jajucha2</code>
+        </pre>
       </div>
       <br></br>
     </div >
@@ -40,10 +43,13 @@ import jajucha2
     </div>
 
     <div class="code"> 
-      <h3>B</h3>
+      <h3>B 를 실행합니다</h3>
       <p>깊이 이미지를 받아와서 변수에 저장합니다</p>
       <div class="code_div">
-depth = jajucha2.camera.get_depth()  
+        <pre>
+          <code class="language-python">
+depth = jajucha2.camera.get_depth()</code>
+        </pre>  
       </div>
       <br></br>
     </div >
@@ -65,10 +71,13 @@ depth = jajucha2.camera.get_depth()
 
 
     <div class="code"> 
-      <h3>C</h3>
+      <h3>C 를 실행합니다</h3>
       <p>받아온 이미지를 이미지 뷰어로 전송합니다</p>
       <div class="code_div">
-jajucha2.camera.show_image(depth,'depth')
+        <pre>
+          <code class="language-python">
+jajucha2.camera.show_image(depth,'depth')</code>
+        </pre>
       </div>
       <br></br>
     </div >
@@ -79,14 +88,17 @@ jajucha2.camera.show_image(depth,'depth')
 
 
     <div class="code"> 
-      <h3>D</h3>
+      <h3>D 를 실행합니다</h3>
       <p>연속적으로 이미지를 전송합니다</p>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 import jajucha2
 
 while True:
     center = jajucha2.camera.get_depth()
-    jajucha2.camera.show_image(depth,'depth')
+    jajucha2.camera.show_image(depth,'depth')</code>
+        </pre>
       </div>
       <br></br>
     </div >

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>배열의 모양과 구조 조작</h1>
+      <hr>
+      <h2>배열 결합과 분할</h2>
+      <p>배열 결합과 분할은 여러 개의 배열을 하나로 합치거나, 큰 배열을 여러 개로 나누는 작업입니다. 넘파이는 이를 위해 다양한 함수와 기능을 제공합니다.</p>
+      <!-- <p><strong>배열의 결합</strong>은 여러 개의 배열을 하나로 합치는 작업입니다</p> -->
+      <!-- <p><strong>배열의 분할 </strong>은 하나의 배열을 여러 개의 작은 배열로 나누는 작업입니다</p> -->
+      <h3>배열 결합과 분할 - 1 : 배열의 결합</h3>
+      <p>배열의 결합은 여러 개의 배열을 하나로 합치는 작업입니다</p>
+      <p><strong>배열을 수직으로 쌓습니다 :</strong> <span class="hlw">np.vstack</span></p>
+      <p><strong>배열을 수평으로 쌓습니다 :</strong><span class="hlw">np.hstack</span></p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A를 실행하여 결과를 출력하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import numpy as np
+
+# 두 배열 생성
+arr1 = np.array([[1, 2, 3]])
+arr2 = np.array([[4, 5, 6]])
+
+# 수직으로 쌓기
+result_v = np.vstack((arr1, arr2))
+result_h = np.hstack((arr1, arr2))
+
+print("수직으로 쌓은 결과:")
+print(result_v)
+
+print("수평으로 쌓은 결과:")
+print(result_h)
+        </code>
+      </pre>
+      </div>
+      <br></br>
+    </div >
+    <!-- explain-2 -->
+    <div class="container">
+      <h3>배열 결합과 분할 - 2 : 배열의 분할</h3>
+      <p>배열의 **분할(Splitting)**은 배열을 여러 조각으로 나누는 작업입니다.</p>
+      <div class="box" style="margin-top: 20px;">numpy.split(ary, indices_or_sections, axis=0)</div>
+      <p><strong>ary:</strong> <span class="hlw">입력 배열</span></p>
+      <p><strong>indices_or_sections</strong> <span class="hlw">분할할 부분의 개수</span></p>
+      <p><strong>axis</strong> <span class="hlw">분할할 축</span></p>
+
+    </div>
+
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import numpy as np
+
+# 1차원 배열
+arr = np.array([1, 2, 3, 4, 5, 6])
+split_arr = np.split(arr, 3)  # 배열을 3개의 부분으로 나눔
+print(split_arr)
+
+# 2차원 배열
+arr2d = np.array([[1, 2, 3], [4, 5, 6]])
+split_arr2d = np.split(arr2d, 3, axis=1)  # 열 기준으로 3개의 부분으로 나눔
+print(split_arr2d)
+</code>
+</pre>
+      </div>
+      <br></br>
+    </div >
+
+    <!-- copy right -->
+    <div class="container">
+      <p>© JAJUCHA, www.jajcuha.com</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>합성곱 신경망</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">합성곱층</h2>
+    </div>
+    <div class="container">
+      <p>합성곱층은 합성곱 연산을 통해서 이미지의 특징을 추출하는 역할을 합니다 커널(kernel) 또는 필터(filter) 라는 n×m 크기의 행렬로 높이너비 높이( height)×너비(width) 크기의 이미지를 처음부터 끝까지 겹치며 훑으면서 n×m 크기의 겹쳐지는 부분의 각 이미지와 커널의 원소의 값을 곱해서 모두 더한 값을 출력으로 하는 것을 말합니다</p>
+      <h2 style="margin-bottom: 3px;">3-1 : 합성곱층 계산방법 개요</h2>
+      <p>필터와 이미지를 포개어 놓고 , 대응되는 숫자끼리 곱한 뒤에 모두 더해주는 방식입니다 가로,세로로 이동하면서 모든 입력값에 대하여 필터를 적용합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_413.svg" alt="Placeholder image" />
+      </div>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_414.svg" alt="Placeholder image" />
+      </div>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_415.svg" alt="Placeholder image" />
+      </div>
+      <h2 style="margin-bottom: 3px;">3-2 : Stride(스트라이드)</h2>
+      <p>합성곱에서 stride는 커널(필터)이 입력 데이터를 얼마나 "건너뛰며" 이동하는지를 나타내는 파라미터입니다.</p>
+      <p>Stride가 1이면 커널이 한 칸씩 이동하면서 합성곱을 수행합니다. Stride가 2이면 커널이 두 칸씩 이동하면서 합성곱을 수행합니다.</p>
+      <p>Stride,Kernel이 커질수록 출력 크기는 작아지게 됩니다.</p>
+      <p>\[
+        \text{출력 크기} = \left\lfloor \frac{\text{(입력 크기 - 커널 크기)}}{\text{Stride}} \right\rfloor + 1
+        \]</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_416.svg" alt="Placeholder image" />
+      </div>
+    </div>
+
+    <div class="code">
+      <h3>A 실행하기전에 오르쪽 상단의<img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">을 클릭하여  커널을 통과한 이미지 크기와 이미지를 확인하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import jajucha2
+import cv2
+import numpy as np
+
+image = cv2.imread("example.jpg")
+print(image.shape)
+
+# 이미지를 그레이스케일로 변환
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+print("Grayscale Image Shape:", gray_image.shape)
+
+# 3x3 커널 정의
+kernel = np.array([[1, 0, -1],
+                    [1, 0, -1],
+                    [1, 0, -1]])
+
+# 스트라이드 설정
+stride = 1  # 스트라이드 크기 (1 또는 2 이상으로 설정 가능)
+
+# 출력 이미지 크기 계산
+output_height = (gray_image.shape[0] - kernel.shape[0]) // stride + 1
+output_width = (gray_image.shape[1] - kernel.shape[1]) // stride + 1
+
+# 출력 이미지를 저장할 배열 초기화
+output = np.zeros((output_height, output_width))
+
+# Convolution 수행 (for문 사용, stride 적용)
+for i in range(0, output_height):
+    for j in range(0, output_width):
+        # 커널이 적용될 영역 계산 (stride 고려)
+        start_i, start_j = i * stride, j * stride
+        region = gray_image[start_i:start_i + kernel.shape[0], start_j:start_j + kernel.shape[1]]
+        
+        # 커널과 곱하고 합산
+        conv_value = np.sum(region * kernel)
+        
+        # 결과 저장
+        output[i, j] = conv_value
+
+# 결과 이미지를 uint8로 변환
+output = np.clip(output, 0, 255).astype(np.uint8)
+print("output Image Shape:",output.shape)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <h2 style="margin-bottom: 3px;">3-3 : Padding(패딩)</h2>
+      <p>패딩은 입력 데이터 주변을 특정 값으로 채우는 것을 말합니다. 패딩을 사용하면 출력 크기를 조절할 수 있습니다. 패딩을 사용하지 않으면 출력 크기는 입력 크기보다 작아집니다.</p>
+      <p>패딩을 사용하면 출력 크기는 다음과 같이 계산됩니다.</p>
+      <p>\[
+        \text{출력 크기} = \left\lfloor \frac{\text{(입력 크기 + 2 * 패딩 - 커널 크기)}}{\text{Stride}} \right\rfloor + 1
+        \]</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_417.svg" alt="Placeholder image" />
+      </div>
+    </div>
+
+    <div class="code">
+      <h3>B를 실행하기전에 오르쪽 상단의<img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">을 클릭하여  커널을 통과한 이미지 크기와 이미지를 확인하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# 패딩 추가 (상하좌우에 동일한 크기로 추가)
+pad_size = 1  # 커널 크기의 절반 (예: 3x3 커널이면 1, 5x5 커널이면 2)
+padded_image = np.pad(gray_image, pad_width=pad_size, mode='constant', constant_values=0)
+
+# 패딩이 추가된 이미지 크기 출력
+print("Padded Image Shape:", padded_image.shape)
+
+# 출력 이미지 크기 다시 계산 (패딩을 포함한 계산)
+output_height = (padded_image.shape[0] - kernel.shape[0]) // stride + 1
+output_width = (padded_image.shape[1] - kernel.shape[1]) // stride + 1
+
+# 출력 이미지를 저장할 배열 초기화
+output = np.zeros((output_height, output_width))
+
+# Convolution 수행 (패딩을 고려하여 stride 적용)
+for i in range(output_height):
+    for j in range(output_width):
+        # 커널이 적용될 영역 계산 (stride 고려)
+        start_i, start_j = i * stride, j * stride
+        region = padded_image[start_i:start_i + kernel.shape[0], start_j:start_j + kernel.shape[1]]
+        
+        # 커널과 곱하고 합산
+        conv_value = np.sum(region * kernel)
+        
+        # 결과 저장
+        output[i, j] = conv_value
+
+# 결과 이미지를 uint8로 변환
+output = np.clip(output, 0, 255).astype(np.uint8)
+
+# 결과 출력
+jajucha2.camera.show_image(output)
+print("Output Image Shape:", output.shape)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>

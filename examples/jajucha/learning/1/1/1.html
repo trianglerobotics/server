@@ -22,10 +22,13 @@
     </div>
     <!-- code-1 -->
     <div class="code"> 
-      <h3>A</h3>
+      <h3>A 를 실행하여 자주차 라이브러리를 가져옵니다</h3>
       <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
       <div class="code_div">
-import jajucha2
+        <pre>
+          <code class="language-python">
+import jajucha2</code>
+        </pre>
       </div>
       <br></br>
     </div >
@@ -45,7 +48,10 @@ import jajucha2
       <h3>B</h3>
       <p>정지상태에서 왼쪽으로 스티어링을 조향합니다</p>
       <div class="code_div">
-jajucha2.control.set_motor(-10,-10,0)     
+        <pre>
+          <code class="language-python">
+jajucha2.control.set_motor(-10,-10,0)</code>
+        </pre>  
       </div>
       <br></br>
     </div >
@@ -53,7 +59,10 @@ jajucha2.control.set_motor(-10,-10,0)
       <h3>C</h3>
       <p>정지상태에서 오른쪽으로 스티어링을 조향합니다</p>
       <div class="code_div">
-jajucha2.control.set_motor(10,10,0)     
+        <pre>
+          <code class="language-python">
+jajucha2.control.set_motor(10,10,0)</code>
+        </pre> 
       </div>
       <br></br>
     </div >
@@ -61,13 +70,16 @@ jajucha2.control.set_motor(10,10,0)
       <h3>D</h3>
       <p>1초 간격으로 좌우로 스티어링을 조작합니다</p>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 import time #시간 관련 라이브러리를 가져옵니다
 
 while(True): 
     jajucha2.control.set_motor(10,10,0) 
     time.sleep(1) 
     jajucha2.control.set_motor(-10,-10,0)
-    time.sleep(1)    
+    time.sleep(1)</code>
+        </pre>
       </div>
       <br></br>
     </div >

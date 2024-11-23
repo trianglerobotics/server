@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
     <div class="container">
@@ -17,10 +17,13 @@
       <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
     </div>
     <div class="code"> 
-      <h3>A</h3>
+      <h3>A를 실행하여 jajucha2 라이브러리를 가져옵니다 </h3>
       <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
       <div class="code_div">
-import jajucha2
+        <pre>
+          <code class="language-python">
+import jajucha2</code>
+        </pre>
       </div>
       <br></br>
     </div >
@@ -42,11 +45,14 @@ import jajucha2
     </div>
 
     <div class="code"> 
-      <h3>B</h3>
+      <h3>B를 실행합니다</h3>
       <p>자주차 거리 이미지를 가져온 후 이미지 뷰어에 표시 합니다</p>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 depth = jajucha2.camera.get_depth()
-jajucha2.camera.show_image(depth,'depth')
+jajucha2.camera.show_image(depth,'depth')</code>
+        </pre>
       </div>
       <br></br>
       <div class="image-div">
@@ -68,9 +74,11 @@ jajucha2.camera.show_image(depth,'depth')
     </div>
 
     <div class="code">
-      <h3>C</h3>
+      <h3>C를 실행합니다</h3>
       <p>DEPTH 이미지에서 특정 영역의 평균값을 추출하여 출력합니다</p>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 import numpy as np
 
 # 깊이 이미지에서 가로,세로길이 추출
@@ -91,7 +99,8 @@ center_region = depth[start_y:start_y + region_size, start_x:start_x + region_si
 mean_value = np.mean(center_region)
 
 #출력된 값은 평균 밝기 값으로 0-255 값을 가지고 있습니다
-print(mean_value)
+print(mean_value)</code>
+        </pre>
       </div>
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/drv_213.svg"  alt="Placeholder image" />

@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
     <div class="container">
@@ -20,10 +21,13 @@
       <div class="box"> 이미지에 격자가 생긴것을 확인 할 수 있습니다 </div> -->
     </div>
     <div class="code"> 
-      <h3>A</h3>
+      <h3>A를 실행하여 jajucha2 라이브러리를 가져옵니다 </h3>
       <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
       <div class="code_div">
-import jajucha2
+        <pre>
+          <code class="language-python">
+import jajucha2</code>
+        </pre>
       </div>
       <br></br>
     </div >
@@ -38,15 +42,18 @@ import jajucha2
     </div>
 
     <div class="code"> 
-      <h3>B</h3>
+      <h3>B를 실행하여 그리드를 표시합니다</h3>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 image = jajucha2.camera.get_image()
 (V, L, R), grid = jajucha2.camera.gridFront(image)
-jajucha2.camera.show_image(grid)
+jajucha2.camera.show_image(grid)</code>
+        </pre>
       </div>
       <br></br>
     </div >
-    <div class="container"
+    <div class="container">
       <br></br>
       <p><strong>image = jajucha2.camera.get_image()</strong> -> 자주차 에서 이미지를 가져옵니다</p>
       <p><strong>(V, L, R), grid = jajucha2.camera.gridFront(image)</strong> -> 자주차 에서 그리드 이미지와 V,L,R값을 가져옵니다</p>
@@ -57,37 +64,43 @@ jajucha2.camera.show_image(grid)
     <div class="container">
       <hr>
       <h2 style="margin-bottom: 3px;">값 출력하기</h2>
-      <p>C를 실행하여 V값 전체를 출력합니다</p>
     </div>
     <div class="code"> 
-      <h3>C</h3>
+      <h3>C를 실행하여 V값 전체를 출력합니다</h3>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 print(V)
-print("V0 : ",V[0],"V1 : ",V[1],"V2 : ",V[2],"V3 : ",V[3],"V4 : ",V[4],"V5 : ",V[5],"V6 : ",V[6])
+print("V0 : ",V[0],"V1 : ",V[1],"V2 : ",V[2],"V3 : ",V[3],"V4 : ",V[4],"V5 : ",V[5],"V6 : ",V[6])</code>
+        </pre>
       </div>
       <br></br>
     </div >
 
     <div class="container">
-      <p>D를 실행하여 L값 전체를 출력합니다</p>
     </div>
     <div class="code"> 
-      <h3>D</h3>
+      <h3>D를 실행하여 L값 전체를 출력합니다</h3>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 print(L)
-print("L0 : ",L[0],"L1 : ",L[1],"L2 : ",L[2])
+print("L0 : ",L[0],"L1 : ",L[1],"L2 : ",L[2])</code>
+        </pre>
       </div>
       <br></br>
     </div >
 
     <div class="container">
-      <p>E를 실행하여 R값 전체를 출력합니다</p>
     </div>
     <div class="code"> 
-      <h3>E</h3>
+      <h3>E를 실행하여 R값 전체를 출력합니다</h3>
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 print(R)
-print("R0 : ",R[0],"R1 : ",R[1],"R2 : ",R[2])
+print("R0 : ",R[0],"R1 : ",R[1],"R2 : ",R[2])</code>
+        </pre>
       </div>
       <br></br>
     </div >

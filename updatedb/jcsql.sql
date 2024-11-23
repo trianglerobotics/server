@@ -891,6 +891,24 @@ WHERE NOT EXISTS (
     WHERE `e2`.`name` = 'objectdetection' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
 );
 
+-- Eighth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'pytorch', 'learn', 'hard', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'pytorch' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'hard' AND `e2`.`func` = 0
+);
+
+-- Ninth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'numpy', 'learn', 'easy', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'numpy' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+);
+
 -- Re-enable keys
 ALTER TABLE `Examples` ENABLE KEYS;
 

@@ -1,0 +1,110 @@
+[
+  {
+    "section": 1,
+    "name": "01 넘파이 시작하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 에디터 사용법",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 넘파이 개념",
+        "env": "type0",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 넘파이 배열 생성",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 배열 생성 방법",
+        "env": "type0",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 난수 배열 생성",
+        "env": "type0",
+        "location": "learning/2/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 데이터 타입 설정 및 변환",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "03 넘파이 배열의 기본 연산",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 배열의 산술 연산",
+        "env": "type0",
+        "location": "learning/3/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 브로드캐스팅(Broadcasting) 개념 이해",
+        "env": "type0",
+        "location": "learning/3/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 기본 수학 함수",
+        "env": "type0",
+        "location": "learning/3/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 4,
+    "name": "04 배열의 모양과 구조 조작",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 배열의 차원 확인 및 변경",
+        "env": "type0",
+        "location": "learning/4/1/codes",
+        "target": "1.ipynb"
+        
+      },
+      {
+        "subsection": 2,
+        "name": "02 배열 결합과 분할",
+        "env": "type0",
+        "location": "learning/4/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 5,
+    "name": "05 인덱싱과 슬라이싱",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 1D, 2D, 다차원 배열의 인덱싱과 슬라이싱",
+        "env": "type0",
+        "location": "learning/5/1/codes",
+        "target": "1.ipynb"
+      }
+    ]
+  }
+]

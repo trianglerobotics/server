@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>합성곱 신경망</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">폴링층</h2>
+    </div>
+
+    <div class="container">
+      <h2 style="margin-bottom: 3px;">4-1 : 최대 폴링(Max polling)</h2>
+      <p>최대 폴링은 주어진 영역에서 최대값을 선택하는 방법입니다. 입력 특징 맵의 각 작은 영역에서 가장 중요한(가장 강렬한) 특징을 선택해 정보를 압축합니다.</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_418.svg" alt="Placeholder image" />
+      </div>
+    </div>
+
+    <div class="code">
+      <h3>A 실행하기전에 오르쪽 상단의<img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">을 클릭하여  커널을 통과한 이미지 크기와 이미지를 확인하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import jajucha2
+import cv2
+import numpy as np
+
+image = cv2.imread("example.jpg")
+print(image.shape)
+
+# 이미지를 그레이스케일로 변환
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+print("Grayscale Image Shape:", gray_image.shape)
+
+# 최대 폴링 수행 함수 정의
+def max_pooling(image, pool_size):
+    h, w = image.shape  # 입력 이미지 크기
+    pool_h, pool_w = pool_size  # 폴링 커널 크기
+    stride = pool_size  # 스트라이드 크기 (커널 크기와 동일)
+    
+    # 출력 이미지 크기 계산
+    out_h = h // pool_h
+    out_w = w // pool_w
+    
+    # 출력 이미지를 저장할 배열 초기화
+    pooled_image = np.zeros((out_h, out_w), dtype=np.uint8)
+    
+    # 최대 폴링 수행
+    for i in range(out_h):
+        for j in range(out_w):
+            # 커널 범위 선택
+            start_i, start_j = i * stride[0], j * stride[1]
+            end_i, end_j = start_i + pool_h, start_j + pool_w
+            # 커널 범위의 최대값 계산
+            pooled_image[i, j] = np.max(image[start_i:end_i, start_j:end_j])
+    
+    return pooled_image
+
+# 최대 폴링 적용 (커널 크기 2x2)
+pool_size = (2, 2)
+pooled_image = max_pooling(gray_image, pool_size)
+
+# 결과 출력
+jajucha2.camera.show_image(pooled_image)
+print("Output Image Shape:", pooled_image.shape)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <h2 style="margin-bottom: 3px;">4-2 : 평균 폴링(Average polling)</h2>
+      <p>평균 폴링은 주어진 영역의 평균값을 계산하여 특징을 압축하는 방법입니다. 입력 데이터의 지역적 정보를 평균적으로 반영하여 다소 부드러운 결과를 생성합니다.</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_419.svg" alt="Placeholder image" />
+      </div>
+    </div>
+
+    <div class="code">
+      <h3>B 실행하기전에 오르쪽 상단의<img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">을 클릭하여  커널을 통과한 이미지 크기와 이미지를 확인하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# 이미지를 그레이스케일로 변환
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+print("Grayscale Image Shape:", gray_image.shape)
+
+# 평균 폴링 수행 함수 정의
+def mean_pooling(image, pool_size):
+    h, w = image.shape  # 입력 이미지 크기
+    pool_h, pool_w = pool_size  # 폴링 커널 크기
+    stride = pool_size  # 스트라이드 크기 (커널 크기와 동일)
+    
+    # 출력 이미지 크기 계산
+    out_h = h // pool_h
+    out_w = w // pool_w
+    
+    # 출력 이미지를 저장할 배열 초기화
+    pooled_image = np.zeros((out_h, out_w), dtype=np.uint8)
+    
+    # 평균 폴링 수행
+    for i in range(out_h):
+        for j in range(out_w):
+            # 커널 범위 선택
+            start_i, start_j = i * stride[0], j * stride[1]
+            end_i, end_j = start_i + pool_h, start_j + pool_w
+            # 커널 범위의 평균값 계산
+            pooled_image[i, j] = np.mean(image[start_i:end_i, start_j:end_j])
+    
+    return pooled_image
+
+# 평균 폴링 적용 (커널 크기 2x2)
+pool_size = (2, 2)
+pooled_image = mean_pooling(gray_image, pool_size)
+
+# 결과 출력
+jajucha2.camera.show_image(pooled_image)
+print("Output Image Shape:", pooled_image.shape)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>

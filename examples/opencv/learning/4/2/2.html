@@ -5,34 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container" >
+      <h1>필터링과 변환</h1>
+      <hr></hr>
+      <h2>엣지 검출</h2>
+      <p>OpenCV에서 **엣지 검출(Edge Detection)**은 이미지에서 명확한 경계나 윤곽을 찾아내는 중요한 작업입니다. 주로 이미지의 구조를 이해하거나 객체의 경계를 감지할 때 사용됩니다. </p>
+      <h2>엣지 검출 -1 : Canny Edge Detection</h2>
+      <p>가장 널리 사용되는 엣지 검출 알고리즘입니다. 가우시안 블러링을 적용하고, 그래디언트 계산, 임계값 설정 등을 통해 엣지를 검출합니다.</p>
+      <div class="box" style="margin-top: 20px;">cv2.Canny(image, threshold1, threshold2)</div>
+      <p><strong>threshold1: 하한 임계값 (Lower Threshold).</strong></p>
+      <p style="margin-bottom: 20px;"><strong>threshold2: 상한 임계값 (Upper Threshold).</strong></p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
+      <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import cv2
+import jajucha2
+
+# 이미지 읽기
+image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
+
+# 가우시안 블러링 적용 (노이즈 제거)
+blurred = cv2.GaussianBlur(image, (5, 5), 1.4)
+
+# Canny Edge Detection
+edges = cv2.Canny(blurred, 50, 150)
+
+# 결과 보기
+jajucha2.camera.show_image(edges)</code>
+</pre>
+</div>
+</details>
+      <br></br>
+    </div>
+
     <div class="container">
-      <h2>19단을 외자</h2>
-      <p>여러분은 구구단을 몇 단까지 외우나요? 인도에서는 무려 19단까지 외운다고 합니다. 아닛? 우리도 질 순 없다! for 문과 range() 함수를 이용해서 컴퓨터에게 나 대신 19단까지외우라고 시켜 볼까요?</p>
-
-      <p></p>아래 코드에서 19단을 외웠을 때의 결괏값인 19, 38, … 342, 361을 한 줄에 하나씩 출력하는 코드를 작성해 보세요.</p>
-
-      <pre>
-        <code class="hljs">
-  19
-  38
-  ...
-  342
-  361
-        </code>
-      </pre>
+      <h2>엣지 검출 -2 : Sobel Edge Detection</h2>
+      <p>Sobel 필터를 사용하여 그래디언트를 계산하고 엣지를 검출합니다. 특정 축(X 또는 Y)을 따라 엣지를 감지할 수 있습니다.</p>
+      <div class="box" style="margin-top: 20px;">cv2.Sobel(src, ddepth, dx, dy, ksize)</div>
+      <p><strong>ddepth: 출력 이미지의 데이터 타입 (일반적으로 cv2.CV_64F).</strong></p>
+      <p><strong>dx: X 방향 미분 계수 (1이면 X 방향 검출).</strong></p>
+      <p><strong>dy: Y 방향 미분 계수 (1이면 Y 방향 검출).</strong></p>
+      <p style="margin-bottom: 20px;"><strong>ksize:커널 크기 (홀수).</strong></p>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <div class="box"> range(a, b) 형태로 반복의 범위를 지정해요.</div>
-            <div class="box"> 19단이 잘 출력되는지 확인해 보세요.</div>
-        </ul>
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>B에 있는 빈칸을 채운 후 B 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
+      <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import cv2
+import numpy as np
+import jajucha2
+
+# 이미지 읽기
+image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
+
+# Sobel X (수평 엣지)
+sobel_x = cv2.Sobel(image, cv2.CV_64F, 1, 0, ksize=3)
+sobel_x = np.uint8(np.absolute(sobel_x))
+
+# Sobel Y (수직 엣지)
+sobel_y = cv2.Sobel(image, cv2.CV_64F, 0, 1, ksize=3)
+sobel_y = np.uint8(np.absolute(sobel_y))
+
+# Sobel Combined
+sobel_combined = cv2.bitwise_or(sobel_x, sobel_y)
+
+# 결과 보기
+jajucha2.camera.show_image(image)
+jajucha2.camera.show_image(sobel_x,'left')
+jajucha2.camera.show_image(sobel_y,'right')
+jajucha2.camera.show_image(sobel_combined,'depth')</code>
+</pre>
+</div>
+</details>
+      <br></br>
     </div>
+
+    <div class="container">
+      <h2>엣지 검출 -3 : Laplacian Edge Detection</h2>
+      <p>Laplacian 필터를 사용하여 2차 미분을 계산하고 엣지를 감지합니다. 엣지의 방향성을 고려하지 않고 모든 방향에서 엣지를 감지합니다.</p>
+      <div class="box" style="margin-top: 20px;">cv2.Laplacian(src, ddepth, ksize)</div>
+      <p><strong>ddepth: 출력 이미지의 데이터 타입 (일반적으로 cv2.CV_64F).</strong></p>
+      <p style="margin-bottom: 20px;"><strong>ksize: 커널 크기 (기본값: 1).</strong></p>
+    </div>
+
+    <!-- code-2 -->
+    <div class="code"> 
+      <h3>C에 있는 빈칸을 채운 후 C 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
+      <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import cv2
+import numpy as np
+import jajucha2
+
+# 이미지 읽기
+image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
+
+# Laplacian Edge Detection
+laplacian = cv2.Laplacian(image, cv2.CV_64F)
+laplacian = np.uint8(np.absolute(laplacian))
+
+# 결과 보기
+jajucha2.camera.show_image(image)
+jajucha2.camera.show_image(laplacian,'left')
+</code>
+</pre>
+</div>
+</details>
+      <br></br>
+    </div>
+
+
+
+
+  <div class="container">
+    <p>© JAJUCHA, www.jajucha.com</p>
+  </div> 
+
+
+
   </body>
 </html>

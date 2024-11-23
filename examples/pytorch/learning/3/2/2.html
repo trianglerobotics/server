@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>딥러닝 학습</h1>
+      <h2 style="margin-bottom: 3px;">순전파</h2>
+      <p>순전파는 인공신경망에서 입력층에서 출력층으로 신호가 전달되는 과정을 의미합니다.</p>
+      <p>선형회기에서 함수를 인공신경망으로 대체하게 된다면 딥러닝으로 변하게 됩니다. 하지만 선형 회기와는 다른게 여러개의 함수가 사용되고 , 활성화 함수까지 있기 때문에
+      데이터에 맞는 함수들의 가중치와 바이어스를 찾는 과정이 조금더 과정이 복잡해지게 됩니다</p>
+      <br></br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_313.svg" alt="Placeholder image" />
+      </div>
+      <h2 style="margin-bottom: 3px;">순전파 - 1 :  순차적 계산</h2>
+      <p>\( z1 \) , \( z2 \) 를 계산합니다</p>
+      <p>입력값은 x1 = 0.1 x2=0.2 로 가정합니다</p>
+      <p style="overflow: auto;">\[
+        z_1 = W_1x_1 + W_2x_2 = 0.3 \times 0.1 + 0.25 \times 0.2 = 0.08
+        \]
+        \[
+        z_2 = W_3x_1 + W_4x_2 = 0.4 \times 0.1 + 0.35 \times 0.2 = 0.11
+        \]
+      </p>
+    </div>
+
+    <div class="code">
+      <h3>A 실행하여 \( z1 \) , \( z2 \) 를 계산하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# 주어진 값
+x1 = 0.1
+x2 = 0.2
+
+W1 = 0.3
+W2 = 0.25
+W3 = 0.4
+W4 = 0.35
+
+# 계산식
+z1 = W1 * x1 + W2 * x2  # z1 = 0.3 * 0.1 + 0.25 * 0.2
+z2 = W3 * x1 + W4 * x2  # z2 = 0.4 * 0.1 + 0.35 * 0.2
+
+# 결과 출력
+print(f"z1 = {W1} * {x1} + {W2} * {x2} = {z1:.8f}")
+print(f"z2 = {W3} * {x1} + {W4} * {x2} = {z2:.8f}")</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>\( h1 \) , \( h2 \) 를 계산합니다</p>
+      <p style="overflow: auto;">
+        \[
+        h_1 = sigmoid(z_1) = 0.51998934
+        \]
+        \[
+        h_2 = sigmoid(z_2) = 0.52747230
+        \]
+      </p>
+    </div>
+    <div class="code">
+      <h3>B 실행하여 \( h1 \) , \( h2 \) 를 계산하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import math
+
+# Sigmoid 함수 정의
+def sigmoid(z):
+    return 1 / (1 + math.exp(-z))
+
+# 계산
+h1 = sigmoid(z1)  # h1 = sigmoid(z1)
+h2 = sigmoid(z2)  # h2 = sigmoid(z2)
+
+# 계산식 출력
+print(f"h1 = sigmoid({z1}) = {h1:.8f}")
+print(f"h2 = sigmoid({z2}) = {h2:.8f}")</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>\( z3 \) , \( z4 \) 를 계산합니다</p>
+      <p style="overflow: auto;">
+        \[
+z_3 = W_5 h_1 + W_6 h_2 = 0.45 \times h_1 + 0.4 \times h_2 = 0.44498412
+\]
+\[
+z_4 = W_7 h_1 + W_8 h_2 = 0.7 \times h_1 + 0.6 \times h_2 = 0.68047592
+\]
+      </p>
+    </div>
+    <div class="code">
+      <h3>C 실행하여 \( z3 \) , \( z4 \) 를 계산하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# 주어진 값
+W5 = 0.45
+W6 = 0.4
+W7 = 0.7
+W8 = 0.6
+
+# 계산
+z3 = W5 * h1 + W6 * h2  # z3 = 0.45 * h1 + 0.4 * h2
+z4 = W7 * h1 + W8 * h2  # z4 = 0.7 * h1 + 0.6 * h2
+
+# 출력
+print(f"z3 = {W5} * {h1} + {W6} * {h2} = {z3:.8f}")
+print(f"z4 = {W7} * {h1} + {W8} * {h2} = {z4:.8f}")</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>\( o1 \) , \( o2 \) 를 계산합니다</p>
+      <p>
+        \[
+o_1 = sigmoid(z_3) = 0.60944600
+\]
+\[
+o_2 = sigmoid(z_4) = 0.66384491
+\]
+      </p>
+    </div>
+
+    <div class="code">
+      <h3>D 실행하여 \( o1 \) , \( o2 \) 를 계산하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import math
+
+# Sigmoid 함수 정의
+def sigmoid(z):
+    return 1 / (1 + math.exp(-z))
+
+# 계산
+o1 = sigmoid(z3)  # o1 = sigmoid(z3)
+o2 = sigmoid(z4)  # o2 = sigmoid(z4)
+
+# 출력
+print(f"o1 = sigmoid({z3}) = {o1:.8f}")
+print(f"o2 = sigmoid({z4}) = {o2:.8f}")</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>오차(Error)를 계산하기 위한 손실 함수(Loss function)로는 평균 제곱 오차 MSE를 사용합니다</p>
+      <p>
+        \[
+E_{o_1} = \frac{1}{2} (target_{o_1} - output_{o_1})^2 = 0.02193381
+\]
+\[
+E_{o_2} = \frac{1}{2} (target_{o_2} - output_{o_2})^2 = 0.00203809
+\]
+\[
+E_{total} = E_{o_1} + E_{o_2} = 0.02397190
+\]
+      </p>
+    </div>
+
+    <div class="code">
+      <h3>E 실행하여 손실값을 계산하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# 주어진 값
+target_o1 = 0.4
+target_o2 = 0.6
+
+# 손실 함수 계산
+E_o1 = 0.5 * (target_o1 - o1) ** 2
+E_o2 = 0.5 * (target_o2 - o2) ** 2
+E_total = E_o1 + E_o2
+
+# 출력
+print(f"E_o1 = 0.5 * ({target_o1} - {o1})^2 = {E_o1:.8f}")
+print(f"E_o2 = 0.5 * ({target_o2} - {o2})^2 = {E_o2:.8f}")
+print(f"E_total = E_o1 + E_o2 = {E_total:.8f}")</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>

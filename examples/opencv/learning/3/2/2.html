@@ -5,26 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
     <div class="container">
-      <h2>새치기의 달인 도도새</h2>
-      <p>경기장에 가장 늦게 도착한 도도새가 슬쩍 새치기를 하려고 하네요. 홍학이 고개를 잠깐 돌린 사이에 어떻게 끼어 들어갔는지 알아볼까요?
-        <code>insert()</code> 를 사용해서 홍학 앞에 도도새를 추가해 보세요.</p>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/insert.png" alt="Placeholder image" />
-        </div>
+      <h1>이미지 처리 기초</h1>
+      <hr></hr>
+      <h2>이미지 자르기 </h2>
+      <p>OpenCV에서 이미지를 자르기(Cropping) 위해 별도의 함수는 필요하지 않습니다. 이미지를 나타내는 배열(numpy 배열)의 슬라이싱(Slicing) 기능을 사용하여 원하는 영역을 추출하면 됩니다.</p>
+      <div class="box" style="margin-top: 20px;">cropped_image = image[y_start:y_end, x_start:x_end]</div>
+      <p><strong>y_start : y_end -> 이미지의 세로(행) 범위</strong></p>
+      <p><strong>x_start : x_end -> 이미지의 가로(열) 범위</strong></p>
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 A에 있는 빈칸을 채운 후 코드를 실행하세요 </h3>
+      <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+      <pre>
+        <code class="language-python">
+import cv2
+import jajucha2
+
+# 이미지 읽기
+image = cv2.imread('example.jpg')
+
+# 자를 범위 지정 (y, x 순서)
+x_start, x_end = 100, 400  # 가로 범위
+y_start, y_end = 50, 300   # 세로 범위
+
+# 이미지 자르기
+cropped_image = image[y_start:y_end, x_start:x_end]
+
+# 결과 보기
+jajucha2.camera.show_image(image,'center')
+jajucha2.camera.show_image(cropped_image,'left')</code>
+      </pre>
+      </div>
+    </details>
+      <br></br>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <div class="box"> 문자열을 입력할 때 따옴표를 잊지 마세요.</div>
-            <div class="box"> 인덱스는 0부터 시작해요.</div>
-        </ul>
-    </div>
+
+
+
+  <div class="container">
+    <p>© JAJUCHA, www.jajucha.com</p>
+  </div> 
+
+
+
   </body>
 </html>

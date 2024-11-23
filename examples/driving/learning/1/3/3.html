@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
     <div class="container">
@@ -27,10 +27,13 @@
       <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
     </div>
     <div class="code"> 
-      <h3>A</h3>
+      <h3>A를 실행하여 jajucha2 라이브러리를 가져옵니다 </h3>
       <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
       <div class="code_div">
-import jajucha2
+        <pre>
+          <code class="language-python">
+import jajucha2</code>
+        </pre>
       </div>
       <br></br>
     </div >
@@ -42,9 +45,11 @@ import jajucha2
     </div>
 
     <div class="code"> 
-      <h3>B</h3>
+      <h3>B를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; border-radius: 0px; margin-right: 5px; margin-left: 5px;"></img>을 클릭하여 이미지 뷰어를 활성한 후에 B를 실행하여 그리드 기반 주행을 테스트 합니다</h3>
       <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
       <div class="code_div">
+        <pre>
+          <code class="language-python">
 while True:
   image = jajucha2.camera.get_image()
   (V, L, R), grid = jajucha2.camera.gridFront(image)
@@ -53,20 +58,11 @@ while True:
   if(V[5] < 100):
       jajucha2.control.set_motor(-10,-10,5)
   else:
-      jajucha2.control.set_motor(0,0,5)
+      jajucha2.control.set_motor(0,0,5)</code>
+        </pre>
       </div>
       <br></br>
     </div >
-
-    <div class="container">
-      <p><strong>while True:</strong> -> 무한 반복합니다</p>
-      <p><strong>image = jajucha2.camera.get_image()</strong> -> 중간 카메라에서 이미지를 가져옵니다</p>
-      <p><strong>(V, L, R), grid = jajucha2.camera.gridFront(image)</strong> -> 이미지에 그리드를 그리고 V,L,R 그리드 이미지를 가져옵니다</p>
-      <p><strong>if(V[5] < 100):</strong> -> 만약 V[5]의 값이 100보다 작다면</p>
-      <p><strong>jajucha2.control.set_motor(-10,-10,5)</strong> -> 조향각을 왼쪽으로 조정합니다</p>
-      <p><strong>else:</strong> -> if를 충족하지 않는다면</p>
-      <p><strong>jajucha2.control.set_motor(0,0,5)</strong> -> 자주차를 직진합니다</p>
-    </div>
 
 
       <!-- <div class="box"> C 을 실행하여 자주차 라이브러리를 가져옵니다 </div>

@@ -5,25 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-    <div class="container">
-      <h2>사투리 번역기 만들기</h2>
-      <p>서울에서 ‘밥 먹었니?’라고 인사할 때 부산에서는 뭐라 할까요? ‘밥 뭇나?’라고 합니다. 서울 인사말은 전역 변수로, 부산 인사말은 지역 변수로 비유하면 이해하기 쉽습니다. 전역 변수와 지역 변수를 연습하면서 코드를 완성해 보세요.
-      </p>
+
+    
+
+     <!-- explain-1 -->
+    <div class="container" >
+      <h1>필터링과 변환</h1>
+      <hr></hr>
+      <h2>허프 원 검출</h2>
+      <p>OpenCV에서 **허프 원 변환(Hough Circle Transform)**은 이미지를 분석하여 원형 객체를 감지하는 강력한 알고리즘입니다. 이는 이미지의 경계선을 기반으로 원을 검출합니다.</p>
+      <div class="box" style="margin-top: 20px;">circles = cv2.HoughCircles(image, method, dp, minDist, param1, param2, minRadius, maxRadius)</div>
+      
+      <div style="overflow-x: auto; white-space: pre; margin: 0; line-height: 0.5;">
+        <p style="margin: 0px;"><strong>image: 입력 이미지. 반드시 Grayscale로 제공</strong></p>
+        <p style="margin: 0px;"><strong>method: 허프 변환 방법. 현재 cv2.HOUGH_GRADIENT만 지원.</strong></p>
+        <p style="margin: 0px;"><strong>dp: 축소 비율. 원 검출 해상도 = 입력 이미지 해상도 / dp</strong></p>
+        <p style="margin: 0px;"><strong>minDist: 검출된 원들 사이의 최소 거리. 너무 작으면 원이 겹쳐서 검출될 수 있음.</strong></p>
+        <p style="margin: 0px;"><strong>param1: 내부적으로 사용하는 Canny Edge Detection의 상위 임계값.</strong></p>
+        <p style="margin: 0px;"><strong>param2: 중심을 검출하기 위한 임계값. 값이 작을수록 더 많은 원을 검출.</strong></p>
+        <p style="margin: 0px;"><strong>minRadius: 검출할 원의 최소 반지름.</strong></p>
+        <p style="margin: 0px;"><strong>maxRadius: 검출할 원의 최대 반지름.</strong></p>
+      </div>  
+
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
+      <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import cv2
+import numpy as np
+import jajucha2
+
+# 이미지 읽기
+image = cv2.imread('example.jpg')
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# 가우시안 블러링 (노이즈 제거)
+blurred = cv2.GaussianBlur(gray, (9, 9), 2)
+
+# 허프 원 변환 적용
+circles = cv2.HoughCircles(
+    blurred,
+    cv2.HOUGH_GRADIENT,
+    dp=1,
+    minDist=20,
+    param1=50,
+    param2=70,
+    minRadius=0,
+    maxRadius=0
+)
+
+# 원이 검출되었는지 확인
+if circles is not None:
+    # 원 좌표와 반지름을 정수로 변환
+    circles = np.uint16(np.around(circles))
+
+    for circle in circles[0, :]:
+        x, y, r = circle
+        # 원 그리기
+        cv2.circle(image, (x, y), r, (0, 255, 0), 2)
+        # 중심점 그리기
+        cv2.circle(image, (x, y), 2, (0, 0, 255), 3)
+
+# 결과 보기
+jajucha2.camera.show_image(image)</code>
+</pre>
+</div>
+</details>
       <br></br>
     </div>
 
-    <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <div class="box"> 02번째 줄에서 선언한 greeting은 전역 변수입니다.</div>
-            <div class="box"> 함수 busan()의 매개변수는 없습니다.</div>
-            <div class="box"> 함수 busan() 안에서 선언한 greeting은 지역 변수입니다.</div>
-        </ul>
-    </div>
+  <div class="container">
+    <p>© JAJUCHA, www.jajucha.com</p>
+  </div> 
+
+
+
   </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs" >
     <div class="container">
@@ -40,11 +40,13 @@
       <p>TIP* : 인공지능 모델을 미리 저장하지 않았다면 진행이 불가능합니다 </p>       
   </div>
   <div class="code"> 
-    <h3>A</h3>
-    <p>저장했던 모델의 이름을 입력합니다</p>
+    <h3>A 를 실행하여 모델 이름 변수를 생성합니다</h3>
     <div class="code_div">
+      <pre>
+        <code class="language-python">
 # Set Hyper Parameters
-NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'
+NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'</code>
+      </pre>
     </div>
     <br></br>
   </div >
@@ -59,9 +61,11 @@ NAME = 'model' #모델의 이름을 입력합니다 예시: 'model'
   </div>
 
   <div class="code"> 
-    <h3>B</h3>
+    <h3>B를 실행하여 주행을 시작합니다</h3>
     <p>자세한 설명은 주석으로 대체 합니다</p>
     <div class="code_div">
+      <pre>
+        <code class="language-python">
 import jajucha2  # jajucha2 라이브러리를 가져옵니다
 import numpy as np  # 넘파이 라이브러리, 배열 및 수치 계산에 사용
 import cv2  # OpenCV 라이브러리, 컴퓨터 비전 및 이미지 처리에 사용
@@ -107,7 +111,8 @@ while True:
         speed = 0
 
     # 조향 및 속도를 설정하여 모터 제어
-    jajucha2.control.set_motor(steer, steer, speed)      
+    jajucha2.control.set_motor(steer, steer, speed)</code>
+      </pre>     
     </div>
     <br></br>
   </div >

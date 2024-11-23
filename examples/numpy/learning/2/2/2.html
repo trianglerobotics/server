@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>넘파이 배열 생성</h1>
+      <hr>
+      <h2 style="margin-bottom:3px">난수 배열 생성</h2>
+      <p>np.random 모듈을 사용하여 다양한 난수 생성이 가능합니다.</p>
+      <p>균등분포, 정규분포, 임의의 정수, 다차원 배열 형태의 난수 등을 생성할 수 있습니다.</p>
+      <hr>
+      
+      <p><strong>0과 1 사이 균등분포 난수:</strong> <span class="hlw">np.random.rand</span></p>
+      <p><strong>정규분포 난수:</strong> <span class="hlw">np.random.randn</span></p>
+      <p><strong>의의 정수 배열:</strong> <span class="hlw">np.random.randint</span></p>
+      <p><strong>섞인 배열:</strong> <span class="hlw">np.random.shuffle</span></p>
+    
+    </div>
+    <!-- code-1 -->
+    <div class="code"> 
+      <h3>A에 있는 빈칸을 채운 후 A 를 실행하여 아래 결과를 확인하세요</h3>
+      <div style="overflow-x: auto; margin: 0px; ">
+        <div class="answer-top">0과 1 사이 균등분포 난수:
+          [[0.7030073  0.1337954  0.29474663]
+          [0.89852511 0.49183264 0.92508197]]</div>
+        <div class="answer" style="margin-top: 10px;">정규분포 난수:
+          [[ 0.97231267 -1.38079247  1.09289348]
+          [-0.96690069 -0.6182254   1.54476182]
+          [ 1.90540084  0.10289803 -1.47188307]]</div>
+        <div class="answer" style="margin-top: 10px;">임의의 정수 배열:
+          [[2 2]
+          [5 5]]</div>
+        <div class="answer-bottom" style="margin-top: 10px;">섞인 배열: [4 3 5 2 1]</div>
+      </div>
+        <details>
+        <summary>정답 보기/숨기기</summary>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import numpy as np
+
+# 1. 균등분포로 난수 생성 (0과 1 사이)
+rand_uniform = np.random.rand(2, 3)
+print("0과 1 사이 균등분포 난수:\n", rand_uniform)
+
+# 2. 정규분포로 난수 생성 (평균 0, 표준편차 1)
+rand_normal = np.random.randn(3, 3)
+print("정규분포 난수:\n", rand_normal)
+
+# 3. 임의의 정수 생성
+rand_integers = np.random.randint(1, 10, size=(2, 2))  # 1 이상 10 미만 정수
+print("임의의 정수 배열:\n", rand_integers)
+
+# 4. 배열 섞기
+arr = np.array([1, 2, 3, 4, 5])
+np.random.shuffle(arr)
+print("섞인 배열:", arr)    
+</code>
+</pre>
+</div>
+</details>
+      <br></br>
+    </div >
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>

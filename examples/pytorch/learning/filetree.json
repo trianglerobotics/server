@@ -1,0 +1,222 @@
+[
+  {
+    "section": 1,
+    "name": "01 딥러닝 기초",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 시작",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 딥러닝 개념",
+        "env": "type0",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 딥러닝 구조 및 용어",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 기본개념",
+        "env": "type0",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 가중치",
+        "env": "type0",
+        "location": "learning/2/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 바이어스",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "04 가중합",
+        "env": "type0",
+        "location": "learning/2/4/codes",
+        "target": "4.ipynb"
+      },
+      {
+        "subsection": 5,
+        "name": "05 활성화 함수",
+        "env": "type0",
+        "location": "learning/2/5/codes",
+        "target": "5.ipynb"
+      },
+      {
+        "subsection": 6,
+        "name": "06 손실함수",
+        "env": "type0",
+        "location": "learning/2/6/codes",
+        "target": "6.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "03 딥러닝 학습",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 선형회기",
+        "env": "type0",
+        "location": "learning/3/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 순전파",
+        "env": "type0",
+        "location": "learning/3/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 역전파",
+        "env": "type0",
+        "location": "learning/3/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 4,
+    "name": "04 합성곱 신경망",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 합성곱 신경망 구조",
+        "env": "type0",
+        "location": "learning/4/1/codes",
+        "target": "1.ipynb"
+        
+      },
+      {
+        "subsection": 2,
+        "name": "02 입력층",
+        "env": "type0",
+        "location": "learning/4/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 합성곱층",
+        "env": "type0",
+        "location": "learning/4/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "04 폴링층",
+        "env": "type0",
+        "location": "learning/4/4/codes",
+        "target": "4.ipynb"
+      },
+      {
+        "subsection": 5,
+        "name": "05 완전연결층",
+        "env": "type0",
+        "location": "learning/4/5/codes",
+        "target": "5.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 5,
+    "name": "05 파이토치 기초",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01  패키지의 기본구성",
+        "env": "type0",
+        "location": "learning/5/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 선형 회기 구현",
+        "env": "type0",
+        "location": "learning/5/2/codes",
+        "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "03 선형 회기 구현(클래스)",
+        "env": "type0",
+        "location": "learning/5/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 6,
+    "name": "06 파이토치 중급",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 미니배치, 데이터로더",
+        "env": "type0",
+        "location": "learning/6/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02  합성곱과 폴링 구현",
+        "env": "type0",
+        "location": "learning/6/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03  단층 CNN으로 MNIST 분류",
+        "env": "type0",
+        "location": "learning/6/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "04  다층 CNN으로 MNIST 분류",
+        "env": "type0",
+        "location": "learning/6/4/codes",
+        "target": "4.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 7,
+    "name": "7 파이토치 고급",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "01 상용모델로 MNIST 분류",
+        "env": "type0",
+        "location": "learning/7/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "02 상용모델로 custom dataset 분류",
+        "env": "type0",
+        "location": "learning/7/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  }
+    
+]

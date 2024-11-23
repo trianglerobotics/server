@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>합성곱 신경망</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">완전연결층(fully connected layer)</h2>
+    </div>
+
+    <div class="container">
+      <p>완전연결층은 층은 각 입력 뉴런이 모든 출력 뉴런과 연결된 구조를 가지고 있으며, 이를 통해 입력 데이터의 모든 특징을 학습하고 결합하는 역할을 합니다.</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_420.svg" alt="Placeholder image" />
+      </div>
+    </div>
+
+    <div class="code">
+      <h3> A 실행하여 출력을 확인하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+
+import cv2
+import numpy as np
+
+image = cv2.imread("example.jpg")
+print(image.shape)
+
+# 이미지를 그레이스케일로 변환
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+print("Grayscale Image Shape:", gray_image.shape)
+
+# 이미지를 1차원 벡터로 변환 (Flatten)
+flatten_image = gray_image.flatten()
+print("Flatten Image Shape:", flatten_image.shape)
+
+# 완전 연결층 구현
+class FullyConnectedLayer:
+    def __init__(self, input_size, output_size):
+        # 가중치 초기화 (랜덤 값 사용)
+        self.weights = np.random.rand(output_size, input_size) * 0.01
+        # 편향 초기화 (0으로 설정)
+        self.biases = np.zeros(output_size)
+    
+    def forward(self, inputs):
+        # 선형 변환: y = W * x + b
+        self.outputs = np.dot(self.weights, inputs) + self.biases
+        return self.outputs
+
+# 완전 연결층 초기화
+input_size = flatten_image.shape[0]  # 입력 크기 (이미지 벡터 크기)
+output_size = 10  # 출력 뉴런 수 (예: 10개의 클래스로 분류)
+fc_layer = FullyConnectedLayer(input_size, output_size)
+
+# 완전 연결층 통과
+outputs = fc_layer.forward(flatten_image)
+print("Fully Connected Layer Output Shape:", outputs.shape)
+print("Outputs:", outputs)
+</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>
