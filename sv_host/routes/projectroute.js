@@ -18,13 +18,14 @@ function listFiles(directoryPath) {
   });
 }
 
-router.post('/api/example/tree', (req, res) => {
+router.post('/api/json/get', (req, res) => {
   console.log("filecalled");
-  const { userprojname } = req.body;
-  console.log(userprojname);
+  
+  const {targetpath } = req.body;
+  console.log('targetpath',targetpath);
 
   // Resolve the target location to an absolute path
-  const directoryPath = path.resolve(__dirname, "../../projects", userprojname,'learning', "filetree.json");
+  const directoryPath = path.resolve(__dirname, targetpath);
   console.log(directoryPath);
 
   // Function to read and parse JSON file

@@ -54,7 +54,7 @@ const app = express();
 const server = http.createServer(app);
 const port = 4000;
 
-const version = 1.26;
+const version = 1.27;
 
 import { fileURLToPath } from 'url';
 
@@ -149,6 +149,13 @@ app.post('/right', (req, res) => {
 app.post('/depth', (req, res) => {
   const image = req.body.image;
   io.emit('depth', image);
+  res.sendStatus(200);
+  // console.log("image received");
+});
+
+app.post('/lidar', (req, res) => {
+  const image = req.body.image;
+  io.emit('lidar', image);
   res.sendStatus(200);
   // console.log("image received");
 });
