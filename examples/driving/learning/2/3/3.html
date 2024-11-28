@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+      
+      <h1>인공지능 기반 장애물 감지(YOLO)</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">[장애물 환경 구축하기]</h2>
+      <p>1. 자주차 앞에 차보다 큰 장애물을 설치합니다 </p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/drv_221.svg"  alt="Placeholder image" />
+      </div>
+    </div>  
+
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">[자주차, 넘파이 모듈 가져오기]</h2>
+      <p>2. 자주차를 제어하기 위한 함수들의 모음집인 jajucha2 , numpy 라이브러리를 가져옵니다</p>
+    </div>
+    <div class="code"> 
+      <h3>A를 실행하여 필요한 라이브러리들을 가져옵니다</h3>
+      <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
+      <p>numpy 라이브러리는 수학적인 계산을 위한 라이브러리 입니다</p>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import jajucha2
+import numpy as np</code>
+        </pre>
+      </div>
+      <br></br>
+    </div >
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">[인공지능 모델 확인하기]</h2>
+      <p>* 진행을 위해서는 훈련된 YOLO 모델이 필요합니다</p>
+      <p>우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 인공지능 모델 매니저를 활성화 합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/drv_231.svg"  alt="Placeholder image" />
+      </div>
+      <p>다음과 같이 생성된 모델이 있다면 다음 단계로 진행 할 수 있습니다 * YOLOXN 타입의 모델이 필요합니다</p>
+    </div>
+
+    <br></br>
+
+    <div class="container">
+      <hr>
+      <h2 style="margin-bottom: 3px;">[인공지능 모델기반으로 거리 측정하기]</h2>
+      <p>* 진행을 위해서는 훈련된 YOLO 모델이 필요합니다</p>
+      <p>초점거리를 이용하여 박스의 크기에 따라 물체와의 거리를 예측합니다</p>
+    </div>
+
+
+    <div class="code"> 
+      <h3>B 를 실행합니다</h3>
+      <p>박스의 크기를 기준으로 물체와의 거리를 판단합니다</p>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import jajucha2
+import time
+import cv2
+
+# 초점 거리(focal length)와 실제 물체의 높이를 사용하여 거리 계산 (예: 병 높이)
+KNOWN_HEIGHT = 30  # 물체의 실제 높이(cm)
+FOCAL_LENGTH = 500  # 카메라 초점 거리 (실험적으로 설정)
+
+def calculate_distance(bbox_height, known_height=KNOWN_HEIGHT, focal_length=FOCAL_LENGTH):
+    """
+    물체의 바운딩 박스 높이를 사용하여 거리를 계산합니다.
+    :param bbox_height: 바운딩 박스의 픽셀 높이
+    :param known_height: 물체의 실제 높이 (cm)
+    :param focal_length: 카메라의 초점 거리
+    :return: 추정된 거리 (cm)
+    """
+    return (known_height * focal_length) / bbox_height
+
+while True:
+    frame = jajucha2.camera.get_image()
+
+    # YOLOv8 추론 실행
+    results = jajucha2.ai.get_model_output(frame, 'bottle')
+
+    # 탐지 결과를 처리 및 시각화
+    for result in results:
+        for box in result.boxes:
+            # 바운딩 박스 좌표 추출
+            x1, y1, x2, y2 = map(int, box.xyxy[0])  # 좌표
+            confidence = box.conf[0]  # 신뢰도
+            class_id = int(box.cls[0])  # 클래스 ID
+
+            # 바운딩 박스 높이 계산
+            bbox_height = y2 - y1
+
+            # 거리 계산
+            distance = calculate_distance(bbox_height)
+
+            # 바운딩 박스와 거리 시각화
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            label = f"Dist: {distance:.1f} cm"
+            cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+    # 프레임 표시
+    jajucha2.camera.show_image(frame)</code>
+        </pre>  
+      </div>
+      <br></br>
+    </div >
+
+  </body>
+</html>

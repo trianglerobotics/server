@@ -1,7 +1,7 @@
 [
   {
     "section": 1,
-    "name": "01 규칙기반 자율주행",
+    "name": "01 자율주행 차선인식",
     "subsections": [
       {
         "subsection": 1,
@@ -28,46 +28,40 @@
   },
   {
     "section": 2,
-    "name": "02 장애물 감지 주행",
+    "name": "02 장애물,물체 감지",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 장애물 거리 도출하기",
+        "name": "01 규칙기반 장애물 감지(뎁스)",
         "env": "type0",
         "location": "learning/2/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 장애물 감지 주행하기",
+        "name": "02 규칙기반 장애물 감지(라이다)",
         "env": "type0",
         "location": "learning/2/2/codes",
         "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 인공지능 기반 장애물 감지",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
       }
     ]
   },
   {
     "section": 3,
-    "name": "03 인공지능 기반 자율주행",
+    "name": "03 통합 주행",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 저장된 모델 불러오고 주행해보기",
+        "name": "01 규칙기반 장애물 감지(뎁스)",
         "env": "type0",
         "location": "learning/3/1/codes",
-        "target": "1.ipynb"
-      }
-    ]
-  },
-  {
-    "section": 4,
-    "name": "04 통합 자율주행",
-    "subsections": [
-      {
-        "subsection": 1,
-        "name": "01 주행하기",
-        "env": "type0",
-        "location": "learning/4/1/codes",
         "target": "1.ipynb"
       }
     ]

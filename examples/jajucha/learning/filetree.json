@@ -36,6 +36,13 @@
         "env": "type0",
         "location": "learning/2/2/codes",
         "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "라이다 데이터 받기, 화면에 표시하기",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
       }
     ]
   }

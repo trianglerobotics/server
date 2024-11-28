@@ -4,19 +4,19 @@
       "name": "control",
       "methods": [
         {
-          "name": "init_motor",
+          "name": "init_motor()",
           "description": "조향모터, 구동모터를 초기화 합니다 *초기화 없이 set_motor 사용이 가 합니다",
           "parameters": [],
           "return": null
         },
         {
-          "name": "stop_motor",
+          "name": "stop_motor()",
           "description": "조향모터, 구동모터의 속도 제어를 중지 합니다",
           "parameters": [],
           "return": null
         },
         {
-          "name": "set_motor",
+          "name": "set_motor(int left, int right ,int speed)",
           "description": "조향모터, 구동모터의 제어값을 설정 합니다",
           "parameters": [
             {
@@ -43,7 +43,7 @@
       "name": "camera",
       "methods": [
         {
-          "name": "get_image",
+          "name": "get_image(location='center')",
           "description": "RGB 이미지를 받아옵니다",
           "parameters": [
             {
@@ -52,22 +52,24 @@
               "description": "기본 값은 'center' 로 'left' , 'right' , 'center' 에 따라 다른 카메라의 이미지를 받아오는 함수 입니다"
             }
           ],
-          "return": {
+          "return": [{
+            "name": "image",
             "type": "numpy.ndarray",
             "description": "이미지가 리턴됩니다"
-          }
+          }]
         },
         {
-          "name": "get_depth",
+          "name": "get_depth()",
           "description": "DEPTH 이미지를 받아옵니다",
           "parameters": [],
-          "return": {
+          "return": [{
+            "name": "depth",
             "type": "numpy.ndarray",
             "description": "이미지가 리턴됩니다"
-          }
+          }]
         },
         {
-          "name": "gridFront",
+          "name": "gridFront(img, cols=7, rows=3, update_img=False)",
           "description": "이미지를 받아 격자를 생성합니다",
           "parameters": [
             {
@@ -91,13 +93,21 @@
               "description": "리턴 이미지 이외에도 받은 이미지에도 격자를 그릴지 결정합니다"
             }
           ],
-          "return": {
+          "return": [
+          {
+            "name": "grid",
+            "type": "numpy.ndarray",
+            "description": "격자가 생성된 이미지"
+          },
+          {
+            "name": "(V, L, R)",
             "type": "tuple",
-            "description": "(V, L, R): 격자의 위치 값, grid: 격자가 생성된 이미지"
+            "description": "격자의 위치 값"
           }
+        ]
         },
         {
-          "name": "show_image",
+          "name": "show_image(frame,window_name='center',quality=20):",
           "description": "이미지를 컴퓨터 화면으로 전송합니다",
           "parameters": [
             {
@@ -113,7 +123,7 @@
             {
               "name": "quality",
               "type": "int",
-              "description": "전송할 이미지의 품질 입니다 기본값은 80으로 낮을수록 품질이 낮아지고 전송속도가 증가합니다"
+              "description": "전송할 이미지의 품질 입니다 기본값은 20으로 낮을수록 품질이 낮아지고 전송속도가 증가합니다"
             }
           ],
           "return": null
@@ -124,31 +134,37 @@
       "name": "lidar",
       "methods": [
         {
-          "name": "get_lidar",
-          "description": "저장한 ai모델을 가져옵니다",
-          "parameters": [
+          "name": "get_lidar()",
+          "description": "라이다 데이터를 받아옵니다",
+          "parameters": [],
+          "return": [
             {
-              "name": "name",
-              "type": "string",
-              "description": "저장한 인공지능 모델의 이름을 입력해야 합니다"
-            }
-          ],
-          "return": {
-            "type": "torch.nn.Module",
-            "description": "인공지능 모델이 리턴됩니다"
-          }
+            "name" : "theta_array",
+            "type": "numpy.ndarray",
+            "description": "각도 배열"
+            },
+            {
+            "name" : "dist_array",
+            "type": "numpy.ndarray",
+            "description": "거리 배열"
+            }    
+          ]
         },
         {
-          "name": "show_lidar",
-          "description": "입력한 이름을 가진 모델에 필요한 input 크기를 출력합니다",
+          "name": "show_lidar(numpy.ndarray theta_array, numpy.ndarray dist_array)",
+          "description": "각도배열 , 거리배열을 입력하면 라이다 이미지를 보여줍니다",
           "parameters": [
             {
-              "name": "name",
-              "type": "string",
-              "description": "저장한 인공지능 모델의 이름을 입력해야 합니다"
+              "name": "theta_array",
+              "type": "numpy.ndarray",
+              "description": "각도 배열"
+            },
+            {
+              "name": "dist_array",
+              "type": "numpy.ndarray",
+              "description": "거리 배열"
             }
-          ],
-          "return": null
+          ]
         }
       ]
     },
@@ -156,7 +172,7 @@
       "name": "ai",
       "methods": [
         {
-          "name": "get_model",
+          "name": "get_model(name)",
           "description": "저장한 ai모델을 가져옵니다",
           "parameters": [
             {
@@ -165,13 +181,14 @@
               "description": "저장한 인공지능 모델의 이름을 입력해야 합니다"
             }
           ],
-          "return": {
+          "return": [{
+            "name": "model",
             "type": "torch.nn.Module",
             "description": "인공지능 모델이 리턴됩니다"
-          }
+          }]
         },
         {
-          "name": "get_model_input",
+          "name": "get_model_input(name)",
           "description": "입력한 이름을 가진 모델에 필요한 input 크기를 출력합니다",
           "parameters": [
             {
@@ -183,7 +200,7 @@
           "return": null
         },
         {
-          "name": "get_model_output",
+          "name": "get_model_output(input,name)",
           "description": "모델에 입력값을 넣으면 연산값을 출력합니다",
           "parameters": [
             {
@@ -197,10 +214,13 @@
               "description": "저장한 인공지능 모델의 이름을 입력해야 합니다"
             }
           ],
-          "return": {
+          "return": [
+            {
+            "name" : "output",
             "type": "any",
-            "description": "모델에 따라 다른 output값이 출력 됩니다"
-          }
+            "description": "모델에 따라 다른 출력값을 가집니다"
+            } 
+          ]
         }
       ]
     }
