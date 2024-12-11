@@ -1,23 +1,39 @@
 
 
 @font-face {
-  font-family: 'MyFont'; /* Define the custom font name */
-  src: url('../fonts/Roboto-Light.ttf') format('truetype'); /* Correct format */
+  font-family: 'MyFont';
+  src: url('../fonts/Roboto-Light.ttf') format('truetype'); 
+  /* src: url('https://example.com/fonts/Inter-Regular.woff2') format('truetype'); */
   font-weight: normal;
   font-style: normal;
 }
 
 .api-docs {
-  /* font-family: sans-serif; */
-  /* font-family: 'Courier New', Courier, monospace; */
-  /* font-family: 'Georgia', serif; */
-   /* Apply the custom font */
   flex-direction: column;
   background-color: white; /* Equivalent to Tailwind's bg-gray-900 */
   display: flex;
   width:87%;
-  /* height: 100%; */
-  /* width: 100%; */
+}
+
+.square-box {
+  display: inline-block; /* 박스 크기 자동 맞춤 */
+  border: 2px solid black; /* 테두리 설정 */
+  width: 25px; /* 너비 */
+  height: 25px; /* 높이 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  line-height: 25px; /* 박스 높이에 맞춘 텍스트 위치 */
+  font-weight: bold; /* 글씨 두껍게 */
+  margin-right: 10px; /* 오른쪽 간격 */
+  background-color: #5061f8; /* 배경색 추가 */
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  color:white
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .container hr {
@@ -27,7 +43,7 @@
 }
 
 .container {
-  font-family: 'MyFont', 'Georgia', serif;
+  font-family: 'Roboto','MyFont', 'Georgia', serif;
   display: flex;
   flex-direction: column;
   padding-right: 5%;
@@ -48,9 +64,11 @@
 
 h1, h2, h3, h4, h5, h6 {
   /* font-family: 'Georgia', serif; */
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+
 
   /* .code_div { 
   background-color: #ffffff; 
@@ -67,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 } */
 
 .code_div {
-  font-family: 'MyFont', 'Georgia', serif;
+  font-family: 'Roboto','MyFont', 'Georgia', serif;
   width:90%;
   overflow-x: auto; 
   background-color: white;
@@ -77,16 +95,23 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8rem;
 }
 
+.code_des {
+  font-size: medium;
+  margin-bottom: 5px;
+}
+
 /* General container styling for code blocks */
 .code {
-  font-family: 'MyFont', 'Georgia', serif;
+  font-family: 'Roboto','MyFont', 'Georgia', serif;
   background-color: #eeeeee; /* Light gray background */
-  padding-right: 5%;
-  padding-left: 5%;
-  width: 100%;
+  /* margin-left: 5%; */
+  padding: 5%;
+
+  width: 90%;
   border-radius: 5px;
-  margin-top: 1rem;         /* Add spacing above the code block */
-  /* max-width: 450px; */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  overflow-x: auto;
   color: black;           /* Padding around the entire pre block */
             /* Enable horizontal scrolling */
   font-size: 1rem;            /* Set font size */
@@ -130,8 +155,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Ensuring the text and headings fit within the restricted width */
 p {
   max-width: 100%;            /* Paragraphs will not exceed the container width */
-  margin-top: 5%;             /* Add spacing above the paragraph */
-  margin-bottom: 0%;          /* No spacing below the paragraph */
+  margin-top: 3%;             /* Add spacing above the paragraph */
+  margin-bottom: 3%;          /* No spacing below the paragraph */
   word-wrap: break-word;      /* Ensure long words break properly to the next line */
   line-height: 1.5rem;        /* Maintain comfortable line spacing */
   font-size: 1rem;            /* Set a readable font size */
@@ -188,16 +213,7 @@ img{
   border-radius: 0.2rem;
   margin-top: 0.5rem;
 }
-ul {
-  padding-left: 10px;
-}
-ul li{
-  background-color: #f0f0f0; /* Light gray background for each list item */
-  color: #333; /* Dark text color */
-  margin: 5px 0; /* Space between list items */
-  padding: 10px; /* Padding inside the box */
-  border-radius: 5px; /* Optional: Rounded corners */
-}
+
 
 
 

@@ -7,7 +7,7 @@ const router = express.Router();
 const home = os.homedir();
 // const { getNotes } =  require('../database.js');
 import { getDatabases, getClasses , checkClassExist, addClass, delClass , getModels,  getImages, addBoxes,getBoxes,updateBoxes, delBoxes,
-  setWorkingDirectory,checkUserModelExist,getUserTrainedModels,deleteUserTrainedModels ,getTrainedModelsUUID, getWorkingDirectory } from '../database.js';
+  setWorkingDirectory,checkUserModelExist,getMissions,getLastLocation,setLastLocation,getUserTrainedModels,deleteUserTrainedModels ,getTrainedModelsUUID, getWorkingDirectory } from '../database.js';
 
 router.get('/')
 
@@ -27,6 +27,40 @@ router.get('/api/db/trainedmodels/get', async (req, res) => {
     const models = await getUserTrainedModels();
     //console.log(models);
     res.json(models);
+  } catch (error) {
+    console.error('Error fetching notes:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/api/db/missions/get', async (req, res) => {
+  try {
+    const missions = await getMissions();
+    //console.log(models);
+    res.json(missions);
+  } catch (error) {
+    console.error('Error fetching notes:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/api/db/lastlocation/get', async (req, res) => {
+  try {
+    const missions = await getLastLocation();
+    //console.log(models);
+    res.json(missions);
+  } catch (error) {
+    console.error('Error fetching notes:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/api/db/lastlocation/set/:location', async (req, res) => {
+  try {
+    const location = req.params.location;
+    const missions = await setLastLocation(location);
+    //console.log(models);
+    res.json(missions);
   } catch (error) {
     console.error('Error fetching notes:', error);
     res.status(500).json({ error: 'Internal Server Error' });

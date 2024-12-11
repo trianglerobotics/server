@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>가져온 이미지를  blur 처리하기</h3>
+      </div>
+      <li>'center' 카메라에서 가져온 이미지를 opencv 함수를 이용하여 3x3 커널로 gaussian-blur 처리하여 노이즈를 제거합니다'</li>
+      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
+      <li>출력되는 이미지는 다음과 같습니다</li>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/line_basic_121.svg"  alt="Placeholder image" />
+      </div>
+      <div class="code"> 
+        <div class="code_des"><strong>Code A</strong> 에 가져온 이미지를 blur 처리하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+blurred = cv2.GaussianBlur(frame, (3, 3), 0)</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+    </div>
+
+  </body>
+</html>

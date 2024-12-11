@@ -71,6 +71,47 @@ PREPARE stmt FROM @sql_color;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 
+-- #################### Dependencies TABLE ####################
+
+-- Create the table 'Dependencies' if it does not exist
+CREATE TABLE IF NOT EXISTS `Dependencies` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Check if column 'id' exists
+SELECT COUNT(*) INTO @id_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'Dependencies'
+  AND COLUMN_NAME = 'id';
+
+-- If 'id' column does not exist, add it
+SET @sql_id = IF(@id_exists = 0,
+    'ALTER TABLE `Dependencies` ADD COLUMN `id` int NOT NULL AUTO_INCREMENT;',
+    'SELECT "Column id already exists";');
+
+PREPARE stmt FROM @sql_id;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Check if column 'Name' exists
+SELECT COUNT(*) INTO @name_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'Dependencies'
+  AND COLUMN_NAME = 'Name';
+
+-- If 'Name' column does not exist, add it
+SET @sql_name = IF(@name_exists = 0,
+    'ALTER TABLE `Dependencies` ADD COLUMN `Name` varchar(100) DEFAULT NULL;',
+    'SELECT "Column Name already exists";');
+
+PREPARE stmt FROM @sql_name;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
 -- #################### EXAMPLES TABLE ####################
 
 -- Create the table 'Examples' if it does not exist
@@ -145,6 +186,121 @@ PREPARE stmt FROM @sql_func;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 
+-- #################### MissionDependencies TABLE ####################
+
+-- Create the table 'MissionDependencies' if it does not exist
+CREATE TABLE IF NOT EXISTS `MissionDependencies` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `missionsid` int DEFAULT NULL,
+  `dependenciesid` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Check if column 'id' exists
+SELECT COUNT(*) INTO @id_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'MissionDependencies'
+  AND COLUMN_NAME = 'id';
+
+-- If 'id' column does not exist, add it
+SET @sql_id = IF(@id_exists = 0,
+    'ALTER TABLE `MissionDependencies` ADD COLUMN `id` int NOT NULL AUTO_INCREMENT;',
+    'SELECT "Column id already exists";');
+
+PREPARE stmt FROM @sql_id;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Check if column 'missionsid' exists
+SELECT COUNT(*) INTO @missionsid_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'MissionDependencies'
+  AND COLUMN_NAME = 'missionsid';
+
+-- If 'missionsid' column does not exist, add it
+SET @sql_missionsid = IF(@missionsid_exists = 0,
+    'ALTER TABLE `MissionDependencies` ADD COLUMN `missionsid` int DEFAULT NULL;',
+    'SELECT "Column missionsid already exists";');
+
+PREPARE stmt FROM @sql_missionsid;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Check if column 'missionsid' exists
+SELECT COUNT(*) INTO @dependenciesid_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'MissionDependencies'
+  AND COLUMN_NAME = 'dependenciesid';
+
+-- If 'dependenciesid' column does not exist, add it
+SET @sql_dependenciesid = IF(@dependenciesid_exists = 0,
+    'ALTER TABLE `MissionDependencies` ADD COLUMN `dependenciesid` int DEFAULT NULL;',
+    'SELECT "Column dependenciesid already exists";');
+
+PREPARE stmt FROM @sql_dependenciesid;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- #################### Missions TABLE ####################
+
+-- Create the table 'Missions' if it does not exist
+CREATE TABLE IF NOT EXISTS `Missions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `Description` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Check if column 'id' exists
+SELECT COUNT(*) INTO @id_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'Missions'
+  AND COLUMN_NAME = 'id';
+
+-- If 'id' column does not exist, add it
+SET @sql_id = IF(@id_exists = 0,
+    'ALTER TABLE `Missions` ADD COLUMN `id` int NOT NULL AUTO_INCREMENT;',
+    'SELECT "Column id already exists";');
+
+PREPARE stmt FROM @sql_id;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Check if column 'name' exists
+SELECT COUNT(*) INTO @name_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'Missions'
+  AND COLUMN_NAME = 'name';
+
+-- If 'Name' column does not exist, add it
+SET @sql_name = IF(@name_exists = 0,
+    'ALTER TABLE `Missions` ADD COLUMN `name` varchar(100) DEFAULT NULL;',
+    'SELECT "Column name already exists";');
+
+PREPARE stmt FROM @sql_name;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Check if column 'Description' exists
+SELECT COUNT(*) INTO @Description_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'Missions'
+  AND COLUMN_NAME = 'Description';
+
+-- If 'Description' column does not exist, add it
+SET @sql_Description = IF(@Description_exists = 0,
+    'ALTER TABLE `Missions` ADD COLUMN `Description` varchar(100) DEFAULT NULL;',
+    'SELECT "Column Description already exists";');
+
+PREPARE stmt FROM @sql_Description;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 
 -- #################### MODELS TABLE ####################
 
@@ -902,11 +1058,128 @@ WHERE NOT EXISTS (
 
 -- Ninth row
 INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'numpy', 'learn', 'easy', 0
+SELECT 'depth', 'learn', 'hard', 2
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'numpy' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+    WHERE `e2`.`name` = 'depth' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'hard' AND `e2`.`func` = 2
+);
+
+-- Tenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'numpy', 'learn', 'intermediate', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'numpy' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+);
+
+-- Eleventh row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Line-Classification-Basic', 'mission', 'easy', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Line-Classification-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2
+);
+
+-- Twelfth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Vision-ObjectDetection-Basic', 'mission', 'easy', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Vision-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2
+);
+
+-- Thirteenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'LiDAR-ObjectDetection-Basic', 'mission', 'easy', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'LiDAR-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+);
+
+-- Fourteenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Depth-ObjectDetection-Basic', 'mission', 'easy', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Depth-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+);
+
+-- Fifteenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Line-Detection-Basic', 'mission', 'easy', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Line-Detection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+);
+
+-- Sixteenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Line-Detection-Advanced', 'mission', 'intermediate', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Line-Detection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 0
+);
+
+-- Seventeenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Line-Classification-Advanced', 'mission', 'intermediate', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Line-Classification-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+);
+
+-- Eighteenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Vision-ObjectDetection-Advanced', 'mission', 'intermediate', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Vision-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+);
+
+-- Nineteenth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'LiDAR-ObjectDetection-Advanced', 'mission', 'intermediate', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'LiDAR-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 0
+);
+
+-- Twentieth row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'Depth-ObjectDetection-Advanced', 'mission', 'intermediate', 0
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'Depth-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 0
+);
+
+-- Twenty-first row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'TrafficLight-ObjectDetection-Basic', 'mission', 'easy', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'TrafficLight-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2
+);
+
+-- Twenty-second row
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
+SELECT 'TrafficLight-ObjectDetection-Advanced', 'mission', 'intermediate', 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Examples` AS `e2`
+    WHERE `e2`.`name` = 'TrafficLight-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
 );
 
 -- Re-enable keys
@@ -914,7 +1187,6 @@ ALTER TABLE `Examples` ENABLE KEYS;
 
 -- Unlock the tables
 UNLOCK TABLES;
-
 
 -- Models
 
@@ -976,16 +1248,417 @@ WHERE NOT EXISTS (
     WHERE `e2`.`id` = 6
 );
 
-INSERT INTO `Models` (`id`, `Name`, `Type`, `shape`, `Description`)
-SELECT 7, 'RESNET50', 'classification', '[1, 3, 224, 224]', 'ResNet101은 잔차 연결을 사용해 깊은 신경망의 기울기 소실 문제를 해결한 101층 딥러닝 모델입니다.'
-FROM (SELECT 1) AS tmp
-WHERE NOT EXISTS (
-    SELECT 1 FROM `Models` AS `e2`
-    WHERE `e2`.`id` = 7
-);
 
 -- Re-enable keys
 ALTER TABLE `Models` ENABLE KEYS;
 
 -- Unlock the tables
 UNLOCK TABLES;
+
+-- Missions
+
+-- Lock the table for writing and alias for reading
+LOCK TABLES `Missions` WRITE, `Missions` AS `e2` READ;
+
+-- Disable keys for faster insertion (if applicable)
+ALTER TABLE `Missions` DISABLE KEYS;
+
+-- Insert Line-Classification-Basic if it doesn't exist
+INSERT INTO `Missions` (`id`, `name`, `Description`)
+SELECT 1, 'Line-Detection', 'Opencv-python 알고리즘을 이용하여 그리드를 그리고 특징점을 추출합니다'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Missions` AS `e2`
+    WHERE `e2`.`id` = 1
+);
+
+-- Insert Line-Classification if it doesn't exist
+INSERT INTO `Missions` (`id`, `name`, `Description`)
+SELECT 2, 'Line-Classification', '인공지능 기반 Classification 알고리즘을 이용하여 차선을 종류별로 분류합니다'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Missions` AS `e2`
+    WHERE `e2`.`id` = 2
+);
+
+-- Insert Vision-ObjectDetection if it doesn't exist
+INSERT INTO `Missions` (`id`, `name`, `Description`)
+SELECT 3, 'Vision-ObjectDetection', '인공지능 기반 ObjectDetection 알고리즘을 이용하여 물체를 장애물로 감지합니다'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Missions` AS `e2`
+    WHERE `e2`.`id` = 3
+);
+
+-- Insert LiDAR-ObjectDetection if it doesn't exist
+INSERT INTO `Missions` (`id`, `name`, `Description`)
+SELECT 4, 'LiDAR-ObjectDetection', 'LiDAR 센서를 이용하여 주변 장애물을 감지합니다'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Missions` AS `e2`
+    WHERE `e2`.`id` = 4
+);
+
+-- Insert Depth-ObjectDetection if it doesn't exist
+INSERT INTO `Missions` (`id`, `name`, `Description`)
+SELECT 5, 'Depth-ObjectDetection', '3차원 Depth 카메라를 이용하여 장애물을 감지합니다'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Missions` AS `e2`
+    WHERE `e2`.`id` = 5
+);
+
+-- Insert TrafficLight-ObjectDetection if it doesn't exist
+INSERT INTO `Missions` (`id`, `name`, `Description`)
+SELECT 6, 'TrafficLight-ObjectDetection', '신호등을 인식하여 신호등의 색을 분류합니다'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Missions` AS `e2`
+    WHERE `e2`.`id` = 6
+);
+
+-- Re-enable keys
+ALTER TABLE `Missions` ENABLE KEYS;
+
+-- Unlock the tables
+UNLOCK TABLES;
+
+-- Dependencies
+
+-- Lock the table for writing and alias for reading
+LOCK TABLES `Dependencies` WRITE, `Dependencies` AS `e2` READ;
+
+-- Disable keys for faster insertion (if applicable)
+ALTER TABLE `Dependencies` DISABLE KEYS;
+
+-- Insert Python if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 1, 'Python'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 1
+);
+
+-- Insert Numpy if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 2, 'Numpy'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 2
+);
+
+-- Insert Opencv if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 3, 'Opencv'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 3
+);
+
+-- Insert Pytorch if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 4, 'Pytorch'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 4
+);
+
+-- Insert Classification if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 5, 'Classification'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 5
+);
+
+-- Insert ObjectDetection if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 6, 'ObjectDetection'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 6
+);
+
+-- insert RGBCam with id = 10 if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 10, 'RGBCam'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 10 AND `e2`.`Name` = 'RGBCam'
+);
+
+-- insert DepthCam with id = 11 if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 11, 'DepthCam'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 11 AND `e2`.`Name` = 'DepthCam'
+);
+
+-- insert LiDAR with id = 12 if it doesn't exist
+INSERT INTO `Dependencies` (`id`, `Name`)
+SELECT 12, 'LiDAR'
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `Dependencies` AS `e2`
+    WHERE `e2`.`id` = 12 AND `e2`.`Name` = 'LiDAR'
+);
+
+
+-- Re-enable keys
+ALTER TABLE `Dependencies` ENABLE KEYS;
+
+-- Unlock the tables
+UNLOCK TABLES;
+
+-- MissionDependencies
+
+-- Lock the table for writing and alias for reading
+LOCK TABLES `MissionDependencies` WRITE, `MissionDependencies` AS `e2` READ;
+
+-- Disable keys for faster insertion (if applicable)
+ALTER TABLE `MissionDependencies` DISABLE KEYS;
+
+-- Insert 1,1,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 1, 1, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 1 AND `e2`.`missionsid` = 1 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 2,1,3 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 2, 1, 3
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 2 AND `e2`.`missionsid` = 1 AND `e2`.`dependenciesid` = 3
+);
+
+-- Insert 3,1,10 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 3, 1, 10
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 3 AND `e2`.`missionsid` = 1 AND `e2`.`dependenciesid` = 10
+);
+
+-- Insert 4,2,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 4, 2, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 4 AND `e2`.`missionsid` = 2 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 5,2,4 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 5, 2, 4
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 5 AND `e2`.`missionsid` = 2 AND `e2`.`dependenciesid` = 4
+);
+
+-- Insert 6,2,5 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 6, 2, 5
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 6 AND `e2`.`missionsid` = 2 AND `e2`.`dependenciesid` = 5
+);
+
+-- Insert 7,2,10 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 7, 2, 10
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 7 AND `e2`.`missionsid` = 2 AND `e2`.`dependenciesid` = 10
+);
+
+-- Insert 8,3,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 8, 3, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 8 AND `e2`.`missionsid` = 3 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 9,3,4 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 9, 3, 4
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 9 AND `e2`.`missionsid` = 3 AND `e2`.`dependenciesid` = 4
+);
+
+-- Insert 10,3,6 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 10, 3, 6
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 10 AND `e2`.`missionsid` = 3 AND `e2`.`dependenciesid` = 6
+);
+
+-- Insert 11,3,10 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 11, 3, 10
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 11 AND `e2`.`missionsid` = 3 AND `e2`.`dependenciesid` = 10
+);
+
+-- Insert 12,4,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 12, 4, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 12 AND `e2`.`missionsid` = 4 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 13,4,2 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 13, 4, 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 13 AND `e2`.`missionsid` = 4 AND `e2`.`dependenciesid` = 2
+);
+
+-- Insert 14,4,12 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 14, 4, 12
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 14 AND `e2`.`missionsid` = 4 AND `e2`.`dependenciesid` = 12
+);
+
+-- Insert 15,5,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 15, 5, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 15 AND `e2`.`missionsid` = 5 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 16,5,2 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 16, 5, 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 16 AND `e2`.`missionsid` = 5 AND `e2`.`dependenciesid` = 2
+);
+
+-- Insert 17,5,11 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 17, 5, 11
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 17 AND `e2`.`missionsid` = 5 AND `e2`.`dependenciesid` = 11
+);
+
+-- Insert 18,6,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 18, 6, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 18 AND `e2`.`missionsid` = 6 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 19,6,2 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 19, 6, 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 19 AND `e2`.`missionsid` = 6 AND `e2`.`dependenciesid` = 2
+);
+
+-- Insert 20,6,6 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 20, 6, 6
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 20 AND `e2`.`missionsid` = 6 AND `e2`.`dependenciesid` = 6
+);
+
+-- Insert 21,6,10 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 21, 6, 10
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 21 AND `e2`.`missionsid` = 6 AND `e2`.`dependenciesid` = 10
+);
+
+-- Insert 22,6,4 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 22, 6, 4
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 22 AND `e2`.`missionsid` = 6 AND `e2`.`dependenciesid` = 4
+);
+
+-- Insert 23,7,1 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 23, 7, 1
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 23 AND `e2`.`missionsid` = 7 AND `e2`.`dependenciesid` = 1
+);
+
+-- Insert 24,7,2 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 24, 7, 2
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 24 AND `e2`.`missionsid` = 7 AND `e2`.`dependenciesid` = 2
+);
+
+-- Insert 25,7,12 if it doesn't exist
+INSERT INTO `MissionDependencies` (`id`, `missionsid`, `dependenciesid`)
+SELECT 25, 7, 12
+FROM (SELECT 1) AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM `MissionDependencies` AS `e2`
+    WHERE `e2`.`id` = 25 AND `e2`.`missionsid` = 7 AND `e2`.`dependenciesid` = 12
+);
+
+
+-- Re-enable keys
+ALTER TABLE `MissionDependencies` ENABLE KEYS;
+
+-- Unlock the tables
+UNLOCK TABLES;
+
+
+
+

@@ -184,17 +184,10 @@
       },
       {
         "subsection": 3,
-        "name": "03  단층 CNN으로 MNIST 분류",
+        "name": "03  단순한 CNN으로 MNIST 분류",
         "env": "type0",
         "location": "learning/6/3/codes",
         "target": "3.ipynb"
-      },
-      {
-        "subsection": 4,
-        "name": "04  다층 CNN으로 MNIST 분류",
-        "env": "type0",
-        "location": "learning/6/4/codes",
-        "target": "4.ipynb"
       }
     ]
   },
@@ -208,13 +201,6 @@
         "env": "type0",
         "location": "learning/7/1/codes",
         "target": "1.ipynb"
-      },
-      {
-        "subsection": 2,
-        "name": "02 상용모델로 custom dataset 분류",
-        "env": "type0",
-        "location": "learning/7/2/codes",
-        "target": "2.ipynb"
       }
     ]
   }

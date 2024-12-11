@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
@@ -48,7 +59,7 @@
     <!-- code-1 -->
     <div class="code"> 
       <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
+      <details >
         <summary>정답 보기/숨기기</summary>
       <div class="code_div">
         <pre>
@@ -71,10 +82,9 @@ cv2.drawContours(result, contours, -1, (0, 255, 0), 2)
 
 # 결과 보기
 jajucha2.camera.show_image(result)</code>
-      </pre>
+        </pre>
       </div>
       </details>
-      <br></br>
     </div>
 
     <div class="container" >

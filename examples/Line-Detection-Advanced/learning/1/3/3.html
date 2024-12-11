@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>그리드 갯수 조작하기</h3>
+      </div>
+      
+      <li>jajucha2.camera.gridFront() 함수에서 그리드 갯수를 조작합니다</li>
+      <li>그리드 갯수를 조작하여 선을 검출하는 정확도를 높일 수 있습니다</li>
+      <li>열은 10개 , 행은 4개로 수정합니다</li>
+      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
+      
+      <div class="code"> 
+        <div class="code_des"><strong>Code A</strong>  위에 cols = 10,  rows = 4로 수정한 gridFront 코드를 작성합니다</div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+(V,L,R), grid = jajucha2.camera.gridFront(frame,cols=10,rows=4)</code>
+        </pre>
+        </div>
+
+        </details>        
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>라인검출 민감도 조절하기</h3>
+      </div>
+      <li>jajucha2.camera.gridFront() 함수에서 ths1,ths2를 조작합니다</li>
+      <li>ths1, ths2를 조작하여 선을 검출하는 정확도를 높일 수 있습니다</li>
+      <li>ths1은 0, ths2는 400으로 수정합니다</li>
+      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
+      
+      <div class="code"> 
+        <div class="code_des"><strong>Code B</strong>  위에 ths1 = 0,  ths2 = 400로 수정한 gridFront 코드를 작성합니다</div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+(V,L,R), grid = jajucha2.camera.gridFront(frame,ths1 = 0,ths2 = 400)</code>
+        </pre>
+        </div>
+
+        </details>        
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>그리드 y축 범위 조절하기</h3>
+      </div>
+
+      <li>jajucha2.camera.gridFront() 함수에서 y_max를 조작합니다</li>
+      <li>y_max를 조작하여 불필요한 영역에서 그리드 검출을 막을 수 있습니다</li>
+      <li>y_max는 100으로 수정합니다</li>
+      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
+      
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code C</strong>  위에 y_max = 100으로 수정한 gridFront 코드를 작성합니다</div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+(V,L,R), grid = jajucha2.camera.gridFront(frame,y_max = 100)</code>
+        </pre>
+        </div>
+
+        </details>        
+      </div>
+
+
+    </div>
+
+  </body>
+</html>

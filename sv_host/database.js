@@ -135,6 +135,35 @@ export async function getUserTrainedModels(modelname) {
     return rows
 }
 
+export async function getLastLocation() {
+    const [rows] = await pool.query("SELECT location FROM WorkingDirectory WHERE id = 2");
+    return rows
+}
+
+export async function setLastLocation(location) {
+    const [rows] = await pool.query("UPDATE WorkingDirectory SET location = ? WHERE id = 2", [location]);
+    return rows
+}
+
+export async function getMissions() {
+    const [rows] = await pool.query(`
+    SELECT 
+        m.*, 
+        JSON_ARRAYAGG(d.Name) AS dependencies
+    FROM 
+        Missions m
+    LEFT JOIN 
+        MissionDependencies md 
+        ON m.id = md.missionsid
+    LEFT JOIN 
+        Dependencies d
+        ON md.dependenciesid = d.id
+    GROUP BY 
+        m.id;
+    `)
+    return rows
+}
+
 export async function deleteUserTrainedModels(modelname) {
     const [rows] = await pool.query("DELETE FROM UserModels WHERE Name = ?", [modelname]);
     return rows

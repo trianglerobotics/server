@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>자주차 그리드 함수 파라미터 분석하기</h3>
+      </div>
+      <li>자주차 에서 그리드를 이미지에 그리고 V,L,R 값을 출력하는 함수의 원형은 다음과 같습니다</li>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+(V,L,R), grid = gridFront(img, cols=7, rows=3 , y_max=200, ths1 = 100, ths2 = 300 , v_line_color=(39, 200, 47), h_line_color=(0, 0, 255),v_point_color=(18, 246, 255), u_point_color=(221, 0, 255))</code>
+        </pre>
+      </div>
+      <ul style="list-style-type: square;">
+        <li>img : 그리드 함수에 넣어줄 RGB 이미지</li>
+        <li>cols : 그리드의 열의 갯수 , 기본값: 7</li>
+        <li>rows : 그리드의 행의 갯수 , 기본값: 3</li>
+        <li>y_max : 그리드의 최대 높이 , 기본값: 200 </li>
+        <li>ths1 : cv2.Canny 함수의 최소 임계값 , 기본값: 100</li>
+        <li>ths2 : cv2.Canny 함수의 최대 임계값 , 기본값: 300</li>
+        <li>v_line_color : 수직선 색상 , 기본값: (39, 157, 47)</li>
+        <li>h_line_color : 수평선 색상 , 기본값: (0, 0, 255)</li>
+        <li>v_point_color : 수직선의 교차점 색상 , 기본값: (18, 246, 255)</li>
+        <li>u_point_color : 수평선의 교차점 색상 , 기본값: (221, 0, 255)</li>
+      </ul>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>자주차 그리드 함수 사용하기</h3>
+      </div>
+      <li>자주차에서 이미지를 받아온 후에 그리드 함수에 넣고 나온 이미지를 뷰어로 보내고, V,L,R 값을 출력합니다</li>
+      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
+      <div class="code">
+        
+        <div class="code_des"><strong>Code A</strong> 에서 그리드 이미지 ,V,L,R 값을 출력하는 코드를 완성하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+(V,L,R), grid = jajucha2.camera.gridFront(frame)</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+    </div>
+
+  </body>
+</html>
