@@ -36,11 +36,6 @@
     </div>
     <div class="code"> 
       <h3>A 를 실행합니다</h3>
-      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
-      <div class="code_div">
-NAME = '1234' #모델의 이름을 입력합니다 예시: '1234'
-      </div>
-      <br></br>
     </div >
       
       <div class="container">
@@ -53,31 +48,6 @@ NAME = '1234' #모델의 이름을 입력합니다 예시: '1234'
       </div>
       <div class="code"> 
         <h3>B 를 실행합니다</h3>
-        <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
-        <div class="code_div">
-import jajucha2
-import time
-import cv2
-
-while True:
-    frame = jajucha2.camera.get_image()
-
-    # Run YOLOv8 inference on the frame
-    results = jajucha2.ai.get_model_output(frame,NAME)
-
-    # Extract the detection information and visualize
-    for result in results:
-        for box in result.boxes:
-            # Extract bounding box coordinates
-            x1, y1, x2, y2 = map(int, box.xyxy[0])  # Bounding box corners
-            confidence = box.conf[0]  # Confidence score
-            class_id = int(box.cls[0])  # Class label
-            # Draw bounding box
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-
-    jajucha2.camera.show_image(frame)
-        </div>
-        <br></br>
       </div >
       <br></br>
   </body>

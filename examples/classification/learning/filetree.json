@@ -51,7 +51,7 @@
       },
       {
         "subsection": 2,
-        "name": "02 저장된 실행하기",
+        "name": "02 저장된 모델 실행하기",
         "env": "type0",
         "location": "learning/3/2/codes",
         "target": "2.ipynb"

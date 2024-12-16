@@ -33,11 +33,6 @@
     </div>
     <div class="code"> 
       <h3>A 를 실행합니다</h3>
-      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
-      <div class="code_div">
-NAME = '' #모델의 이름을 입력합니다 예시: '12'
-      </div>
-      <br></br>
     </div >
     
 
@@ -57,25 +52,6 @@ NAME = '' #모델의 이름을 입력합니다 예시: '12'
 <div class="code"> 
   <h3>B 를 실행합니다</h3>
   <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
-  <div class="code_div">
-import jajucha2
-
-# 무한 반복문으로 실시간 이미지 처리
-while True:
-    # 카메라에서 이미지를 가져옴
-    image = jajucha2.camera.get_image()
-    
-    # 가져온 이미지를 AI 모델에 입력하여 결과를 얻음
-    # NAME은 사용할 AI 모델의 이름
-    output = jajucha2.ai.get_model_output(image, NAME)
-    
-    # 현재 이미지를 화면에 출력
-    jajucha2.camera.show_image(image)
-    
-    # 모델의 출력 결과를 동일한 라인에 갱신하여 출력
-    print(f"\r {output}", end="")
-  </div>
-  <br></br>
 </div >
     <!-- <div class="add-comment">
         <h2>코딩해 보세요!</h3>
