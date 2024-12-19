@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getUserProjects,deleteUserProject,setModel,getUserModel,checkImported, importModel, resetModel,addProj,saveUserModel,updateProjectSection, checkGenerated,resetgenerateDatasets,deleteimage} from '../database.js';
+import { getUserProjects,deleteUserProject,setModel,getExamples,getUserModel,checkImported, importModel, resetModel,addProj,saveUserModel,updateProjectSection, checkGenerated,resetgenerateDatasets,deleteimage} from '../database.js';
 import {copyAndRenameFolder,copyFilesAndFolders,deleteFilesAndFoldersExceptData,copyAndSaveFile} from '../filecontrol.js';  
 import fs from 'fs';
 import path  from 'path';
@@ -47,7 +47,13 @@ router.post('/api/user/project/create', async (req, res) => {
 try {
     const { projectName, exampleType, initsection } = req.body;
 
-    copyAndRenameFolder(`../examples/${exampleType}`, `../projects/${projectName}`, projectName, exampleType, initsection);
+    //get the dbtype
+    const examples = await getExamples();
+    const projectinfo = examples.filter((example) => example.name === exampleType);
+    console.log('dbtype',projectinfo[0].dbtype);
+
+
+    copyAndRenameFolder(`../examples/${exampleType}`, `../projects/${projectName}`, projectName, exampleType, initsection,projectinfo[0].dbtype);
 
 } catch (error) {
     console.error('Error fetching notes:', error);
@@ -312,11 +318,13 @@ router.post('/api/user/project/delete/image', (req, res) => {
 router.post('/api/user/project/file-content', async (req, res) => {
   try {
       const { userprojname, userchapter, selectedFile  } = req.body;
-      const filePath = path.join('../', userprojname, userchapter, selectedFile);
+      const filePath = path.join(home,'server','projects', userprojname, userchapter, selectedFile);
       fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
+          console.error('Error reading file:', err);
           return res.status(500).send('Error reading file');
         }
+        // console.log('File content:', data);
         res.send(data);
       });
   

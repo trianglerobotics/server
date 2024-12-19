@@ -26,31 +26,74 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>이미지에 라인 검출할 기준선 그리기</h3>
+        <h3>장애물 준비하기</h3>
       </div>
-      <li>이미지의 중심에서 Y축을 기준으로 엣지를 검출하려고 합니다</li>
-      <li>엣지는 Y축을 기준으로 아래에서 올라오면서 엣지를 검출하는 알고리즘을 사용합니다</li>
-      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
+
+      <p>자주차 장애물중 정육면체를 준비하여 차량의 전방에 위치하게 합니다.</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/line_basic_221.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/lodb_211.svg" style="width: 150px"  alt="Placeholder image" />
       </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>장애물 감지 하면 정지하기</h3>
+      </div>
+      <p>전방에 있는 장애물을 감지하면 정지하는 알고리즘을 작성하고자 합니다. 전 단원에서 사용하였던 거리 추출 알고리즘을 사용할 수 있습니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lodb_222.svg" style="width: 300px"  alt="Placeholder image" />
+      </div>
+
       <div class="code"> 
-        <div class="code_des"><strong>Code A</strong>에  이미지의 X 중심, Y 축의 아래 하단에서부터 올라오며 엣지랑 겹치는 부분에 노란점을 표시하는 코드를 작성하세요</div>
+        <div class="code_des"><strong>Code A</strong>에 3의 속도로 전진중, 직선거리 30cm 이하의 장애물이 감지되면 정지하는 알고리즘을 작성하세요 </div>
         <details>
           <summary>정답 보기/숨기기</summary>
         <div class="code_div">
           <pre>
             <code class="language-python">
-# range를 높이의 절반부터 0까지 역순으로 설정
-for y in range(height // 2 - 1, -1, -1):  # 아래에서 위로
-    if roi[y, center_x] == 255:  # 엣지 픽셀 값이 255인 경우
-        detected_y = y
-        print(detected_y)  # 검출된 y 좌표 출력
-        break</code>
+distance = dist_array[0]
+if(distance > 300):
+    jajucha2.control.set_motor(0,0,3)
+else:
+    jajucha2.control.set_motor(0,0,0)</code>
         </pre>
         </div>
         </details>
       </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>장애물 회피하기</h3>
+      </div>
+      <p>전방에 있는 장애물을 감지하면 좌회전 혹은 우회전으로 회피하는 알고리즘을 작성하고자 합니다. 전 단원에서 사용하였던 거리 추출 알고리즘을 사용할 수 있습니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lodb_223.svg" style="width: 300px"  alt="Placeholder image" />
+      </div>
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code B</strong>에 3의 속도로 전진중, 직선거리 50cm 이하의 장애물이 감지되면 오른쪽 혹은 왼쪽으로 움직이는 알고리즘을 작성하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+distance = dist_array[0]
+if(distance > 500):
+    jajucha2.control.set_motor(0,0,3)
+else:
+    jajucha2.control.set_motor(10,10,3)</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+
+
 
     </div>
 

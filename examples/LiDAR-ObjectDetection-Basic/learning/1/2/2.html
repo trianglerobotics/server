@@ -26,26 +26,82 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>가져온 이미지를  blur 처리하기</h3>
+        <h3>자주차 라이브러리 가져오기</h3>
       </div>
-      <li>'center' 카메라에서 가져온 이미지를 opencv 함수를 이용하여 3x3 커널로 gaussian-blur 처리하여 노이즈를 제거합니다'</li>
-      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
-      <li>출력되는 이미지는 다음과 같습니다</li>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/line_basic_121.svg"  alt="Placeholder image" />
-      </div>
+      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+       
       <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 에 가져온 이미지를 blur 처리하세요 </div>
+        <div class="code_des"><strong>Code A</strong> 에 자주차 라이브러리를 임포트하는 코드를 작성후 실행하세요 </div>
         <details>
           <summary>정답 보기/숨기기</summary>
         <div class="code_div">
           <pre>
             <code class="language-python">
-blurred = cv2.GaussianBlur(frame, (3, 3), 0)</code>
+import jajucha2</code>
         </pre>
         </div>
         </details>
       </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>자주차에서 라이다 데이터 가지고 오기</h3>
+      </div>
+      <p>자주차의 함수를 이용하여 Lidar  함수를 받아와 변수에 저장
+        합니다. 라이다 함수에서는 angle_array , dist_array를 출력합니다, 라이다 값들은 300-400 개 정도로 출력됩니다.</p>
+
+      <li>
+        angle_array : 라이다에서 측정하고 있는 거리값 배열에 대응 하는 각도입니다.  0-360도의 범위를 가지고 있습니다
+      </li>
+      <li>dist_array : 라이다에서 측정하고 있는 거리값 배열입니다,
+        0-12M 의 범위를 가지고 있습니다.
+      </li> 
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code B</strong>에서 범위와 각도 어레이를 변수에 저장한 후 각각의 shape를 출력하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+angle_array, dist_array = jajucha2.lidar.get_lidar()
+print("angle_len: ", angle_array.shape, "dist_len: ",dist_array.shape)</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>라이다 데이터 표시하기</h3>
+      </div>
+      <p>자주차 라이다 표시 함수에는 dist_array, angle_array 을 받아서 x,y평면에 표시합니다. 자주차 라이다는 360도 , 12M의 거리까지 표시할 수 있습니다</p>
+  
+      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어 -> LiDAR 메뉴 를 활성화 하세요</p>
+      <div class="code"> 
+        <div class="code_des"><strong>Code C</strong> 에서 최대 표시 범위를 조정해서 라이다 뷰어에 표시하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+jajucha2.lidar.show_lidar(angle_array,dist_array,max_dist = 1000)</code>
+        </pre>
+        </div>
+        </details>
+        <p>표시된 라이다 데이터는 다음과 같습니다</p>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/lodb_121.svg"  alt="Placeholder image" />
+        </div>
+      </div>
+      
+
 
     </div>
 

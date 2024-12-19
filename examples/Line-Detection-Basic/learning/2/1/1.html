@@ -28,12 +28,12 @@
         <div class="square-box">1</div>
         <h3>Edge 검출된 이미지 자르기</h3>
       </div>
-      <li>Edge가 검출된 이미지에서, 이미지의 중간 지점을 기준으로 하단 절반만 잘라주세요</li>
-      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
-      <li>출력되는 이미지는 다음과 같습니다</li>
+      <p>Edge가 검출된 이미지에서, 이미지의 중간 지점을 기준으로 하단 절반만 잘라주세요</p>
+      <p>출력되는 이미지는 다음과 같습니다</p>
       <div class="image-div">
         <img src="http://121.184.63.113:4000/images/line_basic_211.svg"  alt="Placeholder image" />
       </div>
+      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
       <div class="code"> 
         <div class="code_des"><strong>Code A</strong>에  이미지의 중간 지점을 기준으로 하단 절반을 잘라서 roi 변수로 return 하는 코드를 작성하고 실행합니다</div>
         <details>
@@ -41,7 +41,9 @@
         <div class="code_div">
           <pre>
             <code class="language-python">
+# canny 이미지에서 height(세로) , width(가로)를 구합니다
 height, width = canny.shape[:2]
+# height//2 는 이미지의 Y 축 중간 지점을 의미합니다
 roi = canny[height // 2:, :]</code>
         </pre>
         </div>

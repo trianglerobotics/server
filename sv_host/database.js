@@ -18,11 +18,12 @@ export async function getDatabases() {
     return rows
     }
 
-export async function addUserProjNames(projectName, exampleType, initsection) {
+export async function addUserProjNames(projectName, exampleType, initsection,dbtype) {
     const insertQuery = "INSERT INTO Projects (Name, Type, dbtype, section, subsection,func) VALUES (?,?, ?, ?, ?, ?)";
     const typeQuery = "SELECT func FROM Examples WHERE Name = ?";
     const [type] = await pool.query(typeQuery, [exampleType]);
-    const [result] = await pool.query(insertQuery, [projectName, exampleType, exampleType, initsection, initsection, parseInt(type[0].func, 10)]);
+    const [result] = await pool.query(insertQuery, [projectName, exampleType, dbtype, initsection, initsection, parseInt(type[0].func, 10)]);
+    console.log('result22',dbtype)
     return result
 }
 

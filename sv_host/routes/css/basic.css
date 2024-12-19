@@ -95,6 +95,19 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8rem;
 }
 
+.code_box {
+  font-family: 'Roboto', 'MyFont', 'Georgia', serif;
+  width: 90%;
+  overflow-x: auto; 
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 0.8rem;
+  border: 2px solid #EEEEEE; /* Retain this border */
+}
+
+
 .code_des {
   font-size: medium;
   margin-bottom: 5px;

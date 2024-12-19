@@ -27,6 +27,8 @@ import disk from 'diskusage';
 // 데이터베이스 모듈 가져오기
 // import { getDatabases } from './database.js';
 
+let storedData = '';
+
 const motorserver = dgram.createSocket('udp4');
 
 // Define the IP address and port to listen on
@@ -35,7 +37,9 @@ const PORT = 33333;
 
 // Event listener for incoming messages
 motorserver.on('message', (msg, rinfo) => {
-  console.log(`${msg.toString()}`);
+  //console.log(`${msg.toString()}`);
+  storedData = msg.toString();
+  console.log(storedData);
 });
 
 // Event listener for handling errors
@@ -50,11 +54,13 @@ motorserver.on('listening', () => {
   console.log(`Server listening on ${address.address}:${address.port}`);
 });
 
+motorserver.bind(PORT,HOST);
+
 const app = express();
 const server = http.createServer(app);
 const port = 4000;
 
-const version = 1.44;
+const version = 1.45;
 
 import { fileURLToPath } from 'url';
 
@@ -103,6 +109,11 @@ app.use(
 
 app.get('/api/version', (req, res) => {
   res.send({ version });
+});
+
+app.get('/api/motorstatus', (req, res) => {
+  res.send({ storedData });
+  //console.log(storedData)
 });
 
 app.post('/api/login', async (req, res) => {
@@ -271,4 +282,3 @@ const watcher = chokidar.watch(directoryPath, {
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-

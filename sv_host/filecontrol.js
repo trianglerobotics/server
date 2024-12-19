@@ -2,13 +2,13 @@ import fs from 'fs-extra';
 import path  from 'path';
 import {addUserProjNames} from "./database.js";
 
-export async function copyAndRenameFolder(sourceDir ,destDir , projectName, exampleType, initsection) {
+export async function copyAndRenameFolder(sourceDir ,destDir , projectName, exampleType, initsection,dbtype) {
     try {
         await fs.copy(sourceDir, destDir);
         console.log('Folder copied successfully');
 
         //Add file ane type to the database
-        addUserProjNames(projectName, exampleType, initsection);
+        addUserProjNames(projectName, exampleType, initsection,dbtype);
 
     } catch (err) {
         console.error('Error copying folder:', err);
