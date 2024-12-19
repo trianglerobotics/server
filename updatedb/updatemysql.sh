@@ -3,7 +3,7 @@
 # Configuration variables
 DB_USER="root"         # Replace with your MySQL username
 DB_PASS="1111"     # Replace with your MySQL password
-DB_NAME="datasets"   # Replace with your database name
+DB_NAME="testsets"   # Replace with your database name
 DB_HOST="localhost"            # Replace with your host, usually 'localhost'
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SQL_FILE="$SCRIPT_DIR/jcsql.sql"  # Assumes jcsql.sql is in the same directory as the script

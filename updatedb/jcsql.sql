@@ -118,7 +118,9 @@ DEALLOCATE PREPARE stmt;
 CREATE TABLE IF NOT EXISTS `Examples` (
   `name` varchar(100) DEFAULT NULL,
   `type` varchar(100) DEFAULT NULL,
-  `level` varchar(100) DEFAULT NULL
+  `level` varchar(100) DEFAULT NULL,
+  `func` int DEFAULT NULL,
+  `dbtype` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -183,6 +185,22 @@ SET @sql_func = IF(@func_exists = 0,
     'SELECT "Column func already exists";');
 
 PREPARE stmt FROM @sql_func;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Check if column 'dbtype' exists
+SELECT COUNT(*) INTO @dbtype_exists
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = 'Examples'
+  AND COLUMN_NAME = 'dbtype';
+
+-- If 'dbtype' column does not exist, add it
+SET @sql_dbtype = IF(@dbtype_exists = 0,
+    'ALTER TABLE `Examples` ADD COLUMN `dbtype` varchar(100) DEFAULT NULL;',
+    'SELECT "Column dbtype already exists";');
+
+PREPARE stmt FROM @sql_dbtype;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 
@@ -1012,12 +1030,12 @@ WHERE NOT EXISTS (
 );
 
 -- Fourth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'classification', 'learn', 'intermediate', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'classification', 'learn', 'intermediate', 2,'classification'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'classification' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'classification' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'classification'
 );
 
 -- Fifth row
@@ -1039,12 +1057,12 @@ WHERE NOT EXISTS (
 );
 
 -- Seventh row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'objectdetection', 'learn', 'intermediate', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'objectdetection', 'learn', 'intermediate', 2,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'objectdetection' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'objectdetection' AND `e2`.`type` = 'learn' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Eighth row
@@ -1075,39 +1093,39 @@ WHERE NOT EXISTS (
 );
 
 -- Eleventh row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'Line-Classification-Basic', 'mission', 'easy', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'Line-Classification-Basic', 'mission', 'easy', 2,'classification'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'Line-Classification-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'Line-Classification-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'classification'
 );
 
 -- Twelfth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'Vision-ObjectDetection-Basic', 'mission', 'easy', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'Vision-ObjectDetection-Basic', 'mission', 'easy', 2,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'Vision-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'Vision-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Thirteenth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'LiDAR-ObjectDetection-Basic', 'mission', 'easy', 0
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'LiDAR-ObjectDetection-Basic', 'mission', 'easy', 0,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'LiDAR-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+    WHERE `e2`.`name` = 'LiDAR-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Fourteenth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'Depth-ObjectDetection-Basic', 'mission', 'easy', 0
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'Depth-ObjectDetection-Basic', 'mission', 'easy', 0,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'Depth-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0
+    WHERE `e2`.`name` = 'Depth-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 0 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Fifteenth row
@@ -1129,30 +1147,30 @@ WHERE NOT EXISTS (
 );
 
 -- Seventeenth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'Line-Classification-Advanced', 'mission', 'intermediate', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'Line-Classification-Advanced', 'mission', 'intermediate', 2,'classification'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'Line-Classification-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'Line-Classification-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'classification'
 );
 
 -- Eighteenth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'Vision-ObjectDetection-Advanced', 'mission', 'intermediate', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'Vision-ObjectDetection-Advanced', 'mission', 'intermediate', 2,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'Vision-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'Vision-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Nineteenth row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'LiDAR-ObjectDetection-Advanced', 'mission', 'intermediate', 0
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'LiDAR-ObjectDetection-Advanced', 'mission', 'intermediate', 0,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'LiDAR-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 0
+    WHERE `e2`.`name` = 'LiDAR-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 0 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Twentieth row
@@ -1165,21 +1183,21 @@ WHERE NOT EXISTS (
 );
 
 -- Twenty-first row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'TrafficLight-ObjectDetection-Basic', 'mission', 'easy', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'TrafficLight-ObjectDetection-Basic', 'mission', 'easy', 2,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'TrafficLight-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'TrafficLight-ObjectDetection-Basic' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'easy' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Twenty-second row
-INSERT INTO `Examples` (`name`, `type`, `level`, `func`)
-SELECT 'TrafficLight-ObjectDetection-Advanced', 'mission', 'intermediate', 2
+INSERT INTO `Examples` (`name`, `type`, `level`, `func`,`dbtype`)
+SELECT 'TrafficLight-ObjectDetection-Advanced', 'mission', 'intermediate', 2,'objectdetection'
 FROM (SELECT 1) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM `Examples` AS `e2`
-    WHERE `e2`.`name` = 'TrafficLight-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2
+    WHERE `e2`.`name` = 'TrafficLight-ObjectDetection-Advanced' AND `e2`.`type` = 'mission' AND `e2`.`level` = 'intermediate' AND `e2`.`func` = 2 AND `e2`.`dbtype` = 'objectdetection'
 );
 
 -- Re-enable keys
