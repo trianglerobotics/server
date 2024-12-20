@@ -26,21 +26,11 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>자주차 라이브러리 가져오기</h3>
+        <h3>개요 : 자주차의 동작 클래스 설정하기</h3>
       </div>
-      <li>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</li>
-       
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 에 자주차 라이브러리를 임포트하는 코드를 작성후 실행하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-import jajucha2</code>
-        </pre>
-        </div>
-        </details>
+      <p>자율주행 자동차가 차선을 감지하는 방법으로는 이미지 분류를 사용할 수 있습니다. 간단하게 이미지를 좌회전, 직전 , 우회전으로 나누고, 이를 학습시켜 주행에 활용 할 수 있습니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_111.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -48,21 +38,13 @@ import jajucha2</code>
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>자주차에서 이미지 가져오기</h3>
+        <h3>클래스 설정하기 - 1</h3>
       </div>
-      <li>자주차의 함수를 이용하여 RGB 함수를 받아와 변수에 저장합니다</li>
+      <p>차선을 분류하기 위해서 좌회전, 직진 , 우회전에 해당하는 클래스를 만들어 주어야 합니다.
+       <span class="blue">Add Classes</span> 버튼을 누르면 다음과 같은 화면이 표시됩니다 </p>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code B</strong> 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성 , 실행하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-frame = jajucha2.camera.get_image('center')</code>
-        </pre>
-        </div>
-        </details>
+       <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_112.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -70,26 +52,44 @@ frame = jajucha2.camera.get_image('center')</code>
 
       <div class="list-item">
         <div class="square-box">3</div>
-        <h3>이미지 표시하기</h3>
+        <h3>클래스 설정하기 - 2</h3>
       </div>
-      <li>자주차에서 받아온 이미지를 자주차 'center' 이미지뷰어에 퀄리티 '90'으로 표시합니다</li>
-      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
-      <li>출력되는 이미지는 다음과 같습니다</li>
+      <p>입력할 클래스(‘left’)를 타이핑 한 후 <span class="blue">Add</span>  버튼을 누르면 클래스를 생성 할 수 있습니다 </p>
+
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/line_basic_121.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/lcb_113.svg"  alt="Placeholder image" />
       </div>
-      <div class="code"> 
-        <div class="code_des"><strong>Code C</strong> 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성 , 실행하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-frame = jajucha2.camera.show_image(frame,'center',quality=90)</code>
-        </pre>
-        </div>
-        </details>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>클래스 설정하기 - 3</h3>
       </div>
+      <p>(‘center’, ’right’ 도 같은 방식으로 반복하여 클래스를 생성합니다) </p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_114.svg"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>클래스 관리하기</h3>
+      </div>
+      <p><span class="blue">Modify Classes</span> 를 클릭하면 클래스를 삭제 할 수 있는 창이 표시됩니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_115.svg"  alt="Placeholder image" />
+      </div>
+
+      <p>삭제할 클래스의 체크박스를 클릭 한 후 <span class="blue">Execute Job</span>을 클릭하면 클래스를 삭제 할 수 있습니다</p>
+
+
+
 
 
     </div>

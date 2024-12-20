@@ -107,6 +107,14 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #EEEEEE; /* Retain this border */
 }
 
+.code_title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #303030;
+}
+
 
 .code_des {
   font-size: medium;
@@ -171,7 +179,7 @@ p {
   margin-top: 3%;             /* Add spacing above the paragraph */
   margin-bottom: 3%;          /* No spacing below the paragraph */
   word-wrap: break-word;      /* Ensure long words break properly to the next line */
-  line-height: 1.5rem;        /* Maintain comfortable line spacing */
+  line-height: 1.7rem;        /* Maintain comfortable line spacing */
   font-size: 1rem;            /* Set a readable font size */
   font-weight: 300;           /* Use a light font weight for better readability */
 }
@@ -274,6 +282,18 @@ li::marker {
   padding: 5px;
   margin: 3px;
   border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.red
+{
+  background: #f03e3e;
+  color: white;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 

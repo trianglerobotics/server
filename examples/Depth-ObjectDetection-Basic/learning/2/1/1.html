@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>장애물 준비하기</h3>
+      </div>
+
+      <p>자주차 장애물중 정육면체를 준비하여 차량의 전방에 위치하게 합니다.</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lodb_211.svg" style="width: 150px"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>전방에 있는 장애물 거리 추출하기 - 1</h3>
+      </div>
+      <p>깊이 이미지에서 전방에 중심 60x60의 평균 밝기를 출력하는 코드를 작성하고자 합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/dob_211.svg" style="width: 300px"  alt="Placeholder image" />
+      </div>
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code A</strong> 에 이미지의 x,y중심의 60*60의 평균 밝기를 추출하는 코드를 작성하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+# depth 데이터에서 중심 60x60 영역의 평균 거리 계산
+height, width = depth.shape  # depth 데이터의 높이와 너비 가져오기
+center_x, center_y = width // 2, height // 2  # 이미지의 중심 좌표 계산
+
+# 중심 60x60 영역의 시작과 끝 좌표 계산
+start_x, end_x = center_x - 30, center_x + 30
+start_y, end_y = center_y - 30, center_y + 30
+
+# 중심 60x60 영역 추출 및 평균값 계산
+center_region = depth[start_y:end_y, start_x:end_x]
+center_mean = np.mean(center_region)
+
+print(f"중심 60x60 영역의 평균 거리값: {center_mean:.2f}")</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>전방에 있는 장애물 거리 추출하기 - 2</h3>
+      </div>
+      <p>깊이 이미지에서 전방에 중심 좌우 100px*60px의 평균 밝기를 출력하는 코드를 작성하고자 합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/dob_212.svg" style="width: 300px"  alt="Placeholder image" />
+      </div>
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code B</strong> 에 이미지의 x,y중심의 좌우 100px*60px의 평균 밝기를 추출하는 코드를 작성하세요 </div>
+        <details>
+          <summary>정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+# depth 데이터에서 이미지의 높이와 너비 가져오기
+height, width = depth.shape
+
+# 좌측 끝 (중심 Y축 기준) 가로 100px x 세로 60px 영역 평균 계산
+center_y = height // 2
+start_y, end_y = center_y - 30, center_y + 30
+
+left_region = depth[start_y:end_y, :100]
+left_mean = np.mean(left_region)
+
+# 우측 끝 (중심 Y축 기준) 가로 100px x 세로 60px 영역 평균 계산
+right_region = depth[start_y:end_y, -100:]
+right_mean = np.mean(right_region)
+
+print(f"좌측 끝 100x60 영역의 평균 거리값: {left_mean:.2f}")
+print(f"우측 끝 100x60 영역의 평균 거리값: {right_mean:.2f}")</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+
+
+
+    </div>
+
+  </body>
+</html>

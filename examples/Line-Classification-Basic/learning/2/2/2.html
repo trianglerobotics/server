@@ -26,30 +26,104 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>이미지에 라인 검출할 기준선 그리기</h3>
+        <h3>필요한 기능 가져오기</h3>
       </div>
-      <li>이미지의 중심에서 Y축을 기준으로 엣지를 검출하려고 합니다</li>
-      <li>엣지는 Y축을 기준으로 아래에서 올라오면서 엣지를 검출하는 알고리즘을 사용합니다</li>
-      <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/line_basic_221.svg"  alt="Placeholder image" />
-      </div>
+      <p>인공지능 모델을 학습하기 위해서는 우선 파이토치 라이브러리를 가지고 와야 합니다. </p>
       <div class="code"> 
-        <div class="code_des"><strong>Code A</strong>에  이미지의 X 중심, Y 축의 아래 하단에서부터 올라오며 엣지랑 겹치는 부분에 노란점을 표시하는 코드를 작성하세요</div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-# range를 높이의 절반부터 0까지 역순으로 설정
-for y in range(height // 2 - 1, -1, -1):  # 아래에서 위로
-    if roi[y, center_x] == 255:  # 엣지 픽셀 값이 255인 경우
-        detected_y = y
-        print(detected_y)  # 검출된 y 좌표 출력
-        break</code>
-        </pre>
-        </div>
-        </details>
+        <div class="code_des"><strong>Code A</strong>를 실행하여 필요한 기능을 가져오세요</div>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>학습 파라미터 설정하기</h3>
+      </div>
+      <p>인공지능 학습을 위해서는 사람이 수동으로 지정 해주어야 할 하이퍼 파라미터가 있습니다. </p>
+      <ul>
+        <li>EPOCH(에폭) : 전체 데이터로 학습할 횟수</li>
+        <li>BATCH_SIZE(배치크기) : 미니배치 경사하강법에서 이터레이션 당 사용할 데이터의 갯수</li>
+        <li>LR(학습률) : 경사하강법에서 학습률 </li>
+        <li>TRAIN_DATA_PERCENT(학습데이터 비율) : 전체 데이터에서 학습데이터로 사용할 데이터의 비율</li>
+      </ul>
+      <div class="code"> 
+        <div class="code_des"><strong>Code B</strong>를 실행하여 파라미터를 설정하세요</div>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>데이터 로더 설정하기</h3>
+      </div>
+      <p>인공지능 학습을 위한 파라미터를 설정 하였다면 실질적으로 학습 도중에 데이터를 관리해줄 데이터 로더가 필요합니다. 데이터 로더는 파이토치를 이용하여 정의할 수 있습니다 </p>
+      <div class="code"> 
+        <div class="code_des"><strong>Code C</strong>를 실행하여 데이터 로더를 정의하세요</div>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>모델 출력차원 변경하기</h3>
+      </div>
+      <p>인공지능 모델을 거친후 최종 출력의 크기는 클래스의 갯수와 같아야 합니다. 하지만 기본적으로 정의된 RESNET 모델은 클래스가 임의로 지정되어 있기 때문에 출력 차원의 크기를 변경 해 주어야 합니다</p>
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_221.svg" style="height: 500px;"  alt="Placeholder image" />
+      </div>
+      
+      <div class="code"> 
+        <div class="code_des"><strong>Code D</strong> 를 실행하여 출력차원을 변경하세요</div>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>손실함수 , 옵티마이저 정의하기</h3>
+      </div>
+      <p>실질적인 학습을 진행하기전 역전파를 위한 손실함수와 옵티마이저를 정의합니다</p>
+      <ul>
+        <li>손실함수 : 모델의 예측값과 실제 값(정답) 사이의 차이를 수치화</li>
+        <li>손실함수를 최소화하기 위해 모델의 파라미터(가중치, 편향)를 업데이트 </li>
+      </ul>
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code E </strong>를 실행하여 손실함수 , 옵티마이저를 정의하세요</div>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">6</div>
+        <h3>학습</h3>
+      </div>
+
+      <div class="code"> 
+        <div class="code_des"><strong>Code F </strong>를 실행하여 학습을 진행하세요</div>
+      </div>
+
+      <p>학습을 진행하면 아래 그림과 같은 그래프가 표시됩니다</p>
+      <ul>
+        <li>Train Accuracy : 학습데이터 기반 정확도 </li>
+        <li>Test Accuracy : 테스트 데이터 기반 정확도</li>
+      </ul>
+      <p>Test Accuracy 가 학습되지 않은 데이터로 실질적 테스트를 진행 하는것 이기 때문에 Test Accuracy를 보는것이 중요합니다. </p>
+
+            
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_222.svg"  alt="Placeholder image" />
       </div>
 
     </div>

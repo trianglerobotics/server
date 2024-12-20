@@ -26,26 +26,47 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>규칙기반 알고리즘 구상하기</h3>
+        <h3>모델 저장의 배경</h3>
+      </div>
+      <p>인공지능 모델은 현재 프로젝트 내부에 저장되게 됩니다. 하지만. 다른 프로젝트 내부에서 인공지능 모델을 사용하려고 하면 모델이 저장된 경로를 수동으로 입력해 주어야 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_311.svg" style="width:400px" alt="Placeholder image" />
       </div>
 
-      <li>기본상태에서는 조향 0 , 직진속도 3으로 움직여야 합니다</li>
-      <li>detected_y 가 70 미만일 경우 정지하는 알고리즘을 작성 해야 합니다</li>
-      
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 직진중 detected_y 가 70미만일 경우 속도를 0으로 설정하여 자주차를 정지하세요</div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-if(detected_y > 70):
-    jajucha2.control.set_motor(0,0,3)
-else:
-    jajucha2.control.set_motor(0,0,0)</code>
-        </pre>
-        </div>
-        </details>
+      <p>따라서 자주차 내부 저장소에  새로운 이름으로 모델을 저장하고, 저장된 이름으로 모델을 불러 오려고 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_312.svg" style="width:400px" alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>모델을 내부메모리에 저장하기 - 1</h3>
+      </div>
+
+      <p>우선 테스트 과정에서 실행하였던 모델중 저장할 모델의 이름을 클릭합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_313.svg" style="width:400px" alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>모델을 내부메모리에 저장하기 - 2</h3>
+      </div>
+
+      <p>저장할 모델을 선택했다면 이름을 타이핑 한 후 save 하여 모델을 저장합니다</p>
+
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/lcb_314.svg" style="width:400px" alt="Placeholder image" />
       </div>
 
     </div>
