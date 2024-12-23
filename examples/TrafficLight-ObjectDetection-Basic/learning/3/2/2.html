@@ -84,9 +84,9 @@ jajucha2.load_ai()</code>
 
       <p>AI 출력 함수에서 결과를 받아 이를 통해 장애물을 피하는 주행을 진행합니다. 결과값으로는 박스 별로 (x1, y1, x2, y2)를 받을 수 있습니다</p>
 
-      <div class="image-div">
+      <!-- <div class="image-div">
         <img src="http://121.184.63.113:4000/images/vod_322.svg" style="width:300px" alt="Placeholder image" />
-      </div>
+      </div> -->
 
       <div class="code_title">[ ai 모델 출력 함수 ]</div>
       <div class="code_box">
@@ -109,17 +109,18 @@ get_model_output(input,name)</code>
 
       <div class="list-item">
         <div class="square-box">5</div>
-        <h3>장애물 회피 주행하기</h3>
+        <h3>신호등 감지 주행하기 - 1</h3>
       </div>
 
-      <p>AI 출력 함수에서 결과를 받아 이를 통해 장애물을 피하는 주행을 진행합니다. 결과값으로는 박스 별로 (x1, y1, x2, y2)를 받을 수 있습니다AI 출력 함수에서 결과를 받아 이를 통해 장애물을 피하는 주행을 진행합니다. 결과값으로는 박스 별로 (x1, y1, x2, y2)를 받을 수 있습니다</p>
+      <p>AI 출력 함수에서 결과를 받아 이를 통해 신호등을 감지하는 주행을 진행합니다. 결과값으로는 박스 별로 종류와, (x1, y1, x2, y2)를 받을 수 있습니다.</p>
+      <p>신호등 데이터를 받아 빨간불이 감지되고 가까워지면 정지, 초록불 혹은 빨간불과의 거리가 멀면 직진하는 코드를 작성하하세요</p>
 
-      <div class="image-div">
+      <!-- <div class="image-div">
         <img src="http://121.184.63.113:4000/images/vod_323.svg" style="width:300px" alt="Placeholder image" />
-      </div>
+      </div> -->
 
       <div class="code"> 
-        <div class="code_des"><strong>Code D</strong> 에 장애물의 좌표를 기반으로 좌,우로 회피하는 코드를 작성하고 실행하세요 </div>
+        <div class="code_des"><strong>Code D</strong> 파란색 신호등이거나 신호등이 멀경우 직진, 빨간색 신호등이고 가까울 경우 정지하는 코드를 작성하세요 </div>
         <details>
           <summary>정답 보기/숨기기</summary>
         <div class="code_div">
