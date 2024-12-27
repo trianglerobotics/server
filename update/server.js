@@ -3,13 +3,15 @@ import express from 'express';
 import http from 'http';  // <-- You need to import http
 import os from 'os';
 import WebSocket, { WebSocketServer } from "ws";
-import { promises as fs } from 'fs';
+import { promises} from 'fs';
 import util from 'util';
 import { exec } from 'child_process';
 import wifi from 'node-wifi';
 import helmet from 'helmet';
+import path from 'path';
+import fs from 'fs'
+import unzipper from 'unzipper'
 import fse from 'fs-extra';
-// import csp from "helmet-csp";
 
 const version = 1.1;
 
@@ -54,14 +56,7 @@ async function handleWifiConnection(ssid, password, sudoPassword) {
     // Handle the error case here (retry, show message, etc.)
   }
 }
-  
-// function broadcast(message) {
-//     wss.clients.forEach(client => {
-//     if (client.readyState === WebSocket.OPEN) {
-//     client.send(message);
-//     }
-// });
-// }
+
 function broadcast(message) {
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
@@ -130,40 +125,10 @@ function prepareBroadcastData(status, stdout, stderr) {
         info2: stderr || "" // Default to an empty string if stderr is undefined
     };
 }
-
-const executeUpdate = async (target,command) => {
-    try {
-      let { stdout, stderr } = await execAsync(`cd ${home}/server/${target} && ${command}`);
   
-      console.log(`cd ${home}/server/${target} && ${command}`)
-      // Log the outputs
-      console.log('Finished');
-      console.log("Standard Output:", stdout);
-
-      let broadcast_data = prepareBroadcastData(target, stdout, stderr);
-      broadcast(broadcast_data);
-  
-      // Check if there is any error output
-      if (stderr) {
-        console.error("Standard Error:", stderr);
-      }
-  
-      // Simple success check based on the presence of certain words in stdout
-      if (stdout.includes("Already up to date") || stdout.includes("Updating")) {
-        console.log("Git pull executed successfully!");
-      } else {
-        console.log("Git pull might have encountered an issue.");
-      }
-  
-    } catch (error) {
-      // In case the command fails (e.g., Git not found, directory not existing)
-      console.error("Error executing git pull:", error);
-    }
-};
-  
-const executedbupdate = async () => {
+const executecommand = async (command) => {
 try {
-    let { stdout, stderr } = await execAsync(`${home}/server/updatedb/updatemysql.sh`);
+    let { stdout, stderr } = await execAsync(`${command}`);
 
     // console.log(`cd ${home}/server/${target} && git pull origin main`)
     // Log the outputs
@@ -175,16 +140,9 @@ try {
     console.error("Standard Error:", stderr);
     }
 
-    // Simple success check based on the presence of certain words in stdout
-    if (stdout.includes("Already up to date") || stdout.includes("Updating")) {
-    console.log("Git pull executed successfully!");
-    } else {
-    console.log("Git pull might have encountered an issue.");
-    }
-
 } catch (error) {
     // In case the command fails (e.g., Git not found, directory not existing)
-    console.error("Error executing git pull:", error);
+    console.error("Error:", error);
 }
 }
 
@@ -261,50 +219,152 @@ app.get('/api/control/conn/networks/:selectedNetwork/:password', async (req, res
     }
 });
 
+
+
+async function installUpdatedFiles(downloadedPath, targetPath) {
+  try {
+      console.log(`Installing updated files from ${downloadedPath} to ${targetPath}...`);
+
+      // Step 1: Ensure the target directory exists
+      if (await fse.pathExists(targetPath)) {
+          console.log(`Clearing target directory: ${targetPath}...`);
+          
+          // Delete the entire directory and recreate it to ensure a fresh state
+          await fse.remove(targetPath);
+          await fse.ensureDir(targetPath);
+      } else {
+          console.log(`Target directory does not exist, creating: ${targetPath}...`);
+          await fse.ensureDir(targetPath);
+      }
+
+      // Step 2: Copy the new files
+      console.log(`Copying new files from ${downloadedPath} to ${targetPath}...`);
+      await fse.copy(downloadedPath, targetPath, { overwrite: true });
+
+      console.log('Files installed successfully!');
+  } catch (error) {
+      console.error(`Error installing updated files: ${error.message}`);
+  }
+}
+
 app.get('/api/control/update', async (req, res) => {
 
     console.log('update');
-  
-    (async () => {
-      try {
-        //broadcast('update examples');
-        //await executeUpdate('examples');
 
-        console.log('update start');
-  
-        // //broadcast('update models');
-        await executeUpdate('/','git pull origin main');
+    const downloadUrl = 'http://141.164.60.140:7000/download/update.zip'; // Replace with the actual file URL
+    const tempFolder = '/tmp'; // Temporary directory
+    const zipFilePath = path.join(tempFolder, 'update.zip'); // Path to save the zip file
+    const extractedFolderPath = path.join(tempFolder, 'update'); // Path to extract the zip file
+    try {
 
-        await executeUpdate('sv_host','npm install');
+        // Step 1: Download file to the /tmp
+        try {
+          console.log(`Downloading file from ${downloadUrl}`);
+          await new Promise((resolve, reject) => {
+              const file = fs.createWriteStream(zipFilePath);
+              http.get(downloadUrl, (response) => {
+                  if (response.statusCode !== 200) {
+                      reject(new Error(`Failed to download file: ${response.statusCode}`));
+                      return;
+                  }
 
-        await executeUpdate('ui_host','npm install');
+                  const totalBytes = parseInt(response.headers['content-length'], 10);
+                  let downloadedBytes = 0;
 
-        await executeUpdate('update','npm install');
+                  response.on('data', (chunk) => {
+                      downloadedBytes += chunk.length;
+                      const percentage = ((downloadedBytes / totalBytes) * 100).toFixed(2);
+                      process.stdout.write(`Downloaded: ${percentage}%\r`);
+                  });
 
-        await executeUpdate('updatedb','./updatemysql.sh');
+                  response.pipe(file);
 
-        await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_ui.service');
+                  file.on('finish', () => {
+                      file.close(resolve);
+                      console.log(`\nFile downloaded successfully to ${zipFilePath}`);
+                  });
+              }).on('error', (error) => {
+                  fs.unlink(zipFilePath, () => reject(error));
+              });
+          });
+        } catch (error) {
+          console.error(`Error downloading file: ${error.message}`);
+          return; // Stop execution if download fails
+        }
 
-        await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_sv.service');
+        // Step 2: Unzip file to the /tmp/update
+        try {
+          console.log(`Unzipping file: ${zipFilePath} to ${extractedFolderPath}`);
+          await fs.createReadStream(zipFilePath)
+              .pipe(unzipper.Extract({ path: extractedFolderPath }))
+              .promise();
+          console.log('Unzipping completed successfully.');
+        } catch (error) {
+          console.error(`Error unzipping file: ${error.message}`);
+        }
 
-        await executeUpdate('','pip install jajucha2 --upgrade');
+        // Step 3: Install updated files
+        await installUpdatedFiles("/tmp/update/server/examples","/home/server/examples") //examples
+        await installUpdatedFiles("/tmp/update/server/models","/home/server/models") // models
+        await installUpdatedFiles("/tmp/update/server/sv_host","/home/server/sv_host") //sv_host
+        await installUpdatedFiles("/tmp/update/server/ui_host","/home/server/ui_host") //ui_host
+        await installUpdatedFiles("/tmp/update/server/updatedb","/home/server/updatedb") //ui_host
 
-        //wait for 2 seconds
-        await new Promise(resolve => setTimeout(resolve, 4000));
 
+        // Step 4: Update DB
+        await executecommand('sudo chmod 777 /home/linuxuser/server/updatedb/updatemysql.sh')
+        await executecommand('/home/linuxuser/server/updatedb/updatemysql.sh')
 
-        let broadcast_data = prepareBroadcastData('finished', 'stdout', 'stderr');
-        broadcast(broadcast_data);
-  
-        broadcast('finished');
-        console.log('Update complete.');
-  
-      } catch (err) {
-        console.error('Download failed:', err.message);
+        // Step 4: Restart services
+          //1. ui_host
+          //2. sv_host
+        await executecommand('sudo systemctl restart jc_sv.service')
+        await executecommand('sudo systemctl restart jc_ui.service')
+
       }
-    })();
+    catch{
+      
+    }
   
-    res.status(200).json({'message': 'update success'});
+    //   try {
+
+
+    //     //Download zip file to the server and save to the /tmp folder 
+    //     //server is 141.164.60.140:3000/Downloads
+
+        
+
+        
+
+    //     //check the Download has been Executed
+
+
+    //     //unzip
+
+
+    //     //Change sv_host , ui_host , examples , sv_host to the updated folder
+
+    //     await executeUpdate('updatedb','./updatemysql.sh');
+    //     await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_ui.service');
+    //     await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_sv.service');
+    //     await executeUpdate('','pip install jajucha2 --upgrade');
+
+    //     //wait for 2 seconds
+    //     await new Promise(resolve => setTimeout(resolve, 4000));
+
+
+    //     let broadcast_data = prepareBroadcastData('finished', 'stdout', 'stderr');
+    //     broadcast(broadcast_data);
+  
+    //     broadcast('finished');
+    //     console.log('Update complete.');
+  
+    //   } catch (err) {
+    //     console.error('Download failed:', err.message);
+    //   }
+    // })();
+  
+    // res.status(200).json({'message': 'update success'});
   });
 
 server.listen(port, () => {
