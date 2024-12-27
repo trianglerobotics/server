@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -18,6 +19,7 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script>
       window.MathJax = {
         loader: { load: ['[tex]/ams'] },
@@ -33,31 +35,48 @@
     <script type="text/javascript" id="MathJax-script" async
     src="http://121.184.63.113:4000/js/tex-chtml.js">
     </script>
-    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>합성곱 신경망</h1>
-      <h2 style="margin-bottom: 3px;">합성곱 신경망 구조</h2>
-      <p>**합성곱 신경망(CNN)**은 이미지 처리와 같은 데이터의 공간적 구조를 활용하기 위해 설계된 딥러닝 모델입니다. CNN은 이미지 인식, 영상 처리, 물체 탐지와 같은 컴퓨터 비전 작업에 주로 사용됩니다.</p>
-      <h2>합성곱 신경망 구조 -1 : 구성</h2>
-      <p>합성곱 신경망(CNN)은 입력층에서 데이터를 받아 합성곱층으로 특징을 추출하고, 풀링층에서 데이터를 축소하여 효율적으로 학습하는 구조입니다. 이후 완전 연결층을 통해 특징을 결합하고 출력층에서 최종 결과(분류 또는 회귀)를 생성합니다.</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_411.svg" alt="Placeholder image" />
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>합성곱</h3>
       </div>
-      <br></br>
+      <p>합성곱(Convolution)은 신호 처리와 딥러닝에서 주로 사용되는 연산으로, 입력 데이터와 필터 배열을 곱한 뒤 그 결과를 합산하는 방식으로 동작합니다. 쉽게 말해, 입력 값에 필터를 적용해 중요한 정보를 추출하거나 변형하는 과정입니다.</p>   
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_411.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>합성곱 신경망의 등장 배경</h3>
+      </div>
+
+      <p>단순한 숫자와 같은 1차원 데이터를 예측할 때는, 일차 함수 형태를 층층이 쌓아 구성한 인공신경망으로도 충분히 좋은 성능을 낼 수 있었습니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_412.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <p>그러나 기존 인공신경망은 모든 데이터를 1차원으로 변환하여 처리해야 했기 때문에 이미지와 같이 가로, 세로, 채널로 구성된 3차원 데이터를 다루는 이미지를 학습할때는 이미지의 특성을 무시하는 일 이 발생하였습니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_413.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <p>이미지의 공간적 특징을 효과적으로 추출하기 위해 새로운 방식의 함수가 필요했습니다. 이에 전통적인 컴퓨터 비전에서 사용되던 특징 추출 기법인 합성곱을 신경망 구조에 통합한 합성곱 신경망(CNN)이 제안되었습니다.</p>
+
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_414.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
     </div>
 
-    
-    <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
-    </div>
-
-
-    
   </body>
 </html>

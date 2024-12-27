@@ -5,41 +5,48 @@
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 에디터 사용법",
+        "name": "01 시작",
         "env": "type0",
         "location": "learning/1/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 넘파이 개념",
+        "name": "02 넘파이(NumPy)란?",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "03 넘파이를 쓰는 이유? 빠르고 편리하니까!",
+        "env": "type0",
+        "location": "learning/1/3/codes",
+        "target": "3.ipynb"
       }
     ]
   },
   {
     "section": 2,
-    "name": "02 넘파이 배열 생성",
+    "name": "02 넘파이 배열 알아보기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 배열 생성 방법",
+        "name": "(1) 넘파이 배열(narray)의 구조",
         "env": "type0",
         "location": "learning/2/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 난수 배열 생성",
+        "name": "(2) 넘파이 배열의 축(axis)",
         "env": "type0",
         "location": "learning/2/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 데이터 타입 설정 및 변환",
+        "name": "(3)넘파이 배열의 다섯 가지 기본 속성",
         "env": "type0",
         "location": "learning/2/3/codes",
         "target": "3.ipynb"
@@ -48,25 +55,25 @@
   },
   {
     "section": 3,
-    "name": "03 넘파이 배열의 기본 연산",
+    "name": "03 넘파이 배열 생성하기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 배열의 산술 연산",
+        "name": "(1) 배열을 생성하는 함수 1: np.array()",
         "env": "type0",
         "location": "learning/3/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 브로드캐스팅(Broadcasting) 개념 이해",
+        "name": "(2) 배열을 생성하는 함수 2: np.zeros, np.empty",
         "env": "type0",
         "location": "learning/3/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 기본 수학 함수",
+        "name": "(3) 난수 배열을 생성하는 np.random 모듈",
         "env": "type0",
         "location": "learning/3/3/codes",
         "target": "3.ipynb"
@@ -75,11 +82,11 @@
   },
   {
     "section": 4,
-    "name": "04 배열의 모양과 구조 조작",
+    "name": "04 넘파이 배열 연산하기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 배열의 차원 확인 및 변경",
+        "name": "(1) 넘파이 배열끼리 연산해 보기",
         "env": "type0",
         "location": "learning/4/1/codes",
         "target": "1.ipynb"
@@ -87,23 +94,59 @@
       },
       {
         "subsection": 2,
-        "name": "02 배열 결합과 분할",
+        "name": "(2) 넘파이 기본 수학 함수 알아보기",
         "env": "type0",
         "location": "learning/4/2/codes",
         "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 넘파이 집계 함수 알아보기",
+        "env": "type0",
+        "location": "learning/4/3/codes",
+        "target": "3.ipynb"
       }
     ]
   },
   {
     "section": 5,
-    "name": "05 인덱싱과 슬라이싱",
+    "name": "05 넘파이 배열의 특정 부분 추출하기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 1D, 2D, 다차원 배열의 인덱싱과 슬라이싱",
+        "name": "(1) 배열 인덱싱해 보기",
         "env": "type0",
         "location": "learning/5/1/codes",
         "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 배열 슬라이싱해 보기",
+        "env": "type0",
+        "location": "learning/5/2/codes",
+        "target": "2.ipynb"
+        
+      }
+    ]
+  },
+  {
+    "section": 6,
+    "name": "06 넘파이 배열 조작하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 배열의 형태 바꿔보기",
+        "env": "type0",
+        "location": "learning/6/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 배열 결합해 보기",
+        "env": "type0",
+        "location": "learning/6/2/codes",
+        "target": "2.ipynb"
+        
       }
     ]
   }

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -18,6 +19,7 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script>
       window.MathJax = {
         loader: { load: ['[tex]/ams'] },
@@ -33,367 +35,30 @@
     <script type="text/javascript" id="MathJax-script" async
     src="http://121.184.63.113:4000/js/tex-chtml.js">
     </script>
-    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>딥러닝 학습</h1>
-      <h2 style="margin-bottom: 3px;">[역전파]</h2>
-      <p>역전파는 반대로 출력층에서 입력층 방향으로 계산하면서 가중치를 업데이트하는 과정입니다</p>
-      <p>출력층 바로 이전의 은닉층을 N층이라고 하였을 때, 출력층과 N층 사이의 가중치를 업데이트하는 단계를 역전파 1단계, 그리고 N층과 N층의 이전층 사이의 가중치를 업데이트 하는 단계를 역전파 2단계라고 가정합니다</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_633.svg"  alt="Placeholder image" />
-      </div>
-
-      <h2>1. 역전파 1단계</h2>
-      <p>역전파 1단계에서 업데이트해야 할 가중치는 \( W_5, W_6, W_7, W_8 \) 총 4개입니다. 원리 자체는 동일하므로 우선 \( W_5 \)에 대해서 먼저 업데이트를 진행해보겠습니다. 경사 하강법을 수행하려면 가중치 \( W_5 \)를 업데이트하기 위해서 \( \frac{\partial E_{\text{total}}}{\partial W_5} \)를 계산해야 합니다.</p>
     
-      <p>\(\frac{\partial E_{\text{total}}}{\partial W_5}\)를 계산하기 위해 미분의 연쇄 법칙(Chain rule)에 따라서 이와 같이 풀어 쓸 수 있습니다.
-
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_5} = \frac{\partial E_{\text{total}}}{\partial o_1} \times \frac{\partial o_1}{\partial z_3} \times \frac{\partial z_3}{\partial W_5}
-        \]
-        </p>
-
-        <h3>1.1 역전파 1단계 1항: \(\frac{\partial E_{\text{total}}}{\partial o_1}\)</h3>
-        <p style="overflow-x: auto;">위의 식에서 우변의 세 개의 각 항에 대해서 순서대로 계산해봅시다. 우선 첫번째 항에 대해서 계산해보겠습니다. 미분을 진행하기 전에 \( E_{\text{total}} \)의 값을 상기해봅시다. \( E_{\text{total}} \)은 앞서 순전파를 진행하고 계산했던 전체 오차값입니다. 식은 다음과 같습니다.
-
-          \[
-          E_{\text{total}} = \frac{1}{2}(target_{o_1} - output_{o_1})^2 + \frac{1}{2}(target_{o_2} - output_{o_2})^2
-          \]
-          
-          이에 \( \frac{\partial E_{\text{total}}}{\partial o_1} \)는 다음과 같습니다.
-          
-          \[
-          \frac{\partial E_{\text{total}}}{\partial o_1} = 2 \times \frac{1}{2}(target_{o_1} - output_{o_1})^{2-1} \times (-1) + 0
-          \]
-          
-          \[
-          \frac{\partial E_{\text{total}}}{\partial o_1} = -(target_{o_1} - output_{o_1}) = -(0.4 - 0.60944600) = 0.20944600
-          \]
-          </p>
-    </div>
-
-    <div class="code">
-      <h3>A를 실행하여 1단계 1항을 계산합니다</h3>
-      <p></p>
-    
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-# Define the target and output values for o1 and o2
-target_o1 = 0.4
-output_o1 = 0.60944600
-
-target_o2 = 0.6 
-output_o2 = 0.66384491
-
-# Compute the total error for o1
-E_total_o1 = 0.5 * (target_o1 - output_o1) ** 2
-E_total_o2 = 0.5 * (target_o2 - output_o2) ** 2
-
-# Total error
-E_total = E_total_o1 + E_total_o2
-
-# Compute the derivative of E_total with respect to o1
-dE_total_do1 = -(target_o1 - output_o1)
-
-# Print the results
-print(f"Total Error (E_total): {E_total}")
-print(f"Derivative (dE_total/do1): {dE_total_do1}")</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>가중치</h3>
       </div>
-      <br></br>
-    </div>
+      <p>가중치는 입력값(𝑥) 이 연산 결과에 미치는 영향력을 조절하는 요소입니다. 입력값(𝑥)이 뉴런으로 전달될 때, 가중치(𝑤)와 곱해져 특정 입력의 중요도를 반영합니다. 인공뉴런으로는 n개의 입력값이 들어오기 때문에 가중치도 n개를 가지게 됩니다.
+        가중치와 입력값들의 곱을 수식으로 표현하면 다음과 같습니다</p>   
 
-    <div class="container">
-      <h3>1.2 역전파 1단계 2항: \(\frac{\partial o_1}{\partial z_3}\)</h3>
-      <p style="overflow-x: auto;">이제 두번째 항을 주목해봅시다. \( o_1 \)이라는 값은 시그모이드 함수의 출력값입니다. 그런데 시그모이드 함수의 미분은 \( f(x) \times (1 - f(x)) \)입니다. 앞으로의 계산 과정에서도 계속해서 시그모이드 함수를 미분해야 하는 상황이 생기므로 기억해둡시다. 이에 따라서 두번째 항의 미분 결과는 다음과 같습니다.  
-        \[
-        \frac{\partial o_1}{\partial z_3} = o_1 \times (1 - o_1) = 0.60944600 \times (1 - 0.60944600) = 0.23802157
-        \]
-        </p>
-    </div>
-
-    <div class="code">
-      <h3>B 를 실행하여 1단계 2항을 계산합니다</h3>
-      <p></p>
-    
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-# Define the sigmoid function and its derivative
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
-
-def sigmoid_derivative(output):
-    # Derivative of the sigmoid function: f(x) * (1 - f(x))
-    return output * (1 - output)
-
-# Compute the derivative of o1 with respect to z3
-do1_dz3 = sigmoid_derivative(output_o1)
-
-# Print the result
-print(f"Derivative (do1/dz3): {do1_dz3}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-    
-
-    <div class="container">
-      <h3>1.3 역전파 1단계 3항: \(\frac{\partial z_3}{\partial W_5}\)</h3>
-      <p>마지막으로 세번째 항은 \( h_1 \)의 값과 동일합니다.
-
-        \[
-        \frac{\partial z_3}{\partial W_5} = h_1 = 0.51998934
-        \]        
-        </p>
-    </div>
-
-
-    <div class="code">
-      <h3>C 를 실행하여 1단계 3항을 계산합니다</h3>
-      <p></p>
-    
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-# Define the value of h1
-h1 = 0.51998934
-
-# The derivative of z3 with respect to W5 is equal to h1
-dz3_dW5 = h1
-
-# Print the result
-print(f"Derivative (dz3/dW5): {dz3_dW5}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h3>1.4 역전파 1단계 최종 </h3>
-      <p style="overflow-x: auto;">우변의 모든 항을 계산하였습니다. 이제 이 값을 모두 곱해주면 됩니다.
-
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_5} = 0.20944600 \times 0.23802157 \times 0.51998934 = 0.02592286
-        \]
-        
-        이제 앞서 배웠던 경사 하강법을 통해 가중치를 업데이트 할 때가 왔습니다! 하이퍼파라미터에 해당되는 학습률(learning rate) \(\alpha\)는 \(0.5\)라고 가정합니다.
-        
-        \[
-        W_5^+ = W_5 - \alpha \cdot \frac{\partial E_{\text{total}}}{\partial W_5} = 0.45 - 0.5 \times 0.02592286 = 0.43703857
-        \]
-        
-        이와 같은 원리로 \( W_6^+, W_7^+, W_8^+ \)을 계산할 수 있습니다.
-        
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_6} = \frac{\partial E_{\text{total}}}{\partial o_1} \times \frac{\partial o_1}{\partial z_3} \times \frac{\partial z_3}{\partial W_6} \rightarrow W_6^+ = 0.38685205
-        \]
-        
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_7} = \frac{\partial E_{\text{total}}}{\partial o_2} \times \frac{\partial o_2}{\partial z_4} \times \frac{\partial z_4}{\partial W_7} \rightarrow W_7^+ = 0.69629578
-        \]
-        
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_8} = \frac{\partial E_{\text{total}}}{\partial o_2} \times \frac{\partial o_2}{\partial z_4} \times \frac{\partial z_4}{\partial W_8} \rightarrow W_8^+ = 0.59624247
-        \]        
-      </p>
-      <hr>
-      <h2>2. 역전파 2단계</h2>
-
-      <p>1단계를 완료하였다면 이제 입력층 방향으로 이동하며 다시 계산을 이어갑니다.</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_633.svg"  alt="Placeholder image" />
-      </div>
       <p>
-        이번 단계에서 계산할 가중치는 \( W_1, W_2, W_3, W_4 \)입니다. 원리 자체는 동일하므로 우선 \( W_1 \)에 대해서 먼저 업데이트를 진행해보겠습니다. 경사 하강법을 수행하려면 가중치 \( W_1 \)를 업데이트 하기 위해서 \( \frac{\partial E_{\text{total}}}{\partial W_1} \)를 계산해야 합니다.
-        
-      </p>
-      
-      <p>\(\frac{\partial E_{\text{total}}}{\partial W_1}\) 를 계산하기 위해 미분의 연쇄 법칙(Chain rule)에 따라서 이와 같이 풀어 쓸 수 있습니다.
-
-\[
-\frac{\partial E_{\text{total}}}{\partial W_1} = \frac{\partial E_{\text{total}}}{\partial h_1} \times \frac{\partial h_1}{\partial z_1} \times \frac{\partial z_1}{\partial W_1}
+        \[
+\sum_{i=1}^{n} (w_i \cdot x_i) = (w_1 x_1 + w_2 x_2 + \cdots + w_n x_n)
 \]
-
       </p>
 
-      <h3>2.1 역전파 2단계 1항: \(\frac{\partial E_{\text{total}}}{\partial h_1}\)</h3>
-      <p style="overflow-x: auto;">위의 식에서 우변의 첫번째항인 \(\frac{\partial E_{\text{total}}}{\partial h_1}\) 는 다음과 같이 다시 식을 풀어서 쓸 수 있습니다.
-        \[
-\frac{\partial E_{\text{total}}}{\partial h_1} = \frac{\partial E_{o_1}}{\partial h_1} + \frac{\partial E_{o_2}}{\partial h_1}
-\]
-
-위의 식의 우변의 두 항을 각각 구해봅시다. 우선 첫번째 항 \( \frac{\partial E_{o_1}}{\partial h_1} \)에 대해서 항을 분해 및 계산해보겠습니다.
-
-\[
-\frac{\partial E_{o_1}}{\partial h_1} = \frac{\partial E_{o_1}}{\partial o_1} \times \frac{\partial o_1}{\partial z_3} \times \frac{\partial z_3}{\partial h_1}
-\]
-
-\[
-= -( \text{target}_{o_1} - \text{output}_{o_1} ) \times o_1 \times (1 - o_1) \times W_5
-\]
-
-\[
-= 0.20944600 \times 0.23802157 \times 0.45 = 0.02243370
-\]
-이와 같은 원리로 \( \frac{\partial E_{o_2}}{\partial h_1} \) 또한 구합니다.
-
-\[
-\frac{\partial E_{o_2}}{\partial h_1} = \frac{\partial E_{o_2}}{\partial z_4} \times \frac{\partial z_4}{\partial h_1} = \frac{\partial E_{o_2}}{\partial o_2} \times \frac{\partial o_2}{\partial z_4} \times \frac{\partial z_4}{\partial h_1} = 0.00997311
-\]
-
-\[
-\frac{\partial E_{\text{total}}}{\partial h_1} = 0.02243370 + 0.00997311 = 0.03240681
-\]
-        </p>
-    </div>
-
-
-    <div class="code">
-      <h3>D 를 실행하여 2단계 1항을 계산합니다</h3>
-      <p></p>
-    
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-# Define the given values
-target_o1 = 0.4
-output_o1 = 0.60944600
-o1 = output_o1  # Output of the sigmoid function
-W5 = 0.45  # Weight W5
-
-target_o2 = 0.6
-output_o2 = 0.66384491
-o2 = output_o2  # Output of the sigmoid function for o2
-W6 = 0.4  # Weight W6
-
-# Additional dependencies: Intermediate contributions of h1 to o2
-W_h1_to_z4 = 0.35  # Example weight from h1 to z4
-
-# Compute the first term: dE_o1/dh1
-dE_o1_do1 = -(target_o1 - output_o1)  # dE_o1 / do1
-do1_dz3 = o1 * (1 - o1)  # Sigmoid derivative: do1 / dz3
-dz3_dh1 = W5  # dz3 / dh1
-dE_o1_dh1 = dE_o1_do1 * do1_dz3 * dz3_dh1
-
-# Compute the second term: dE_o2/dh1
-dE_o2_do2 = -(target_o2 - output_o2)  # dE_o2 / do2
-do2_dz4 = o2 * (1 - o2)  # Sigmoid derivative: do2 / dz4
-dz4_dh1 = 2 * W_h1_to_z4  # Double the contribution from h1 to z4
-dE_o2_dh1 = dE_o2_do2 * do2_dz4 * dz4_dh1
-
-# Compute the total gradient dE_total/dh1
-dE_total_dh1 = dE_o1_dh1 + dE_o2_dh1
-
-# Print the results
-print(f"Gradient (dE_o1/dh1): {dE_o1_dh1:.8f}")
-print(f"Gradient (dE_o2/dh1): {dE_o2_dh1:.8f}")
-print(f"Gradient (dE_total/dh1): {dE_total_dh1:.8f}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h3>2.2 역전파 2단계 2항: \(\frac{ {\partial h_1}}{\partial z_1}\)</h3>
-      <p>\[
-        \frac{\partial h_1}{\partial z_1} = h_1 \times (1 - h_1) = 0.51998934 \times (1 - 0.51998934) = 0.24960043
-        \]
-        </p>
-    </div>
-
-    <div class="code">
-      <h3>E 를 실행하여 2단계 2항을 계산합니다</h3>
-      <p></p>
-    
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-# Define the value of h1
-h1 = 0.51998934
-
-# Compute the derivative of h1 with respect to z1
-dh1_dz1 = h1 * (1 - h1)
-
-# Print the result
-print(f"Gradient (dh1/dz1): {dh1_dz1:.8f}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h3>2.3 역전파 2단계 3항: \(\frac{ {\partial z_1}}{\partial W_1}\)</h3>
-      <p>\[
-        \frac{\partial z_1}{\partial W_1} = x_1 = 0.1
-        \]        
-        </p>
-    </div>
-
-    <div class="code">
-      <h3>F 를 실행하여 2단계 3항을 계산합니다</h3>
-      <p></p>
-    
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-# Define the value of x1
-x1 = 0.1
-
-# Compute the derivative of z1 with respect to W1
-dz1_dW1 = x1
-
-# Print the result
-print(f"Gradient (dz1/dW1): {dz1_dW1:.1f}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h3>2.4 역전파 2단계 최종</h3>
-      <p style="overflow-x: auto;">즉, \( \frac{\partial E_{\text{total}}}{\partial W_1} \) 는 다음과 같습니다.
-
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_1} = 0.03240681 \times 0.24960043 \times 0.1 = 0.00080888
-        \]
-        
-        이제 앞서 배웠던 경사 하강법을 통해 가중치를 업데이트 할 수 있습니다.
-        
-        \[
-        W_1^+ = W_1 - \alpha \cdot \frac{\partial E_{\text{total}}}{\partial W_1} = 0.1 - 0.5 \times 0.00080888 = 0.29959556
-        \]
-        
-        이와 같은 원리로 \( W_2^+, W_3^+, W_4^+ \)을 계산할 수 있습니다.
-        
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_2} = \frac{\partial E_{\text{total}}}{\partial h_1} \times \frac{\partial h_1}{\partial z_1} \times \frac{\partial z_1}{\partial W_2} \rightarrow W_2^+ = 0.24919112
-        \]
-        
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_3} = \frac{\partial E_{\text{total}}}{\partial h_2} \times \frac{\partial h_2}{\partial z_2} \times \frac{\partial z_2}{\partial W_3} \rightarrow W_3^+ = 0.39964496
-        \]
-        
-        \[
-        \frac{\partial E_{\text{total}}}{\partial W_4} = \frac{\partial E_{\text{total}}}{\partial h_2} \times \frac{\partial h_2}{\partial z_2} \times \frac{\partial z_2}{\partial W_4} \rightarrow W_4^+ = 0.34928991
-        \]
-               
-        </p>
-    </div>
-    
-    <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
-    </div>
-
-
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_331.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
 
     
+
+    </div>
+
   </body>
 </html>

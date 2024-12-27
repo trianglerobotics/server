@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -19,111 +20,63 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>합성곱</h3>
+      </div>
+      <p>합성곱(Convolution)은 신호 처리와 딥러닝에서 주로 사용되는 연산으로, 입력 데이터와 필터 배열을 곱한 뒤 그 결과를 합산하는 방식으로 동작합니다. 쉽게 말해, 입력 값에 필터를 적용해 중요한 정보를 추출하거나 변형하는 과정입니다.</p>   
 
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>배열의 모양과 구조 조작</h1>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_411.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
       <hr>
-      <h2 style="margin-bottom: 3px;">배열의 차원 확인 및 변경</h2>
-      <p>배열의 차원과 모양은 데이터의 구조를 이해하는 데 필수적입니다</p>
-      <p>배열의 <strong>차원 확인</strong>은 배열의 차원을 파악하는 과정입니다</p>
-      <p>배열의 <strong>차원 변경</strong>은 데이터를 재구조화합니다</p>
-      <h3>배열의 차원 확인 및 변경 -1 : 차원 확인</h3>
-      <p>배열의 차원(Dimension)이란 배열이 가진 데이터 구조의 레벨을 의미합니다</p>
-      <p>넘파이에서는 ndarray 객체를 사용하여 다차원 배열을 나타냅니다</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A를 실행하여 결과를 출력하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
+      <br>
 
-# 0차원 배열
-arr0 = np.array(42)
-print("0차원 배열:", arr0)
-print("차원 수:", arr0.ndim)
-print("모양(shape):", arr0.shape)
-
-# 1차원 배열
-arr1 = np.array([1, 2, 3, 4])
-print("\n1차원 배열:", arr1)
-print("차원 수:", arr1.ndim)
-print("모양(shape):", arr1.shape)
-
-# 2차원 배열
-arr2 = np.array([[1, 2], [3, 4], [5, 6]])
-print("\n2차원 배열:\n", arr2)
-print("차원 수:", arr2.ndim)
-print("모양(shape):", arr2.shape)
-
-# 3차원 배열
-arr3 = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
-print("\n3차원 배열:\n", arr3)
-print("차원 수:", arr3.ndim)
-print("모양(shape):", arr3.shape)     
-</code>
-</pre>   
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>합성곱 신경망의 등장 배경</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <h3>배열의 차원 확인 및 변경 -2 : 차원 변경</h3>
-      <p>배열의 차원을 변경하면 데이터의 **구조(Shape)**를 바꿀 수 있습니다.</p>
-      <p>넘파이는 차원 변경 함수를 제공하여 배열을 원하는 모양으로 쉽게 변환할 수 있습니다.</p>
-      <p>데이터의 순서는 변경되지 않으며, 총 요소 개수는 변경 전후 동일해야 합니다.</p>
+
+      <p>단순한 숫자와 같은 1차원 데이터를 예측할 때는, 일차 함수 형태를 층층이 쌓아 구성한 인공신경망으로도 충분히 좋은 성능을 낼 수 있었습니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_412.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <p>그러나 기존 인공신경망은 모든 데이터를 1차원으로 변환하여 처리해야 했기 때문에 이미지와 같이 가로, 세로, 채널로 구성된 3차원 데이터를 다루는 이미지를 학습할때는 이미지의 특성을 무시하는 일 이 발생하였습니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_413.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <p>이미지의 공간적 특징을 효과적으로 추출하기 위해 새로운 방식의 함수가 필요했습니다. 이에 전통적인 컴퓨터 비전에서 사용되던 특징 추출 기법인 합성곱을 신경망 구조에 통합한 합성곱 신경망(CNN)이 제안되었습니다.</p>
+
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_414.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
     </div>
 
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B를 실행하여 결과를 출력하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-
-# 원본 배열
-arr = np.array([[1, 2, 3], [4, 5, 6]])
-print("원본 배열:\n", arr)
-print("차원 수:", arr.ndim)
-print("모양(shape):", arr.shape)
-
-# 1. reshape()로 차원 변경
-reshaped = arr.reshape(3, 2)
-print("\nreshape()로 변경된 배열:\n", reshaped)
-print("변경된 모양(shape):", reshaped.shape)
-
-# 2. -1을 사용해 자동 계산
-reshaped_auto = arr.reshape(-1, 3)  # 열 개수는 3, 행은 자동 계산
-print("\n-1을 사용한 배열:\n", reshaped_auto)
-print("변경된 모양(shape):", reshaped_auto.shape)
-
-# 3. ravel()로 평탄화
-raveled = arr.ravel()
-print("\nravel()로 평탄화된 배열:", raveled)
-
-# 4. flatten()으로 평탄화
-flattened = arr.flatten()
-print("\nflatten()으로 평탄화된 배열:", flattened)
-
-# 5. resize()로 원본 변경
-arr.resize(3, 2)
-print("\nresize()로 변경된 원본 배열:\n", arr)
-</code>
-</pre>
-      </div>
-      <br></br>
-    </div >
-
-    <!-- copy right -->
-    <div class="container">
-      <p>© JAJUCHA, www.jajcuha.com</p>
-    </div>
   </body>
 </html>

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -18,6 +19,7 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script>
       window.MathJax = {
         loader: { load: ['[tex]/ams'] },
@@ -33,152 +35,35 @@
     <script type="text/javascript" id="MathJax-script" async
     src="http://121.184.63.113:4000/js/tex-chtml.js">
     </script>
-    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>딥러닝 학습</h1>
-      <h2 style="margin-bottom: 3px;">선형 회기</h2>
-      <p>본격적으로 딥러닝의 학습을 알아보기에 앞서 , 딥러닝 학습에 기초가 되는 선형 회기에 대해서 알아보고자 합니다. 선형회귀는 가장 단순한 형태의 지도학습 알고리즘으로, 주어진 데이터를 기반으로 독립 변수와 종속 변수 간의 선형 관계를 모델링하는 방법입니다. 이는 딥러닝에서 뉴런 간의 가중치와 바이어스를 조정하는 원리를 이해하는 데 중요한 기반이 됩니다.</p>
-      <br></br>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>뉴런,인공뉴런</h3>
+      </div>
+      <p>사람의 뇌는 뉴런으로 이루어져 있습니다. 뉴런에서는 여러 수상돌기에서 신호를 받아 세포체에 전달한 뒤에 축삭돌기에서 다음 뉴런으로 출력합니다. 이러한 구조를 인공적으로 모방해서 만든 구조를 인공뉴런 이라고 합니다</p>   
+
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_312.svg" alt="Placeholder image" />
-      </div>
-      <h2 style="margin-bottom: 3px;">선형 회기 - 1 :  목표</h2>
-      <p>선형회기의 목표는 특정한 데이터가 주어졌을 때, 데이터를 가장 잘 설명하는 직선 \( Y = wX + b \) 을 찾는 것입니다.</p>
-      <p><strong>\( X \)</strong>: 입력변수</p>
-      <p><strong>\( Y \)</strong>: 출력변수</p>
-      <p><strong>\( w \)</strong>: 기울기(가중치)</p>
-      <p><strong>\( b \)</strong>: 전편(바이어스)</p>
-      <h2 style="margin-bottom: 3px;">선형 회기 - 2 :  데이터 이해하기</h2>
-      <p>자동차가 1초동안 2M, 2초동한 4M, 3초동안 6M를 이동했다는 데이터가 있다고 가정힙니다 이를 python - numpy  로 나타내면 다음과 같이 표기됩니다</p>
-    </div>
+        <img src="http://121.184.63.113:4000/images/torch/torch_311.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+      <br>
+      <hr>
 
-    <div class="code">
-      <h3>A 실행하여 를 데이터를 생성하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-x = np.array([1, 2, 3])
-y = np.array([2, 4, 6])</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>인공신경망</h3>
       </div>
-      <br></br>
-    </div>
+      <p>인공뉴런을 여러층으로 연결한 구조를 인공신경망으로 부르며 단순한 함수인 뉴런의 연결을 통하여 복잡한 함수를 만들 수 있게 되었습니다</p>
 
-    <div class="container">
-      <h2 style="margin-bottom: 3px;">선형 회기 - 3 :  가설</h2>
-      <p>선형 회기에서 가설은 목표에서 표현했던 것과 같이 입력 변수 \( X \) 와 가중치 \( w \) 그리고 바이어스 \( b \) 의 선형 결합으로 표현됩니다. 가설은 다음과 같이 표현됩니다.</p>
-      <div style="font-size: large;">
-        \[
-        H(X) = wX + b
-        \]
-      </div>
-    </div>
-
-    <div class="code">
-      <h3>B 실행하여 를 데이터를 생성하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-w = 0.0  # 초기 기울기
-b = 0.0  # 초기 절편</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h2 style="margin-bottom: 3px;">선형 회기 - 4 : 손실 계산하기(비용 함수)</h2>
-      <p>선형 회기에서 손실은 가설이 실제 데이터와 얼마나 차이가 나는지를 나타내는 지표입니다. 손실을 계산하는 방법은 다양하며, 가장 대표적인 방법은 평균 제곱 오차(Mean Squared Error, MSE)입니다. MSE는 다음과 같이 표현됩니다.</p>
-      <div style="font-size: large;">
-        \[
-        \text{MSE Loss} = \frac{1}{N} \sum_{i=1}^{N} \left( y_i - \hat{y}_i \right)^2
-        \]
-      </div>
-      <p><strong>\( y_i \)</strong>: 참값(입력한 데이터)</p>
-      <p><strong>\( \hat{y}_i \)</strong>: 예측값(\(wX + b \))에 해당</p>
-      <p><strong>\( i \)</strong>: 데이터 갯수(현재 예제에서는 3)</p>
-      <p>손실함수의 그래프를 표현하면 다음 그림과 같습니다. 최종 목표는 손실함수의 최솟값을 찾아야 하기 때문에 그래프의 기울기가 최소인 지점을 찾아야 합니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_314.svg" alt="Placeholder image" />
-      </div>
-    </div >
+        <img src="http://121.184.63.113:4000/images/torch/torch_312.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
 
-    <div class="container">
-      <h2 style="margin-bottom: 3px;">선형 회기 - 5 : 경사하강법</h2>
-      <p>손실함수의 기울기가 최소가 되는 지점을 찾기 위해서는 \( w \), \( b \)에 대해서 미분 했을때 각각 기울기가 최소가 되어야 합니다 손실함수를 미분한 결과는 각각 다음과 같습니다</p>
-      <h3>5-1 손실함수의 기울기(gradient) 계산</h3>
-      <div style="font-size: large;">
-        \[
-        \frac{\partial}{\partial w} = \frac{2}{N} \sum_{i=1}^{N} -x_i(y_i - (w x_i + b))
-        \]
-        \[
-        \frac{\partial}{\partial b} = \frac{2}{N} \sum_{i=1}^{N} -(y_i - (w x_i + b))
-        \]
-      </div>  
-      <h3>5-2 경사하강법</h3>
-      <p>손실함수의 기울기를 0으로 만들기 위해서 손실함수의 기울기가 줄어드는 방향으로 \( w \), \( b \)를 업데이트 합니다</p>
-      <p>\( \alpha \) 는 학습률(learning rate)로, 기울기를 얼마나 크게 진행할 것이지는 결정합니다</p>
-      <div style="font-size: large;">
-        \[
-        w = w - \alpha \frac{\partial}{\partial w}
-        \]
-        \[
-        b = b - \alpha \frac{\partial}{\partial b}
-        \]
-      </div>
+    
+
     </div>
 
-    <div class="code">
-      <h3>C를 실행하여 경사하강법을 통해 \( w \), \( b \) 추정을 진행합니다</h3>
-      <div class="code_div">
-        <pre>
-        <code class="language-python">
-learning_rate = 0.01  # 학습률
-epochs = 1000  # 반복 횟수
-n = len(x)  # 데이터 개수
-
-# 경사하강법
-for epoch in range(epochs):
-    # 예측 값
-    y_pred = w * x + b
-    
-    # 손실 함수의 기울기 계산
-    dw = -(2/n) * np.sum(x * (y - y_pred)) #손실함수를 w에 대하여 미분
-    db = -(2/n) * np.sum(y - y_pred) #손실함수를 b에 대하여 미분
-    
-    # 파라미터 업데이트
-    w = w - learning_rate * dw
-    b = b - learning_rate * db
-    
-    # 몇 에포크마다 손실 출력
-    if epoch % 100 == 0:
-        loss = np.mean((y - y_pred) ** 2)
-        print(f"Epoch {epoch}, Loss: {loss:.4f}, w: {w:.4f}, b: {b:.4f}")
-
-# 결과 출력
-print(f"\n최종 기울기 (w): {w:.4f}")
-print(f"최종 절편 (b): {b:.4f}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
-
-
-
-
-    
-    <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
-    </div>
-
-
-    
   </body>
 </html>

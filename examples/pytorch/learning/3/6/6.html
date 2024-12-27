@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>활성화 함수의 필요성</h3>
+      </div>
+      <p>가중합은 n개의 입력값을 가지고 있지만 1차함수의 결합으로 이루어져 있기 때문에 곡선을 가진 데이터가 있을 경우에는 잘 표현하지 못 할 수 있습니다.</p>   
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_361.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>활성화 함수의 개념</h3>
+      </div>
+
+      <p>가중합에 비선형적인 변화를 주는 역할을 함수가 추가적으로 붙게 됩니다. 이를 활성화 함수라고 합니다. 활성화 함수는 사람이 임의적으로 지정해주는 함수이며 여러가지 종류가 있습니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_362.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>활성화 함수 1 : 시그모이드 함수</h3>
+      </div>
+      <p>시그모이드 함수는 입력값을 0과 1 사이의 값으로 변환하는 비선형 활성화 함수입니다. 이 함수는 입력값의 크기를 제한하고, 인공뉴런의 출력값을 확률처럼 해석할 수 있도록 도와줍니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_363.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>활성화 함수 2 : 렐루 함수</h3>
+      </div>
+      <p>렐루 함수는 0보다 큰 값은 그대로 출력하지만 0보다 작은 값은 0으로 출력하게 되는 함수입니다. 가장 널리 활용되는 활성화 함수이지만 전달함수가 0보다 작은 값만 출력하는 경우에는 해당 뉴런의 모든 값은 0으로 만드는 한계점을 가지고 있습니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_364.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>활성화 함수 3 : 리키 렐루 함수</h3>
+      </div>
+      <p>리키 렐루 함수는 기존의 렐루 함수의 한계점을 극복하고자 0보다 작은 영역에도 어느정도 값을 가지도록 변경해준 함수입니다. </p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_365.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+    
+
+    </div>
+
+  </body>
+</html>

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -19,100 +20,45 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>가중치</h3>
+      </div>
+      <p>가중치는 입력값(𝑥) 이 연산 결과에 미치는 영향력을 조절하는 요소입니다. 입력값(𝑥)이 뉴런으로 전달될 때, 가중치(𝑤)와 곱해져 특정 입력의 중요도를 반영합니다. 인공뉴런으로는 n개의 입력값이 들어오기 때문에 가중치도 n개를 가지게 됩니다.
+        가중치와 입력값들의 곱을 수식으로 표현하면 다음과 같습니다</p>   
+
+      <p>
+        \[
+\sum_{i=1}^{n} (w_i \cdot x_i) = (w_1 x_1 + w_2 x_2 + \cdots + w_n x_n)
+\]
+      </p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_331.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
 
     
 
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>넘파이 배열의 기본 연산</h1>
-      <hr>
-      <h2 style="margin-bottom: 3px;">기본 수학 함수</h2>
-      <p>넘파이는 배열에 대해 수학적 연산을 수행하는 다양한 함수를 제공합니다. 이를 통해 배열의 합, 평균, 표준편차 등 중요한 통계 값을 계산하거나 삼각함수와 같은 고급 연산을 간단히 수행할 수 있습니다.</p>
-      <h3>기본 수학 함수 - 1 : 배열의 합계, 평균, 최대/최소 값</h3>
-      <p><strong>합계:</strong> <span class="hlw">np.sum</span></p>
-      <p><strong>평균:</strong> <span class="hlw">np.mean</span></p>
-      <p><strong>최댓값:</strong> <span class="hlw">np.max</span></p>
-      <p><strong>최솟값:</strong> <span class="hlw">np.min</span></p>
-      <p><strong>표준편차:</strong> <span class="hlw">np.std</span></p>
-      <p><strong>분산:</strong> <span class="hlw">np.var</span></p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A에 있는 빈칸을 채운 후 A 를 실행하여 아래 결과를 확인하세요</h3>
-      <div class="answer-top">합계: 15</div>
-      <div class="answer">평균: 3.0</div>
-      <div class="answer">최댓값: 5</div>
-      <div class="answer">최솟값: 1</div>
-      <div class="answer">표준편차: 1.4142135623730951</div>
-      <div class="answer-bottom"> 분산: 2.0</div>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-
-# 배열의 기본 통계 함수
-arr = np.array([1, 2, 3, 4, 5])
-print("합계:", np.sum(arr))
-print("평균:", np.mean(arr))
-print("최댓값:", np.max(arr))
-print("최솟값:", np.min(arr))
-print("표준편차:", np.std(arr))
-print("분산:", np.var(arr))
-</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <h3>기본 수학 함수 - 2 : 삼각함수, 지수 함수, 로그 함수</h3>
-      <p><strong>sin:</strong> <span class="hlw">np.sin</span></p>
-      <p><strong>cos:</strong> <span class="hlw">np.cos</span></p>
-      <p><strong>지수 함수:</strong> <span class="hlw">np.exp</span></p>
-      <p><strong>자연 로그:</strong> <span class="hlw">np.log</span></p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B에 있는 빈칸을 채운 후 B 를 실행하여 아래 결과를 확인하세요</h3>
-      <div class="answer-top">sin: [0.0000000e+00 1.0000000e+00 1.2246468e-16]</div>
-      <div class="answer">cos: [ 1.000000e+00  6.123234e-17 -1.000000e+00]</div>
-      <div class="answer">지수 함수: [ 2.71828183  7.3890561  20.08553692]</div>
-      <div class="answer-bottom"> 자연 로그: [0.         0.69314718 1.09861229]</div>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-
-# 삼각함수
-angles = np.array([0, np.pi / 2, np.pi])
-print("sin:", np.sin(angles))
-print("cos:", np.cos(angles))
-
-# 지수 함수와 로그 함수
-values = np.array([1, 2, 3])
-print("지수 함수:", np.exp(values))
-print("자연 로그:", np.log(values))
-</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div >
-    
-    <!-- copy right -->
-    <div class="container">
-      <p>© JAJUCHA, www.jajcuha.com</p>
     </div>
 
-
-
-    
   </body>
 </html>

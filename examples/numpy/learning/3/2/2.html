@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -19,85 +20,46 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>인공뉴런의 구성</h3>
+      </div>
+      <p>지금까지 인공 뉴런의 전체적인 개념을 살펴보았습니다. 이제는 인공 뉴런의 기본적인 구조와 관련된 용어를 알아보겠습니다.</p>   
+
+      <ul>
+        <li>입력값 (Input Value): 인공 뉴런에 처음 입력되는 값으로. 뉴런이 처리할 데이터를 의미합니다</li>
+        <li>가중치 (Weight, ): 입력값과 뉴런의 연결 강도를 나타내는 값으로, 선형 회귀의 𝑎,𝑏 계수와 유사하며, 각 입력값의 중요도를 결정합니다</li>
+        <li>가중합 (Weighted Sum): 입력값과 가중치의 곱을 모두 더한 뒤, 바이어스를 추가한 결과입니다</li>
+        <li>바이어스 (Bias, 𝑏): 가중합에 추가적으로 더해지는 상수. 뉴런의 활성화를 조정하며, 출력값의 기준점을 이동시키는 역할을 합니다.</li>
+        <li>활성화 함수: (Activation Function, 𝑓): 가중합 𝑧를 입력받아 최종 출력값 𝑦를 생성하는 함수. 비선형성을 추가하여 모델이 복잡한 문제를 학습할 수 있도록 돕습니다</li>
+      </ul>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_321.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
 
     
 
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>넘파이 배열의 기본 연산</h1>
-      <hr>
-      <h2 style="margin-bottom: 3px;">브로드캐스팅(Broadcasting) 개념 이해</h2>
-      <p>브로드캐스팅은 크기가 다른 배열 간 연산을 가능하게 해주는 넘파이의 기능입니다. 작은 배열이 큰 배열의 크기에 맞게 확장되어 연산이 수행됩니다. 이 기능은 코드의 간결성과 성능을 크게 향상시킵니다.</p>
-      <h3>브로드캐스팅 개념 이해 - 1 : 1D 배열과 스칼라 간 브로드캐스팅</h3>
-      <p>배열과 스칼라 간 연산은 스칼라 값을 배열의 크기에 맞게 확장한 후, 배열의 각 요소에 대해 동일한 연산을 수행합니다.</p>
-      <p>예를 들어, arr + 10의 경우, 10이 배열의 모든 요소에 "확장"되어 각각 더해집니다.</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-# 1D 배열과 스칼라 간 브로드캐스팅
-arr = np.array([1, 2, 3])
-print("배열 + 10:", arr + 10)</code>
-</pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <h3>브로드캐스팅 개념 이해 - 2 : 1D 배열과 2D 배열 간 브로드캐스팅</h3>
-      <p>1D 배열 arr2가 2D 배열 arr1의 모양에 맞게 확장됩니다. (가상의 확장)</p>
-      <p>확장된 1D 배열의 각 요소가 2D 배열의 해당 차원 요소에 연산됩니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-# 1D 배열과 2D 배열 간 브로드캐스팅
-arr1 = np.array([[1, 2, 3], [4, 5, 6]])
-arr2 = np.array([10, 20, 30])
-print("2D 배열 + 1D 배열:\n", arr1 + arr2)</code>
-</pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-3 -->
-    <div class="container">
-      <h3>브로드캐스팅 개념 이해 - 3 : 다차원 배열 브로드캐스팅</h3>
-      <p>작은 배열(여기서는 arr3 또는 arr4)이 큰 배열의 차원에 맞게 가상 확장됩니다.</p>
-      <p>확장된 배열을 기준으로 각 요소별(Element-wise) 연산이 수행됩니다.</p>
-    </div>
-    <!-- code-3 -->
-    <div class="code"> 
-      <h3>C</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-# 다차원 배열 브로드캐스팅
-arr3 = np.array([[1], [2], [3]])
-arr4 = np.array([10, 20, 30])
-print("2D 배열과 1D 배열 브로드캐스팅:\n", arr3 + arr4)</code>
-</pre>
-      </div>
-      <br></br>
-    </div >
-    
-    <!-- copy right -->
-    <div class="container">
-      <p>© JAJUCHA, www.jajcuha.com</p>
     </div>
 
-
-
-    
   </body>
 </html>

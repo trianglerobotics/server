@@ -8,6 +8,7 @@ import util from 'util';
 import { exec } from 'child_process';
 import wifi from 'node-wifi';
 import helmet from 'helmet';
+import fse from 'fs-extra';
 // import csp from "helmet-csp";
 
 const version = 1.1;

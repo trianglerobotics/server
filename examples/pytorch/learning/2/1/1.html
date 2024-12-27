@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -18,46 +19,43 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-    </script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>딥러닝 기초</h1>
-      <hr>
-      <h2>인공신경망의 기본 구조</h2>
-      <p><strong>입력값 \( x_i \)</strong>: 신경망에 처음 입력되는 값</p>
-      <p><strong>가중치 \( w_i \)</strong>: 노드 간 연결의 강도를 나타내는 값</p>
-      <p><strong>바이어스 \( b \)</strong>: 가중합에 더해주는 상수로, 출력값을 조정</p>
-      <p><strong>가중합 (전달함수)</strong>: 입력값과 가중치의 곱을 합한 값에 바이어스를 더한 결과</p>
-      <p><strong>활성화 함수 \( f \)</strong>: 가중합을 입력받아 최종 출력값을 생성하는 함수</p>
-      <br />
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_212.svg" alt="Placeholder image" />
-      </div>
-      <h2>다층 인공신경망 구조</h2>
-      <p>다층 인공신경망은 입력층, 출력층, 그리고 2개 이상의 은닉층으로 구성되어 있습니다.</p>
-      <p><strong>입력층</strong>: 데이터를 처음 받아들이는 층</p>
-      <p><strong>은닉층</strong>: 입력값을 받아 가중합을 계산하고 활성화 함수로 처리한 뒤, 다음 층으로 전달</p>
-      <p><strong>출력층</strong>: 신경망의 최종 결과를 제공하는 층</p>
-      <br />
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch_211.svg" alt="Placeholder image" />
-      </div>
-    </div>
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>선형회귀 개념</h3>
+      </div>
+      <p>선형회귀는 머신귀닝의 기본적인 알고리즘 중 하나로, 주어진 데이터를 가장 잘 설명할 수 있는 1차 함수 \( y = ax + b \) 를 찾는 과정입니다. 선형회귀는 다음과 같은 단계로 구성됩니다</p>
 
-    <div class="container">
-      <p>© JAJUCHA www.jajucha.com</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_211.svg" style="width: 200px;"  alt="Placeholder image" />
+      </div>       
+
+      <ul>
+        <li>1단계 : 처음에는 임의의 직선을 가정하고, 예측할 데이터를 준비합니다</li>
+        <li>2단계 : x 값을 넣었을 때 예측한 y 값(출력)과 실제 y 값(정답)을 비교 즉 손실을 계산합니다.</li>
+        <li>3단계 : 이 차이를 줄이기 위해 a,b값을 조금씩 조정합니다</li>
+        <li>4단계 : 이 과정을 반복해서 데이터에 가장 잘 맞는 직선을 찾아냅니다</li>
+      </ul>
     </div>
 
-
-    
   </body>
 </html>

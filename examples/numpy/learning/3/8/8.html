@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>인공신경망 학습 개념</h3>
+      </div>
+      <p>인공신경망 학습은 입력값을 기반으로 도출한 출력값을 정답값과 비교하여 가중치는 업데이트 하는 과정입니다.</p>   
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_381.gif" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>순전파</h3>
+      </div>
+      <p>입력값을 기반으로 출력값을 도출하는 과정을 순전파라고 합니다. 아래과 같은 간단한 신경망을 순전파 해 보고자 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_382.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <p style="margin-bottom: 0px;">STEP 1 : 입력값과 첫번째 가중치를 곱하여 z1 을 계산합니다</p>
+      <p style="margin-top: 0px;">
+        \[
+        z_1 = x_1 \cdot w_1 = 0.3 \cdot 0.2 = 0.06
+        \]
+      </p>
+
+      <p style="margin-bottom: 0px;">STEP 2 : z1을 시그모이드 함수에 넣어 h1을 출력합니다</p>
+      <p style="margin-top: 0px;">
+        \[
+        h1 = sigmoid(z1) = 0.514
+        \]
+      </p>
+
+      <p style="margin-bottom: 0px;">STEP 3 : h1에 두번째 가중치인 w2를 곱하여 z2를 생성합니다</p>
+      <p style="margin-top: 0px;">
+        \[
+        z2 = h1*w2 = 0.514*0.8 = 0.4112
+        \]
+      </p>
+
+      <p style="margin-bottom: 0px;">STEP 4 : z1를 시그모이드 함수에 넣어 o1을 생성합니다</p>
+      <p style="margin-top: 0px;">
+        \[
+        o1 = sigmoid(z2) = 0.601
+        \]
+      </p>    
+
+    </div>
+
+  </body>
+</html>

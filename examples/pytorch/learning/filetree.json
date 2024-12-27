@@ -1,7 +1,7 @@
 [
   {
     "section": 1,
-    "name": "01 딥러닝 기초",
+    "name": "01 인공지능 기초",
     "subsections": [
       {
         "subsection": 1,
@@ -12,7 +12,7 @@
       },
       {
         "subsection": 2,
-        "name": "02 딥러닝 개념",
+        "name": "02 인공지능의 분류",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
@@ -21,86 +21,129 @@
   },
   {
     "section": 2,
-    "name": "02 딥러닝 구조 및 용어",
+    "name": "02 선형회귀 : 머신러닝의 가장 기초",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 기본개념",
+        "name": "(1) 선형회귀와 머신러닝",
         "env": "type0",
         "location": "learning/2/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 가중치",
+        "name": "(2) 선형회귀의 데이터 이해하기",
         "env": "type0",
         "location": "learning/2/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 바이어스",
+        "name": "(3) 선형회귀 데이터의 손실 계산하기",
         "env": "type0",
         "location": "learning/2/3/codes",
         "target": "3.ipynb"
       },
       {
         "subsection": 4,
-        "name": "04 가중합",
+        "name": "(4) 손실함수의 기울기 계산",
         "env": "type0",
         "location": "learning/2/4/codes",
         "target": "4.ipynb"
       },
       {
         "subsection": 5,
-        "name": "05 활성화 함수",
+        "name": "(5) 경사하강법",
         "env": "type0",
         "location": "learning/2/5/codes",
         "target": "5.ipynb"
-      },
-      {
-        "subsection": 6,
-        "name": "06 손실함수",
-        "env": "type0",
-        "location": "learning/2/6/codes",
-        "target": "6.ipynb"
       }
     ]
   },
   {
     "section": 3,
-    "name": "03 딥러닝 학습",
+    "name": "03 딥러닝 : 인공지능의 핵심 기술",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 선형회기",
+        "name": "(1) 인공뉴런과 인공신경망",
         "env": "type0",
         "location": "learning/3/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 순전파",
+        "name": "(2)  인공뉴런의 구조 개요",
         "env": "type0",
         "location": "learning/3/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 역전파",
+        "name": "(3) 인공뉴런의 구조 1 : 가중치",
         "env": "type0",
         "location": "learning/3/3/codes",
         "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "(4) 인공뉴런의 구조 2 : 바이어스",
+        "env": "type0",
+        "location": "learning/3/4/codes",
+        "target": "4.ipynb"
+      },
+      {
+        "subsection": 5,
+        "name": "(5) 인공뉴런의 구조 3 : 가중합",
+        "env": "type0",
+        "location": "learning/3/5/codes",
+        "target": "5.ipynb"
+      },
+      {
+        "subsection": 6,
+        "name": "(6) 인공뉴런의 구조 4 : 활성화 함수",
+        "env": "type0",
+        "location": "learning/3/6/codes",
+        "target": "6.ipynb"
+      },
+      {
+        "subsection": 7,
+        "name": "(7) 인공뉴런의 구조 5 : 손실함수",
+        "env": "type0",
+        "location": "learning/3/7/codes",
+        "target": "7.ipynb"
+      },
+      {
+        "subsection": 8,
+        "name": "(8) 인공신경망 1 : 순전파",
+        "env": "type0",
+        "location": "learning/3/8/codes",
+        "target": "8.ipynb"
+      },
+      {
+        "subsection": 9,
+        "name": "(9) 인공신경망 2 : 역전파",
+        "env": "type0",
+        "location": "learning/3/9/codes",
+        "target": "9.ipynb"
+      },
+      {
+        "subsection": 10,
+        "name": "(10) 데이터 다루기",
+        "env": "type0",
+        "location": "learning/3/10/codes",
+        "target": "10.ipynb"
       }
+
     ]
   },
   {
     "section": 4,
-    "name": "04 합성곱 신경망",
+    "name": "04 합성곱 신경망 : 이미지 인식의 기술",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 합성곱 신경망 구조",
+        "name": "(1) 합성곱 신경망 개념",
         "env": "type0",
         "location": "learning/4/1/codes",
         "target": "1.ipynb"
@@ -108,48 +151,76 @@
       },
       {
         "subsection": 2,
-        "name": "02 입력층",
+        "name": "(2) 합성곱 신경망의 구조",
         "env": "type0",
         "location": "learning/4/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 합성곱층",
+        "name": "(3) 합성곱 신경망의 구조 1 : 입력층",
         "env": "type0",
         "location": "learning/4/3/codes",
         "target": "3.ipynb"
       },
       {
         "subsection": 4,
-        "name": "04 폴링층",
+        "name": "(4) 합성곱 신경망의 구조 2 : 합성곱층",
         "env": "type0",
         "location": "learning/4/4/codes",
         "target": "4.ipynb"
       },
       {
         "subsection": 5,
-        "name": "05 완전연결층",
+        "name": "(5) 합성곱 신경망의 구조 3 : 폴링층",
         "env": "type0",
         "location": "learning/4/5/codes",
         "target": "5.ipynb"
+      },
+      {
+        "subsection": 6,
+        "name": "(6) 합성곱 신경망의 구조 4 : 완전 연결층",
+        "env": "type0",
+        "location": "learning/4/6/codes",
+        "target": "6.ipynb"
+      },
+      {
+        "subsection": 7,
+        "name": "(7) 합성곱 신경망의 구조 5 : 활성화함수",
+        "env": "type0",
+        "location": "learning/4/7/codes",
+        "target": "7.ipynb"
+      },
+      {
+        "subsection": 8,
+        "name": "(8) 합성곱 신경망의 구조 6 : 손실함수",
+        "env": "type0",
+        "location": "learning/4/8/codes",
+        "target": "8.ipynb"
+      },
+      {
+        "subsection": 9,
+        "name": "(9) 합성곱 신경망의 활용 구조",
+        "env": "type0",
+        "location": "learning/4/9/codes",
+        "target": "9.ipynb"
       }
     ]
   },
   {
     "section": 5,
-    "name": "05 파이토치 기초",
+    "name": "05 파이토치 : 딥러닝 프레임워크",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01  패키지의 기본구성",
+        "name": "(1) 파이토치 기초",
         "env": "type0",
         "location": "learning/5/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 선형 회기 구현",
+        "name": "(2) 파이토치의 기능",
         "env": "type0",
         "location": "learning/5/2/codes",
         "target": "2.ipynb"
@@ -157,52 +228,12 @@
       },
       {
         "subsection": 3,
-        "name": "03 선형 회기 구현(클래스)",
+        "name": "(3) 파이토치 선형회기 구현",
         "env": "type0",
         "location": "learning/5/3/codes",
         "target": "3.ipynb"
-      }
-    ]
-  },
-  {
-    "section": 6,
-    "name": "06 파이토치 중급",
-    "subsections": [
-      {
-        "subsection": 1,
-        "name": "01 미니배치, 데이터로더",
-        "env": "type0",
-        "location": "learning/6/1/codes",
-        "target": "1.ipynb"
-      },
-      {
-        "subsection": 2,
-        "name": "02  합성곱과 폴링 구현",
-        "env": "type0",
-        "location": "learning/6/2/codes",
-        "target": "2.ipynb"
-      },
-      {
-        "subsection": 3,
-        "name": "03  단순한 CNN으로 MNIST 분류",
-        "env": "type0",
-        "location": "learning/6/3/codes",
-        "target": "3.ipynb"
-      }
-    ]
-  },
-  {
-    "section": 7,
-    "name": "7 파이토치 고급",
-    "subsections": [
-      {
-        "subsection": 1,
-        "name": "01 상용모델로 MNIST 분류",
-        "env": "type0",
-        "location": "learning/7/1/codes",
-        "target": "1.ipynb"
+        
       }
     ]
   }
-    
 ]

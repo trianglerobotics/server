@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -19,95 +20,100 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>넘파이 배열 생성</h1>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>머신러닝(선형회기) 에서의 학습</h3>
+      </div>
+      <p>머신러닝(선형회기)에서 흔히 ‘학습’한다고 표현합니다. 여기서 학습이란, 새로운 것을 알아가는 것뿐만 아니라 틀린 예측을 바로잡고 점점 더 정확하게 개선해 나가는 과정을 의미합니다.</p>
+
+      <br>
       <hr>
-      <h2 style="margin-bottom:3px">데이터 타입 설정 및 변환</h2>
-      <p>넘파이 배열은 모든 요소가 동일한 데이터 타입을 가집니다.</p>
-      <p>배열 생성 시 dtype을 명시하거나, 생성 후 astype()으로 타입을 변경할 수 있습니다.</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3 style="margin-bottom: 0px;">배열 생성 시 데이터 타입을 설정 합니다</h3>
-      <h3 style="margin-top: 0px;"> A 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
 
-# 1. 배열 생성 시 데이터 타입 설정
-arr1 = np.array([1, 2, 3], dtype=np.float32)
-print("float32 타입 배열:", arr1)
-print("데이터 타입:", arr1.dtype)  
-</code>
-</pre>
-</div>
-
-      <br></br>
-    </div >
-
-    <div class="code"> 
-      <h3 style="margin-bottom: 0px;">데이터 타입을 변환 합니다</h3>
-      <h3 style="margin-top: 0px;"> B 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-# 2. 데이터 타입 변환
-arr2 = np.array([1.1, 2.2, 3.3])
-print("기존 배열 데이터 타입:", arr2.dtype)
-</code>
-</pre>
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>선형회귀 손실 예시</h3>
       </div>
-      <br></br>
-    </div >
+      <p>선형회귀에서 손실이란, 틀린 예측의 정도를 의미합니다. 전에 다루었던 자동차 데이터를 학습한다고 가정해 보겠습니다. 
+        먼저, 데이터를 함수에 넣기 전에 함수의 초기 값을 설정해야 합니다. 이를 위해 함수 \( y = ax + b \)를  단순히 \( y = x + 1 \) 로 가정해보겠습니다.</p>
 
-    <div class="code"> 
-      <h3 style="margin-bottom: 0px;">int로 변환 합니다</h3>
-      <h3 style="margin-top: 0px;"> C 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-  
-# 3. int로 변환
-arr2_int = arr2.astype(np.int32)
-print("int32 타입으로 변환된 배열:", arr2_int)
-print("변환 후 데이터 타입:", arr2_int.dtype)
-</code>
-</pre>
+      <ul>
+        <li>\( x = 1 \)일 때, 함수의 예측값과 데이터의 실제값(참값)은 동일합니다.</li>
+        <li>그러나 \( x = 2 \), \( x = 2 \) 으로 입력값이 증가할수록, 함수가 예측한 값과 실제 데이터 값 사이의 차이가 커지게 됩니다.</li>
+      </ul>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_231.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>선형회귀 손실 분석</h3>
       </div>
-      <br></br>
-    </div >
 
-    <div class="code"> 
-      <h3 style="margin-bottom: 0px;">불리언 타입 배열을 생성합니다</h3>
-      <h3 style="margin-top: 0px;"> D 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import numpy as np
-        
-# 4. 불리언 배열
-arr3 = np.array([0, 1, 2, 3], dtype=bool)
-print("불리언 타입 배열:", arr3)
-</code>
-</pre>
+      <p>발생하는 데이터의 차이를 이용해서 a,b를 개선해 나가기 위해서는 이를 수학적으로 분석해야 합니다. 이러한 차이를 표현하는 방법에는 여러가지가 있지만 선형회귀에서는 대표적으로 평균 제곱 오차를 사용합니다.</p>
+
+      <p>\[\text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2\]</p>
+      <p>
+        \( n \) : 총 데이터 갯수 <br>
+        \( y_i \) : i 번째 데이터의 참값 <br>
+        \( \hat{y}_i \) : i 번째 데이터의 예측값
+      </p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>평균제곱 오차 계산</h3>
       </div>
-      <br></br>
-    </div >
+      <p>현재 가정한 손실함수와 데이터를 이용해서 평균제곱오차를 구해보겠습니다 3개의 데이터의 x값을 넣어 도출한 평균제곱 오차는 다음과 같습니다.</p>
+      <p style="overflow-x: auto;">\[
+        \text{MSE} = \frac{1}{3} \left[ (2 - 2)^2 + (4 - 3)^2 + (6 - 4)^2 \right] = \frac{1}{3} \left( 0 + 1 + 4 \right) = \frac{5}{3}
+        \]
+      </p>
 
-    <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>평균제곱 오차 계산</h3>
+      </div>
+      <p>하지만 여기서 한가지 문제가 발생하게 됩니다. 손실함수가 얼마나 큰지는 구했지만.  a와 𝑏를 어떻게 수정해야 할지 감이 오지 않을 수 있습니다. 우선 2차 함수인 평균제곱 오차 함수의 그래프를 각각 a,b에 대하여 그려보겠습니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_232.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>𝑎 와 𝑏 를 수정하려는 목적은 손실함수(평균제곱오차 함수)를 줄이는 것입니다. 이를 위해, 손실 함수의 기울기(Gradient)를 계산하고, 그 기울기가 감소하는 방향으로 𝑎와 𝑏를 조금씩 업데이트해 나가면, 결과적으로 최적의 𝑎와 𝑏 를 찾을 수 있습니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch/torch_233.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div>  
+
     </div>
 
-
-    
   </body>
 </html>
