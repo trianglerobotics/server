@@ -10,12 +10,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.9",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "helmet": "^8.0.0",
     "helmet-csp": "^4.0.0",
     "node-wifi": "^2.0.16",
     "socket.io": "^4.8.0",
+    "unzipper": "^0.12.3",
     "ws": "^8.18.0"
   }
 }

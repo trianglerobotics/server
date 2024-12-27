@@ -12,6 +12,7 @@ import path from 'path';
 import fs from 'fs'
 import unzipper from 'unzipper'
 import fse from 'fs-extra';
+import axios from 'axios';
 
 const version = 1.1;
 
@@ -55,6 +56,14 @@ async function handleWifiConnection(ssid, password, sudoPassword) {
     console.error('Failed to connect to Wi-Fi:', error);
     // Handle the error case here (retry, show message, etc.)
   }
+}
+
+function prepareBroadcastData(status, stdout, stderr) {
+  return {
+      status: status || "unknown", // Default value if status is undefined
+      info: stdout || "", // Default to an empty string if stdout is undefined
+      info2: stderr || "" // Default to an empty string if stderr is undefined
+  };
 }
 
 function broadcast(message) {
@@ -112,19 +121,11 @@ function connectToWifi(ssid, password, sudoPassword) {
           return;
         }
   
-        // console.log(`Connected to Wi-Fi: ${stdout}`);
         resolve('Connected to Wi-Fi');
       });
     });
 }
 
-function prepareBroadcastData(status, stdout, stderr) {
-    return {
-        status: status || "unknown", // Default value if status is undefined
-        info: stdout || "", // Default to an empty string if stdout is undefined
-        info2: stderr || "" // Default to an empty string if stderr is undefined
-    };
-}
   
 const executecommand = async (command) => {
 try {
@@ -161,7 +162,7 @@ app.get('/api/control/get/networks', async (req, res) => {
         if (error) {
           return res.status(500).json({ error: 'Failed to scan Wi-Fi networks' });
         } else {
-            console.log(networks);
+            // console.log(networks);
           // Send both the connected Wi-Fi status and available networks
           return res.status(200).json({
             connected: connectedWifi ? true : false, // Indicates if connected to Wi-Fi
@@ -219,8 +220,6 @@ app.get('/api/control/conn/networks/:selectedNetwork/:password', async (req, res
     }
 });
 
-
-
 async function installUpdatedFiles(downloadedPath, targetPath) {
   try {
       console.log(`Installing updated files from ${downloadedPath} to ${targetPath}...`);
@@ -242,14 +241,27 @@ async function installUpdatedFiles(downloadedPath, targetPath) {
       await fse.copy(downloadedPath, targetPath, { overwrite: true });
 
       console.log('Files installed successfully!');
+      //exit
+
+      
+
   } catch (error) {
       console.error(`Error installing updated files: ${error.message}`);
   }
 }
 
+const checkversion = async () => {
+  try {
+    const version = axios.get('http://http://141.164.60.140:7000/api/version');
+    return  version;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+}
+
 app.get('/api/control/update', async (req, res) => {
 
-    console.log('update');
+    console.log('try to update');
 
     const downloadUrl = 'http://141.164.60.140:7000/download/update.zip'; // Replace with the actual file URL
     const tempFolder = '/tmp'; // Temporary directory
@@ -258,6 +270,7 @@ app.get('/api/control/update', async (req, res) => {
     try {
 
         // Step 1: Download file to the /tmp
+        // Status = Downloading
         try {
           console.log(`Downloading file from ${downloadUrl}`);
           await new Promise((resolve, reject) => {
@@ -275,6 +288,8 @@ app.get('/api/control/update', async (req, res) => {
                       downloadedBytes += chunk.length;
                       const percentage = ((downloadedBytes / totalBytes) * 100).toFixed(2);
                       process.stdout.write(`Downloaded: ${percentage}%\r`);
+                      const broadcast_data = prepareBroadcastData('downloading', `Downloading : ${percentage}%`, '');
+                      broadcast(broadcast_data);
                   });
 
                   response.pipe(file);
@@ -292,7 +307,13 @@ app.get('/api/control/update', async (req, res) => {
           return; // Stop execution if download fails
         }
 
+
+        const broadcast_data2 = prepareBroadcastData('', `Unzipping`, '');
+        broadcast(broadcast_data2);
+        
+
         // Step 2: Unzip file to the /tmp/update
+        // Status = Unzipping
         try {
           console.log(`Unzipping file: ${zipFilePath} to ${extractedFolderPath}`);
           await fs.createReadStream(zipFilePath)
@@ -303,68 +324,39 @@ app.get('/api/control/update', async (req, res) => {
           console.error(`Error unzipping file: ${error.message}`);
         }
 
+        // status: Install updated files
+
+        const broadcast_data3 = prepareBroadcastData('', `installing`, '');
+        broadcast(broadcast_data3);
+
         // Step 3: Install updated files
-        await installUpdatedFiles("/tmp/update/server/examples","/home/server/examples") //examples
-        await installUpdatedFiles("/tmp/update/server/models","/home/server/models") // models
-        await installUpdatedFiles("/tmp/update/server/sv_host","/home/server/sv_host") //sv_host
-        await installUpdatedFiles("/tmp/update/server/ui_host","/home/server/ui_host") //ui_host
-        await installUpdatedFiles("/tmp/update/server/updatedb","/home/server/updatedb") //ui_host
+        await installUpdatedFiles("/tmp/update/server/examples",`${home}/server/examples`) //examples
+        await installUpdatedFiles("/tmp/update/server/models",`${home}/server/models`) // models
+        await installUpdatedFiles("/tmp/update/server/sv_host",`${home}/server/sv_host`) //sv_host
+        await installUpdatedFiles("/tmp/update/server/ui_host",`${home}/server/ui_host`) //ui_host
+        await installUpdatedFiles("/tmp/update/server/updatedb",`${home}/server/updatedb`) //updatedb
 
 
         // Step 4: Update DB
-        await executecommand('sudo chmod 777 /home/linuxuser/server/updatedb/updatemysql.sh')
-        await executecommand('/home/linuxuser/server/updatedb/updatemysql.sh')
+        await executecommand('echo 1111 | sudo -S chmod 777 ~/server/updatedb/updatemysql.sh')
+        await executecommand('echo 1111 | sudo -S ~/server/updatedb/updatemysql.sh')
 
         // Step 4: Restart services
           //1. ui_host
           //2. sv_host
-        await executecommand('sudo systemctl restart jc_sv.service')
-        await executecommand('sudo systemctl restart jc_ui.service')
+        await executecommand('echo 1111 | sudo -S systemctl restart jc_sv.service')
+        await executecommand('echo 1111 | sudo -S systemctl restart jc_ui.service')
+
+        // Step 5: Cleanup
+
+        let broadcast_data = prepareBroadcastData('finished', 'starting', 'stderr');
+        broadcast(broadcast_data);
 
       }
     catch{
       
     }
-  
-    //   try {
 
-
-    //     //Download zip file to the server and save to the /tmp folder 
-    //     //server is 141.164.60.140:3000/Downloads
-
-        
-
-        
-
-    //     //check the Download has been Executed
-
-
-    //     //unzip
-
-
-    //     //Change sv_host , ui_host , examples , sv_host to the updated folder
-
-    //     await executeUpdate('updatedb','./updatemysql.sh');
-    //     await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_ui.service');
-    //     await executeUpdate('','echo 1111 | sudo -S systemctl restart jc_sv.service');
-    //     await executeUpdate('','pip install jajucha2 --upgrade');
-
-    //     //wait for 2 seconds
-    //     await new Promise(resolve => setTimeout(resolve, 4000));
-
-
-    //     let broadcast_data = prepareBroadcastData('finished', 'stdout', 'stderr');
-    //     broadcast(broadcast_data);
-  
-    //     broadcast('finished');
-    //     console.log('Update complete.');
-  
-    //   } catch (err) {
-    //     console.error('Download failed:', err.message);
-    //   }
-    // })();
-  
-    // res.status(200).json({'message': 'update success'});
   });
 
 server.listen(port, () => {

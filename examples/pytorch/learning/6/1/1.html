@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+
+    
+
+     <!-- explain-1 -->
+    <div class="container">
+      <h1>파이토치 중급</h1>
+      <hr>
+      <h2 style="margin-bottom: 3px;">[미니배치,데이터로더]</h2>
+      <h3>1.미니배치 개념</h3>
+      <p>선형 회기를 진행한다고 가정합니다</p>
+      <p>일반적으로 데이터가 적을 경우에는 가지고 있는 데이터를 한번에 모두 활용하여 선형회기를 진행할 수 있지만 너무 많은 데이터를 한번에 연산하면
+        컴퓨터에 무리가 올 수 있습니다. 이런 경우에는 데이터를 나누어서 연산을 진행합니다. 이때 나누어진 데이터를 <strong>미니배치</strong>라고 합니다</p>
+      </p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_611.svg"  alt="Placeholder image" />
+      </div>
+      <p>쪼갠 미니배치로 로 1번 연산을 진행하는것을 이더레이션(iteration)이라고 모든 미니배치로 연산을 진행한것을 에폭(epoch)라고 합니다 </p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_612.svg"  alt="Placeholder image" />
+      </div>
+      <p>데이터가 2000개가 있다고 가정합니다. 이는 200개로 구성된 10개의 미니배치로 나눌 수 있으며 10번 연산(이터레리이션)을 진행하면 1 에폭(epoch)이 완료된 것입니다.</p>
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/torch_613.svg"  alt="Placeholder image" />
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <h3>2.미니배치 구현하기(데이터로더)</h3>
+      <p>2.1. <strong></strong>필요한 라이브러리 임포트</strong></p>
+      <p>미니배치를 구현하기 위해서는 파이토치의 <strong>데이터로더</strong>를 사용합니다</p>
+      <p>데이터로더는 데이터셋을 미니배치 단위로 쪼개서 데이터를 로드할 수 있도록 도와줍니다</p>
+    </div>
+
+    <div class="code">
+      <h3>A 실행하여 파이토치,데이터로더를 가져오세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+import torch
+from torch.utils.data import Dataset, DataLoader</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>2.2. <strong>사용자 정의 데이터셋</strong></p>
+      <p>Dataset 클래스를 상속받아 데이터셋을 정의합니다. 파이토치의 Dataset 클래스는 데이터셋을 의미합니다</p>
+    </div>
+
+    <div class="code">
+      <h3>B 실행하여 클래스를 생성하세요</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+class CustomDataset(Dataset):
+  def __init__(self, data, labels):
+      # 데이터와 레이블 저장
+      self.data = data
+      self.labels = labels
+
+  def __len__(self):
+      # 데이터셋의 길이 반환
+      return len(self.data)
+
+  def __getitem__(self, idx):
+      # 인덱스를 통해 데이터와 레이블 반환
+      sample = self.data[idx]
+      label = self.labels[idx]
+      return sample, label</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>2.3. <strong>데이터 준비</strong></p>
+      <p>데이터와 레이블을 생성합니다.</p>
+    </div>
+
+    <div class="code">
+      <h3>C 실행하여 데이터를 생성합니다</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# 샘플 데이터 (tensor 형태로 준비)
+data = torch.arange(100).view(-1, 1)  # 100개의 샘플
+labels = torch.arange(100)           # 레이블 (0부터 99까지)
+
+# 데이터셋 생성
+dataset = CustomDataset(data, labels)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>2.4. <strong>데이터로더 생성</strong></p>
+      <p>DataLoader를 통해 데이터셋을 배치 단위로 로드합니다.</p>
+    </div>
+
+    <div class="code">
+      <h3>D를 실행하여 데이터를 로드합니다</h3>
+      <div class="code_div">
+        <pre>
+          <code class="language-python">
+# DataLoader 생성
+dataloader = DataLoader(dataset, batch_size=10, shuffle=True)
+
+# 배치 단위로 데이터 확인
+for batch_idx, (samples, labels) in enumerate(dataloader):
+    print(f"Batch {batch_idx + 1}")
+    print("Samples:", samples)
+    print("Labels:", labels)</code>
+        </pre>
+      </div>
+      <br></br>
+    </div>
+
+    <div class="container">
+      <p>© JAJUCHA, www.jajucha.com</p>
+    </div>
+
+
+    
+  </body>
+</html>
