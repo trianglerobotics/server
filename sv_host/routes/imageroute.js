@@ -29,7 +29,7 @@ function startPythonScript(dbtype) {
     }
     else if(dbtype === 'classification')
     {
-        pythonScriptPath = path.resolve(__dirname, '../python/stream.py');
+        pythonScriptPath = path.resolve(__dirname, '../python/stream_yolo.py');
     }
 
     else if(dbtype === 'racing')
