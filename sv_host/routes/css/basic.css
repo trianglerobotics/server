@@ -8,6 +8,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'MyFont2';
+  src: url('../fonts/Roboto-Medium.ttf') format('truetype'); 
+  /* src: url('https://example.com/fonts/Inter-Regular.woff2') format('truetype'); */
+  font-weight: normal;
+  font-style: normal;
+}
+
 .api-docs {
   flex-direction: column;
   background-color: white; /* Equivalent to Tailwind's bg-gray-900 */
@@ -31,34 +39,49 @@
 .example {
   display: flex;
   align-items: center;
-  border: 2px solid #75B2C2; /* Border color */
-  border-radius: 20px; /* Rounded corners for the container */
-  padding-right: 0px; /* Padding only on the right side */
-  width: fit-content;
-  height: 35px; /* Fixed height */
-  background-color: #ffffff; /* Background color */
-  margin-top: 10px; /* Top margin */
-  margin-bottom: 10px; /* Bottom margin */
+  height: 36px;
+  position: relative; /* Required for positioning the pseudo-element */
+  margin-bottom: 15px;
 
-  .text{
-    padding-left: 10px; /* Padding only on the right side */
-    padding-right: 5px;
-  }
-
-  .icon_ex {
-    background-color: #2F859D; /* Background color for the slot */
-    border-radius: 25px; /* Rounded corners only on the left side */
-    height: 100%; /* Make it the full height of the container */
-    padding: 0 15px; /* Horizontal padding for slot shape */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #75B2C2;
-    border-right: none;
-    margin-right: 0px;
-    color: white;
+  .text {
+    padding-left: 10px;
+    font-size: large;
+    color: #000000;
+    font-family: "MyFont2"
   }
 }
+
+.example::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /* Position the line at the bottom */
+  left: 17px; /* Start the line 10px from the left */
+  top: 36px;
+  width: calc(100% - 10px); /* Line spans the remaining width */
+  height: 3px; /* Thickness of the line */
+  background-color: #75B2C2; /* Line color */
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon_ex {
+  background-color: #2F859D; /* Background color for the slot */
+  border: 3px solid #75B2C2;
+  height: 36px; /* Full height of the container */
+  width: 36px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+  color: white;
+}
+
+
+
 
 
 .icon {
@@ -157,6 +180,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 3%;
   font-size: 18px;
   border: 2px solid #EEEEEE; /* Retain this border */
+  line-height: 32px;
   
   display: flex; /* Enable Flexbox */
   align-items: center; /* Vertically center the text */
@@ -260,6 +284,7 @@ p {
   line-height: 32px;        /* Maintain comfortable line spacing */
   font-size: 18px;            /* Set a readable font size */
   font-weight: 300;           /* Use a light font weight for better readability */
+  text-align: justify;
 }
 
 .answer

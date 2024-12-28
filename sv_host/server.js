@@ -56,11 +56,14 @@ motorserver.on('listening', () => {
 
 motorserver.bind(PORT,HOST);
 
+
+
+
 const app = express();
 const server = http.createServer(app);
 const port = 4000;
 
-const version = 1.51;  
+const version = 1.52;  
 
 import { fileURLToPath } from 'url';
 
@@ -115,6 +118,30 @@ app.get('/api/motorstatus', (req, res) => {
   res.send({ storedData });
   //console.log(storedData)
 });
+
+app.get('/api/diskusage', async (req, res) => {
+  try {
+    const path = '/'; // Root path for disk usage
+    const info = await getDiskUsage(path);
+    res.json(info); // Send the disk usage info as a JSON response
+  } catch (error) {
+    console.error('Error fetching disk usage:', error);
+    res.status(500).send({ error: 'Failed to fetch disk usage' });
+  }
+});
+
+// Utility function to get disk usage
+async function getDiskUsage(path) {
+  return new Promise((resolve, reject) => {
+    disk.check(path, (err, info) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(info);
+      }
+    });
+  });
+}
 
 app.post('/api/login', async (req, res) => {
   if (req.session.num === undefined)
