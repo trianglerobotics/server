@@ -15,7 +15,7 @@ if architecture == 'aarch64':
 elif architecture == 'x86_64':
     url = 'http://121.184.63.113:4000/center'
 
-compression_rate = 50  # Initial compression rate
+compression_rate = 75  # Initial compression rate
 
 def center_crop(image):
     h, w = image.shape[:2]
@@ -44,7 +44,7 @@ while True:
     #cropped_frame = center_crop(frame)
 
     # Resize the cropped image to 640x640
-    resized_frame = cv2.resize(frame, (640, 400))
+    resized_frame = frame
     
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), compression_rate]
     _, buffer = cv2.imencode('.jpg', resized_frame, encode_param)
@@ -53,6 +53,6 @@ while True:
 
     data = {'image': jpg_as_text}
     response = requests.post(url, json=data)
-
+    time.sleep(0.25)
     if response.status_code != 200:
         print('Failed to send data')

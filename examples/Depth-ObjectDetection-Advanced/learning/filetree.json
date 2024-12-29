@@ -1,0 +1,89 @@
+[
+  {
+    "section": 1,
+    "name": "01 basic 단계 문제점 파악하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 시작",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 분류 성능 향상 전략 구상하기",
+        "env": "type0",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 데이터 수집하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 자주차의 동작 클래스 설정하기",
+        "env": "type1",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 코스 구간 별 데이터 수집하기",
+        "env": "type2",
+        "location": "learning/2/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "02 인공지능 학습하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 인공지능 모델 설정하기",
+        "env": "type3",
+        "location": "learning/3/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 인공지능 학습하기",
+        "env": "type0",
+        "location": "databases",
+        "target": "train.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 결과 테스트 하기",
+        "env": "type0",
+        "location": "databases",
+        "target": "test.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 4,
+    "name": "04 모델 저장하고 실행하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 학습한 모델 저장하기",
+        "env": "type4",
+        "location": "learning/4/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 저장한 모델 불러와 주행하기",
+        "env": "type0",
+        "location": "learning/4/2/codes",
+        "target": "2.ipynb"
+      }
+    ]
+  }
+]

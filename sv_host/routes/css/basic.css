@@ -146,6 +146,7 @@
       justify-content: center;
       align-items: center;
       margin: 1rem;
+      
   }
 }
 
@@ -155,16 +156,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
-.code_div {
-  font-family: 'Roboto','MyFont', 'Georgia', serif;
-  width:90%;
-  overflow-x: auto; 
-  background-color: white;
-  border-radius: 5px;
-  padding-left: 5%;
-  padding-right: 5%;
-  font-size: 0.8rem;
-}
 
 .code_box_exp {
   font-family: 'Roboto', 'MyFont', 'Georgia', serif;
@@ -191,7 +182,6 @@ h1, h2, h3, h4, h5, h6 {
 .code_box_exe {
   font-family: 'Roboto', 'MyFont', 'Georgia', serif;
   width: 90%;
-  overflow-x: auto; 
   background-color: rgb(240, 240, 240);
   border-radius: 5px;
   padding-left: 5%;
@@ -201,12 +191,20 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 3%;
   padding-bottom: 3%;
   font-size: 18px;
-  border: 2px solid #9e9e9e; /* Retain this border */
+  border: 2px solid #d6d6d6; /* Retain this border */
   
-  display: flex; /* Enable Flexbox */
-  align-items: center; /* Vertically center the text */
-  justify-content: center; /* Horizontally center text, optional */
-  text-align: center; /* Center-align the text, optional */
+  
+  .code_div {
+    font-family: 'Roboto','MyFont', 'Georgia', serif;
+    width: 90%;
+    overflow-x: auto; 
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
 }
 
 .code_title {
@@ -385,11 +383,23 @@ li::marker {
 {
   background: #3e81f0;
   color: white;
+  padding: 7px;
+  margin: 3px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+.skyblue
+{
+  background: #E7F0FE;
+  color: #2463EB;
   padding: 5px;
   margin: 3px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
+  font-size: 13px;
 }
 .red
 {

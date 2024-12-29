@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://158.247.227.21:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>저장된 모델 확인하기</h3>
+      </div>
+
+      <p>오른쪽 메뉴의 <img src="http://121.184.63.113:4000/images/assets/model.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 버튼을 누르면 저장된 모델들의 이름과 종류를 확인 할 수 있습니다 </p>      
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_421.svg" style="width:300px" alt="Placeholder image" />
+      </div>
+
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code A 에 선정한 모델 이름을 입력한 후 실행하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+NAME = 'NewModel'&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>라이브러리 가져오기</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;모델을 불러오기 전에 B를 실행시켜, 자주차, 파이토치 라이브러리를 가져온 후에 자주차 ai 모듈을 활성화 합니다</p>
+
+      <div class="holder">
+        <div class="icon">
+          <img src="http://158.247.227.21:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ai모듈 로딩 함수
+        </div>
+      </div>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2.load_ai()</code>
+      </div>
+
+      <ul>
+        <li>jajucha2 라이브러리에서 ai 모듈을 사용할 수 있도록 로드합니다. ai 모듈은 로드하는데 4-5초 정도 소요됩니다</li>
+      </ul>
+      <br>
+      
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code B 실행하여 필요한 라이브러리를 로딩 합니다</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>주행하기</h3>
+      </div>
+
+      <p>Code C에 를 실행하여 자주차를 주행합니다. 코드를 실행하기 전에 데이터를 수집했던 트랙에 자주차를 위치 시켜야 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_422.svg" style="width:300px" alt="Placeholder image" />
+      </div>
+
+      <div class="holder">
+        <div class="icon">
+          <img src="http://158.247.227.21:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ai 모델 출력 함수
+        </div>
+      </div>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">get_model_output(input,name)</code>
+      </div>
+
+      <ul>
+        <li>input : 모델의 넣어줄 입력값 입니다</li>
+        <li>name : 사용할 모델의 이름 입니다</li>
+      </ul>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code C 를 실행하여 자주차 주행을 시작합니다</p>
+
+    </div>
+
+  </body>
+</html>

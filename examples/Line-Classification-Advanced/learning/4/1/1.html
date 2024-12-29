@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://158.247.227.21:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>모델 저장의 배경</h3>
+      </div>
+      <p>&nbsp;&nbsp;인공지능 모델은 현재 프로젝트 내부에 저장되게 됩니다. 하지만. 다른 프로젝트 내부에서 인공지능 모델을 사용하려고 하면 모델이 저장된 경로를 수동으로 입력해 주어야 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_411.svg" style="width:350px" alt="Placeholder image" />
+      </div>
+
+      <p>&nbsp;&nbsp;따라서 자주차 내부 저장소에  새로운 이름으로 모델을 저장하고, 저장된 이름으로 모델을 불러 오려고 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_412.svg" style="width:350px" alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>모델을 내부메모리에 저장하기 - 1</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;우선 테스트 과정에서 실행하였던 모델중 저장할 모델의 이름을 클릭합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_413.svg" style="width:400px" alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>모델을 내부메모리에 저장하기 - 2</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;저장할 모델을 선택했다면 이름을 타이핑 한 후 save 하여 모델을 저장합니다</p>
+
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_414.svg" style="width:400px" alt="Placeholder image" />
+      </div>
+
+    </div>
+
+  </body>
+</html>

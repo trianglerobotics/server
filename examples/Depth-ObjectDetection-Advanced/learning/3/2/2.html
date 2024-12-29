@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://158.247.227.21:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>필요한 기능 가져오기</h3>
+      </div>
+      <p>&nbsp;&nbsp;인공지능 모델을 학습하기 위해서는 우선 파이토치 라이브러리를 가지고 와야 합니다. </p>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://158.247.227.21:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp;Code A 를 실행하여 필요한 기능을 가져오세요</p>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>학습 파라미터 설정하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;인공지능 학습을 위해서는 사람이 수동으로 지정 해주어야 할 하이퍼 파라미터가 있습니다. </p>
+      <ul>
+        <li>EPOCH(에폭) : 전체 데이터로 학습할 횟수</li>
+        <li>BATCH_SIZE(배치크기) : 미니배치 경사하강법에서 이터레이션 당 사용할 데이터의 갯수</li>
+        <li>LR(학습률) : 경사하강법에서 학습률 </li>
+        <li>TRAIN_DATA_PERCENT(학습데이터 비율) : 전체 데이터에서 학습데이터로 사용할 데이터의 비율</li>
+      </ul>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp;Code B 를 를 실행하여 파라미터를 설정하세요</p>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>데이터 로더 설정하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;인공지능 학습을 위한 파라미터를 설정 하였다면 실질적으로 학습 도중에 데이터를 관리해줄 데이터 로더가 필요합니다. 데이터 로더는 파이토치를 이용하여 정의할 수 있습니다 </p>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp;Code C 실행하여 데이터 로더를 정의하세요</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>모델 출력차원 변경하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;인공지능 모델을 거친후 최종 출력의 크기는 클래스의 갯수와 같아야 합니다. 하지만 기본적으로 정의된 RESNET 모델은 클래스가 임의로 지정되어 있기 때문에 출력 차원의 크기를 변경 해 주어야 합니다</p>
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_321.svg" style="height: 300px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp;Code D를 실행하여 출력차원을 변경하세요</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>손실함수 , 옵티마이저 정의하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;실질적인 학습을 진행하기전 역전파를 위한 손실함수와 옵티마이저를 정의합니다</p>
+      <ul>
+        <li>손실함수 : 모델의 예측값과 실제 값(정답) 사이의 차이를 수치화</li>
+        <li>손실함수를 최소화하기 위해 모델의 파라미터(가중치, 편향)를 업데이트 </li>
+      </ul>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code E</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp;Code E 를 실행하여 손실함수 , 옵티마이저를 정의하세요</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">6</div>
+        <h3>학습</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;학습을 진행하면 아래 그림과 같은 그래프가 표시됩니다</p>
+      <ul>
+        <li>Train Accuracy : 학습데이터 기반 정확도 </li>
+        <li>Test Accuracy : 테스트 데이터 기반 정확도</li>
+      </ul>
+      <p>&nbsp;&nbsp;Test Accuracy 가 학습되지 않은 데이터로 실질적 테스트를 진행 하는것 이기 때문에 Test Accuracy를 보는것이 중요합니다. </p>
+
+            
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCA/lca_322.svg"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code F</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp;Code F 를 실행하여 학습을 진행하세요</p>
+
+    </div>
+
+  </body>
+</html>
