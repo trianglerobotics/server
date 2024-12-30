@@ -28,6 +28,8 @@ import disk from 'diskusage';
 // 데이터베이스 모듈 가져오기
 // import { getDatabases } from './database.js';
 
+const version = 1.56;  // Replace with your own version number
+
 let storedData = '';
 
 const motorserver = dgram.createSocket('udp4');
@@ -61,8 +63,6 @@ motorserver.bind(PORT,HOST);
 const app = express();
 const server = http.createServer(app);
 const port = 4000;
-
-const version = 1.55;  
 
 import { fileURLToPath } from 'url';
 

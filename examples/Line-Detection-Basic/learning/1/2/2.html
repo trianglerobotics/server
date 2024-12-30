@@ -30,6 +30,23 @@
       </div>
       <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
 
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          자주차 라이브러리 이름
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2</code>
+      </div>
+
+      <ul>
+        <li>jajucha2 : 자주차에 필요한 함수를 담고 있는 라이브러리 입니다</li>
+      </ul>
+
       <br>
 
       <div class="example">
@@ -68,6 +85,23 @@ import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
 
       <p>자주차의 함수를 이용하여 RGB 함수를 받아와 변수에 저장합니다</p>
 
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          자주차 이미지 가져오기 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2.camera.get_image(location='center')</code>
+      </div>
+
+      <ul>
+        <li>location : 이미지를 가져올 카메라 위치를 지정합니다. 'left','center','right'</li>
+      </ul>
+
       <br>
       
       <div class="example">
@@ -101,8 +135,26 @@ frame = jajucha2.camera.get_image('center')&nbsp;&nbsp;&nbsp;&nbsp;</code>
         <div class="square-box">3</div>
         <h3>이미지 표시하기</h3>
       </div>
-      <p>자주차에서 받아온 이미지를 자주차 'center' 이미지뷰어에 퀄리티 '90'으로 표시합니다, 출력된 이미지는 다음과 같습니다.</p>
-  
+      
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          자주차 이미지 가져오기 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2.camera.shoe_image(image,location='center',quality=20)</code>
+      </div>
+
+      <ul>
+        <li>image : 표시할 이미지를 지정합니다. numpy.ndarray 타입</li>
+        <li>location : 이미지를 표시할 위치를 지정합니다. 'left','center','right','depth',lidar'</li>
+        <li>quality : 이미지의 퀄리티를 지정합니다. 0~100 사이의 정수</li>
+      </ul>
+
       <br>
       
       <div class="example">
@@ -114,8 +166,8 @@ frame = jajucha2.camera.get_image('center')&nbsp;&nbsp;&nbsp;&nbsp;</code>
           <!-- <div class="line"></div> -->
         </div>
       </div>
-
-      <p>&nbsp;&nbsp;Code C 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성,실행하세요 </p>
+      
+      <p>&nbsp;&nbsp;Code C 에 'frame' 이미지를 자주차 'center' 이미지뷰어에 퀄리티 '90'으로 표시합니다 </p>
 
       <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/assets/image.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
 

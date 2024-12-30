@@ -28,12 +28,27 @@
         <div class="square-box">1</div>
         <h3>가져온 이미지를  blur 처리하기</h3>
       </div>
-      <p>'center' 카메라에서 가져온 이미지를 opencv 함수를 이용하여 3x3 커널로 gaussian-blur 처리하여 노이즈를 제거합니다'.</li>    
-      <p>출력되는 이미지는 다음과 같습니다</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LDB/ldb_121.svg"  alt="Placeholder image" />
-      </div>
-
+        <div class="holder">
+          <div class="icon">
+            <img src="http://121.184.63.113:4000/images/assets/opencv_icon(white).svg" alt="PyTorch Logo">
+          </div>
+          <div class="text">
+            opencv gaussian-blur 함수
+          </div>
+        </div>
+  
+        <div class="code_box_exp">
+          <code class="language-python" style="text-align: left;">cv2.GaussianBlur(src, ksize, sigmaX, dst=None, sigmaY=None, borderType=None)</code>
+        </div>
+  
+        <ul>
+          <li>src : 입력 이미지</li>
+          <li>ksize : 커널 크기</li>
+          <li>sigmaX : X 방향 표준편차</li>
+          <li>dst : 출력 이미지</li>
+          <li>sigmaY : Y 방향 표준편차</li>
+          <li>borderType : 가장자리 픽셀 확장 방법</li>
+        </ul>
 
 
       <br>
@@ -48,7 +63,7 @@
         </div>
       </div>
 
-      <p>&nbsp;&nbsp;Code A 에 가져온 이미지를 blur 처리하세요</p>
+      <p>&nbsp;&nbsp;Code A 에 'center' 카메라에서 가져온 이미지를 opencv 함수를 이용하여 3x3 커널로 gaussian-blur 처리하여 노이즈를 제거합니다'.</p>
 
       <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/assets/image.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
 
@@ -60,6 +75,9 @@
             <code class="language-python">
 blurred = cv2.GaussianBlur(frame, (3, 3), 0)&nbsp;&nbsp;&nbsp;&nbsp;</code>
           </pre>
+        </div>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/LDB/ldb_121.svg"  alt="Placeholder image" />
         </div>
         </details>
       </div>

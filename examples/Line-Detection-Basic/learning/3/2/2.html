@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <p>&nbsp;&nbsp;Code A 에 직진중 detected_y 가 70미만일 경우 조향각을 10으로 설정하여 자주차를 우회전 하는 코드를 작성후 실행하세요</p>
+      <p>&nbsp;&nbsp;Code A 에 직진중 detected_y 가 70 이상일 경우 조향각을 10으로 설정하여 자주차를 우회전 하는 코드를 작성후 실행하세요</p>
 
       <div class="code_box_exe">
         <details>
@@ -51,10 +51,10 @@
         <div class="code_div">
           <pre>
             <code class="language-python">
-if(detected_y < 70):
-  jajucha2.control.set_motor(0,0,3)
+if(detected_y > 70):
+  jajucha2.control.set_motor(10,10,3)
 else:
-  jajucha2.control.set_motor(10,10,3)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+  jajucha2.control.set_motor(0,0,3)&nbsp;&nbsp;&nbsp;&nbsp;</code>
           </pre>
         </div>
         </details>

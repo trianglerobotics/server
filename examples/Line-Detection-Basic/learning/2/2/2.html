@@ -33,9 +33,6 @@
         <img src="http://121.184.63.113:4000/images/LDB/ldb_221.svg"  alt="Placeholder image" />
       </div>
 
-
-      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/assets/image.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
-      
       <br>
 
       <div class="example">
@@ -59,7 +56,7 @@
           <pre>
             <code class="language-python">
 # range를 높이의 절반부터 0까지 역순으로 설정
-for y in range(height // 2 - 1, -1, -1):  # 아래에서 위로
+for y in range(roi.shape[0] - 1, -1, -1):  # 아래에서 위로
     if roi[y, center_x] == 255:  # 엣지 픽셀 값이 255인 경우
         detected_y = y
         print(detected_y)  # 검출된 y 좌표 출력

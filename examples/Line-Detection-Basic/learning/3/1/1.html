@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <p>&nbsp;&nbsp;Code A 에 직진중 detected_y 가 70미만일 경우 속도를 0으로 설정하여 자주차를 정지하세요</p>
+      <p>&nbsp;&nbsp;Code A 에 직진중 detected_y 가 70 이상일 경우 속도를 0으로 설정하여 자주차를 정지하세요</p>
 
       <div class="code_box_exe">
         <details>
@@ -52,10 +52,10 @@
         <div class="code_div">
           <pre>
             <code class="language-python">
-if(detected_y < 70):
-jajucha2.control.set_motor(0,0,3)
+if(detected_y > 70):
+  jajucha2.control.set_motor(0,0,0)
 else:
-jajucha2.control.set_motor(0,0,0)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+  jajucha2.control.set_motor(0,0,3)&nbsp;&nbsp;&nbsp;&nbsp;</code>
           </pre>
         </div>
         </details>

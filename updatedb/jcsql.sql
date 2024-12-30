@@ -56,7 +56,7 @@ VALUES
 (4, 'YOLO8N', 'objectdetection', '[1,3,640,640]', 'YOLOv8n은 Object Detection 경량화된 딥러닝 모델로, YOLO 모델의 최신 버전 중 하나입니다.'),
 (5, 'YOLO9N', 'objectdetection', '[1,3,640,640]', 'YOLO9N은 Object Detection 경량화된 딥러닝 모델로, YOLO 모델의 최신 버전 중 하나입니다.'),
 (6, 'YOLO11N', 'objectdetection', '[1,3,640,640]', 'YOLO11N은 Object Detection 경량화된 딥러닝 모델로, YOLO 모델의 최신 버전 중 하나입니다.');
-
+(7, 'RESNET101', 'classification', '[1, 3, 224, 224]', 'ResNet101은 잔차 연결을 사용해 깊은 신경망의 기울기 소실 문제를 해결한 101층 딥러닝 모델입니다.'),
 -- Drop the Missions table if it exists
 DROP TABLE IF EXISTS Missions;
 

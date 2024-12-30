@@ -12,7 +12,7 @@
       },
       {
         "subsection": 2,
-        "name": "(1) 깊이 감지 개요",
+        "name": "(2) 깊이 감지 개요",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
