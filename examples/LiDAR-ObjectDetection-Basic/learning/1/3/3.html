@@ -26,19 +26,34 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>극좌표계</h3>
+        <h3>자주차 라이브러리 가져오기</h3>
+      </div>
+      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+
+      <br>
+       
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
 
-      <p>라이다 데이터는 x,y 좌표가 아니라 각도, 거리가 표시가 됩니다. 이는 극좌표계 (Polar coordinate)로 표시 할 수 있습니다.
-        극좌표계는 다음과 같은 구성 요소를 가지고 있습니다</p>
-      <li>극점(Pole) : 좌표계의 원점</li>
-      <li>극축(Polar Axis) : 기준이 되는 방향</li>
-      <li>r : 극점에서 해당 점까지의 거리(반지름) = 거리</li>
-      <li>θ : 극축을 기준으로 측정한 각도 = 각도</li>
-      <!-- <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li> -->
-      
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_131.svg" style="width: 300px; margin-top: 20px;"  alt="Placeholder image" />
+      <p>&nbsp;&nbsp;Code A 에 자주차 라이브러리를 임포트하는 코드를 작성후 실행하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
       </div>
 
       <br>
@@ -46,13 +61,46 @@
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>극좌표계의 좌표변환</h3>
+        <h3>자주차에서 라이다 데이터 가지고 오기</h3>
+      </div>
+      <p>자주차의 함수를 이용하여 Lidar  함수를 받아와 변수에 저장
+        합니다. 라이다 함수에서는 angle_array , dist_array를 출력합니다, 라이다 값들은 300-400 개 정도로 출력됩니다.</p>
+
+      <ul>
+        <li>
+          angle_array : 라이다에서 측정하고 있는 거리값 배열에 대응 하는 각도입니다.  0-360도의 범위를 가지고 있습니다
+        </li>
+        <li>dist_array : 라이다에서 측정하고 있는 거리값 배열입니다,
+          0-12M 의 범위를 가지고 있습니다.
+        </li> 
+      </ul>
+
+      <br>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
 
-      <p>장애물 감지를 위해 자동차를 기준으로 장애물의 x, y 좌표를 알아야 합니다. 극좌표계의 데이터를 간단한 삼각함수를 활용해 x, y 좌표계로 변환할 수 있습니다.</p>
-      
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_132.svg" style="width: 200px; "  alt="Placeholder image" />
+      <p>&nbsp;&nbsp;Code B 에서 범위와 각도 어레이를 변수에 저장한 후 각각의 shape를 출력하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+angle_array, dist_array = jajucha2.lidar.get_lidar()
+print("angle_len: ", angle_array.shape, "dist_len: ",dist_array.shape)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
       </div>
 
       <br>
@@ -60,36 +108,41 @@
 
       <div class="list-item">
         <div class="square-box">3</div>
-        <h3>라이다의 극좌표계</h3>
+        <h3>라이다 데이터 표시하기</h3>
       </div>
-      <p>라이다의 극좌표계는 일반적인 극좌표계와 다른 구조로 작동합니다 극축은 x,y 좌표계 기준으로 y축이고, 시계방향으로 이동하며 각도가 증가하는 구조 입니다</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_133.svg" style="width: 200px; "  alt="Placeholder image" />
+      <p>자주차 라이다 표시 함수에는 dist_array, angle_array 을 받아서 x,y평면에 표시합니다. 자주차 라이다는 360도 , 12M의 거리까지 표시할 수 있습니다</p>
+  
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 에서 (1m,1m)에 장애물의 유무를 판단 할 수 있는 코드를 작성하세요 </div>
+
+      <p>&nbsp;&nbsp;Code C 서 최대 표시 범위를 조정해서 라이다 뷰어에 표시하세요</p>
+
+      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어 -> LiDAR 메뉴 를 활성화 하세요</p>
+      
+      <div class="code_box_exe">
         <details>
-          <summary>정답 보기/숨기기</summary>
+          <summary>Code C 정답 보기/숨기기</summary>
         <div class="code_div">
           <pre>
             <code class="language-python">
-# 목표 지점 (x, y) -> (1, 1)
-target_r = np.sqrt(1**2 + 1**2)  # r = 1.41m
-target_theta = 45  # 45도
-
-# 가장 가까운 각도 인덱스 찾기
-angle_index = np.argmin(np.abs(angle_array - target_theta))
-
-# 거리 확인
-if np.abs(dist_array[angle_index] - target_r) <= 0.1:  # 오차 범위 ±0.1m
-    print("장애물이 있습니다.")
-else:
-    print("장애물이 없습니다.")</code>
-        </pre>
+jajucha2.lidar.show_lidar(angle_array,dist_array,max_dist = 1000)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        <p>표시된 라이다 데이터는 다음과 같습니다</p>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/lodb_121.svg"  alt="Placeholder image" />
         </div>
         </details>
       </div>
+
     </div>
 
   </body>

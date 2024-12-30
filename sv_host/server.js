@@ -9,6 +9,7 @@ import fs from 'fs';
 import path from 'path';
 import WebSocket from 'ws';
 import chokidar from 'chokidar';
+import axios from 'axios';
 
 // 라우트 및 기타 모듈 가져오기
 import ClassRoute from './routes/databaseroute.js';
@@ -111,6 +112,19 @@ app.use(
 app.get('/api/version', (req, res) => {
   res.send({ version });
 });
+
+app.get('/api/newversion', (req, res) => {
+  axios.get('http://141.164.60.140:7000/api/version')
+    .then(response => {
+      res.send({ new_version: response.data.version });
+    })
+    .catch(error => {
+      console.error('Error fetching new version:', error);
+      res.status(500).send({ error: 'Failed to fetch new version' });
+    });
+});
+
+
 
 app.get('/api/motorstatus', (req, res) => {
   res.send({ storedData });

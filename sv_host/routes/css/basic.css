@@ -405,11 +405,12 @@ li::marker {
 {
   background: #f03e3e;
   color: white;
-  padding: 3px;
+  padding: 5px;
   margin: 2px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
+  font-size: 13px;
 }
 
 table {

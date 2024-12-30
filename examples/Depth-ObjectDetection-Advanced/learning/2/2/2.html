@@ -41,76 +41,63 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>트랙 설정하기</h3>
+        <h3>정규화(normalize)</h3>
       </div>
-      <p>주행을 위해  0A0 트랙을 준비합니다</p>
+      <p>Disparity 맵은 계산된 결과로 int16 형식으로 반환되며, 값의 범위가 매우 넓거나 특정 값에 집중되어 있어 음수, 혹은 픽셀로 표현 할 수 없는 255이상의 값이 나올 수 있기 때문에 정규화가 필요합니다</p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_221.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/DOA/doa_221.svg"  alt="Placeholder image" />
       </div>
 
       <br>
-      <hr>
 
-      <div class="list-item">
-        <div class="square-box">2</div>
-        <h3>이미지 표시하기</h3>
-      </div>
-      <p>&nbsp;&nbsp;가장 먼저 직선 코스 데이터를 수집합니다. 자주차를 직선 코스에 위치합니다</p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_222.svg" style="height: 350px" alt="Placeholder image" />
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          OpenCV 이미지 정규화 함수
+        </div>
       </div>
 
-      <p><span class="skyblue">cam</span>버튼을 눌러 이미지창을 열 수 있습니다</p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_223.svg"  alt="Placeholder image" />
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: center;">dst = cv2.normalize(src, dst=None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)</code>
       </div>
 
-      <p>&nbsp;&nbsp;이미지는 다음과 같이 표시됩니다</p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_224.svg"  alt="Placeholder image" />
-      </div>
+      <ul>
+        <li>src: 입력 배열(예: disparity map)</li>
+        <li>dst: 정규화 결과를 저장할 출력 배열</li>
+        <li>alpha: 정규화 범위의 하한값(예: 0)</li>
+        <li>beta: 정규화 범위의 상한값(예: 255)</li>
+      </ul>
 
       <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">3</div>
-        <h3>이미지 자르기</h3>
-      </div>
-      <p> &nbsp;&nbsp;왼쪽 상단의<img src="http://121.184.63.113:4000/images/LCA/crop.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;">을 누르면 이미지에서 캡처할  영역을 나누는 파란색 창을 열 수 있습니다 </p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_225.svg"  alt="Placeholder image" />
-      </div>
-
-      <p>&nbsp;&nbsp;파란색 창을 드래그 하여 다음과 같이 트랙만 잡도록 설정 합니다 </p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_226.svg"  alt="Placeholder image" />
-      </div>
-
-      <p><span class="blue">Hole to record</span> 버튼을 누르면 다음과 같이 이미지가 저장되는 것을 확인할 수 있습니다. 이미지는 초당 5장이 저장됩니다. center 클래스의 이미지를 50장 이상 저장합니다</p>
-    
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_227.svg"  alt="Placeholder image" />
-      </div>
-
       <br>
-      <hr>
 
-      <div class="list-item">
-        <div class="square-box">4</div>
-        <h3>반복</h3>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
-      <p> &nbsp;&nbsp;나머지 클래스들도 반복하여 이미지를 클래스별로 50장씩 이상 저장합니다</p>
 
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_228.svg"  alt="Placeholder image" />
+      <p>&nbsp;&nbsp;  Disparity 이미지를 받아 alpha=0, beta=255 으로 정규화 하세요</p>
+
+      <p>&nbsp;&nbsp; 코드를 실행하기전 우측 상단의 <span><img src="http://121.184.63.113:4000/images/assets/image.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /></span> 버튼을 클릭 하여 이미지 창을 활성화 해야 합니다</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+dst = cv2.normalize(disparity, dst=None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
       </div>
       
 

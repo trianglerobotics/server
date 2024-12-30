@@ -26,49 +26,93 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>자주차 그리드 함수 파라미터 분석하기</h3>
+        <h3>이미지 크기조정 </h3>
       </div>
-      <p>자주차 에서 그리드를 이미지에 그리고 V,L,R 값을 출력하는 함수의 원형은 다음과 같습니다</p>
-      <div class="code_box">
-        <pre>
-          <code class="language-python">
-(V,L,R), grid = gridFront(img, cols=7, rows=3 , y_max=200, ths1 = 100, ths2 = 300 , v_line_color=(39, 200, 47), h_line_color=(0, 0, 255),v_point_color=(18, 246, 255), u_point_color=(221, 0, 255))</code>
-        </pre>
+      <p>자주차 그리드 알고리즘은 이미지가 들어오면 가로가 640이 되도록 비율에 맞춰 크기를 조정합니다.</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_121.svg"  alt="Placeholder image" />
       </div>
-      <ul >
-        <li>img : 그리드 함수에 넣어줄 RGB 이미지</li>
-        <li>cols : 그리드의 열의 갯수 , 기본값: 7</li>
-        <li>rows : 그리드의 행의 갯수 , 기본값: 3</li>
-        <li>y_max : 그리드의 최대 높이 , 기본값: 200 </li>
-        <li>ths1 : cv2.Canny 함수의 최소 임계값 , 기본값: 100</li>
-        <li>ths2 : cv2.Canny 함수의 최대 임계값 , 기본값: 300</li>
-        <li>v_line_color : 수직선 색상 , 기본값: (39, 157, 47)</li>
-        <li>h_line_color : 수평선 색상 , 기본값: (0, 0, 255)</li>
-        <li>v_point_color : 수직선의 교차점 색상 , 기본값: (18, 246, 255)</li>
-        <li>u_point_color : 수평선의 교차점 색상 , 기본값: (221, 0, 255)</li>
-      </ul>
-
       <br>
       <hr>
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>자주차 그리드 함수 사용하기</h3>
+        <h3>흐리게 하기</h3>
       </div>
-      <p>자주차에서 이미지를 받아온 후에 그리드 함수에 넣고 나온 이미지를 뷰어로 보내고, V,L,R 값을 출력합니다</p>
-      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
-      <div class="code">
-        
-        <div class="code_des"><strong>Code A</strong> 에서 그리드 이미지 ,V,L,R 값을 출력하는 코드를 완성하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-(V,L,R), grid = jajucha2.camera.gridFront(frame)</code>
-        </pre>
-        </div>
-        </details>
+      <p>크기 조정 후에는 이미지를 cv2.bilateralFilter 함수를 통하여 흐리게 하여 노이즈를 최소화 합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_122.svg"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>엣지 추출</h3>
+      </div>
+      <p>이후 엣지 추출 함수인 cv2.Canny()함수를 통하여 윤곽선을 추출 합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_123.svg"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>특징점 추출 (<span style="color: red;"> X </span> 축 )</h3>
+      </div>
+      <p>엣지 이미지에서 특징점을 추출하기 위하여 사용자가 지정한 갯수만큼 x 축 선을 만들어 줍니다.</p>
+      <p> 이후 이미지의 x축의 중심을 기준으로 왼쪽, 오른쪽으로 각각의 X축 에서 2개의 점을 이동하며 흰색라인과 만나는 부분을 특징점으로 추출합니다</p>
+      <p>
+        특징점은 중심부터의 거리, 즉 픽셀을 나타냅니다 
+      </p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_124.svg"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>특징점 추출 (<span style="color: red;"> Y </span> 축 )</h3>
+      </div>
+
+      <p>엣지 이미지에서 Y축 특징점을 추출하기 위하여 사용자가 지정한 갯수 만큼 Y축 선을 만들어 줍니다.</p>
+      <p>이후 이미지 하단을 기준으로 각각의 Y축 에서 1개의 점을 이동하며 흰색라인과 만나는 부분을 특징점으로 추출합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_125.svg"  alt="Placeholder image" />
+      </div>
+
+      <div class="list-item">
+        <div class="square-box">6</div>
+        <h3>이미지에 그리드 표시하고 값 알아보기</h3>
+      </div>
+      <p>우선 기존의 이미지에 그리드를 그리고 , 위에서 얻은 특징점들을 표시합니다.  </p>
+      <p> L[0] 는 x축의 중심에서 왼쪽 분홍색 점이 떨어진 거리의미합니다 </p>
+      <p> R[0] 는 x축의 중심에서 오른쪽 분홍색 점이 떨어진 거리의미합니다 </p>
+      <p> V[0] 는 이미지 Y축의 가장 하단에서 왼쪽을 시작으로 첫번째 노란색 점이 떨어진 점의 거리를 의미합니다</p>
+      <p> V[1] 는 이미지 Y축의 가장 하단에서 왼쪽을 시작으로 두번째 노란색 점이 떨어진 점의 거리를 의미합니다</p>
+      <p> V[2] 는 이미지 Y축의 가장 하단에서 왼쪽을 시작으로 세번째 노란색 점이 떨어진 점의 거리를 의미합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_126.svg"  alt="Placeholder image" />
+      </div>
+
+
+      <br>
+      <hr>
+  
+      <div class="list-item">
+        <div class="square-box">7</div>
+        <h3> 이미지에 다중 그리드 그리기</h3>
+      </div>
+      <p>실제 자주차의 그리드 함수 에서는 가로 3, 세로 7개의 그리드를 기본으로 사용합니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LDA/lda_127.svg"  alt="Placeholder image" />
       </div>
 
     </div>

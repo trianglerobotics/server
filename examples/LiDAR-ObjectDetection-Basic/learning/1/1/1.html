@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -22,45 +21,31 @@
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+     <!-- explain-1 -->
     <div class="container">
-    
-      <div class="list-item">
-        <div class="square-box">1</div>
-        <h3>라이다 원리</h3>
-      </div>
-      <p>기본원리 : 라이다 센서는 기본적으로 TOF ( Time of Flight) 라는 원리로 빛을 쏜 후 다시 되돌아 오는 시간을 계산하여 거리를 측정합니다.</p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_111.svg"  alt="Placeholder image" />
-      </div>
-
-      <p>차원 확장 : 기본적인 TOF 라이다는 점과의 거리를 측정하기 때문에 1차원의 데이터를 만들지만, TOF 라이다를 회전 시키면 2차원의 데이터를 만들수 있습니다</p>
-
-      <div class="image-div" >
-        <img src="http://121.184.63.113:4000/images/lodb_112.svg" style="width:300px" alt="Placeholder image" />
-      </div>
-       
-
-      <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">2</div>
-        <h3>라이다 종류</h3>
-      </div>
-      <p>흔히 사용되는 라이다는 감자할 수 있는 차원에 따라 2차원(2D), 3차원(3D) 라이다가 있습니다.</p>
-
-      <li>2차원 라이다 : 1개의 평면에서 360도로 데이터를 추출 할 수 있습니다. 로봇청소기 , 서빙로봇같은 간단한 주행 알고리즘을 사용하는 로봇에 적용됩니다. </li>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_113.svg"  alt="Placeholder image" />
-      </div>
-      <li>3차원 라이다 : 수평 360도와 수직 20-40 도의 시야각을 가지고 있는 라이다 입니다. 실외 자율주행자동차와 같은 복잡한 주행 알고리즘을 사용하는 로봇에 적용됩니다.</li>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_114.png"  alt="Placeholder image" />
-      </div>
-
-
+      <h1>시작</h1>
+      <h2 style="margin-bottom: 3px;">초기화/시작</h2>
+      <p><img src="http://121.184.63.113:4000/images/flag.svg" style="width:20px " alt="Placeholder image" /> 는 전에 실행되고 있던 코드가
+      있다면 초기화 합니다. </p>
+      <p>*프로젝트를 시작하려면 필수적으로 클릭해야합니다*</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">선택</h2>
+      <p><img src="http://121.184.63.113:4000/images/blue.svg" style="width:10px " alt="Placeholder image" /> 는 마우스로 코드창을 클릭하여 선택되면
+      왼쪽에 표시됩니다</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">코드</h2>
+      <p>코드 선택 후 <img src="http://121.184.63.113:4000/images/bluecode.svg" style="width:30px; border-radius:0%" alt="Placeholder image" /> 가 코드창을 감싸면 코드창이 선택된 것입니다 보이지 않는다면
+      설명창이 선택된 것입니다. </p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">실행</h2>
+      <p><img src="http://121.184.63.113:4000/images/play.svg" style="width:20px " alt="Placeholder image" /> 는 선택된 코드를 실행합니다</p>
+      <hr >
     </div>
 
+    <div class="container">
+      <p>© JAJUCHA www.jajucha.com</p>
+    </div>
+    
   </body>
 </html>

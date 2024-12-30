@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>극좌표계</h3>
+      </div>
+
+      <p>라이다 데이터는 x,y 좌표가 아니라 각도, 거리가 표시가 됩니다. 이는 극좌표계 (Polar coordinate)로 표시 할 수 있습니다.
+        극좌표계는 다음과 같은 구성 요소를 가지고 있습니다</p>
+      <ul>
+        <li>극점(Pole) : 좌표계의 원점</li>
+        <li>극축(Polar Axis) : 기준이 되는 방향</li>
+        <li>r : 극점에서 해당 점까지의 거리(반지름) = 거리</li>
+        <li>θ : 극축을 기준으로 측정한 각도 = 각도</li>
+      </ul>
+      <!-- <li>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</li> -->
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LOB/lob_141.svg" style="width: 300px; margin-top: 20px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>극좌표계의 좌표변환</h3>
+      </div>
+
+      <p>장애물 감지를 위해 자동차를 기준으로 장애물의 x, y 좌표를 알아야 합니다. 극좌표계의 데이터를 간단한 삼각함수를 활용해 x, y 좌표계로 변환할 수 있습니다.</p>
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LOB/lob_142.svg" style="width: 200px; "  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>라이다의 극좌표계</h3>
+      </div>
+      <p>라이다의 극좌표계는 일반적인 극좌표계와 다른 구조로 작동합니다 극축은 x,y 좌표계 기준으로 y축이고, 시계방향으로 이동하며 각도가 증가하는 구조 입니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LOB/lob_143.svg" style="width: 200px; "  alt="Placeholder image" />
+      </div>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code A 에서 (1m,1m)에 장애물의 유무를 판단 할 수 있는 코드를 작성하세요 </p>
+
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+# 목표 지점 (x, y) -> (1, 1)
+target_r = np.sqrt(1**2 + 1**2)  # r = 1.41m
+target_theta = 45  # 45도
+
+# 가장 가까운 각도 인덱스 찾기
+angle_index = np.argmin(np.abs(angle_array - target_theta))
+
+# 거리 확인
+if np.abs(dist_array[angle_index] - target_r) <= 0.1:  # 오차 범위 ±0.1m
+    print("장애물이 있습니다.")
+else:
+    print("장애물이 없습니다.")&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>Basic 단계의 한계점</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;Basic 단계에서는 신호등 전체를 2개의 클래스로 나누어 감지하도록 했었습니다. 하지만 2개의 클래스의 특징 차이가 크지 않다는 한계점을 가지고 있어 정확도가 높지 않았습니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/TOA/toa_331.svg" style="width:300px" alt="Placeholder image" />
+      </div>
+
+      <p>&nbsp;&nbsp;따라서 신호등을 감지할 때 신호등의 색깔이 아닌 신호등 만을 감지 한 뒤에 밝은곳의 위치에 따라 현재 색깔을 판단하고자 합니다</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/TOA/toa_332.svg" style="width:300px" alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>이미지에서 밝기 추출하기</h3>
+      </div>
+
+      <p>&nbsp;&nbsp; 일반적으로 이미지는 RGB 색공간에서 표현됩니다. 그러나 RGB 색공간은 밝기 정보가 R, G, B 채널에 분산되어 있어, 밝기만을 직접 추출하기가 어렵습니다. 이를 해결하기 위해 RGB 이미지를 HSV 색공간으로 변환하여, 밝기를 나타내는 V(Value) 채널을 추출하는 과정이 필요합니다</p>
+
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/TOA/toa_333.svg" style="width:400px" alt="Placeholder image" />
+      </div>
+
+      <br>
+
+
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          OpenCV 색공간 변환 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: center;">cv2.cvtColor(rgb_image, cv2.COLOR_BGR2HSV)</code>
+      </div>
+
+      <ul>
+        <li>rgb_image : 변환할 이미지 </li>
+        <li>cv2.COLOR_BGR2HSV : 변환할 색공간</li>
+      </ul>
+
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;RGB 이미지를 받아 HSV로 변환후 표시하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+
+    </div>
+
+  </body>
+</html>

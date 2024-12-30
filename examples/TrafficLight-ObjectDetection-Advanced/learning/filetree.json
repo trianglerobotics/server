@@ -1,0 +1,97 @@
+[
+  {
+    "section": 1,
+    "name": "01 인공지능 학습 준비하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 시작",
+        "env": "type0",
+        "location": "learning/1/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 신호등 클래스 설정하기",
+        "env": "type1",
+        "location": "learning/1/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 코스 구간별 데이터 수집하기",
+        "env": "type2",
+        "location": "learning/1/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "(3) 객체에 바운딩 박스 그리기",
+        "env": "type5",
+        "location": "learning/1/4/codes",
+        "target": "4.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 2,
+    "name": "02 인공지능 학습하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 인공지능 모델 설정하기",
+        "env": "type3",
+        "location": "learning/2/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 인공지능 학습하기",
+        "env": "type0",
+        "location": "databases",
+        "target": "train.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 결과 테스트 하기",
+        "env": "type0",
+        "location": "databases",
+        "target": "test.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 3,
+    "name": "03 모델 저장하고 실행하기",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 학습한 모델 저장하기",
+        "env": "type4",
+        "location": "learning/3/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 저장한 모델 불러와 주행하기",
+        "env": "type0",
+        "location": "learning/3/2/codes",
+        "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3)색 공간 변조하기",
+        "env": "type0",
+        "location": "learning/3/3/codes",
+        "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "(4)색 공간 변조하기",
+        "env": "type0",
+        "location": "learning/3/4/codes",
+        "target": "4.ipynb"
+      }
+    ]
+  }
+]

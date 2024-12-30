@@ -26,12 +26,11 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>트랙 설정하기</h3>
+        <h3>개요 : 자주차의 동작 클래스 설정하기</h3>
       </div>
-      <p>주행을 위해  0A0 트랙을 준비합니다</p>
-
+      <p>자율주행 자동차가 차선을 감지하는 방법으로는 이미지 분류를 사용할 수 있습니다. 간단하게 이미지를 좌회전, 직전 , 우회전으로 나누고, 이를 학습시켜 주행에 활용 할 수 있습니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_121.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_121.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -39,12 +38,13 @@
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>데이터 수집하기 -1 </h3>
+        <h3>클래스 설정하기 - 1</h3>
       </div>
-      <p>가장 먼저 직선 코스 데이터를 수집합니다. CLASS 메뉴에서 ‘center’를 선택한 후 자주차를 직선 코스에 위치합니다</p>
+      <p>차선을 분류하기 위해서 좌회전, 직진 , 우회전에 해당하는 클래스를 만들어 주어야 합니다.
+       <span class="blue">Add Classes</span> 버튼을 누르면 다음과 같은 화면이 표시됩니다 </p>
 
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_122.svg"  alt="Placeholder image" />
+       <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_122.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -52,12 +52,12 @@
 
       <div class="list-item">
         <div class="square-box">3</div>
-        <h3>데이터 수집하기 - 2</h3>
+        <h3>클래스 설정하기 - 2</h3>
       </div>
-      <p>STREAM 메뉴에서 <img src="http://121.184.63.113:4000/images/play_img.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 버튼을 누르면 이미지를 재생할 수 있습니다. 이미지 재생 도중.<img src="http://121.184.63.113:4000/images/cap_img.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;">버튼을 누르면 이미지를 캡처 할 수 있습니다 </p>
+      <p>입력할 클래스(‘left’)를 타이핑 한 후 <span class="blue">Add</span>  버튼을 누르면 클래스를 생성 할 수 있습니다 </p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_123.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_123.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -65,12 +65,12 @@
 
       <div class="list-item">
         <div class="square-box">4</div>
-        <h3>데이터 수집하기 - 3</h3>
+        <h3>클래스 설정하기 - 3</h3>
       </div>
-      <p>왼쪽의 data 창에서 캡처된 이미지의 총 갯수를 확인 할 수 있습니다. 100장이상 이미지를 캡처합니다</p>
+      <p>(‘center’, ’right’ 도 같은 방식으로 반복하여 클래스를 생성합니다) </p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_124.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_124.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -78,14 +78,19 @@
 
       <div class="list-item">
         <div class="square-box">5</div>
-        <h3>데이터 수집하기 - 4</h3>
+        <h3>클래스 관리하기</h3>
       </div>
-      <p>‘center’ 이외에도 , ‘left’ , ‘right’ 도 같은방식으로 이미지를 100장 이상 캡처합니다.</p>
+      <p><span class="blue">Modify Classes</span> 를 클릭하면 클래스를 삭제 할 수 있는 창이 표시됩니다.</p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_125.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_125.svg"  alt="Placeholder image" />
       </div>
-      
+
+      <p>삭제할 클래스의 체크박스를 클릭 한 후 <span class="blue">Execute Job</span>을 클릭하면 클래스를 삭제 할 수 있습니다</p>
+
+
+
+
 
     </div>
 

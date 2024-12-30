@@ -31,7 +31,7 @@
 
       <p>자주차 장애물중 정육면체를 준비하여 차량의 전방에 위치하게 합니다.</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_211.svg" style="width: 150px"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LOB/lob_211.svg" style="width: 150px"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -43,13 +43,26 @@
       </div>
       <p>전방에 있는 장애물을 감지하면 정지하는 알고리즘을 작성하고자 합니다. 전 단원에서 사용하였던 거리 추출 알고리즘을 사용할 수 있습니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_222.svg" style="width: 300px"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LOB/lob_222.svg" style="width: 300px"  alt="Placeholder image" />
       </div>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong>에 3의 속도로 전진중, 직선거리 30cm 이하의 장애물이 감지되면 정지하는 알고리즘을 작성하세요 </div>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code A 에 3의 속도로 전진중, 직선거리 30cm 이하의 장애물이 감지되면 정지하는 알고리즘을 작성하세요 <</p>
+
+      <div class="code_box_exe">
         <details>
-          <summary>정답 보기/숨기기</summary>
+          <summary>Code A 정답 보기/숨기기</summary>
         <div class="code_div">
           <pre>
             <code class="language-python">
@@ -57,8 +70,8 @@ distance = dist_array[0]
 if(distance > 300):
     jajucha2.control.set_motor(0,0,3)
 else:
-    jajucha2.control.set_motor(0,0,0)</code>
-        </pre>
+    jajucha2.control.set_motor(0,0,0)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
         </div>
         </details>
       </div>
@@ -72,13 +85,26 @@ else:
       </div>
       <p>전방에 있는 장애물을 감지하면 좌회전 혹은 우회전으로 회피하는 알고리즘을 작성하고자 합니다. 전 단원에서 사용하였던 거리 추출 알고리즘을 사용할 수 있습니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lodb_223.svg" style="width: 300px"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LOB/lob_223.svg" style="width: 300px"  alt="Placeholder image" />
+      </div>
+      
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code B</strong>에 3의 속도로 전진중, 직선거리 50cm 이하의 장애물이 감지되면 오른쪽 혹은 왼쪽으로 움직이는 알고리즘을 작성하세요 </div>
+      <p>&nbsp;&nbsp;Code B 에 3의 속도로 전진중, 직선거리 50cm 이하의 장애물이 감지되면 오른쪽 혹은 왼쪽으로 움직이는 알고리즘을 작성하세요 </p>
+
+      <div class="code_box_exe">
         <details>
-          <summary>정답 보기/숨기기</summary>
+          <summary>Code A 정답 보기/숨기기</summary>
         <div class="code_div">
           <pre>
             <code class="language-python">
@@ -86,12 +112,11 @@ distance = dist_array[0]
 if(distance > 500):
     jajucha2.control.set_motor(0,0,3)
 else:
-    jajucha2.control.set_motor(10,10,3)</code>
-        </pre>
+    jajucha2.control.set_motor(10,10,3)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
         </div>
         </details>
       </div>
-
 
 
 

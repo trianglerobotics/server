@@ -26,12 +26,11 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>신호등 준비하기</h3>
+        <h3>신호등 감지 개요</h3>
       </div>
-      <p>신호등 을 준비하여 red 상태로 설정합니다</p>
-
+      <p>자율주행 자동차가 신호등을 감지할때는 물체감지를 기반으로 신호등의 형태를 감지해야 합니다 Basic 에서는 Red ,Green으 로 클래스를 나누어 신호 감지를 진행, Advanced 에서는 신호등을 감지 후 hsv채널에서 밝기를 감지하는 방식으로 신호를 감지하고자 합니다 </p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/toa_121.svg" style="width:200px"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/TOB/tob_121.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -39,12 +38,13 @@
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>데이터 수집하기 기초</h3>
+        <h3>클래스 설정하기 - 1</h3>
       </div>
-      <p>데이터를 수집할 때는 여러 각도에서 촬영 해야합니다 이미지 데이터는 다양할 수록 좋습니다</p>
+      <p>감지할 물체에 해당하는 클래스를 만들어야 합니다.
+       <span class="blue">Add Classes</span> 버튼을 누르면 다음과 같은 화면이 표시됩니다 </p>
 
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/toa_122.svg"  alt="Placeholder image" />
+       <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/TOB/tob_122.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -52,12 +52,12 @@
 
       <div class="list-item">
         <div class="square-box">3</div>
-        <h3>데이터 수집하기 -1</h3>
+        <h3>클래스 설정하기 - 2</h3>
       </div>
-      <p>STREAM 메뉴에서 <img src="http://121.184.63.113:4000/images/play_img.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 버튼을 누르면 이미지를 재생할 수 있습니다. 이미지 재생 도중.<img src="http://121.184.63.113:4000/images/cap_img.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;">버튼을 누르면 이미지를 캡처 할 수 있습니다 </p>
+      <p>입력할 클래스(‘green’)를 타이핑 한 후 <span class="blue">Add</span>  버튼을 누르면 클래스를 생성 할 수 있습니다 </p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/vod_123.svg" style="width: 250px;"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/TOB/tob_123.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -65,12 +65,12 @@
 
       <div class="list-item">
         <div class="square-box">4</div>
-        <h3>데이터 수집하기 -2</h3>
+        <h3>클래스 설정하기 - 3</h3>
       </div>
-      <p>이미지는 20장 이상 촬영해야 합니다. 20장 이상 촬영하지 않을 경우 다음단계에서 문제가 발생할 수 있습니다</p>
+      <p>같은 방식으로 red 클래스도 생성합니다</p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/vod_124.svg" style="width: 250px;"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/TOB/tob_124.svg"  alt="Placeholder image" />
       </div>
 
       <br>
@@ -78,14 +78,16 @@
 
       <div class="list-item">
         <div class="square-box">5</div>
-        <h3>데이터 수집하기 - 3</h3>
+        <h3>클래스 관리하기</h3>
       </div>
-      <p>신호등을 초록색으로 변경 한 후 1,2,3 단계를 반복하여 red,green 신호등 이미지가 각각 20장 이상이 되도록 합니다</p>
+      <p><span class="blue">Modify Classes</span> 를 클릭하면 클래스를 삭제 할 수 있는 창이 표시됩니다.</p>
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/toa_125.svg" style="width:250px"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/TOB/tob_125.svg" style="width: 250px;"  alt="Placeholder image" />
       </div>
-      
+
+      <p>삭제할 클래스의 체크박스를 클릭 한 후 <span class="blue">Execute Job</span>을 클릭하면 클래스를 삭제 할 수 있습니다</p>
+
 
     </div>
 

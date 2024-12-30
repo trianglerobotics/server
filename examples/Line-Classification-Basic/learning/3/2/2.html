@@ -32,7 +32,7 @@
       <p>오른쪽 메뉴의 <img src="http://121.184.63.113:4000/images/model_img.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 버튼을 누르면 저장된 모델들의 이름과 종류를 확인 할 수 있습니다 </p>      
       
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_321.svg" style="width:300px" alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_321.svg" style="width:300px" alt="Placeholder image" />
       </div>
 
       <br>
@@ -45,20 +45,34 @@
 
       <p>모델을 불러오기 전에 A를 실행시켜, 자주차, 파이토치 라이브러리를 가져온 후에 자주차 ai 모듈을 활성화 합니다</p>
 
-      <div class="code_title">[ ai모듈 로딩 함수]</div>
-      <div class="code_box">
-        <pre>
-          <code class="language-python">
-jajucha2.load_ai()</code>
-      </pre>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://158.247.227.21:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ai모듈 로딩 함수
+        </div>
       </div>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2.load_ai()</code>
+      </div>
+
       <ul>
         <li>jajucha2 라이브러리에서 ai 모듈을 사용할 수 있도록 로드합니다. ai 모듈은 로드하는데 4-5초 정도 소요됩니다</li>
       </ul>
-      
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 를 실행하여  필요한 라이브러리를 로딩 합니다</div>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
+
+      <p>&nbsp;&nbsp;Code A 실행하여 필요한 라이브러리를 로딩 합니다</p>
 
       <br>
       <hr>
@@ -67,11 +81,31 @@ jajucha2.load_ai()</code>
         <div class="square-box">3</div>
         <h3>모델 이름 입력하기</h3>
       </div>
+      
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
 
       <p>Code B에 사용할 모델 이름을 입력 합니다</p>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code B</strong> 실행하여 모델 이름 변수를 저장합니다</div>
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+NAME = 'NewModel'&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
       </div>
 
       <br>
@@ -84,25 +118,36 @@ jajucha2.load_ai()</code>
 
       <p>Code C에 를 실행하여 자주차를 주행합니다. 코드를 실행하기 전에 데이터를 수집했던 트랙에 자주차를 위치 시켜야 합니다</p>
 
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/lcb_322.svg" style="width:300px" alt="Placeholder image" />
+      <div class="holder">
+        <div class="icon">
+          <img src="http://158.247.227.21:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ai 모델 출력 함수
+        </div>
+      </div>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">get_model_output(input,name)</code>
       </div>
 
-      <div class="code_title">[ ai 모델 출력 함수 ]</div>
-      <div class="code_box">
-        <pre>
-          <code class="language-python">
-get_model_output(input,name)</code>
-      </pre>
-      </div>
       <ul>
         <li>input : 모델의 넣어줄 입력값 입니다</li>
         <li>name : 사용할 모델의 이름 입니다</li>
       </ul>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code C</strong> 를 실행하여 자주차 주행을 시작합니다</div>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
+
+      <p>&nbsp;&nbsp;Code C 를 실행하여 자주차 주행을 시작합니다</p>
 
     </div>
 

@@ -26,26 +26,116 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>가져온 이미지를  blur 처리하기</h3>
+        <h3>자주차 라이브러리 가져오기</h3>
       </div>
-      <p>'center' 카메라에서 가져온 이미지를 opencv 함수를 이용하여 3x3 커널로 gaussian-blur 처리하여 노이즈를 제거합니다'.</li>    
-      <p>출력되는 이미지는 다음과 같습니다</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/line_basic_121.svg"  alt="Placeholder image" />
+      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
-      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 에 가져온 이미지를 blur 처리하세요 </div>
+
+      <p>&nbsp;&nbsp;Code A 에 자주차 라이브러리를 임포트하는 코드를 작성후 실행하세요</p>
+
+      <div class="code_box_exe">
         <details>
-          <summary>정답 보기/숨기기</summary>
+          <summary>Code A 정답 보기/숨기기</summary>
         <div class="code_div">
           <pre>
             <code class="language-python">
-blurred = cv2.GaussianBlur(frame, (3, 3), 0)</code>
-        </pre>
+import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
         </div>
         </details>
       </div>
+       
+      <br>
+      <hr>
+
+
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>자주차에서 이미지 가져오기</h3>
+      </div>
+
+      <p>자주차의 함수를 이용하여 RGB 함수를 받아와 변수에 저장합니다</p>
+
+      <br>
+      
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code B 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성,실행하세요 </p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+frame = jajucha2.camera.get_image('center')&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>이미지 표시하기</h3>
+      </div>
+      <p>자주차에서 받아온 이미지를 자주차 'center' 이미지뷰어에 퀄리티 '90'으로 표시합니다, 출력된 이미지는 다음과 같습니다.</p>
+  
+      <br>
+      
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;Code C 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성,실행하세요 </p>
+
+      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/assets/image.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
+
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code C 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+frame = jajucha2.camera.show_image(frame,'center',quality=90)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/LDB/ldb_121.svg" style="width:400px" alt="Placeholder image" />
+        </div>
+        </details>
+      </div>
+
+
 
     </div>
 

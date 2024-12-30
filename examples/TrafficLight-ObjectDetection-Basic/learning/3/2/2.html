@@ -32,7 +32,7 @@
       <p>오른쪽 메뉴의 <img src="http://121.184.63.113:4000/images/model_img.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 버튼을 누르면 저장된 모델들의 이름과 종류를 확인 할 수 있습니다 </p>      
       
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/vod_321.svg" style="width:300px" alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/TOB/tob_321.svg" style="width:300px" alt="Placeholder image" />
       </div>
 
       <br>
@@ -43,22 +43,38 @@
         <h3>라이브러리 가져오기</h3>
       </div>
 
-      <p>모델을 불러오기 전에 A를 실행시켜, 자주차, 파이토치 라이브러리를 가져온 후에 자주차 ai 모듈을 활성화 합니다</p>
-
-      <div class="code_title">[ ai모듈 로딩 함수]</div>
-      <div class="code_box">
-        <pre>
-          <code class="language-python">
-jajucha2.load_ai()</code>
-      </pre>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ai모듈 로딩 함수
+        </div>
       </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: center;">jajucha2.load_ai()</code>
+      </div>
+
+      <!-- <p>모델을 불러오기 전에 A를 실행시켜, 자주차, 파이토치 라이브러리를 가져온 후에 자주차 ai 모듈을 활성화 합니다</p> -->
+
       <ul>
         <li>jajucha2 라이브러리에서 ai 모듈을 사용할 수 있도록 로드합니다. ai 모듈은 로드하는데 4-5초 정도 소요됩니다</li>
       </ul>
-      
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 를 실행하여  필요한 라이브러리를 로딩 합니다</div>
+
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
+
+      <p>&nbsp;&nbsp;Code A를 실행하여  필요한 라이브러리를 로딩 합니다</p>
 
       <br>
       <hr>
@@ -70,9 +86,20 @@ jajucha2.load_ai()</code>
 
       <p>Code B에 사용할 모델 이름을 입력 합니다</p>
 
-      <div class="code"> 
-        <div class="code_des"><strong>Code B</strong> 실행하여 모델 이름 변수를 저장합니다</div>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
+
+      <p>&nbsp;&nbsp;Code B를 실행하여 모델 이름 변수를 저장합니다</p>
+
 
       <br>
       <hr>
@@ -88,54 +115,40 @@ jajucha2.load_ai()</code>
         <img src="http://121.184.63.113:4000/images/vod_322.svg" style="width:300px" alt="Placeholder image" />
       </div> -->
 
-      <div class="code_title">[ ai 모델 출력 함수 ]</div>
-      <div class="code_box">
-        <pre>
-          <code class="language-python">
-get_model_output(input,name)</code>
-      </pre>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://158.247.227.21:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ai 모델 출력 함수
+        </div>
       </div>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">get_model_output(input,name)</code>
+      </div>
+
       <ul>
         <li>input : 모델의 넣어줄 입력값 입니다</li>
         <li>name : 사용할 모델의 이름 입니다</li>
       </ul>
-      <p>코드를 를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 를 눌러 이미지 뷰어를 활성화 홥니다</p>
-      <div class="code"> 
-        <div class="code_des"><strong>Code C</strong> 를 실행하여 박스 좌표를 출력합니다</div>
+
+      <p>코드를 를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/assets/image.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 를 눌러 이미지 뷰어를 활성화 홥니다</p>
+      
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
 
       <br>
-      <hr>
 
-      <div class="list-item">
-        <div class="square-box">5</div>
-        <h3>신호등 감지 주행하기 - 1</h3>
-      </div>
-
-      <p>AI 출력 함수에서 결과를 받아 이를 통해 신호등을 감지하는 주행을 진행합니다. 결과값으로는 박스 별로 종류와, (x1, y1, x2, y2)를 받을 수 있습니다.</p>
-      <p>신호등 데이터를 받아 빨간불이 감지되고 가까워지면 정지, 초록불 혹은 빨간불과의 거리가 멀면 직진하는 코드를 작성하하세요</p>
-
-      <!-- <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/vod_323.svg" style="width:300px" alt="Placeholder image" />
-      </div> -->
-
-      <div class="code"> 
-        <div class="code_des"><strong>Code D</strong> 파란색 신호등이거나 신호등이 멀경우 직진, 빨간색 신호등이고 가까울 경우 정지하는 코드를 작성하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-location  = (x1+x2)/2
-if(location > 160):
-    jajucha2.control.set_motor(-10,-10,3)
-else:
-    jajucha2.control.set_motor(10,10,3)</code>
-        </pre>
-        </div>
-        </details>
-      </div>
-
+      <p>&nbsp;&nbsp;Code C를 실행하여 박스 좌표를 출력합니다</p>
 
     </div>
 

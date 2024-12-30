@@ -357,20 +357,14 @@ router.post('/api/user/model/save', async (req, res) => {
   const {projectname,filename,uuid,newname,dbtype} = req.body;
 
   let source;
-  //save model to the models/usermodel/uuid.pth
-  if(dbtype === 'classification')
-  {
-    source = path.join(home, 'server','projects', projectname, 'databases', 'checkpoints', filename);
-  }
-  else if(dbtype === 'objectdetection')
-  {
-    source = path.join(home, 'server','projects', projectname, 'databases', 'checkpoints', 'train', 'weights', filename);
-  }
+  
+  source = path.join(home, 'server','projects', projectname, 'databases', 'checkpoints', 'train', 'weights', filename);
+
   const destination = path.join(home, 'server', 'models', 'usermodels', `${uuid}.pt`);
 
   const model = await getUserModel(projectname);
 
-  copyAndSaveFile(source, destination)
+  copyAndSaveFile(source, destination);
   
   const result = await saveUserModel(newname,model[0].model,uuid)
 });
@@ -381,7 +375,6 @@ router.post('/api/user/project/save/update/section', async (req, res) => {
   updateProjectSection(projectname,section,subsection);
   //update db
   return res.status(200).json({ message: 'section updated successfully' });
-
 });
 
 export default router; 

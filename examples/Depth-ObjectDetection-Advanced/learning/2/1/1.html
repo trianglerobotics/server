@@ -41,11 +41,130 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>개요 : 자주차의 동작 클래스 설정하기</h3>
+        <h3>이미지 촬영하기</h3>
       </div>
-      <p>자자주차의 동작 클래스는 5개 이상으로 세분화 할 수 있습니다</p>
+      <p>깊이 감지를 위하여 자주차에서 각각 왼쪽 오른쪽 이미지를 촬영합니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_211.svg" style="width:300px" alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/DOA/doa_211.svg" style="width:300px" alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          자주차 이미지 촬영 함수
+        </div>
+      </div>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2.camera.get_image(location = 'center')</code>
+      </div>
+
+      <ul>
+        <li>location : 이미지를 가져올 카메라 입니다 ('left','right','center')</li>
+      </ul>
+
+
+      <br>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp;왼쪽,오른쪽 카메라에서 이미지 를 받아 각각 ‘left’ , ‘right’ 변수에 저장하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+left_image = jajucha2.camera.get_image('left')
+right_image = jajucha2.camera.get_image('right')&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>알고리즘 객체 정의하기</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;저장한 2개의 스테레오 이미지에서 disparity 를 추출하는 알고리즘 객체를 정의합니다 OPENCV에서는 2개의 알고리즘중 1개를 선택 할 수 있습니다</p>
+
+      <ul>
+        <li>StereoBM (블록 매칭) : 이미지에서 작은 블록(윈도우)을 비교하여 불일치 정도(Disparity)를 계산합니다</li>
+        <li>StereoSGBM (반글로벌 블록 매칭) : 블록 매칭 방식과 반글로벌 최적화(Semi-Global Matching) 방식을 결합 하여 Disparity를 계산합니다</li>
+      </ul>
+
+      <br>
+
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          사용될 OpenCV Disparity 계산 객체
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: center;">cv2.StereoSGBM_create( minDisparity=0, numDisparities=16, blockSize=5,P1=0, P2=0)</code>
+      </div>
+      
+
+      <ul>
+        <li>minDisparity: 계산할 최소 불일치(Disparity) 값</li>
+        <li>numDisparities: 계산할 불일치 값의 범위.</li>
+        <li>blockSize: 블록 매칭 시 사용하는 윈도우 크기</li>
+        <li>P1:  변화가 작은 경우에 대한 부드러움 페널티</li>
+        <li>P2: 변화가 큰 경우에 대한 부드러움 페널티</li>
+      </ul>
+
+      <br>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      
+      <p>&nbsp;&nbsp;minDisparity = 0 , numDisparities = 16 , blockSize = 5 , P1 = 1 , P2 =3 으로 Disparity 계산 함수를 정의하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+stereo = cv2.StereoSGBM_create(
+  minDisparity=0,        # 최소 불일치 값 (Disparity 계산 시작 값)
+  numDisparities=16,     # 불일치 값을 계산할 범위 (16의 배수여야 함)
+  blockSize=5,           # 블록 매칭에 사용되는 윈도우 크기 (홀수여야 함)
+  P1=1,                  # 변화가 작은 경우에 대한 부드러움 페널티
+  P2=3)                   # 변화가 큰 경우에 대한 부드러움 페널티
+&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
       </div>
 
       <br>
@@ -53,61 +172,67 @@
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>클래스 설정하기 - 1</h3>
+        <h3>깊이 감지 연산하기</h3>
       </div>
-      <p>차선을 분류하기 위해서 좌회전, 직진 , 우회전에 해당하는 클래스를 만들어 주어야 합니다.
-       <span class="blue">Add Classes</span> 버튼을 누르면 다음과 같은 화면이 표시됩니다 </p>
 
-       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_212.svg" style="height:200px; max-width: 500px;" alt="Placeholder image" />
+      <p>&nbsp;&nbsp;Disparity 계산할 객체를 정의했으니 , 계산을 진행합니다</p>
+
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          OpenCV Disparity 계산
+        </div>
       </div>
+
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: center;">disparity = stereo.compute(left_image, right_image)</code>
+      </div>
+
+      <ul>
+        <li>left_image: 왼쪽 이미지 (Grayscale로 입력해야 함)</li>
+        <li>right_image: 오른쪽 이미지 (Grayscale로 입력해야 함).</li>
+      </ul>
+
 
       <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">3</div>
-        <h3>클래스 설정하기 - 2</h3>
-      </div>
-      <p>&nbsp;&nbsp;입력할 클래스<strong> center </strong> 를 타이핑 한 후 <span class="blue">Add</span>  버튼을 누르면 클래스를 생성 할 수 있습니다 </p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_213.svg" style="height:200px; max-width: 500px;" alt="Placeholder image" />
-      </div>
-
       <br>
-      <hr>
 
-      <div class="list-item">
-        <div class="square-box">4</div>
-        <h3>클래스 설정하기 - 3</h3>
-      </div>
-      <p>&nbsp;&nbsp; <strong> left-1 , left-2 , right-1 , right-2 </strong> 도 같은 방식으로 반복하여 클래스를 생성합니다 </p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_214.svg" style="width:500px; "  alt="Placeholder image" />
-      </div>
-
-      <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">5</div>
-        <h3>클래스 관리하기</h3>
-      </div>
-      <p><span class="blue">Modify Classes</span> 를 클릭하면 클래스를 삭제 할 수 있는 창이 표시됩니다.</p>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/LCA/lca_215.svg" style="height:300px; max-width: 500px;" alt="Placeholder image" />
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
 
-      <p>&nbsp;&nbsp;삭제할 클래스의 체크박스를 클릭 한 후 <span class="blue">Execute Job</span>을 클릭하면 클래스를 삭제 할 수 있습니다</p>
+      <p>&nbsp;&nbsp;left_image, right_image를 Grayscale로 변환 한 후 disparity 계산을 진행하세요</p>
 
+      <p>&nbsp;&nbsp; 코드를 실행하기전 우측 상단의 <span><img src="http://121.184.63.113:4000/images/assets/image.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /></span> 버튼을 클릭 하여 이미지 창을 활성화 해야 합니다</p>
 
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+# 이미지를 Grayscale로 변환
+gray_left = cv2.cvtColor(left_image, cv2.COLOR_BGR2GRAY) # 좌측 이미지 Grayscale 변환
+gray_right = cv2.cvtColor(right_image, cv2.COLOR_BGR2GRAY) # 우측 이미지 Grayscale 변환
 
+# Disparity 계산
+disparity = stereo.compute(gray_left, gray_right)  # disparity 계산
+&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
 
 
     </div>
-
   </body>
 </html>

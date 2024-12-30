@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
@@ -22,77 +21,31 @@
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+     <!-- explain-1 -->
     <div class="container">
-    
-      <div class="list-item">
-        <div class="square-box">1</div>
-        <h3>자주차 라이브러리 가져오기</h3>
-      </div>
-      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
-       
-      <div class="code"> 
-        <div class="code_des"><strong>Code A</strong> 에 자주차 라이브러리를 임포트하는 코드를 작성후 실행하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-import jajucha2</code>
-        </pre>
-        </div>
-        </details>
-      </div>
-
-      <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">2</div>
-        <h3>자주차에서 이미지 가져오기</h3>
-      </div>
-      <p>자주차의 함수를 이용하여 RGB 함수를 받아와 변수에 저장합니다</p>
-
-      <div class="code"> 
-        <div class="code_des"><strong>Code B</strong> 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성 , 실행하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-frame = jajucha2.camera.get_image('center')</code>
-        </pre>
-        </div>
-        </details>
-      </div>
-
-      <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">3</div>
-        <h3>이미지 표시하기</h3>
-      </div>
-      <p>자주차에서 받아온 이미지를 자주차 'center' 이미지뷰어에 퀄리티 '90'으로 표시합니다, 출력된 이미지는 다음과 같습니다.</p>
-  
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/line_basic_121.svg"  alt="Placeholder image" />
-      </div>
-      <p>코드를 실행하기 전 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px; border-radius: 0px;"> 을 클릭하여 이미지 뷰어를 활성화 하세요</p>
-      <div class="code"> 
-        <div class="code_des"><strong>Code C</strong> 에 자주차 'center' 카메라에서 RGB 이미지를 받아와서 'frame'변수에 저장하는 코드를 작성 , 실행하세요 </div>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-frame = jajucha2.camera.show_image(frame,'center',quality=90)</code>
-        </pre>
-        </div>
-        </details>
-      </div>
-
-
+      <h1>시작</h1>
+      <h2 style="margin-bottom: 3px;">초기화/시작</h2>
+      <p><img src="http://121.184.63.113:4000/images/flag.svg" style="width:20px " alt="Placeholder image" /> 는 전에 실행되고 있던 코드가
+      있다면 초기화 합니다. </p>
+      <p>*프로젝트를 시작하려면 필수적으로 클릭해야합니다*</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">선택</h2>
+      <p><img src="http://121.184.63.113:4000/images/blue.svg" style="width:10px " alt="Placeholder image" /> 는 마우스로 코드창을 클릭하여 선택되면
+      왼쪽에 표시됩니다</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">코드</h2>
+      <p>코드 선택 후 <img src="http://121.184.63.113:4000/images/bluecode.svg" style="width:30px; border-radius:0%" alt="Placeholder image" /> 가 코드창을 감싸면 코드창이 선택된 것입니다 보이지 않는다면
+      설명창이 선택된 것입니다. </p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">실행</h2>
+      <p><img src="http://121.184.63.113:4000/images/play.svg" style="width:20px " alt="Placeholder image" /> 는 선택된 코드를 실행합니다</p>
+      <hr >
     </div>
 
+    <div class="container">
+      <p>© JAJUCHA www.jajucha.com</p>
+    </div>
+    
   </body>
 </html>
