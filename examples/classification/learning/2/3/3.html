@@ -19,97 +19,102 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
     <div class="container">
-      <h1>모델 테스트하기</h1>
-      <hr>
-      <h2>테스트할 모델 선정하기</h2>
-       
-      <div class="box"> <img src="http://121.184.63.113:4000/images/folder.svg" style="width:20px; margin-right: 5px; margin-left: 5px;"> -> <img src="http://121.184.63.113:4000/images/folder.svg" style="width:20px; margin-right: 5px; margin-left: 5px;"> checkpoints 에 있는 .pt 파일중 하나를 선택하여 이름을 입력합니다</div>
-      <p>*기본값 = resnet_epoch_30.pt</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_231.svg"  alt="Placeholder image" />
-      </div>
-      </p>
-    </div>
-    <div class="code"> 
-      <h3>A 를 실행합니다</h3>
-      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
-      <div class="code_div">
-  NAME = 'resnet_epoch_30.pt' 
-      </div>
-      <br></br>
-    </div >
-    <div class="container">
-      <hr>
-      <h2>테스트 시작하기</h2>
-      <div class="box"> B 를 실행하기 전 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 클릭하여 이미지 뷰어를 열어줍니다</div>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_232.svg"  alt="Placeholder image" />
-      </div>
-    </div>
-    <div class="code"> 
-      <h3>B 를 실행합니다</h3>
-      <!-- <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p> -->
-      <div class="code_div">
-import jajucha2
-import torch
-import torchvision.transforms as transforms
-from PIL import Image as Img
-import cv2
-
-# 이미지 변환을 위한 전처리 구성
-transform = transforms.Compose([
-        transforms.Resize((224, 224)),  # 입력 이미지를 224x224로 크기 조정
-        transforms.ToTensor(),         # 이미지를 Tensor 형식으로 변환
-    ])
-
-# CUDA 장치를 사용하기 위한 설정
-device = torch.device('cuda')
-
-# 사전 학습된 PyTorch 모델 불러오기
-model = torch.jit.load('checkpoints/' + NAME)  # 모델 파일의 경로를 지정
-model.to(device)  # 모델을 GPU로 이동
-model.eval()      # 모델을 평가 모드로 설정 (학습 관련 레이어 비활성화)
-
-# 무한 반복문을 사용하여 이미지를 처리
-while True:
-    # 카메라로부터 이미지를 가져옴 (중앙 카메라 기준)
-    image = jajucha2.camera.get_image('center')  
-    jajucha2.camera.show_image(image)  # 가져온 이미지를 화면에 표시
-
-    # OpenCV로 처리된 이미지를 PIL 이미지로 변환 (색상 체계도 변경)
-    image = Img.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB)) 
     
-    # 이미지 전처리 적용
-    image = transform(image)  
-    
-    # 모델 입력을 위해 Batch 차원을 추가하고 GPU로 이동
-    image = image.unsqueeze(0).to(device)
-    
-    # 모델 예측 결과를 출력 (결과는 동일한 라인에 갱신됨)
-    print(f"\r {model(image)}", end="")        
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>학습 결과 선택하기</h3>
       </div>
-      <br></br>
-    </div >
 
-    <div class="container">
+      <p>학습이 완료된 epoch은 checkpoints/train/weights 폴더에 저장됩니다.
+        그래프로 확인한 학습결과중 만족할만한 epoch의 이름을 선정합니다</p>
+      
+      <p style="margin-top: 0px;">*중앙 상단의 <img src="http://121.184.63.113:4000/images/assets/folder.svg" style="width:20px;">  아이콘을 클릭하면 EXPLORER 창을 열 수 있습니다 </p>
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_231.svg" style="width:250px" alt="Placeholder image" />
+      </div>
+
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      
+
+      <p>Code A 에 선정한 에포크의 이름을 입력한 후 실행하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+NAME = 'resnet_epoch_20.pt'&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
       <hr>
-      <h2>결과 확인하기</h2>
-      <div class="box"> B를 실행하게 되면 다음 그림과 같이 배열이 출력됩니다</div>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_233.svg"  alt="Placeholder image" />
-      </div>
-      <br></br>
 
-      <div class="box"> 현재는 4개의 배열이 출력되는데 이는 클래스의 갯수 , 배열의 순서는 data 폴더에 있는 
-        클래스 폴더들의 순서와 같습니다  *오름차순
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>학습 결과 실행하기 - 1</h3>
       </div>
+      <p>코드를 를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/assets/image.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" /> 를 눌러 이미지 뷰어를 활성화 홥니다</p>
+      
+      <br>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>Code B 를 실행하여 결과를 출력하세요</p>
+      
+    
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>학습 결과 실행하기 - 2</h3>
+      </div>
+      <p>코드를 실행하면 다음과 같은 이미지가 표시됩니다. 클래스는 3개를 지정하였기 때문에 0,1,2 중 1개가 표시 됩니다. 표시되는 인덱스의 순서는 알파벳 순으로 왼쪽 Explorer에 표시된 순서와 같습니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_234.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_232.svg" style="width:400px" alt="Placeholder image" />
       </div>
-       
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>학습 결과 실행하기 - 3</h3>
+      </div>
+      <p>또한 코드에서 출력되는 값은 다음과 같습니다 Predicted Class 는 output tensor중 가장 큰 값의 인덱스를 추출 한 것임을 알 수 있습니다</p>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LCB/lcb_233.svg" style="width:400px" alt="Placeholder image" />
+      </div>
+
     </div>
 
   </body>

@@ -21,96 +21,160 @@
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
+
+    
+
      <!-- explain-1 -->
     <div class="container">
-      <h1>라이다 데이터 받기, 화면에 표시하기</h1>
-      <hr>
-      <h2 style="margin-bottom: 3px;">자주차 모듈 가져오기</h2>
+ 
+
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>자주차 라이브러리 가져오기</h3>
+      </div>
       <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 자주차 라이브러리를 가져옵니다</h3>
-      <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import jajucha2</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
 
-    <!-- explain-3 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">라이다 데이터 받아오기</h2>
-      <p>자주차에 장착된 라이다는 360도 방향으로 12M거리를 탐지 할 수 있습니다</p>
-    </div>
-
-    <div class="code"> 
-      <h3>B 를 실행합니다</h3>
-      <p>라이다 데이터를 받아와서 변수에 저장합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-theta_array, dist_array = jajucha2.lidar.get_lidar()</code>
-        </pre>  
-      </div>
-      <br></br>
-    </div >
-
-
-      <!-- explain-3 -->
-      <div class="container">
-        <hr>
-        <h2 style="margin-bottom: 3px;">라이다 데이터 표시하기</h2>
-        <p>C를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/radar_right.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 라이다 뷰어를 활성화 홥니다</p>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/jaju_231.svg"  alt="Placeholder image" />
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          자주차 라이브러리 이름
         </div>
       </div>
 
-
-    <div class="code"> 
-      <h3>C 를 실행합니다</h3>
-      <p>받아온 이미지를 이미지 뷰어로 전송합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-jajucha2.lidar.show_lidar(theta_array, dist_array)</code>
-        </pre>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">jajucha2</code>
       </div>
-      <br></br>
-    </div >
 
+      <ul>
+        <li>jajucha2 : 자주차에 필요한 함수를 담고 있는 라이브러리 입니다</li>
+      </ul>
 
-    <div class="code"> 
-      <h3>D 를 실행합니다</h3>
-      <p>연속적으로 이미지를 전송합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import jajucha2
+      <br>
 
-while True:
-    center = jajucha2.camera.get_depth()
-    jajucha2.camera.show_image(depth,'depth')</code>
-        </pre>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
-      <br></br>
-    </div >
 
-    <div class="container">
-      <p>D를 실행하면 다음과 같은 이미지가 표시됩니다</p>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/jaju_232.svg"  alt="Placeholder image" />
+      <p>&nbsp;&nbsp;Code A 에 자주차 라이브러리를 임포트하는 코드를 작성후 실행하세요</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
+          </pre>
+        </div>
+        </details>
+      </div>
+
+    <br>
+    <hr>
+
+    <!-- explain-3 -->
+    <div class="list-item">
+      <div class="square-box">1</div>
+      <h3>라이다 데이터 받아오기</h3>
+    </div>
+
+    <div class="holder">
+      <div class="icon">
+        <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+      </div>
+      <div class="text">
+        라이다 데이터 받아오기
       </div>
     </div>
 
-    <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
+    <div class="code_box_exp">
+      <code class="language-python" style="text-align: left;">theta_array, dist_array = jajucha2.lidar.get_lidar()</code>
     </div>
+
+    <br>
+    <br>
+
+    <div class="example">
+      <div class="icon_ex">
+        <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+      </div>
+      <div class="text-container">
+        <div class="text"><strong>Code B</strong></div>
+        <!-- <div class="line"></div> -->
+      </div>
+    </div>
+
+    <p>&nbsp;&nbsp;Code B 를 실행하여 라이다 데이터를 받아와서 변수에 저장합니다</p>
+
+
+
+    <br>
+    <hr>
+
+
+    <!-- explain-3 -->
+    <div class="list-item">
+      <div class="square-box">2</div>
+      <h3>라이다 데이터 표시하기</h3>
+    </div>
+
+    <p>&nbsp;&nbsp;라이다 데이터는 theta_array, dist_array 를 이용하여 표시됩니다 각각 각도, 각도별 거리를 의미합니다</p>
+
+    <div class="holder">
+      <div class="icon">
+        <img src="http://121.184.63.113:4000/images/assets/jajucha_icon(white).svg" alt="PyTorch Logo">
+      </div>
+      <div class="text">
+        라이다 데이터 표시하기
+      </div>
+    </div>
+
+    <div class="code_box_exp">
+      <code class="language-python" style="text-align: left; margin-left: 100px;">jajucha2.camera.show_image(frame,window_name='center')</code>
+    </div>
+
+    <p>C를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 이미지 뷰어를 활성화 합니다 이후, 이미지뷰어 에서 라이다를 선택합니다</p>
+
+    <br>
+    <br>
+
+    <div class="example">
+      <div class="icon_ex">
+        <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+      </div>
+      <div class="text-container">
+        <div class="text"><strong>Code C</strong></div>
+        <!-- <div class="line"></div> -->
+      </div>
+    </div>
+
+    <p>&nbsp;&nbsp;Code C 를 실행하여 받아온 라이다 데이터를 이미지 뷰어로 전송합니다</p>
+
+    <br>
+    <br>
+
+    <div class="example">
+      <div class="icon_ex">
+        <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+      </div>
+      <div class="text-container">
+        <div class="text"><strong>Code D</strong></div>
+        <!-- <div class="line"></div> -->
+      </div>
+    </div>
+
+    <p>&nbsp;&nbsp;Code D 를 실행하여 연속적으로 라이다 데이터를 전송합니다</p>
+
+    </div >
+
+
   </body>
 </html>

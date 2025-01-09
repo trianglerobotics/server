@@ -9,7 +9,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -22,81 +22,30 @@
   </head>
   <body class="api-docs">
 
-    
-
      <!-- explain-1 -->
     <div class="container">
-      <h1>조향모터 제어하기</h1>
-      <hr>
-      <h2 style="margin-bottom: 3px;">자주차 모듈 가져오기</h2>
-      <p>자주차를 제어하기 위한 함수들의 모음집인 jajucha2 라이브러리를 가져옵니다</p>
+      <h1>시작</h1>
+      <h2 style="margin-bottom: 3px;">초기화/시작</h2>
+      <p><img src="http://121.184.63.113:4000/images/flag.svg" style="width:20px " alt="Placeholder image" /> 는 전에 실행되고 있던 코드가
+      있다면 초기화 합니다. </p>
+      <p>*프로젝트를 시작하려면 필수적으로 클릭해야합니다*</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">선택</h2>
+      <p><img src="http://121.184.63.113:4000/images/blue.svg" style="width:10px " alt="Placeholder image" /> 는 마우스로 코드창을 클릭하여 선택되면
+      왼쪽에 표시됩니다</p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">코드</h2>
+      <p>코드 선택 후 <img src="http://121.184.63.113:4000/images/bluecode.svg" style="width:30px; border-radius:0%" alt="Placeholder image" /> 가 코드창을 감싸면 코드창이 선택된 것입니다 보이지 않는다면
+      설명창이 선택된 것입니다. </p>
+      <hr >
+      <h2 style="margin-bottom: 3px;">실행</h2>
+      <p><img src="http://121.184.63.113:4000/images/play.svg" style="width:20px " alt="Placeholder image" /> 는 선택된 코드를 실행합니다</p>
+      <hr >
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 자주차 라이브러리를 가져옵니다</h3>
-      <p>자주차 라이브러리는 인공지능 기능을 포함 하고 있어 로딩하는데 2-3초 정도 소요됩니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import jajucha2</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-
-    <!-- explain-3 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">모터 제어하기</h2>
-      <p>자주차를 모터를 실질적으로 제어합니다</p>
-      <p>set_motor(left,right,speed) 순서입니다</p>
-      <p>left,right = ±10 범위입니다</p>
-      <p>speed = ±30 범위입니다</p>
-    </div>
-
-    <div class="code"> 
-      <h3>B</h3>
-      <p>정지상태에서 왼쪽으로 스티어링을 조향합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-jajucha2.control.set_motor(-10,-10,0)</code>
-        </pre>  
-      </div>
-      <br></br>
-    </div >
-    <div class="code"> 
-      <h3>C</h3>
-      <p>정지상태에서 오른쪽으로 스티어링을 조향합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-jajucha2.control.set_motor(10,10,0)</code>
-        </pre> 
-      </div>
-      <br></br>
-    </div >
-    <div class="code"> 
-      <h3>D</h3>
-      <p>1초 간격으로 좌우로 스티어링을 조작합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import time #시간 관련 라이브러리를 가져옵니다
-
-while(True): 
-    jajucha2.control.set_motor(10,10,0) 
-    time.sleep(1) 
-    jajucha2.control.set_motor(-10,-10,0)
-    time.sleep(1)</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
 
     <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
+      <p>© JAJUCHA www.jajucha.com</p>
     </div>
+    
   </body>
 </html>
