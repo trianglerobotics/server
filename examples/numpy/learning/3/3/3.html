@@ -10,7 +10,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -41,23 +41,217 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>가중치</h3>
+        <h3>컴퓨터가 표현하는 난수</h3>
       </div>
-      <p>가중치는 입력값(𝑥) 이 연산 결과에 미치는 영향력을 조절하는 요소입니다. 입력값(𝑥)이 뉴런으로 전달될 때, 가중치(𝑤)와 곱해져 특정 입력의 중요도를 반영합니다. 인공뉴런으로는 n개의 입력값이 들어오기 때문에 가중치도 n개를 가지게 됩니다.
-        가중치와 입력값들의 곱을 수식으로 표현하면 다음과 같습니다</p>   
+      <p>&nbsp;&nbsp;  컴퓨터 게임을 하다보면 랜덤 박스에서 아이템을 뽑는 경우가 있습니다. 이때 뽑기 결과를 무작위로 결정되도록 하려면 아무도 예측할 수 없는 난수(ramdom number)를 생성해야 합니다.</p>   
+      
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_331.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
 
-      <p>
-        \[
-\sum_{i=1}^{n} (w_i \cdot x_i) = (w_1 x_1 + w_2 x_2 + \cdots + w_n x_n)
-\]
-      </p>
+      <p>&nbsp;&nbsp;  컴퓨터는 일반적으로 자연계에 존재하는 실제 난수를 생성할 수 없습니다. 따라서 수학적 알고리즘을 이용해 ‘의사 난수(pseudo-random number)’를 만들어 냅니다. 의사 난수란 실제 난수처럼 보이게 설계된 수열로, 비록 실제 난수는 아니지만 임의성이 충분히 높아 실제 난수처럼 사용할 수 있습니다.</p>   
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>0과 1 사이의 난수 배열 생성하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;  배열의 모든 요소를 0과 1 사이의 무작위 실수로 채워 배열을 생성할 수 있습니다. </p>  
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          0과 1 사이의 난수 배열 생성 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.random.rand</strong>(shape)</code>
+      </div>
+
+      <ul>
+        <li><strong>shape: </strong> 배열의 형태를 입력합니다. 2차원 이상의 배열을 생성할 때는 튜플 형태로 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  0과 1 사이의 난수로 구성된 4 X 4 크기의 2차원 배열을 생성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>지정 범위의 난수 배열 생성하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;  범위를 지정하여 난수 배열을 생성할 수 있습니다. 지정된 범위 안에 있는 임의의 정수가 입력됩니다.</p>  
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          지정 범위의 난수 배열 생성 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.random.randint</strong>(low, high, <strong>size = </strong>shape)</code>
+      </div>
+
+      <ul>
+        <li><strong>low: </strong> 생성할 범위의 시작 숫자입니다.</li>
+        <li><strong>high: </strong> 생성할 범위의 마지막 숫자에 1을 더한 값입니다. 10까지 생성하고 싶다면, 11을 입력하면 됩니다.</li>
+        <li><strong>shape: </strong> 배열의 형태를 입력합니다. 2차원 이상의 배열을 생성할 때는 튜플 형태로 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>     
+      
+      <p>&nbsp;&nbsp;  10부터 30 사이의 난수로 구성된 4 X 4 크기의 2차원 배열을 생성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>표준 정규 분포 난수 배열 생성하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;  자연 현상을 비롯해 현실에서 발생하는 많은 현상들은 대체로 정규 분포를 따릅니다. 따라서 정규 분포를 반영하여 난수 배열을 생성하면 자율 주행 상황을 더 체계적이고 현실적으로 시뮬레이션할 수 있습니다.</p>  
+      <p>&nbsp;&nbsp;  넘파이 전용 함수를 사용해 정규 분포를 따르는 난수를 생성할 수 있습니다. 이때 생성되는 값은 평균이 0이고 표준 편차가 1인 분포, 즉 표준 정규 분포를 반영합니다.</p>  
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          표준 정규 분포 난수 배열 생성 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.random.randn</strong>(size_1, size_2, ..., size_n)</code>
+      </div>
+
+      <ul>
+        <li><strong>size_n: </strong>차원별로 배열의 크기를 나열해야 합니다. 다른 난수 배열 생성 함수와 달리 튜플을 사용해 배열의 형태를 지정할 수 없습니다. </li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>     
+      
+      <p>&nbsp;&nbsp;  표준 정규 분포를 반영한 난수로 구성된 2 X 4 X 4 크기의 3차원 배열을 생성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>난수 재현하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;  난수 생성 함수로 산출된 난수는 실행할 때마다 그 값이 달라집니다. 난수를 생성할 때 사용하는 초기값, 즉 시드(seed)가 매번 달라지기 때문입니다.</p>  
+      <p>&nbsp;&nbsp;  그런데 사용자가 특정 값으로 시드를 고정해 놓으면, 언제든 동일한 난수를 생성할 수 있습니다. 난수 생성을 제어하면 일정한 실험 조건에서 반복적으로 시뮬레이션할 수 있고, 일관된 실험 결과를 얻거나 이전 상황을 재현하는 데 유용합니다.</p>  
 
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch/torch_331.svg" style="width: 350px;"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_332.svg" style="width: 450px;"  alt="Placeholder image" />
       </div> 
 
-    
 
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          시드(seed) 설정 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.random.seed</strong>(value)</code>
+      </div>
+
+      <ul>
+        <li><strong>value: </strong>난수 생성을 제어하는 초기값입니다. 이후 실행부터 적용되어 동일한 난수 수열이 생성됩니다. </li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>     
+      
+      <p>&nbsp;&nbsp;  seed를 50으로 고정한 후 0부터 1 사이의 난수로 구성된 4 크기의 1차원 배열을 세 번 생성해 보고, seed를 40으로 고정한 후 생성한 값과 비교해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+      
     </div>
 
   </body>

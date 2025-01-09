@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,107 +20,283 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 숫자</h1>
-      <h2 style="margin-bottom: 3px;">파이썬 숫자</h2>
-      <p>Python에는 두 가지 숫자형이 있습니다.</p>
-      <p><strong>정수:</strong> <span class="hlw">int</span></p>
-      <p><strong>실수:</strong> <span class="hlw">float</span>, <span class="hlw">bytearray</span>, <span class="hlw">memoryview</span></p>
-
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 변수를 저장하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = 1    # int
-y = 2.8  # float
-z = 1j   # complex</code>
-        </pre>
-
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>문자 유형</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <p>Python에서 객체의 유형을 확인하려면 다음 <span class="hlw">type()</span>함수를 사용합니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-print(type(x))
-print(type(y))
-print(type(z))</code>
-</pre>
+      <p>&nbsp;&nbsp;  문자 데이터는 단어, 문장, 특수 문자나 숫자까지 포함합니다. 문자 데이터를 저장할 때는 반드시 작은따옴표(' ')나 큰따옴표(" ")로 묶어야 합니다. 문자 데이터는 ‘str(string)’ 유형으로 지정됩니다.</p>   
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  작은따옴표로 묶어 문자열을 저장하고, 데이터 유형을 확인해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-3 -->
-    <div class="container">
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  큰따옴표로 묶어 문자열을 저장하고, 데이터 유형을 확인해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  따옴표로 묶지 않은 문자열을 저장해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
       <hr>
-      <h2 style="margin-bottom: 3px;">INT</h2>
-      <p>Int, 즉 정수는 소수점을 포함하지 않는 양수 또는 음수를 포함한 무한 길이의 정수입니다.</p>
-    </div>
-    <!-- code-3 -->
-    <div class="code"> 
-      <h3>C 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>정수:</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = 1
-y = 35656222554887711
-z = -3255522
+      <br>
 
-print(type(x))
-print(type(y))
-print(type(z))</code>
-</pre>
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>특정 문자 추출하기</h3>
       </div>
-      <br></br>
-    </div >
-    
-    <!-- explain-4 -->
-    <div class="container">
+      <p>&nbsp;&nbsp;  문자열의 각 문자는 위치 데이터인 인덱스(index)를 가지고 있습니다. 왼쪽부터 시작하며 첫 번째 문자의 인덱스는 0입니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python321.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  인덱스를 활용해 원하는 문자를 하나씩 추출하는 것을 인덱싱(indexing)이라고 합니다. 추출하고자 하는 문자의 인덱스를 하나하나 정확하게 입력해야 합니다.</p>  
+      <p>&nbsp;&nbsp;  슬라이싱(slicing)을 사용해 원하는 여러 개의 문자를 추출할 수도 있습니다. 슬라이싱은 콜론(:)을 사용해 범위를 지정하여 원하는 데이터만 추출하는 방법입니다.</p>    
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          문자열 인덱싱
+        </div>
+      </div>
+
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">data<strong>[</strong>index<strong>]</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>data: </strong> 인덱싱할 데이터입니다.</li>
+        <li><strong>index: </strong> 추출할 인덱스 번호입니다.</li>
+      </ul>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          문자열 슬라이싱
+        </div>
+      </div>
+
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">data<strong>[</strong>start:end:step<strong>]</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>data: </strong> 슬라이싱할 데이터입니다.</li>
+        <li><strong>start: </strong> 슬라이싱을 시작할 문자의 인덱스입니다. 생략 시 기본값인 0으로 지정됩니다.</li>
+        <li><strong>end: </strong> 슬라이싱이 종료되는 문자의 인덱스 번호에 1을 더한 값을 입력합니다. 예를 들어 종료 지점의 인덱스가 3이라면 4를 입력합니다.</li>
+        <li><strong>step: </strong> 인덱스를 건너뛰는 간격입니다. 기본값은 1이며, 음수를 입력하면 역방향으로 진행됩니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  문자열 인덱싱으로 “study”에서 “s”를 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code E</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  문자열 슬라이싱으로 “abcdef”에서 “bcd”를 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code E</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code F</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  문자열 슬라이싱으로 “abcdef”에서 “bdf”를 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code F</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code G</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  문자열 슬라이싱으로로 “abcdef”에서 “edc”를 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code G</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
       <hr>
-      <h2 style="margin-bottom: 3px;">FLOAT</h2>
-      <p>부동 소수점 숫자 또는 "부동 소수점 숫자"는 소수점 하나 이상을 포함하는 양수 또는 음수 숫자입니다.</p>
-    </div>
-    <!-- code-4 -->
-    <div class="code"> 
-      <h3>D</h3>
-      <p>실수:</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = 1.10
-y = 1.0
-z = -35.59
+      <br>
 
-print(type(x))
-print(type(y))
-print(type(z))</code>
-</pre>
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>문자열 결합하고 반복하기</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- copy right -->
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <p>&nbsp;&nbsp;  여러 개의 문자열을 결합하거나, 반복해서 출력할 수 있습니다. 문자열을 결합하기 위해서는 ‘+ 연산자’를 사용하고, 반복 출력하기 위해서는 ‘* 연산자’를 사용합니다.</p>   
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code H</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  + 연산자를 사용해 각각 다른 변수에 저장된 “good”과 “job” 사이에 공백을 넣어 연결해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code H</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code I</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  * 연산자를 사용해 “thank_u”를 두 번 반복해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code I</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+
     </div>
 
-
-
-    
   </body>
 </html>

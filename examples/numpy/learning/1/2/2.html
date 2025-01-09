@@ -10,7 +10,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -38,32 +38,49 @@
   </head>
   <body class="api-docs">
     <div class="container">
-    
-      <div class="list-item">
-        <div class="square-box">1</div>
-        <h3>넘파이는 대규모 숫자를 처리하는 도구이다.</h3>
-      </div>
-      <p>인공지능은 본질적으로 학습 가능한 함수로, 학습이란 ,입력값과 출력값을 기반으로 내부 값을 조정하는것을 의미합니다. 전통적 함수는 고정된 형태로 작동하지만, 인공지능은 학습을 통해 더 나은 결과를 도출합니다.</p>
 
+      <br>
+      <br>
+      <p>&nbsp;&nbsp;  넘파이(NumPy)는 Numerical Python의 줄임말로 숫자를 다루는 파이썬이라는 뜻입니다. 이름에서부터 알 수 있듯이 숫자 데이터를 계산하고 분석하는 데 특화되어 있습니다. 일반적으로 ‘np’로 별칭을 지정하여 불러옵니다.</p>
+
+      <br>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch/torch_111.svg" style="width: 150px;"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_111.svg" style="width: 190px;"  alt="Placeholder image" />
       </div>       
 
       <br>
-      <hr>
+      <p>&nbsp;&nbsp;  방대한 양의 숫자 데이터를 처리하는 기능이 포함되어 있어, 복잡한 연산도 파이썬보다 훨씬 빠르고 간단하게 해결할 수 있습니다.</p>
 
-      <div class="list-item">
-        <div class="square-box">2</div>
-        <h3>인공지능의 분류</h3>
-      </div>
-      <p>인공지능 의 하위분류에는 머신러닝 ,딥러닝이 존재합니다 딥러닝은 머신러닝의 한 종류로, 여러 층의 복잡한 구조를 학습하는 반면, 머신러닝은 비교적 간단한 함수를 학습합니다. 예를 들어, 1개의 함수, 
-        
-        \( y = ax + b \)
-        를 학습하는 것은 머신러닝이고, 이를 여러 층으로 쌓아 학습하면 딥러닝입니다.</p>
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_112.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div> 
 
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/torch/torch_112.svg" style="width: 350px;"  alt="Placeholder image" />
-        </div>   
+      <br>
+      <p>&nbsp;&nbsp;  자율주행 알고리즘을 구현하기 위해서는 먼저 카메라나 라이다(LiDAR) 같은 다양한 센서로부터 데이터를 수집하고 이를 분석해야 합니다.</p>
+      <p>&nbsp;&nbsp;  이러한 데이터들은 모두 숫자로 이루어져 있습니다. 따라서 넘파이를 활용해 방대한 양의 숫자 데이터를 효율적으로 처리해야 자율주행 시스템을 효과적으로 구축할 수 있습니다.</p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+        <div class="example">
+          <div class="icon_ex">
+            <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+          </div>
+          <div class="text-container">
+            <div class="text"><strong>Code A</strong></div>
+            <!-- <div class="line"></div> -->
+          </div>
+        </div>
+
+        <p>&nbsp;&nbsp;  1부터 100,000까지 숫자 범위를 생성하고 각각의 숫자에 2를 곱하는 연산을 파이썬과 넘파이로 나누어 실행해 보고, 연산 속도를 비교해 봅시다.</p>
+
+
+        <br>
+        <div class="code_box_exe">
+          <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+        </div>
 
     </div>
 

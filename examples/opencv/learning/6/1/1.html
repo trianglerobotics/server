@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>윤곽선 검출이 필요한 이유</h3>
+      </div>
+      <p>&nbsp;&nbsp;  자동차가 차선에 맞추어 달리지 못한다면 제대로 된 자율주행이라고 할 수 없습니다. 차선을 명확하게 인식하고 차선에 맞추어 주행하는 것은 자율주행 시스템에서 가장 중요한 과제입니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv611.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div> 
+      <br>
+      
+      <p>&nbsp;&nbsp;  차선을 정확하게 인식하기 위해서는 이미지에서 윤곽선(edge)을 검출해야 합니다. 윤곽선 검출 작업은 복잡한 이미지를 단순화하고, 대상의 형태와 경계만으로 주요한 정보를 빠르게 처리할 수 있도록 도와주는 전처리 작업입니다. 알고리즘을 고도화한다면 차선 인식뿐만 아니라 표지판이나 장애물 인식에도 사용할 수 있습니다.</p>
+
+      <br>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv612.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div> 
+
+    </div>
+
+  </body>
+</html>

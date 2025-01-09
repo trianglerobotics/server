@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,109 +20,134 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
-    <div class="container" >
-      <h1>필터링과 변환</h1>
-      <hr></hr>
-      <h2>이미지 이진화</h2>
-      <p>**이미지 이진화(Binary Thresholding)**는 이미지를 두 가지 값(흑/백)으로 변환하는 작업입니다. OpenCV에서 이진화는 주로 cv2.threshold()와 cv2.adaptiveThreshold() 함수를 사용하여 수행합니다. 이진화는 이미지 처리의 전처리 단계에서 중요한 작업 중 하나입니다. </p>
-      <h2>이미지 이진화 -1 : cv2.threshold()</h2>
-      <p>기본적인 이진화를 수행합니다. 픽셀 값이 임계값보다 크면 최대값으로 설정하고, 그렇지 않으면 0으로 설정합니다.</p>
-      <div class="box" style="margin-top: 20px;">retval, dst = cv2.threshold(src, thresh, maxval, type)</div>
-      <p><strong>src: 입력 이미지 (Grayscale 필요).</strong></p>
-      <p><strong>thresh: 임계값.</strong></p>
-      <p><strong>maxval: 임계값을 초과하는 경우 설정할 값.</strong></p>
-      <p><strong>type: 이진화 유형.</strong></p>
-      <div style="overflow-x: auto; white-space: pre; margin: 0px; line-height: 0.5;">
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.THRESH_BINARY: <span class="hljs">픽셀 값 > thresh → maxval, 아니면 0.</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.THRESH_BINARY_INV: <span class="hljs">반전된 이진화.</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.THRESH_TRUNC: <span class="hljs">임계값 초과 시 값을 thresh로 고정.</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.THRESH_TOZERO: <span class="hljs">임계값 초과 시 픽셀 값을 유지, 아니면 0.</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.THRESH_TOZERO_INV: <span class="hljs">반전된 THRESH_TOZERO.</span></p>
-      </div>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import jajucha2
-
-# 이미지 읽기 (Grayscale로 변환)
-image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
-
-# 이진화 적용
-_, binary = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
-_, binary_inv = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY_INV)
-
-# 결과 보기
-
-jajucha2.camera.show_image(image)
-jajucha2.camera.show_image(binary,'left')
-jajucha2.camera.show_image(binary_inv,'right')
-</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div>
-
     <div class="container">
-      <h2>이미지 이진화 -2 : cv2.adaptiveThreshold()</h2>
-      <p>입력 이미지의 국소 영역에 따라 임계값을 동적으로 계산합니다. 조명이 고르지 않은 이미지에서 효과적입니다.</p>
-      <div class="box" style="margin-top: 20px;">dst = cv2.adaptiveThreshold(src, maxval, adaptiveMethod, thresholdType, blockSize, C)</div>
-      <div style="overflow-x: auto; white-space: pre; margin: 0; line-height: 0.5;">
-        <p style="margin: 0px;"><strong>adaptiveMethod: cv2.ADAPTIVE_THRESH_MEAN_C: 주변 픽셀의 평균 값을 사용.</strong></p>
-        <p style="margin: 0px;"><strong>adaptiveMethod: cv2.ADAPTIVE_THRESH_GAUSSIAN_C: 가우시안 가중 평균 값을 사용.</strong></p>
-        <p style="margin: 0px;"><strong>thresholdType: 이진화 유형 (cv2.THRESH_BINARY, cv2.THRESH_BINARY_INV).</strong></p>
-        <p style="margin: 0px;"><strong>blockSize: 국소 영역 크기 (홀수).</strong></p>
-        <p style="margin: 0px;"><strong>C :평균 또는 가중 평균에서 뺄 값 (조정 가능).</strong></p>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>HSV 색상 영역</h3>
       </div>
+      <p>&nbsp;&nbsp;컴퓨터가 색을 표현하는 방식은 RGB만 있는 것이 아닙니다. 빨강, 초록, 파랑을 조함하여 색을 만들어 내는 RGB와 달리 HSV는 색상(Hue), 채도(Saturation), 명도(Value)로 다양한 색상을 만들어 냅니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv431.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div> 
+      <br>
+
+      <p>&nbsp;&nbsp;  색상(Hue)는 빨강, 주황, 노랑 등 기본적인 색의 종류를 나타내며 이를 원형으로 표현합니다. HSV의 색상은 0도부터 360도까지 정의되지만, OpenCV는 0도부터 179도로 축소하여 표현합니다.</p>
+      <p>&nbsp;&nbsp;  채도(saturation)는 색의 순도를 의미합니다. 채도가 높을수록 색이 선명해지고, 낮을수록 회색에 가까워집니다.  OpenCV에서는 0부터 255까지 채도를 조절할 수 있습니다.</p>
+      <p>&nbsp;&nbsp;  명도(Value)는 색의 밝기를 나타냅니다. 명도가 높을수록 색이 밝아지고, 낮을수록 어두워집니다. 채도와 마찬가지로 0부터 255 사이의 값을 가집니다.</p>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>이미지 색상 변환</h3>
+      </div>
+      
+      <p>&nbsp;&nbsp;  자율주행자동차가 차선을 인식할 때 색상 정보는 불필요합니다. 컬러 이미지와 흑백 이미지는 채널 개수가 3배 혹은 4배까지 차이가 나기 때문에 불필요한 색상 정보는 삭제하는 것이 바람직합니다.</p>
+      <p>&nbsp;&nbsp;   이처럼 OpenCV로 이미지 작업을 하다 보면 이미지의 색상을 바꾸어야 할 때가 있습니다. OpenCV 전용 함수를 사용해 이미 불러온 이미지의 파일을 바꿀 수 있습니다.</p>
+
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          색상 변환 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>cv2.cvtColor</strong>(data, flag)</code>
+      </div>
+
+      <ul>
+        <li><strong>data: </strong> 색상을 바꿀 이미지 데이터입니다.</li>
+        <li><strong>flag: </strong> 변환할 색상 속성을 지정하는 플래그입니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          색상 변환 flags
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>① cv2.COLOR_BGR2GRAY: </strong> BGR에서 Grayscale로 변환합니다.<br>
+          <strong>② cv2.COLOR_GRAY2BGR: </strong>Grayscale에서 BGR로 변환합니다.<br>
+          <strong>③ cv2.COLOR_BGR2HSV: </strong>BGR에서 HSV로 변환합니다.</code>
+      </div>
+
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>    
+
+      <p>&nbsp;&nbsp;  예제 이미지를 컬러로 불러온 후 색상 변환 함수를 사용해 흑백 이미지로 변환해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  예제 이미지를 컬러로 불러온 후 색상 변환 함수를 사용해 HSV 이미지로 변환해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+
+
     </div>
-
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B에 있는 빈칸을 채운 후 B 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import jajucha2
-# 이미지 읽기 (Grayscale로 변환)
-image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
-
-# Adaptive Thresholding
-adaptive_mean = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_MEAN_C,
-                                      cv2.THRESH_BINARY, 11, 2)
-adaptive_gaussian = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-                                          cv2.THRESH_BINARY, 11, 2)
-
-jajucha2.camera.show_image(image)
-jajucha2.camera.show_image(adaptive_mean,'left')
-jajucha2.camera.show_image(adaptive_gaussian,'right')
-</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div>
-
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
-
-
 
   </body>
 </html>

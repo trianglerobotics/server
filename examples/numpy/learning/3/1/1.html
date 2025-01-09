@@ -10,7 +10,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -41,28 +41,113 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>뉴런,인공뉴런</h3>
+        <h3>기본 배열 생성하기</h3>
       </div>
-      <p>사람의 뇌는 뉴런으로 이루어져 있습니다. 뉴런에서는 여러 수상돌기에서 신호를 받아 세포체에 전달한 뒤에 축삭돌기에서 다음 뉴런으로 출력합니다. 이러한 구조를 인공적으로 모방해서 만든 구조를 인공뉴런 이라고 합니다</p>   
-
+      <p>&nbsp;&nbsp;  넘파이에서 제공하는 함수를 사용해 다양한 넘파이 배열을 생성할 수 있습니다. 기본적으로 ‘np.array()’를 사용해 파이썬의 리스트와 튜플을 넘파이 배열로 바꾸어 생성할 수 있습니다.</p>   
+      
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch/torch_311.svg" style="width: 350px;"  alt="Placeholder image" />
-      </div> 
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_311.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          넘파이 배열 생성 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">np.array<strong>(itarable)</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>itarable: </strong> 반복 가능한 객체입니다. 보통 리스트나 튜플을 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  A에 저장된 리스트를 np.array를 사용해 넘파이 배열로 만들어 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
       <br>
       <hr>
+      <br>
 
       <div class="list-item">
         <div class="square-box">2</div>
-        <h3>인공신경망</h3>
+        <h3>데이터 타입 지정하기</h3>
       </div>
-      <p>인공뉴런을 여러층으로 연결한 구조를 인공신경망으로 부르며 단순한 함수인 뉴런의 연결을 통하여 복잡한 함수를 만들 수 있게 되었습니다</p>
-
+      <p>&nbsp;&nbsp;  ‘np.array()’는 기본적으로 입력된 반복 가능한 객체의 데이터 유형을 반영하여 넘파이 배열을 생성합니다. 만약 다른 데이터 유형으로 바꾸어 배열을 생성하고 싶다면, dtype 매개변수를 사용하면 됩니다.</p>  
+      <p>&nbsp;&nbsp;  넘파이에서 사용되는 주요 데이터 유형은 정수형, 실수형, 문자형, 불리언형 등이 있습니다. 숫자형은 표현 가능한 숫자에 따라 다양한 비트(bit) 유형으로 다시 구분됩니다.</p>    
+ 
+      <br>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch/torch_312.svg" style="width: 350px;"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_312.svg" style="width: 500px;"  alt="Placeholder image" />
       </div> 
 
-    
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_313.svg" style="width: 500px;"  alt="Placeholder image" />
+      </div> 
 
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          넘파이 배열 생성 함수(데이터 타입 지정)
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.array</strong>(itarable, <strong>dtype = np.</strong>data type)</code>
+      </div>
+
+      <ul>
+        <li><strong>itarable: </strong> 반복 가능한 객체입니다. 보통 리스트나 튜플을 입력합니다.</li>
+        <li><strong>data type: </strong> 지정하고자 하는 넘파이 데이터 유형입니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>     
+      
+      <p>&nbsp;&nbsp;  B에 저장된 정수형 리스트를 dtype 매개변수를 사용해 실수형 넘파이 배열로 만들어 봅시다. (단, 소수점 아래 약 4자리까지 표현할 수 있는 실수형을 사용합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      
     </div>
 
   </body>

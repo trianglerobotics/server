@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,143 +20,111 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>이미지 자르기(ROI)</h3>
+      </div>
+      <p>&nbsp;&nbsp; 이미지를 사용할 때 항상 전체 이미지가 필요한 것은 아닙니다. 목적에 따라 이미지의 일부만 선택해서 사용하면 처리 속도와 정확도를 향상시킬 수 있습니다.</p>   
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv421.svg" style="width: 400px;"  alt="Placeholder image" />
+      </div> 
 
-     <!-- explain-1 -->
-    <div class="container" >
-      <h1>필터링과 변환</h1>
-      <hr></hr>
-      <h2>엣지 검출</h2>
-      <p>OpenCV에서 **엣지 검출(Edge Detection)**은 이미지에서 명확한 경계나 윤곽을 찾아내는 중요한 작업입니다. 주로 이미지의 구조를 이해하거나 객체의 경계를 감지할 때 사용됩니다. </p>
-      <h2>엣지 검출 -1 : Canny Edge Detection</h2>
-      <p>가장 널리 사용되는 엣지 검출 알고리즘입니다. 가우시안 블러링을 적용하고, 그래디언트 계산, 임계값 설정 등을 통해 엣지를 검출합니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.Canny(image, threshold1, threshold2)</div>
-      <p><strong>threshold1: 하한 임계값 (Lower Threshold).</strong></p>
-      <p style="margin-bottom: 20px;"><strong>threshold2: 상한 임계값 (Upper Threshold).</strong></p>
+      <p>&nbsp;&nbsp;   OpenCV에서는 넘파이의 배열 슬라이싱을 사용해 이미지의 관심 영역(ROI: Region of Interest)을 설정할 수 있습니다. 넘파이는 좌표를 [Y, X] 순서로 인지하기 때문에, 좌표를 입력할 때 이에 유의해서 작성해야 합니다.</p>   
+      <p>&nbsp;&nbsp;   하나의 이미지에서 ROI를 여러 개 설정할 수 있고, 만들어진 ROI를 모두 합쳐 한 화면에 띄울 수도 있습니다.</p>   
+      <p>&nbsp;&nbsp;   ROI를 결합하기 위해서는 넘파이의 배열 결합 함수를 사용해야 합니다. ‘np.hstach()’을 사용해 가로로 결합하거나, ‘np.vstach()’을 사용해 세로로 결합할 수도 있습니다.</p>   
+      <p>&nbsp;&nbsp;   넘파이 배열 결합은 결합할 이미지 크기가 서로 다르면 결합할 수 없기 때문에, 결합 전에 ‘cv2.resize()’로 크기를 조정해야 합니다.</p>   
+
+
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          ROI(Region of Interest) 설정
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">data<strong>[</strong>y1:y2, x1:x2<strong>]</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>data: </strong> ROI를 설정할 이미지 데이터입니다.</li>
+        <li><strong>y1: </strong> 슬라이싱을 시작할 세로 축 좌표입니다.</li>
+        <li><strong>y2:</strong> 슬라이싱을 끝낼 세로 축 좌표입니다.</li>
+        <li><strong>x1: </strong>슬라이싱을 시작할 가로 축 좌표입니다.</li>
+        <li><strong>x2: </strong>슬라이싱을 끝낼 가로 축 좌표입니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>    
+      <p>&nbsp;&nbsp;  예제 이미지의 크기는 1024 X 1024입니다. 배열 슬라이싱을 사용해 아래의 영역을 ROI로 지정해 봅시다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv422.svg" style="width: 350px;"  alt="Placeholder image" />
+      </div> 
+
+      <br>
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>       
+
+      <p>&nbsp;&nbsp;    예제 이미지의 크기는 1024 X 1024입니다. 배열 슬라이싱을 사용해 아래의 영역을 ROI로 지정하고, A, B 순서로 가로 배열 결합을 해 봅시다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv423.svg" style="width: 380px;"  alt="Placeholder image" />
+      </div> 
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import jajucha2
-
-# 이미지 읽기
-image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
-
-# 가우시안 블러링 적용 (노이즈 제거)
-blurred = cv2.GaussianBlur(image, (5, 5), 1.4)
-
-# Canny Edge Detection
-edges = cv2.Canny(blurred, 50, 150)
-
-# 결과 보기
-jajucha2.camera.show_image(edges)</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h2>엣지 검출 -2 : Sobel Edge Detection</h2>
-      <p>Sobel 필터를 사용하여 그래디언트를 계산하고 엣지를 검출합니다. 특정 축(X 또는 Y)을 따라 엣지를 감지할 수 있습니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.Sobel(src, ddepth, dx, dy, ksize)</div>
-      <p><strong>ddepth: 출력 이미지의 데이터 타입 (일반적으로 cv2.CV_64F).</strong></p>
-      <p><strong>dx: X 방향 미분 계수 (1이면 X 방향 검출).</strong></p>
-      <p><strong>dy: Y 방향 미분 계수 (1이면 Y 방향 검출).</strong></p>
-      <p style="margin-bottom: 20px;"><strong>ksize:커널 크기 (홀수).</strong></p>
-    </div>
-
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B에 있는 빈칸을 채운 후 B 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import numpy as np
-import jajucha2
-
-# 이미지 읽기
-image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
-
-# Sobel X (수평 엣지)
-sobel_x = cv2.Sobel(image, cv2.CV_64F, 1, 0, ksize=3)
-sobel_x = np.uint8(np.absolute(sobel_x))
-
-# Sobel Y (수직 엣지)
-sobel_y = cv2.Sobel(image, cv2.CV_64F, 0, 1, ksize=3)
-sobel_y = np.uint8(np.absolute(sobel_y))
-
-# Sobel Combined
-sobel_combined = cv2.bitwise_or(sobel_x, sobel_y)
-
-# 결과 보기
-jajucha2.camera.show_image(image)
-jajucha2.camera.show_image(sobel_x,'left')
-jajucha2.camera.show_image(sobel_y,'right')
-jajucha2.camera.show_image(sobel_combined,'depth')</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h2>엣지 검출 -3 : Laplacian Edge Detection</h2>
-      <p>Laplacian 필터를 사용하여 2차 미분을 계산하고 엣지를 감지합니다. 엣지의 방향성을 고려하지 않고 모든 방향에서 엣지를 감지합니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.Laplacian(src, ddepth, ksize)</div>
-      <p><strong>ddepth: 출력 이미지의 데이터 타입 (일반적으로 cv2.CV_64F).</strong></p>
-      <p style="margin-bottom: 20px;"><strong>ksize: 커널 크기 (기본값: 1).</strong></p>
-    </div>
-
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>C에 있는 빈칸을 채운 후 C 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import numpy as np
-import jajucha2
-
-# 이미지 읽기
-image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
-
-# Laplacian Edge Detection
-laplacian = cv2.Laplacian(image, cv2.CV_64F)
-laplacian = np.uint8(np.absolute(laplacian))
-
-# 결과 보기
-jajucha2.camera.show_image(image)
-jajucha2.camera.show_image(laplacian,'left')
-</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div>
-
-
-
-
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
-
-
 
   </body>
 </html>

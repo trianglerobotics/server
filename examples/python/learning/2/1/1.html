@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,59 +20,98 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>파이썬 변수</h1>
-      <hr>
-      <h2 style="margin-bottom:3px">변수</h2>
-      <p>변수는 데이터 값을 저장하는 바구니입니다.</p>
-      <hr>
-      <h2 style="margin-bottom:3px">변수생성</h2>
-      <p>변수는 처음으로 값을 할당하는 순간 생성됩니다.</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = 5
-y = "John"
-print(x)
-print(y)</code>
-        </pre>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>변수 생성하기</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <p>변수는 특정 유형 으로 선언될 필요가 없으며 , 설정된 후에도 유형을 변경할 수 있습니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = 4       # x is of type int
-x = "Sally" # x is now of type str
-print(x)</code>
-        </pre>
+      <p>&nbsp;&nbsp;  변수는 파이썬에서 데이터를 사용하기 위한 기본적인 도구입니다. 이름표가 붙은 바구니에 물건을 담는 것과 같은 역할을 합니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python211.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  자율주행 자동차가 센서와 카메라를 통해 주변 환경을 인식하면 데이터가 쌓입니다. 자율주행 시스템을 만들기 위해서는 이 데이터들을 활용해 최적의 알고리즘을 설계해야 합니다.</p>   
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          변수의 구성 요소
+        </div>
       </div>
-      <br></br>
-    </div >
 
-    
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>변수명 = 데이터</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>변수명: </strong> 데이터를 저장할 변수의 이름입니다.</li>
+        <li><strong>=(할당 연산자): </strong> 오른쪽의 데이터를 왼쪽의 변수에 저장해 주는 기호입니다. 수학의 등호처럼 양변의 값이 같다는 뜻이 아닙니다.</li>
+        <li><strong>데이터: </strong> 변수에 저장할 데이터, 즉 값입니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  “apple”이라는 단어를 “a”라는 변수에 저장해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  데이터가 없는 빈 변수를 생성하는 것은 불가능합니다. 값이 없는 변수의 사용을 허용하면 프로그램 내에 불필요한 요소가 많아지기 때문에 이를 방지하기 위한 파이썬의 규칙입니다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
     </div>
 
-
-    
   </body>
 </html>

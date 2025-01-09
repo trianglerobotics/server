@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,53 +20,78 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>OPENCV 기본 사용법</h1>
-      <hr></hr>
-      <h2>이미지 읽기 </h2>
-      <p>OpenCV에서 이미지를 읽을 때 주로 사용하는 함수는 cv2.imread()입니다. 이 함수는 디스크에서 이미지를 로드하여 OpenCV가 처리할 수 있는 형태(numpy.ndarray)로 반환합니다.</p>
-      <div class="box" style="margin-top: 10px;">
-        cv2.imread(filename, flags)
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>픽셀(pixel)이란?</h3>
       </div>
-      <p><strong>filename: 이미지 파일 경로</strong></p>
-      <p><strong>flags: 이미지 읽기 방식</strong></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.IMREAD_COLOR (기본값) <span class="hlw">BGR 컬러로 읽음</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.IMREAD_GRAYSCALE <span class="hlw">Grayscale(흑백)로 읽음</span></p>
-      <!-- <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cv_111.svg" style="width: 200px" alt="Placeholder image" />
-      </div> -->
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-      <pre>
-        <code class="language-python">
-import cv2
-
-# 컬러 이미지 읽기 (기본값)
-image = cv2.imread('example.jpg', cv2.IMREAD_COLOR)
-print("이미지 데이터 타입:", type(image))  # numpy.ndarray
-print("이미지 크기:", image.shape)  # (높이, 너비, 채널 수)</code>
-    </pre>
-    </div>
-    <br></br>
-    </div>
+      <p>&nbsp;&nbsp;픽셀은 ‘picture element’의 줄임말로, 디지털 이미지를 구성하는 가장 작은 단위입니다. 각각 픽셀은 하나의 색상을 나타내며, 수만에서 수백만 개의 픽셀이 모여 한 장의 이미지를 형성합니다.</p>
 
 
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv211.svg" style="width: 255px;"  alt="Placeholder image" />
+      </div>    
+      <br>
+
+      <p>&nbsp;&nbsp;픽셀이 이미지를 만들어 내는 방식은 점묘법과 유사합니다. 서로 다른 색의 작은 점들을 무수히 찍어 만들어 낸 그림이 눈에서 섞여 하
+        나의 색으로 보이는 것처럼, 픽셀도 서로 조합되어 다양한 색상을 만들어냅니다.</p>
+
+      <hr>
+        <div class="list-item">
+          <div class="square-box">2</div>
+          <h3>픽셀의 구성</h3>
+        </div>
+
+      <p>&nbsp;&nbsp;컴퓨터는 RGB(Red, Green, Blue)로 불리는 빛의 삼원색을 사용해 다양한 색상을 표현합니다. 각 색은 0부터 255 사이의 값으로 밝기를 나
+        타내며, 이 값들을 조합해 원하는 색을 생성할 수 있습니다.</p>
+
+      <br>
+      <p>&nbsp;&nbsp;OpenCV도 마찬가지로 빛의 삼원색으로 다양한 색을 만들어 냅니다. 다만, OpenCV는 RGB가 아니라 BGR 순서대로 색상을 표현합니다. 예를 들어, 파란색은 (255, 0, 0), 
+        초록색은 (0, 255, 0), 빨간색은 (0, 0, 255)로 표현됩니다. 이러한 픽셀들은 격자 형태로 배열되어 이미지를 형성합니다.</p>  
+        
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv212.svg" style="width: 430px;"  alt="Placeholder image" />
+      </div>    
+      <br>
 
 
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
+      <br>
+      <br>
+        <div class="example">
+          <div class="icon_ex">
+            <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+          </div>
+          <div class="text-container">
+            <div class="text"><strong>Code A</strong></div>
+            <!-- <div class="line"></div> -->
+          </div>
+        </div>
+  
 
+      <p>&nbsp;&nbsp;다음 코드를 실행해 예제 이미지의 (50, 50) 좌표에 위치한 픽셀의 값을 추출해 봅시다. 이때 파이썬에서 OpenCV는 넘파이를 기반으로 구동되기 때문에, 2차원 평면의 좌표를 Y, X 순서로 입력해야 함에 주의해야 합니다.</p>
 
-
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
   </body>
 </html>

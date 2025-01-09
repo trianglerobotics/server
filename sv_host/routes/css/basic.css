@@ -282,6 +282,7 @@ p {
   line-height: 32px;        /* Maintain comfortable line spacing */
   font-size: 18px;            /* Set a readable font size */
   font-weight: 300;           /* Use a light font weight for better readability */
+  word-break: break-all;
   text-align: justify;
 }
 

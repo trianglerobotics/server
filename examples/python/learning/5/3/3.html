@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,56 +20,132 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 함수</h1>
-      <hr>
-      <h2 style="margin-bottom: 3px;">반환 값</h2>
-      <p>함수가 값을 반환하도록 하려면 <span class="hlw"> return  </span> 다음 명령문을 사용합니다.</p>
-     
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-def my_function(x):
-  return 5 * x
-
-print(my_function(3))
-print(my_function(5))
-print(my_function(9))</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>break</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">PASS</h2>
-      <p> <span class="hlw">function</span> 의 정의는 비어 있을 수 없지만, 어떤 이유로 <span class="hlw">function</span> 내용이 없는 정의가 있는 경우 pass 오류를 방지하기 위해 명령문에 해당 내용을 넣으세요.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-def myfunction():
-  pass</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
+      <p>&nbsp;&nbsp;  break는 특정 조건에서 반복 작업을 중단하고, 반복문을 완전히 종료할 때 사용합니다. 반복문이 종료되면 다음 코드를 이어서 실행합니다.</p>
 
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  어떤 자동차는 출발하기 전 네 바퀴의 정렬 상태가 0으로 정상 상태인지 점검합니다. for 반복문과 break를 사용해 특정 바퀴가 정렬되지 않았을 때 “바퀴가 정렬되지 않았습니다.”를 출력하는 코드를 작성해 봅시다. (단, 코드 실행 시 바퀴 정렬 상태는 [0, 0, 4, 0]으로 가정합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  어떤 프로그램에 접속하기 위해서는 비밀번호 “jajucha”를 입력해야 합니다. while 반복문과 break를 사용해 비밀번호를 정확하게 입력하면 “접속 중입니다.”를 출력하고, 3회 이상 잘못 입력하면 “입력 횟수를 초과했습니다.”를 출력하는 코드를 작성해 봅시다. (단, 코드 실행 시 입력된 비밀번호는 ["jajuch", "jejucha", "jajucha"]로 가정합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>continue</h3>
+      </div>
+      <p>&nbsp;&nbsp;  continue는 특정 조건을 만족하는 데이터는 코드를 적용하지 않고 다음 데이터로 넘어가도록 만드는 명령어입니다. 다시 말해 조건을 만족하지 않는 데이터에 대해서만 코드를 실행한다고 이해하면 됩니다. break와는 달리 반복문 자체를 종료하지 않으며, 다음 요소로 넘어가 반복을 계속 진행합니다.</p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  for 반복문과 continue를 사용해 시험 점수가 60점 이상이면 “OO점, 합격입니다.”를 출력하고, 60점 미만이면 “재시험 대상입니다.”를 출력하는 코드를 작성해 봅시다. (단, 코드 실행 시 응시자 명단과 점수는 아래와 같습니다.)</p>
+      <p>&nbsp;&nbsp;  ※ ‘len()’ 함수에 대한 설명은 5(1) 파이썬 함수를 참고하세요.</p>
+
+      <div class="code_box_exp">
+        <p>&nbsp;&nbsp;민상: 85점 | 진우: 45점 | 예연: 78점 | 미연: 50점 | 이서:92점</p>
+      </div>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  어떤 자동차는 도로 상황에 맞추어 자동으로 적절한 경로로 주행합니다. while 반복문과 continue를 사용해 “공사 중” 팻말이 나오면 “공사 중입니다. 우회합니다.”를 출력하고, “직선” 구간이 나오면 “ 정상 주행합니다.”를 출력하는 코드를 작성해 봅시다. (단, 코드 실행 시 도로 상황은 아래와 같습니다.)</p>
+
+      <div class="code_box_exp">
+        <p>&nbsp;&nbsp;직선 | 공사 중 | 직선 | 공사 중 | 직선</p>
+      </div>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+
     </div>
+
   </body>
 </html>

@@ -10,7 +10,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -41,20 +41,190 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>선형회귀 개념</h3>
+        <h3>넘파이 배열(narray)이란?</h3>
       </div>
-      <p>선형회귀는 머신귀닝의 기본적인 알고리즘 중 하나로, 주어진 데이터를 가장 잘 설명할 수 있는 1차 함수 \( y = ax + b \) 를 찾는 과정입니다. 선형회귀는 다음과 같은 단계로 구성됩니다</p>
-
+      <p>&nbsp;&nbsp;  넘파이의 배열은 n차원 배열(n-dimensional array)이라는 의미의 ‘narray’라고 부릅니다. ‘n차원’이란 우리가 수학이나 과학 시간에 배운 ‘점(0차원)’, ‘선(1차원)’, ‘면(2차원)’, ‘입체(3차원)’를 떠올리면 쉽게 이해할 수 있습니다.</p>   
+      
+      <br>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch/torch_211.svg" style="width: 200px;"  alt="Placeholder image" />
-      </div>       
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_211.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
 
-      <ul>
-        <li>1단계 : 처음에는 임의의 직선을 가정하고, 예측할 데이터를 준비합니다</li>
-        <li>2단계 : x 값을 넣었을 때 예측한 y 값(출력)과 실제 y 값(정답)을 비교 즉 손실을 계산합니다.</li>
-        <li>3단계 : 이 차이를 줄이기 위해 a,b값을 조금씩 조정합니다</li>
-        <li>4단계 : 이 과정을 반복해서 데이터에 가장 잘 맞는 직선을 찾아냅니다</li>
-      </ul>
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>0차원 배열</h3>
+      </div>
+      <p>&nbsp;&nbsp;  0차원 배열은 하나의 값만을 저장하는 가장 단순한 구조의 배열입니다. 마치 하나의 책상에 한 명의 학생이 앉아 있는 것과 같습니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_212.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  넘파이 배열에는 숫자 유형, 문자 유형, 불리언 유형 등 모든 데이터 유형이 들어갈 수 있고, 모든 데이터는 대괄호로 묶어 저장합니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_213.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  ‘1’, ‘2.5’, “jajucha”, ‘True’를 넣어 서로 다른 데이터 유형이 삽입된 0차원 배열을 생성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>1차원 배열</h3>
+      </div>
+      <p>&nbsp;&nbsp;  0차원인 점이 한 줄로 모이면 1차원인 선이 됩니다. 마찬가지로 1차원 배열은 0차원 배열이 가로나 세로로 길게 이어져 한 덩어리를 이룬 구조입니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_214.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  넘파이 배열은 파이썬의 리스트(list)처럼 대괄호로 묶어 데이터를 저장하지만, 각각의 데이터를 쉼표가 아닌 공백으로 구분합니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_215.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  또한 하나의 넘파이 배열에 속한 데이터는 모두 동일한 데이터 유형이어야 합니다. 빠른 배열 연산을 위해 배열 안의 데이터를 모두 묶어 하나로 처리하기 때문입니다.</p>   
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  ‘1, 2, 3, 4, 5’와 “I, Love, “You”와 ‘True, False’를 각각 1차원 배열로 생성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>2차원 배열</h3>
+      </div>
+      <p>&nbsp;&nbsp;  1차원인 선을 겹쳐서 쌓으면 2차원인 면이 됩니다. 마찬가지로 1차원 배열이 여러 번 쌓으면 2차원 배열이 됩니다. 책상이 여러 줄 모여 교실 한 반을 이루는 것으로 비유할 수 있습니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_216.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  2차원 배열은 두 개의 축(axis)으로 구성된 평면입니다. 세로 방향으로 행(row)을 나열하는 세로축과 세로 방향으로 열(column)을 나열하는 가로축로 이루어져 있고, 각각의 축에 포함된 행 혹은 열의 개수로 축의 크기를 파악할 수 있습니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_217.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  배열을 구성하는 축의 개수가 늘어나면 데이터를 묶는 대괄호([ ])의 개수도 함께 증가합니다. 하위 차원의 배열을 감싸는 형태로 표현됩니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_218.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  ‘1, 2, 3, 4, 5’와 ‘6, 7, 8, 9, 10’과 ‘11, 12, 13, 14, 15’로 구성된 2차원 배열을 만들어 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>3차원 배열</h3>
+      </div>
+      <p>&nbsp;&nbsp;  2차원인 면을 쌓으면 입체 구조인 3차원이 됩니다. 같은 원리로 2차원 배열을 한 층씩 쌓으면 3차원 배열이 됩니다.</p>   
+      <p>&nbsp;&nbsp;  3차원 배열은 세 개의 축을 가진 구조입니다. 세로축과 가로축, 깊이(depth) 축으로 이루어져 있습니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_219.svg" style="width: 470px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  2차원 배열은 두 개의 축(axis)으로 구성된 평면입니다. 가로축인 행(row)과 세로축인 열(column)로 이루어져 있고, 각각의 축에 포함된 요소의 개수로 축의 크기를 파악할 수 있습니다.</p>   
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;   ‘1, 2’와 ‘3, 4’로 구성된 2차원 배열이 세 개 쌓인 형태로 3차원 배열을 만들어 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
     </div>
 
   </body>

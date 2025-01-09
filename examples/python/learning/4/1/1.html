@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,258 +20,219 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 조건문</h1>
-      <h2 style="margin-bottom: 3px;">파이썬 조건문과 if 문</h2>
-      <p>Python은 수학의 일반적인 논리적 조건을 지원합니다.</p>
-      <ul>
-        <div class="box"> 같음: <span class="hlw">a == b</span></div>
-        <div class="box"> 같지 않음: <span class="hlw">a != b</span></div>
-        <div class="box"> 보다 작음: <span class="hlw">a < b</span></b></div>
-        <div class="box"> 보다 작거나 같음: <span class="hlw">a <= b</span></div>
-        <div class="box"> 보다 크다: <span class="hlw">a > b</span></div>
-        <div class="box"> 보다 크거나 같음: <span class="hlw">a >= b</span></div>
-      </ul>
-      <p>이러한 조건은 여러 가지 방법으로 사용될 수 있지만, 가장 일반적으로는 "if 문"과 루프에서 사용됩니다.</p>
-      <p><span class="hlw">"if 문"은 if</span> 키워드를 사용하여 작성됩니다</p>
-
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 33
-b = 200
-if b > a:
-  print("b is greater than a")</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>연산자란?</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <p>이 예에서 우리는 두 개의 변수 a 와 b를 사용하는데 , 이는 if 문의 일부로 사용되어 b 가 a 보다 큰지 여부를 테스트합니다 . a 는 33 이고 b 는 200 이므로 200이 33보다 크다는 것을 알고 있으므로 "b는 a보다 크다"를 화면에 인쇄합니다.
-      </p>
-    </div>
-    <div class="container">
+      <p>&nbsp;&nbsp;  파이썬 연산자는 데이터를 계산하거나 비교하여 조건을 만들어 내는 중요한 도구입니다. 조건은 프로그램의 논리와 흐름을 구성하는 데 사용되기 때문에 알고리즘 설계를 위해 반드시 숙지해야 하는 개념입니다.</p>   
+ 
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python411.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
       <hr>
-      <h2 style="margin-bottom: 3px;">파이썬 들여쓰기</h2>
-      <p>들여쓰기는 코드 줄의 시작 부분에 있는 공백을 말합니다.</p>
-      <p>다른 프로그래밍 언어에서는 코드의 들여쓰기가 가독성을 높이기 위한 것일 뿐이지만, Python에서는 들여쓰기가 매우 중요합니다.</p>
-      <p>파이썬은 들여쓰기를 사용하여 코드 블록을 나타냅니다.</p>
-      <p>*들여쓰기는 tab 키를 통하여 구현 할 수 있습니다*</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>B 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-if 5 > 2:
-  print("Five is greater than two!")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <p>들여쓰기를 건너뛰면 Python에서 오류가 발생합니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code" style="background-color: pink;"> 
-      <h3>C 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-if 5 > 2:
-print("Five is greater than two!")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-3 -->
-    <div class="container">
-      <p>공백의 개수는 프로그래머의 취향에 따라 결정되며, 가장 일반적인 사용은 4개이지만 적어도 1개는 있어야 합니다.</p>
-    </div>
-    <!-- code-3 -->
-    <div class="code"> 
-      <h3>D 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-if 5 > 2:
-  print("Five is greater than two!") 
-if 5 > 2:
-        print("Five is greater than two!") </code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-
-    <!-- explain-4 -->
-    <div class="container">
-      <p>동일한 코드 블록에서 동일한 수의 공백을 사용해야 합니다. 그렇지 않으면 Python에서 오류가 발생합니다.</p>
-    </div>
-    <!-- code-4 -->
-    <div class="code" style="background-color: pink;"> 
-      <h3>E 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-if 5 > 2:
-  print("Five is greater than two!")
-          print("Five is greater than two!")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- code-2 -->
-    <div class="code" style="background-color: pink;"> 
-      <h3>F 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>들여쓰기 없는 if 문(오류 발생):</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 33
-b = 200
-if b > a:
-print("b is greater than a") # you will get an error</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-3 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">elif</h2>
-      <p><span class="hlw">elif</span> 키워드 는 "이전 조건이 참이 아니면 이 조건을 시도하세요"라고 말하는 Python 방식입니다.</p>
-    </div>
-    <!-- code-3 -->
-    <div class="code"> 
-      <h3>G 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 33
-b = 33
-if b > a:
-  print("b is greater than a")
-elif a == b:
-  print("a and b are equal")</code>
-        </pre>  
-      </div>
-      <p>이 예에서 a는 b 와 같으 므로 첫 번째 조건은 참이 아니지만 elif 조건은 참이므로 "a와 b는 같다"를 화면에 인쇄합니다.</p>
-      <br></br>
-    </div >
-
-    <!-- explain-4 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">else</h2>
-      <p><span class="hlw">else</span> 키워드 는 이전 조건에 해당되지 않는 모든 것을 포착합니다.</p>
-    </div>
-
-    <!-- code-4 -->
-    <div class="code"> 
-      <h3>H 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 200
-b = 33
-if b > a:
-  print("b is greater than a")
-elif a == b:
-  print("a and b are equal")
-else:
-  print("a is greater than b")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div>
+      <br>
     
-    <!-- explain-5 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">and</h2>
-      <p><span class="hlw">and</span> 키워드 는 논리 연산자이며 조건문을 결합하는 데 사용됩니다.</p>
-    </div>
-
-    <!-- code-5 -->
-    <div class="code"> 
-      <h3>I 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>a가 b 보다 큰지 그리고 c 가 a 보다 큰지 테스트합니다</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 200
-b = 33
-c = 500
-if a > b and c > a:
-  print("Both conditions are True")</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>산술 연산자</h3>
       </div>
-      <br></br>
-    </div>
+      <p>&nbsp;&nbsp;  산술 연산자는 데이터를 계산해서 새로운 값을 만들어 내는 데 사용합니다. 덧셈, 뺄셈, 곱셈, 나눗셈 같은 기본적인 사칙 연산부터 수를 다루는 기본적인 연산을 수행합니다.</p>   
+      <table border="1">
+        <thead>
+          <tr>
+            <th>연산자</th>
+            <th>기능</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>+</td>
+            <td>덧셈을 수행한다.</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>뺄셈을 수행한다.</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>곱셈을 수행한다.</td>
+          </tr>
+          <tr>
+            <td>/</td>
+            <td>나눗셈을 수행한다.</td>
+          </tr>
+          <tr>
+            <td>//</td>
+            <td>값을 나눈 몫을 반환한다.</td>
+          </tr>
+          <tr>
+            <td>%</td>
+            <td>값을 나눈 나머지를 반환한다.</td>
+          </tr>
+          <tr>
+            <td>**</td>
+            <td>거듭제곱을 수행한다.</td>
+          </tr>
+        </tbody>
+      </table>      
 
-    <!-- explain-6 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">or</h2>
-      <p>키워드는 <span class="hlw">or</span> 논리 연산자이며 조건문을 결합하는 데 사용됩니다.</p>
-    </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
 
-    <!-- code-6 -->
-    <div class="code"> 
-      <h3>J 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>a가 B 보다 크거나 a가 c 보다 큰지 테스트합니다 c.</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 200
-b = 33
-c = 500
-if a > b or a > c:
-  print("At least one of the conditions is True")</code>
-        </pre>
+      <p>&nbsp;&nbsp;  산술 연산자를 사용해 (10+5)-6x2÷3을 계산해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
       </div>
-      <br></br>
-    </div>
 
-    <!-- explain-7 -->
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">not</h2>
-      <p>키워드는 <span class="hlw">not</span> 논리 연산자이며 조건문의 결과를 반전하는 데 사용됩니다.</p>
-    </div>
+      <br>
+      <br>     
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
 
-    <!-- code-7 -->
-    <div class="code"> 
-      <h3>K 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>a 보다 b가 크지 않은지 테스트합니다 </p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-a = 33
-b = 200
-if not a > b:
-  print("a is NOT greater than b")</code>
-        </pre>
+      <p>&nbsp;&nbsp;  2가 저장된 변수 a와 3이 저장된 변수 b를 이용해 2³을 계산해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
       </div>
-      <br></br>
-    </div>
-    
 
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  산술 연산자를 사용해 10을 3으로 나눈 몫과 나머지를 각각 구해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>할당 연산자</h3>
+      </div>
+      <p>&nbsp;&nbsp;  할당 연산자는 데이터를 변수에 저장하는 데 사용하는 연산자입니다. 산술 연산자와 결합하여 저장된 데이터에 새로운 연산 결과를 반영하는 데 사용할 수도 있습니다.</p>   
+
+      
+      <table border="1">
+        <thead>
+          <tr>
+            <th>연산자</th>
+            <th>기능</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>=</td>
+            <td>오른쪽의 데이터를 왼쪽 변수에 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>+=</td>
+            <td>덧셈한 값을 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>-=</td>
+            <td>뺄셈한 값을 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>*=</td>
+            <td>곱한 값을 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>/=</td>
+            <td>나눈 값을 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>//=</td>
+            <td>값을 나눈 몫을 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>%=</td>
+            <td>값을 나눈 나머지를 저장합니다.</td>
+          </tr>
+          <tr>
+            <td>**=</td>
+            <td>거듭제곱한 값을 저장합니다.</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  할당 연산자를 사용해 10이 저장된 변수에 3을 더해 다시 저장해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
     </div>
+
   </body>
 </html>

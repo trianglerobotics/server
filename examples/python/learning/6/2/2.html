@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,74 +20,97 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>함수명(function name)</h3>
+      </div>
+      <p>&nbsp;&nbsp;  ‘함수명(function name)’은 함수를 호출하기 위해 사용하는 고유한 이름입니다. 보통 함수가 수행하는 작업을 직관적으로 반영한 이름이 사용됩니다.</p>
 
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 import</h1>
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python621.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
       <hr>
-      <h2 style="margin-bottom: 3px;">모듈에서 특정 항목만 가져오기</h2>
-      <p>모듈의 일부만 가져와 사용하는 방식입니다.</p>
-      <p>필요한 기능만 가져오기 때문에 코드가 간결해집니다.</p>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>매개 변수(parameter)</h3>
+      </div>
+      <p>&nbsp;&nbsp;  ‘매개 변수(parameter)’는 값을 입력 받을 위치를 표시해 주는 표지입니다. 함수를 사용하기 위해서는 지정된 위치에 필요한 값을 입력해야 합니다. 이때 매개 변수는 입력 값이 어떤 위치에 들어가야 하는지 알려주는 역할을 합니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python622.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>인수(argument)</h3>
+      </div>
+      <p>&nbsp;&nbsp;  ‘인수(argument)’는 실제로 함수에 입력되는 값입니다. 매개 변수에 대응하는 위치에 적절한 인수를 입력하면, 함수 내부의 코드를 거쳐 일정한 결과를 반환합니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python623.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>함수 본문(fuction body)</h3>
+      </div>
+      <p>&nbsp;&nbsp;  ‘함수 본문(function body)’은 실제 작업을 수행하는 함수 내부의 코드입니다. 내장 함수의 본문은 파이썬 내부에 이미 구현되어 있어 직접 볼 수는 없지만, 본문에 작성된 코드에 의해 특정 작업이 수행됩니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python624.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>반환 값(return value)</h3>
+      </div>
+      <p>&nbsp;&nbsp;  ‘반환 값(return value)’은 함수 내부에서 작업을 마친 후 사용자에게 돌려주는 결괏값입니다. 반환 값은 다른 변수에 저장하거나 이후 코드에 바로 적용할 수 있습니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python625.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-from math import sqrt
-print(sqrt(16))  # sqrt 함수만 사용 가능</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-from datetime import datetime, timedelta
 
-# 현재 시간 출력
-now = datetime.now()
-print(f"현재 시간: {now}")
-
-# 하루 더한 날짜 계산
-tomorrow = now + timedelta(days=1)
-print(f"내일 날짜: {tomorrow}")</code>
-        </pre>   
-      </div>
-      <br></br>
-    </div >
-
-    <div class="code"> 
-      <h3>C 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-from os import getcwd, listdir
-
-# 현재 디렉토리 가져오기
-current_dir = getcwd()
-print(f"현재 디렉토리: {current_dir}")
-
-# 디렉토리 목록 가져오기
-files = listdir(current_dir)
-print(f"디렉토리 파일 목록: {files}")</code>
-        </pre>
-            
-      </div>
-      <br></br>
-    </div >
-
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
-    </div>
   </body>
 </html>

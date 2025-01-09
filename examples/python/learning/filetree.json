@@ -1,18 +1,18 @@
 [
   {
     "section": 1,
-    "name": "01 파이썬 학습 시작하기",
+    "name": "파이썬 시작하기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 에디터 사용법",
+        "name": "시작하기",
         "env": "type0",
         "location": "learning/1/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 파이썬 주석",
+        "name": "왜 파이썬을 사용하나요?",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
@@ -21,72 +21,72 @@
   },
   {
     "section": 2,
-    "name": "02 파이썬 변수",
+    "name": "1. 변수",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 변수",
+        "name": "(1) 변수 생성하기",
         "env": "type0",
         "location": "learning/2/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 출력 변수",
+        "name": "(2) 변수 수정하기",
         "env": "type0",
         "location": "learning/2/2/codes",
         "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 변수명 지정 시 주의점",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
       }
     ]
   },
   {
     "section": 3,
-    "name": "03 파이썬 데이터 유형",
+    "name": "2. 데이터 유형",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 파이썬 데이터 유형",
+        "name": "(1) 숫자 유형",
         "env": "type0",
         "location": "learning/3/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 파이썬 숫자",
+        "name": "(2) 문자 유형",
         "env": "type0",
         "location": "learning/3/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 파이썬 문자열",
+        "name": "(3) 불리언(Boolean) 유형",
         "env": "type0",
         "location": "learning/3/3/codes",
         "target": "3.ipynb"
       },
       {
         "subsection": 4,
-        "name": "04 파이썬 불린",
+        "name": "(4) 시퀀스(sequence)",
         "env": "type0",
         "location": "learning/3/4/codes",
         "target": "4.ipynb"
-      },
-      {
-        "subsection": 5,
-        "name": "05 파이썬 리스트",
-        "env": "type0",
-        "location": "learning/3/5/codes",
-        "target": "5.ipynb"
       }
     ]
   },
   {
     "section": 4,
-    "name": "04 파이썬 구문",
+    "name": "3. 조건문",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 파이썬 조건문",
+        "name": "(1) 산술 연산자와 할당 연산자",
         "env": "type0",
         "location": "learning/4/1/codes",
         "target": "1.ipynb"
@@ -94,34 +94,48 @@
       },
       {
         "subsection": 2,
-        "name": "02 파이썬 FOR 반복문",
+        "name": "(2) 비교 연산자와 논리 연산자",
         "env": "type0",
         "location": "learning/4/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 파이썬 WHILE 반복문",
+        "name": "(3) if-else문",
         "env": "type0",
         "location": "learning/4/3/codes",
         "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "(4) if-elif-else문",
+        "env": "type0",
+        "location": "learning/4/4/codes",
+        "target": "4.ipynb"
+      },
+      {
+        "subsection": 5,
+        "name": "(5) if 중첩문",
+        "env": "type0",
+        "location": "learning/4/5/codes",
+        "target": "5.ipynb"
       }
     ]
   },
   {
     "section": 5,
-    "name": "05 파이썬 함수",
+    "name": "4. 반복문",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 파이썬 함수 1 ",
+        "name": "(1) for 반복문",
         "env": "type0",
         "location": "learning/5/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 파이썬 함수 2",
+        "name": "(2) while 반복문",
         "env": "type0",
         "location": "learning/5/2/codes",
         "target": "2.ipynb"
@@ -129,7 +143,7 @@
       },
       {
         "subsection": 3,
-        "name": "03 파이썬 함수 3",
+        "name": "(3) break와 continue",
         "env": "type0",
         "location": "learning/5/3/codes",
         "target": "3.ipynb"
@@ -138,18 +152,18 @@
   },
   {
     "section": 6,
-    "name": "06 파이썬 import",
+    "name": "5. 함수",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 import의 기본 개념 ",
+        "name": "(1) 함수의 개념",
         "env": "type0",
         "location": "learning/6/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 from 키워드 활용",
+        "name": "(2) 함수의 구성 요소",
         "env": "type0",
         "location": "learning/6/2/codes",
         "target": "2.ipynb"
@@ -157,10 +171,67 @@
       },
       {
         "subsection": 3,
-        "name": "03 별칭을 사용하여 import하기",
+        "name": "(3) 함수 정의하기",
         "env": "type0",
         "location": "learning/6/3/codes",
         "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 7,
+    "name": "6. 클래스",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 객체 지향 프로그래밍과 클래스",
+        "env": "type0",
+        "location": "learning/7/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 멤버 변수(member variable)",
+        "env": "type0",
+        "location": "learning/7/2/codes",
+        "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 메소드(method)",
+        "env": "type0",
+        "location": "learning/7/3/codes",
+        "target": "3.ipynb"
+      }
+    ]
+  },
+  {
+    "section": 8,
+    "name": "7. 라이브러리",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 라이브러리(library)의 개념",
+        "env": "type0",
+        "location": "learning/8/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 내장 라이브러리_math",
+        "env": "type0",
+        "location": "learning/8/2/codes",
+        "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 내장 라이브러리_time",
+        "env": "type0",
+        "location": "learning/8/3/codes",
+        "target": "3.ipynb"
+                
       }
     ]
   }

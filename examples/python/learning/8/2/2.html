@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>math 라이브러리의 기능</h3>
+      </div>
+      <p>&nbsp;&nbsp;  math 라이브러리는 수학 연산과 관련된 기능을 모아 둔 라이브러리입니다. 기본적인 산술 연산부터 복잡한 연산까지 이미 정의된 함수를 사용해 다양한 수학 연산을 간단하게 처리할 수 있습니다. 아래에 소개하는 함수 이외에도 수학 연산을 위한 다양한 기능이 있습니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python821.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>제곱근 함수</h3>
+      </div>
+ 
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          제곱근 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>math.sqrt</strong>(number)</code>
+      </div>
+
+      <ul>
+        <li><strong>number: </strong> 제곱근을 구할 숫자를 입력합니다.</li>
+      </ul>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="example">
+       <div class="icon_ex">
+         <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+       </div>
+       <div class="text-container">
+         <div class="text"><strong>Code A</strong></div>
+         <!-- <div class="line"></div> -->
+       </div>
+     </div>      
+
+     <p>&nbsp;&nbsp;  제곱근 함수를 사용해 25의 제곱근을 구해 봅시다.</p>
+
+     <div class="code_box_exe">
+       <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+     </div>
+
+     <br>
+     <hr>
+     <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>거듭제곱 함수</h3>
+      </div>
+ 
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          거듭제곱 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>math.pow</strong>(base, exponent)</code>
+      </div>
+       
+      <ul>
+        <li><strong>base: </strong> 밑을 입력합니다.</li>
+        <li><strong>exponent: </strong> 지수를 입력합니다.</li>
+      </ul>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="example">
+       <div class="icon_ex">
+         <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+       </div>
+       <div class="text-container">
+         <div class="text"><strong>Code B</strong></div>
+         <!-- <div class="line"></div> -->
+       </div>
+     </div>      
+
+     <p>&nbsp;&nbsp;  거듭제곱 함수를 사용해 2의 10 거듭제곱을 구해 봅시다.</p>
+
+     <div class="code_box_exe">
+       <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+     </div>
+
+     <br>
+     <hr>
+     <br>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>올림/내림 함수</h3>
+      </div>
+ 
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          올림 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>math.cell</strong>(number)</code>
+      </div>
+
+      <ul>
+        <li><strong>number: </strong> 올림할 숫자를 입력합니다.</li>
+      </ul>
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          내림림 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>math.floor</strong>(number)</code>
+      </div>
+
+      <ul>
+        <li><strong>number: </strong> 내림할 숫자를 입력합니다.</li>
+      </ul>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="example">
+       <div class="icon_ex">
+         <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+       </div>
+       <div class="text-container">
+         <div class="text"><strong>Code C</strong></div>
+         <!-- <div class="line"></div> -->
+       </div>
+     </div>      
+
+     <p>&nbsp;&nbsp;    올림 함수와 내림 함수를 사용해 2.2를 올림한 값과 내림한 값을 각각 구해 봅시다.</p>
+
+     <div class="code_box_exe">
+       <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+     </div>
+
+     <br>
+     <hr>
+     <br>
+
+    </div>
+
+  </body>
+</html>

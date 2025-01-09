@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,87 +20,192 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>가우시안(Gaussian) 블러링의 원리와 특징</h3>
+      </div>
+      <p>&nbsp;&nbsp;  가우시안 블러링은 정규분포(가우시안 함수)를 기반으로 커널에 속한 각 픽셀에 가중치를 부여하는 방법입니다. 자연스러운 블러링이 가능합니다.</p>
 
-     <!-- explain-1 -->
-    <div class="container" >
-      <h1>필터링과 변환</h1>
-      <hr></hr>
-      <h2>허프 원 검출</h2>
-      <p>OpenCV에서 **허프 원 변환(Hough Circle Transform)**은 이미지를 분석하여 원형 객체를 감지하는 강력한 알고리즘입니다. 이는 이미지의 경계선을 기반으로 원을 검출합니다.</p>
-      <div class="box" style="margin-top: 20px;">circles = cv2.HoughCircles(image, method, dp, minDist, param1, param2, minRadius, maxRadius)</div>
-      
-      <div style="overflow-x: auto; white-space: pre; margin: 0; line-height: 0.5;">
-        <p style="margin: 0px;"><strong>image: 입력 이미지. 반드시 Grayscale로 제공</strong></p>
-        <p style="margin: 0px;"><strong>method: 허프 변환 방법. 현재 cv2.HOUGH_GRADIENT만 지원.</strong></p>
-        <p style="margin: 0px;"><strong>dp: 축소 비율. 원 검출 해상도 = 입력 이미지 해상도 / dp</strong></p>
-        <p style="margin: 0px;"><strong>minDist: 검출된 원들 사이의 최소 거리. 너무 작으면 원이 겹쳐서 검출될 수 있음.</strong></p>
-        <p style="margin: 0px;"><strong>param1: 내부적으로 사용하는 Canny Edge Detection의 상위 임계값.</strong></p>
-        <p style="margin: 0px;"><strong>param2: 중심을 검출하기 위한 임계값. 값이 작을수록 더 많은 원을 검출.</strong></p>
-        <p style="margin: 0px;"><strong>minRadius: 검출할 원의 최소 반지름.</strong></p>
-        <p style="margin: 0px;"><strong>maxRadius: 검출할 원의 최대 반지름.</strong></p>
-      </div>  
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          가우시안 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/opencv/cv521.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>
+
+      <p>&nbsp;&nbsp;  커널의 중심에 가까운 픽셀일수록 더 높은 가중치를 받고, 중심에서 멀어질수록 가중치가 점점 줄어듭니다. 이로 인해 중심에 가까운 픽셀 값을 더 많이 반영하고, 멀리 있는 픽셀은 덜 반영할 수 있습니다.</p>
+      <p>&nbsp;&nbsp;  표준편차(σ)를 크게 설정하면 블러링 강도가 강해집니다. 표준편차가 커지면 정규분포의 폭이 넓어져 중심에서 먼 픽셀에 이전보다 더 큰 가중치를 부여하기 때문입니다.</p>
+
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          표준편차에 따른 가중치 변화 그래프
+        </div>
+      </div>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv522.svg" style="width: 720px;"  alt="Placeholder image" />
+      </div> 
+
+      <p>&nbsp;&nbsp;  아래 도식은 표준편차가 1인 가우시안 함수를 3 X 3 커널에 적용한 결과입니다. 각 픽셀에 가중치가 부여되어 있습니다.</p>
+  
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          표준편차 1인 가우시안 필터 예시
+        </div>
+      </div>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv523.svg" style="width: 720px;"  alt="Placeholder image" />
+      </div> 
+
+      <p>&nbsp;&nbsp;  위 필터를 아래의 커널에 적용하면 가중된 평균값이 산출됩니다. 산출된 결과가 중앙의 픽셀 값을 대체합니다.</p>
+  
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          표준편차 1인 가우시안 블러링 적용 예시
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/opencv/cv524.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div> 
+
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          가우시안 블러링 장단점
+        </div>
+      </div>
+
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>장점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 중앙값에 가장 큰 가중치를 부여하기 때문에 데이터 손실이 적습니다.</td>
+          </tr>
+          <tr>
+            <td>② 비일관적인 노이즈를 제거하는 데 효과적입니다.</td>
+          </tr>
+        </tbody>
+      </table>      
+
+      <br>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>단점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 반점 노이즈(salt&pepper noise) 제거에는 제한이 있습니다.</td>
+          </tr>
+          <tr>
+            <td>② 가중치를 계산해 적용하기 때문에 평균 블러링보다 처리 속도가 느립니다.</td>
+          </tr>
+        </tbody>
+      </table>  
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>가우시안(Gaussian) 블러링 함수</h3>
+      </div>
+  
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          가우시안 블러링 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>cv2.GaussianBlur</strong>(data, ksize, sigmaX)</code>
+      </div>
+    
+      <ul>
+        <li><strong>data: </strong> 블러링을 적용할 이미지 데이터입니다.</li>
+        <li><strong>ksize: </strong> 평균값을 낼 영역(matrix)입니다. ‘(x, y)’ 형태로 작성하면 됩니다.</li>
+        <li><strong>sigmaX: </strong> 표준편차입니다. 가우시안 함수에 적용할 표준편차를 입력하면 됩니다. 0을 입력하면 OpenCV가 자동으로 적절한 표준편차를 설정해 줍니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>    
+
+      <p>&nbsp;&nbsp;    예제 이미지에 커널 크기 5 X 5로 가우시안 블러링을 적용해 봅시다. (단, 표준편차는 자동 설정합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
 
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details>
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import numpy as np
-import jajucha2
-
-# 이미지 읽기
-image = cv2.imread('example.jpg')
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-# 가우시안 블러링 (노이즈 제거)
-blurred = cv2.GaussianBlur(gray, (9, 9), 2)
-
-# 허프 원 변환 적용
-circles = cv2.HoughCircles(
-    blurred,
-    cv2.HOUGH_GRADIENT,
-    dp=1,
-    minDist=20,
-    param1=50,
-    param2=70,
-    minRadius=0,
-    maxRadius=0
-)
-
-# 원이 검출되었는지 확인
-if circles is not None:
-    # 원 좌표와 반지름을 정수로 변환
-    circles = np.uint16(np.around(circles))
-
-    for circle in circles[0, :]:
-        x, y, r = circle
-        # 원 그리기
-        cv2.circle(image, (x, y), r, (0, 255, 0), 2)
-        # 중심점 그리기
-        cv2.circle(image, (x, y), 2, (0, 0, 255), 3)
-
-# 결과 보기
-jajucha2.camera.show_image(image)</code>
-</pre>
-</div>
-</details>
-      <br></br>
-    </div>
-
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
-
-
 
   </body>
 </html>

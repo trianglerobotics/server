@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>라이브러리(library)란?</h3>
+      </div>
+      <p>&nbsp;&nbsp;  라이브러리는 개발자들이 자주 사용하는 기능을 모아 언제든지 다시 사용할 수 있도록 만들어 놓은 코드의 집합체입니다. 복잡한 코드를 직접 작성하지 않고도 라이브러리를 통해 다양한 작업들을 간단하게 처리할 수 있습니다.</p>   
+      <p>&nbsp;&nbsp;  이름에서 알 수 있듯이 라이브러리는 장르에 따라 책을 분류해 놓은 도서관과 같습니다. 수학 계산과 관련된 기능이 필요하다면 ‘math’ 라이브러리를, 이미지 처리를 하고 싶다면 ‘PIL(Python Image Library)’를 불러오면 됩니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python811.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  파이썬 내부에 기본적으로 탑재되어 있는 내장 라이브러리는 필요하다면 바로 호출할 수 있지만, 외장 라이브러리는 외부 소스를 통해 설치해야만 사용할 수 있습니다.</p>   
+      <p>&nbsp;&nbsp;  자주차 SW에는 NumPy, OpenCV, Pytorch가 이미 설치되어 있어 여러분들이 언제든 호출해서 사용할 수 있습니다.</p>   
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>라이브러리 불러오기</h3>
+      </div>
+      <p>&nbsp;&nbsp;  라이브러리를 이용하기 위해서는 라이브러리 호출 예약어인 ‘import’를 통해 필요한 기능이 포함된 라이브러리를 먼저 불러와야 합니다.</p>   
+      <p>&nbsp;&nbsp;  import는 라이브러리의 별칭을 지정하는 키워드인 ‘as’와 함께 사용하기도 합니다. 라이브러리의 기능을 사용하려면 기능 앞에 라이브러리 이름을 작성해야 하는데, 이때 이름이 길면 입력하기 번거롭기 때문에 짧은 이름으로 별칭을 지정하는 것입니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python812.svg" style="width: 460px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          라이브러리 불러오기
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>import</strong>라이브러리명<strong> as </strong>별칭</code>
+      </div>
+
+      <ul>
+        <li><strong>import: </strong> 라이브러리를 호출하는 예약어입니다.</li>
+        <li><strong>as: </strong> 별칭을 지정하는 키워드입니다. 별칭이 필요하지 않다면 생략해도 됩니다.</li>
+     </ul>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="example">
+       <div class="icon_ex">
+         <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+       </div>
+       <div class="text-container">
+         <div class="text"><strong>Code A</strong></div>
+         <!-- <div class="line"></div> -->
+       </div>
+     </div>      
+
+     <p>&nbsp;&nbsp;  import와 as를 사용해 외장 라이브러리인 넘파이(numpy)를 np로 별칭을 지정해 불러와 봅시다. </p>
+
+     <div class="code_box_exe">
+       <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+     </div>
+
+    </div>
+
+  </body>
+</html>

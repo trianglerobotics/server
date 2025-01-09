@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,68 +20,111 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 - 출력 변수</h1>
-      <hr></hr>
-      <h2 style="margin-bottom: 3px;">출력 변수</h2>
-      <p>Python <strong>print()</strong> 함수는 종종 변수를 출력하는 데 사용됩니다.</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = "Python is awesome"
-print(x)</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>변수 데이터 바꾸기</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <p>함수 에서는 <strong>print()</strong> 쉼표로 구분된 여러 변수를 출력합니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = "Python"
-y = "is"
-z = "awesome"
-print(x, y, z)</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-23 -->
-    <div class="container">
-      <p>또한 <strong>+</strong> 연산자를 사용하여 여러 변수를 출력할 수 있습니다.</p>
-    </div>
-    <!-- code-3 -->
-    <div class="code"> 
-      <h3>C를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = "Python "
-y = "is "
-z = "awesome"
-print(x + y + z)</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
+      <p>&nbsp;&nbsp;  변수에 저장된 데이터는 언제든지 수정할 수 있습니다. 기존 값에 내용을 추가하거나, ’del‘ 명령어를 사용해 데이터를 삭제할 수도 있습니다.</p>   
 
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
 
-    
+      <p>&nbsp;&nbsp;  10을 변수 x에 저장해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  앞서 생성한 변수 x에 5를 더해 다시 저장해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  ‘del’ 명령어를 사용해 변수 x에 저장된 데이터를 삭제해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  변수 y에 1을 저장한 후 다시 10을 저장하여 데이터를 수정해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+    </div>
+
   </body>
 </html>

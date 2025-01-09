@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,59 +20,150 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 함수</h1>
-
-      <p>함수는 호출될 때만 실행되는 코드 블록입니다.</p>
-      <p>매개변수라고 불리는 데이터를 함수에 전달할 수 있습니다.</p>
-      <p>함수는 결과로 데이터를 반환할 수 있습니다.</p>
-    </div>
-    <div class="container">
-      <hr>
-      <h2 style="margin-bottom: 3px;">함수 생성</h2>
-      <p>Python에서 함수는 <span class="hlw">def</span>키워드를 사용하여 정의됩니다.</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-def my_function():
-  print("Hello from a function")</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>반복문이란?</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
+      <p>&nbsp;&nbsp;  반복문이란 동일한 작업을 여러 번 수행해야 할 때 사용하는 도구입니다. 범위나 조건을 설정하면 컴퓨터가 알아서 정해진 작업을 반복적으로 수행합니다.</p>   
+      <p>&nbsp;&nbsp;  여러분이 매일같이 학교에 가는 일처럼 반복되는 작업을 반복문으로 표현하면 매우 간단하게 구현할 수 있습니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python511.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
       <hr>
-      <h2 style="margin-bottom: 3px;">함수 호출</h2>
-      <p>함수를 호출하려면 함수 이름 뒤에 괄호를 사용합니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-def my_function():
-  print("Hello from a function")
+      <br>
 
-my_function()</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>for 반복문</h3>
       </div>
-      <br></br>
-    </div >
+      <p>&nbsp;&nbsp;  for 반복문은 입력된 데이터 하나하나에 같은 작업을 반복적으로 적용합니다. 영어에서 전치사 for가 "~에 대해"라는 의미도 가지고 있듯, 파이썬의 for 반복문도 각각의 데이터에 대해 동일한 작업을 적용한다고 생각하면 쉽게 이해할 수 있습니다.</p>
+      
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          for 반복문 기본 형식
+        </div>
+      </div>
 
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/python/python512.svg" style="width: 200px;"  alt="Placeholder image" />
+      </div>
+
+      <ul>
+        <li><strong>반복문 변수: </strong> 반복문 실행 중 결과를 저장하는 변수입니다. 반복문 내부에서만 사용되지만, 원래 사용하던 변수명을 재사용하면 기존 데이터가 변경될 수 있습니다.</li>
+        <li><strong>iterable: </strong> 반복 가능한 객체입니다. 시퀀스 같이 데이터가 여러 개 포함되어 있는 유형을 의미합니다.</li>
+        <li><strong>실행 코드: </strong> 반복 가능한 객체의 개별 데이터에 적용할 코드입니다. 반복문도 하나의 코드 블록이므로 들여쓰기를 준수해야 합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  월요일에서 금요일은 “씻고 등교합니다.”를 출력하는 for 반복문을 작성해 봅시다. (단, 주말은 코드에 포함하지 않습니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          문자열 포맷팅(formatting)
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>print</strong>( <strong>f</strong>"문자열{변수}" )</code>
+      </div>
+      
+      <ul>
+        <li><strong>문자열: </strong> 출력할 전체 문자열 서식입니다.</li>
+        <li><strong>변수: </strong>  문자열에 포함하고자 하는 데이터가 저장된 변수를 입력하면, 문자열과 데이터가 함께 출력됩니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  변수 name에 “철수”가 저장되어 있고, 변수 age에 ‘18’이 저장되어 있습니다. 문자열 포맷팅을 사용하여 “안녕하세요? 저는 철수이고, 18살입니다.”를 출력해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  for 반복문과 문자열 포맷팅을 사용해 5명의 친구 “기현”, “나연”, “도영”, “종우”, “준호”에게 “OO아, 나랑 놀자.”라는 문자를 보내는 코드를 작성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
     </div>
+
   </body>
 </html>

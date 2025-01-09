@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,61 +20,151 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>이미지 처리 기초</h1>
-      <hr></hr>
-      <h2>이미지 크기 조정 </h2>
-      <p>OpenCV에서 이미지를 크기 조정(Resizing)하려면 cv2.resize() 함수를 사용합니다. 이 함수는 이미지의 너비와 높이를 조정하며, 다양한 보간법(Interpolation)을 통해 이미지 품질을 관리합니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.resize(src, dsize, dst=None, fx=0, fy=0, interpolation=cv2.INTER_LINEAR)</div>
-      <p><strong>src: 입력 이미지</strong></p>
-      <p><strong>dsize: 출력 이미지 크기를 지정하는 튜플 (width, height)</strong></p>
-      <p><strong>dst: 출력 이미지의 저장 위치</strong></p>
-      <p><strong>fx: 가로 방향의 크기 배율</strong></p>
-      <p><strong>fy: 세로 방향의 크기 배율</strong></p>
-      <p><strong>interpolation : 크기를 조정할 때 사용할 보간법</strong></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.INTER_NEAREST <span class="hlw">최근접 이웃 보간법</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.cv2.INTER_LINEAR<span class="hlw">선형 보간법 (기본값)</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.INTER_CUBIC<span class="hlw">3차 보간법</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.INTER_AREA<span class="hlw">영역 보간법</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.INTER_LANCZOS4<span class="hlw">Lanczos 보간법</span></p>
-      <!-- <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cv_111.svg" style="width: 200px" alt="Placeholder image" />
-      </div> -->
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-      <pre>
-        <code class="language-python">
-import cv2
-
-image = cv2.imread('example.jpg')
-resized = cv2.resize(image, (200, 100))  # (width, height)
-print("새 이미지 크기:", resized.shape)
-
-image = cv2.imread('example.jpg')
-resized = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_LINEAR)
-print("새 이미지 크기:", resized.shape)</code>
-      </pre>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>이미지 불러오기</h3>
       </div>
-      <br></br>
+      <p>&nbsp;&nbsp;OpenCV에서 이미지를 불러온다는 것은 이미지 파일을 넘파이 배열로 변환하는 것을 의미합니다. OpenCV로 작업하기 위해서는 이미지 불러오기부터 시작해야 합니다.</p>   
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          이미지 불러오기 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python"><strong>cv2.imread</strong>(file_name, flag)</code>
+      </div>
+
+      <ul>
+        <li><strong>file_name: </strong> 불러올 이미지 파일의 경로를 의미합니다. 문자열로 작성하여 호출합니다.</li>
+        <li><strong>flag: </strong> 이미지를 불러오는 형식입니다. 기본값은 컬러 이미지입니다.</li>
+      </ul>
+
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          이미지 불러오기 flags
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>① cv2.IMREAD_COLOR(또는 1):</strong> 컬러 이미지로 불러옵니다. 기본값입니다. <br>
+    <strong>② cv2.IMREAD_GRAYSCALE(또는 0): </strong>흑백 이미지로 불러옵니다.<br>
+    <strong>③ cv2.IMREAD_UNCHANGED(또는 -1):</strong> 원본 이미지를 그대로 불러옵니다. 알파 채널을 포함하고 있습니다.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>  
+
+      <p>&nbsp;&nbsp;  예제 이미지를 컬러로 불러오고, ‘.shape’를 사용해 이미지의 정보를 모두 반환해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code A 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+import jajucha2</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>  
+
+      <p >&nbsp;&nbsp; 예제 이미지를 흑백으로 불러오고, ‘.shape’를 사용해 이미지의 정보를 모두 반환해 봅시다. 흑백 이미지는 채널 개수를 반환하지 않음에 주의합니다.</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code B 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+import jajucha2</code>
+        </pre>
+        </div>
+        </details>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>  
+
+      <p>&nbsp;&nbsp;  예제 이미지를 알파 채널을 포함하는 원본 이미지로 불러오고, ‘.shape’를 사용해 이미지의 정보를 모두 반환해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <details>
+          <summary>Code C 정답 보기/숨기기</summary>
+        <div class="code_div">
+          <pre>
+            <code class="language-python">
+import jajucha2</code>
+        </pre>
+        </div>
+        </details>
+      </div>
     </div>
-
-
-
-
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
-
-
 
   </body>
 </html>

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,72 +20,47 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>함수(function)란?</h3>
+      </div>
+      <p>&nbsp;&nbsp;  함수는 반복되는 일정한 작업을 간단하게 처리할 수 있도록 도와주는 도구입니다. 함수는 상자에 비유할 수 있습니다. 상자 안에 어떤 값을 넣으면 상자는 그 값을 처리해서 특정 결과를 반환합니다. 이처럼 파이썬의 함수도 입력값을 받아 작업을 수행한 뒤 결과를 돌려주는 구조로 작동합니다.</p>   
 
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 import</h1>
-      <hr>
-      <h2 style="margin-bottom: 3px;">전체모듈 가져오기</h2>
-      <p>모듈 전체를 가져와 사용할 때 사용하는 방식입니다.</p>
-      <p>모듈 이름을 명시적으로 작성해야 하므로 코드 가독성이 좋지만, 길이가 길어질 수 있습니다.</p>
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python611.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
+
+      <p>&nbsp;&nbsp;  프로그래밍에서는 동일하거나 유사한 작업을 여러 번 반복해야 하는 경우가 많습니다. 만약 함수를 사용하지 않고 모든 작업을 코드로 매번 작성하면, 코드가 불필요하게 길어지고 실수가 발생할 가능성이 높아집니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python612.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <p>&nbsp;&nbsp;  파이썬은 이미 정의되어 있는 다양한 내장 함수를 제공하며, 필요에 따라 사용자가 새로운 함수를 정의하여 사용할 수 있습니다. 함수를 호출하여 사용하면 불필요한 코드를 반복해서 작성하지 않고, 코드의 가독성과 효율성을 높일 수 있습니다.</p>   
+
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import math
-print(math.sqrt(16))  # math 모듈의 sqrt 함수 사용</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import datetime
 
-# 현재 날짜와 시간 가져오기
-now = datetime.datetime.now()
-print(f"현재 시간: {now}")
-
-# 특정 날짜 생성
-specific_date = datetime.datetime(2023, 11, 18)
-print(f"특정 날짜: {specific_date}")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-
-    <div class="code"> 
-      <h3>C 를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import os
-
-# 현재 작업 디렉토리 확인
-current_directory = os.getcwd()
-print(f"현재 디렉토리: {current_directory}")
-
-# 디렉토리 목록 출력
-print(f"디렉토리 목록: {os.listdir(current_directory)}")</code>  
-        </pre>
-      </div>
-      <br></br>
-    </div >
-
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
-    </div>
   </body>
 </html>

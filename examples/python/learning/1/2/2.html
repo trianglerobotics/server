@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,63 +20,62 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
+    <div class="container">
 
-    
+      <br>
+      <br>
+      <p>&nbsp;&nbsp;  어렵게만 느껴지던 코딩이 이제는 전문가의 영역에서 대중적인 기술로 자리 잡기 시작했습니다. 누구나 웹사이트를 만들거나 간단한 게임 알고리즘을 구현할 수 있는 환경이 된 것입니다. 이 변화의 중심에는 ‘파이썬(Python)’이라는 프로그래밍 언어가 있습니다.</p>
 
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 주석</h1>
-      <p>주석은 Python 코드를 설명하는 데 사용될 수 있습니다.</p>
-      <p>주석을 사용하면 코드를 더 읽기 쉽게 만들 수 있습니다.</p>
-      <p>주석은 코드를 테스트할 때 실행을 방지하는 데 사용될 수 있습니다.</p>
-      <hr>
-      <h2 style="margin-bottom: 3px;">주석 만들기</h2>
-      <p>주석은 #으로 시작하며 Python은 이를 무시합니다.</p>
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python111.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>       
+
+      <br>
+      <p>&nbsp;&nbsp;  파이썬은 복잡한 코드 없이 간단한 구문만으로도 원하는 결과를 얻을 수 있습니다. 사람의 말을 한 줄씩 컴퓨터 언어로 번역해 주는 인터프리터(interpreter) 방식으로 작동하기 때문입니다.</p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+        <div class="example">
+          <div class="icon_ex">
+            <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+          </div>
+          <div class="text-container">
+            <div class="text"><strong>Code A</strong></div>
+            <!-- <div class="line"></div> -->
+          </div>
+        </div>
+
+        <p>&nbsp;&nbsp;  다음 코드를 실행해 파이썬으로 “Hello, jajucha!”라는 문자를 표시해 봅시다. ‘print()’는 코드를 실행해 결과를 출력해 주는 함수입니다.</p>
+
+
+        <br>
+        <div class="code_box_exe">
+          <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+        </div>
+
+        <p>&nbsp;&nbsp;  ‘자주차 프로젝트’에 오신 걸 환영합니다! 파이썬을 사용하면 초보자와 전문가를 가리지 않고 자주차 프로젝트에서 훌륭한 결과물을 만들어 낼 수 있습니다. 자주차 프로젝트를 향한 여러분의 여정을 응원합니다.</p>
+
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-#This is a comment
-print("Hello, World!")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <p>주석은 줄의 끝에 넣을 수 있으며, Python은 줄의 나머지 부분을 무시합니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-print("Hello, World!") #This is a comment</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
-    <!-- explain-3 -->
-    <div class="container">
-      <p>주석은 코드를 설명하는 텍스트일 필요는 없으며 Python이 코드를 실행하지 못하도록 하는 데에도 사용할 수 있습니다.</p>
-    </div>
-    <!-- code-3 -->
-    <div class="code"> 
-      <h3>C를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-#print("Hello, World!")
-print("Cheers, Mate!")</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
+
   </body>
 </html>

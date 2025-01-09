@@ -10,7 +10,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,24 +19,140 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
     <div class="container">
-      <h2>도도새 퇴치하기</h2>
-      <p>도도새의 새치기에 잔뜩 화가 난 홍학의 얼굴이 새빨개졌습니다. 하트 여왕이 심판을 내리는군요.
-        “반칙 금지! 도도새는 퇴장하라!”
-        
-        하트 여왕의 명령에 따라 remove()를 이용하여 도도새를 쫓아내 볼까요?</p>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/remove.png" alt="Placeholder image" />
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>미디언(Median) 블러링의 원리와 특징</h3>
+      </div>
+      <p>&nbsp;&nbsp;  미디언 블러링은 커널에 속한 모든 픽셀들의 중앙값으로 정가운데 픽셀 값을 대체하는 블러링 방법입니다. 경계선을 보존하는 데 효과적입니다.</p>
+
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
         </div>
+        <div class="text">
+          미디언 블러링 원리
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/opencv/cv531.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          미디언 블러링 장단점
+        </div>
+      </div>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>장점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 경계선을 흐리게 하지 않아 평균 블러링이나 가우시안 블러링보다 경계선 도출에 용이합니다.</td>
+          </tr>
+          <tr>
+            <td>② 반점 노이즈(salt&pepper noise)를 효과적으로 제거할 수 있습니다.</td>
+          </tr>
+        </tbody>
+      </table>      
+
+      <br>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>단점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 커널 내의 픽셀 값들을 정렬한 후 적용하기 때문에 처리 속도가 가장 느립니다.</td>
+          </tr>
+          <tr>
+            <td>② 커널 크기가 지나치게 크면 세부 정보를 표현하지 못할 수 있습니다.</td>
+          </tr>
+        </tbody>
+      </table>  
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>미디언(Median) 블러링 함수</h3>
+      </div>
+  
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          미디언 블러링 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>cv2.medianBlur</strong>(data, ksize)</code>
+      </div>
+    
+      <ul>
+        <li><strong>data: </strong> 블러링을 적용할 이미지 데이터입니다.</li>
+        <li><strong>ksize: </strong> 커널의 크기입니다. 다른 블러링 방식과 달리 단일한 홀수 값을 입력하면 됩니다. 중앙값은 픽셀 개수가 홀수일 때만 구할 수 있기 때문입니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>    
+
+      <p>&nbsp;&nbsp;  예제 이미지에 커널 크기 5 X 5로 미디언 블러링을 적용해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
     </div>
 
-    <div class="add-comment">
-      <h2>코딩해 보세요!</h3>
-      <ul>
-          <div class="box"> remove() 괄호 안에는 인덱스 값이 아닌 삭제할 자료를 적어요.</div>
-      </ul>
-  </div>
   </body>
 </html>

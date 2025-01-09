@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>time 라이브러리의 기능</h3>
+      </div>
+      <p>&nbsp;&nbsp;  time 라이브러리는 시간을 다루는 기능을 제공하는 파이썬의 내장 라이브러리입니다. time을 통해 프로그램 작동 시간을 확인하거나, 프로그램 실행을 일정 시간 동안 지연시키는 등 시간과 관련된 다양한 작업을 수행할 수 있습니다. 아래에 소개하는 함수 이외에도 다양한 시간 관련 기능이 있습니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python831.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>시간 확인 함수</h3>
+      </div>
+      <p>&nbsp;&nbsp;협정 세계시(UTC, Universal Time Coordinated)의 기준 시간인 1970년 1월 1일 0시 0분 0초를 기준으로 현재까지 경과된 시간을 초 단위로 반환합니다. 마이크로초(10⁻⁶) 단위까지 표현할 수 있습니다.</p>   
+
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          시간 확인 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>time.time()</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>현재 시간을 반환합니다.</strong></li>
+      </ul>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="example">
+       <div class="icon_ex">
+         <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+       </div>
+       <div class="text-container">
+         <div class="text"><strong>Code A</strong></div>
+         <!-- <div class="line"></div> -->
+       </div>
+     </div>      
+
+     <p>&nbsp;&nbsp;  sum 함수와 range 함수를 사용해서 1부터 1,000,000까지의 정수를 모두 더하고, 시간 확인 함수를 사용해 결과 도출까지 경과된 시간을 구해 봅시다.</p>
+
+     <div class="code_box_exe">
+       <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+     </div>
+
+     <br>
+     <hr>
+     <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>실행 지연 함수</h3>
+      </div>
+      <p>&nbsp;&nbsp;  프로그램 실행을 지정한 시간만큼 지연시킬 수 있습니다. 잠시 대기한 후 일정 시간 뒤에 수행해야 하는 작업이나, 일정한 간격을 두고 반복되는 작업을 처리할 때 주로 사용합니다. 밀리초(10⁻³)단위까지 입력할 수 있습니다.</p>
+ 
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          실행 지연 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>time.sleep</strong>(seconds)</code>
+      </div>
+        
+      <ul>
+        <li><strong>seconds: </strong> 지연 시간을 초 단위로 입력합니다. 정수형과 실수형을 모두 입력할 수 있습니다.</li>
+      </ul>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="example">
+       <div class="icon_ex">
+         <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+       </div>
+       <div class="text-container">
+         <div class="text"><strong>Code B</strong></div>
+         <!-- <div class="line"></div> -->
+       </div>
+     </div>      
+
+     <p>&nbsp;&nbsp;  실행 지연 함수를 사용해 코드 실행 3초 후에 “3초가 지났습니다.”를 출력하는 코드를 작성해 봅시다.</p>
+
+     <div class="code_box_exe">
+       <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+     </div>
+
+    </div>
+
+  </body>
+</html>

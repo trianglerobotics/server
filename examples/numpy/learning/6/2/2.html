@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>1차원 배열 슬라이싱(slicing)</h3>
+      </div>
+      <p>&nbsp;&nbsp;  배열 슬라이싱은 배열의 일부를 잘라 내어 특정 구간이나 영역을 선택해 추출하는 기능입니다. 인덱스를 사용해 추출하고자 하는 범위를 선택합니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_621.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+  
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          배열 슬라이싱
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">array<strong>[</strong>start:end:step<strong>]</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>array: </strong> 슬라이싱을 진행할 배열입니다.</li>
+        <li><strong>start: </strong> 슬라이싱을 시작할 요소의 인덱스입니다. 생략 시 기본값인 0으로 지정됩니다.</li>
+        <li><strong>end: </strong> 슬라이싱이 종료되는 지점의 인덱스 번호에 1을 더한 값을 입력합니다. 예를 들어 종료 지점의 인덱스가 3이라면 4를 입력합니다.</li>
+        <li><strong>step: </strong> 요소를 선택하는 간격을 입력합니다. 기본값은 1이며, 음수를 입력하면 역방향으로 진행됩니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  슬라이싱을 사용해 array1에 저장된 1차원 배열에서 ‘B’, ‘D’, ‘F’를 한 번에 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>다차원 배열 슬라이싱</h3>
+      </div>
+      <p>&nbsp;&nbsp;  축별로 슬라이싱 범위를 지정하면 2차원 이상의 배열도 슬라이싱할 수 있습니다. 특정 차원의 모든 요소를 선택하고 싶다면 값이 없는 빈 콜론(:)을 입력하면 됩니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_622.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>  
+  
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          다차원 배열 슬라이싱
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">array<strong>[</strong>slicing_0, slicing_1, ..., slicing_n<strong>]</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>array: </strong> 슬라이싱을 진행할 배열입니다.</li>
+        <li><strong>slicing_n: </strong> 축별 슬라이싱 범위입니다. 추출하려는 범위를 축에 따라 ‘[start:end:step]’ 형식으로 순서대로 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  슬라이싱을 사용해 2차원 배열이 저장된 array2에서 ‘6, 7’과 10, 11’을 한 번에 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  슬라이싱을 사용해 3차원 배열이 저장된 array3에서 ‘c’, ‘d’, ‘e’와 ‘h’, ‘i’, ‘j’을 한 번에 추출해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+
+    </div>
+
+  </body>
+</html>

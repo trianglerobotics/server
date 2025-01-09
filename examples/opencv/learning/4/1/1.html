@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,108 +20,119 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container" >
-      <h1>필터링과 변환</h1>
-      <hr></hr>
-      <h2>이미지 블러링</h2>
-      <p>OpenCV에서 **이미지 블러링(Blurring)**은 노이즈 제거나 부드럽게 만드는 작업에 사용됩니다. 블러링은 주로 이미지를 전처리하거나 배경을 흐리게 만들 때 활용됩니다. OpenCV는 다양한 블러링 기법을 제공합니다.</p>
-      <h2>이미지 블러링 -1 :평균 블러링 (Averaging)</h2>
-      <p>이미지의 각 픽셀 값을 주변 픽셀의 평균으로 대체합니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.blur(src, ksize)</div>
-      <p><strong>src: 입력 이미지 (numpy.ndarray 형식).</strong></p>
-      <p style="margin-bottom: 20px;"><strong>ksize: 커널 크기 (width, height)</strong></p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import jajucha2
-image = cv2.imread('example.jpg')
-
-# 평균 블러링
-blurred_image = cv2.blur(image, (5, 5))
-
-jajucha2.camera.show_image(blurred_image)</code>
-        </pre>
-        </div>
-      <br></br>
-    </div>
-
-    <div class="container">
-      <h2>이미지 블러링 -2 : 가우시안 블러링 (Gaussian Blurring)</h2>
-      <p>가우시안 커널을 사용하여 블러링을 수행하며, 부드러운 블러링 효과를 제공합니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.GaussianBlur(src, ksize, sigmaX)</div>
-      <p><strong>src: 입력 이미지 (numpy.ndarray 형식).</strong></p>
-      <p><strong>ksize: 커널 크기 (width, height) (홀수).</strong></p>
-      <p style="margin-bottom: 20px;"><strong>sigmaX: X축 방향의 가우시안 표준편차</strong></p>
-    </div>
-
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">        
-import cv2
-import jajucha2
-
-image = cv2.imread('example.jpg')
-
-# 가우시안 블러링
-gaussian_blurred = cv2.GaussianBlur(image, (5, 5), 0)
-
-jajucha2.camera.show_image(gaussian_blurred)</code>
-      </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>이미지 크기 조정하기</h3>
       </div>
-      <br></br>
-    </div>
+      <p>&nbsp;&nbsp;  자율주행자동차는 다양한 센서로 얻은 정보를 실시간으로 처리하기 때문에, 고해상도인 원본 이미지를 그대로 사용하면 처리 속도가 느려질 수 있습니다. 따라서 이미지를 적절한 크기로 조정하여 자율주행 시스템의 효율성을 높이고 성능을 향상시켜야 합니다.</p>   
 
-    <div class="container">
-      <h2>이미지 블러링 -3 : 미디언 블러링 (Median Blurring)</h2>
-      <p>커널 내 픽셀 값의 중간값으로 대체합니다. 특히, 소금-후추 노이즈(Salt-and-Pepper Noise)에 효과적입니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.medianBlur(src, ksize)</div>
-      <p><strong>src: 입력 이미지 (numpy.ndarray 형식).</strong></p>
-      <p style="margin-bottom: 20px;"><strong>ksize: 커널 크기 (홀수).</strong></p>
-    </div>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          이미지 크기 조정 함수
+        </div>
+      </div>
 
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>C 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">        
-import cv2
-import jajucha2
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>cv2.resize</strong>(data, dsize, fx=0, fy=0, interpolation=flag)</code>
+      </div>
 
-image = cv2.imread('example.jpg')
+      <ul>
+        <li><strong>data: </strong> 크기를 조정할 이미지 데이터입니다.</li>
+        <li><strong>dsize: </strong> 조정할 이미지의 크기입니다. ‘(400, 300)’처럼 너비와 높이 순으로 입력하면 됩니다.</li>
+        <li><strong>fx/fy:</strong> ‘fx'와 ’fy'는 가로 방향과 세로 방향의 비율입니다. 이미지를 절반 크기로 줄이고 싶다면 ‘fx=0.5, fy=0.5’로 입력하면 됩니다. size와 동시에 사용할 수는 없습니다.</li>
+        <li><strong>interpolation: </strong>크기 조정 시 사용할 보간법을 입력합니다.</li>
+      </ul>
 
-# 미디언 블러링
-median_blurred = cv2.medianBlur(image, 5)
+        <br>
+        <hr>
 
-jajucha2.camera.show_image(median_blurred)</code>
-      </pre>
+        <div class="list-item">
+          <div class="square-box">2</div>
+          <h3>이미지 보간법</h3>
+        </div>
+        <p>&nbsp;&nbsp;  이미지의 확대할 때 생기는 빈 공간을 자연스럽게 처리하거나, 이미지를 축소할 때 여러 픽셀을 하나의 픽셀로 압축하는 방법을 수학적 용어로 보간법이라고 합니다.</p>   
+        <p>&nbsp;&nbsp;  다양한 보간법을 사용하여 이미지 크기를 조정하는 과정에서 주변 픽셀의 색상을 참고해 픽셀에 입력될 값을 결정할 수 있습니다.</p>   
 
-</div>
-      <br></br>
-    </div>
+        <br>
+        <div class="holder">
+          <div class="icon" >
+            <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+          </div>
+          <div class="text">
+            보간법(interpolation) flags
+          </div>
+        </div>
+  
+        <div class="code_box_exp">
+          <code class="language-python" style="text-align: left;"><strong>① cv2.INTER_LINEAR: </strong>주변에 있는 픽셀 2개의 값을 가중치 기반으로 보간하여 픽셀 값을 결정합니다. 기본값으로 설정되어 있습니다.<br>
+        <strong>② cv2.INTER_AREA: </strong>축소에 최적화된 보간법입니다. 축소된 영역에 속한 픽셀 값을 평균하여 새로운 값을 도출합니다.<br>
+        <strong>③ cv2.INTER_CUBIC: </strong> 확대에 최적화된 보간법입니다. 주변 4x4 영역에 있는 픽셀 값을 가중치 기반으로 보간하여 픽셀의 값을 결정합니다.<br>
+        <strong>④ cv2.INTER_NEAREST: </strong>속도가 가장 빠른 보간법입니다. 가장 가까운 픽셀 값을 그대로 사용합니다. 계단 현상 같은 품질 저하가 나타날 수 있습니다.<br>
+        <strong>⑤ cv2.INTER_LANCZOS4: </strong>가장 높은 품질을 제공하는 보간법입니다. 주변 8x8 영역에 있는 픽셀 값을 사인(sine) 함수로 보간하여 픽셀의 값을 결정합니다.</code>
+        </div>
 
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="example">
+          <div class="icon_ex">
+            <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+          </div>
+          <div class="text-container">
+            <div class="text"><strong>Code A</strong></div>
+            <!-- <div class="line"></div> -->
+          </div>
+        </div>  
 
+      <p>&nbsp;&nbsp;  이미지 크기 조정 함수의 인수 ‘size’를 사용해 1024 X 1024 사이즈인 예제 이미지를 절반 크기로 축소해 봅시다. (단, 보간법은 기본값으로 설정합니다.)</p>
 
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
 
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>    
 
+      <p>&nbsp;&nbsp;  이미지 크기 조정 함수의 ‘비율 조정’을 사용해 1024 X 1024 사이즈인 예제 이미지를 절반 크기로 축소해 봅시다. (단, 보간법은 기본값으로 설정합니다.)</p>
 
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
 
   </body>
 </html>

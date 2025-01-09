@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,54 +20,95 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>OPENCV 기본 사용법</h1>
-      <hr></hr>
-      <h2>이미지 저장하기 </h2>
-      <p>OpenCV에서 이미지를 저장하려면 cv2.imwrite() 함수를 사용합니다. 이 함수는 이미지를 디스크에 저장하며, 다양한 파일 포맷(.jpg, .png, .bmp, 등)을 지원합니다.</p>
-      <div class="box" style="margin-top: 10px;">cv2.imwrite(filename, image, params=None)</div>
-      <p><strong>filename: 저장할 파일의 경로</strong></p>
-      <p><strong>image: 저장할 이미지</strong></p>
-      <p><strong>params: 특정 파일 포맷의 저장 품질이나 설정</strong></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.IMWRITE_JPEG_QUALITY <span class="hlw">JPEG 품질</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.IMWRITE_PNG_COMPRESSION<span class="hlw">PNG 압축 레벨</span></p>
-      <!-- <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cv_111.svg" style="width: 200px" alt="Placeholder image" />
-      </div> -->
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 결과를 확인하세요 <img src="http://121.184.63.113:4000/images/cvfolder.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하면 저장된 이미지를 확인할 수 있습니다</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-
-# 이미지 읽기
-image = cv2.imread('example.jpg')
-
-# 이미지 저장
-cv2.imwrite('output.jpg', image)  # JPG 형식으로 저장
-print("이미지가 저장되었습니다.")</code>
-        </pre>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>해상도와 PPI(Pixels Per Inch)</h3>
       </div>
-      <br></br>
+      <p>&nbsp;&nbsp;해상도는 디지털 이미지를 구성하는 픽셀의 밀도를 나타내는 용어입니다. 이미지의 선명도와 세부적인 묘사에 영향을 주는 요소로, 해상도가 높을수록 더욱 선명한 이미지를 얻을 수 있습니다.</p>   
+      <p>&nbsp;&nbsp;  해상도는 픽셀의 가로 방향 개수와 세로 방향 개수로 결정됩니다. 우리가 흔히 보는 Full HD는 1920 x 1080개의 픽셀로 이루어진 디지털 이미지를 말합니다. 이미지 하나를 구성하는 데 약 207만 개의 픽셀이 사용되는 것입니다.</p>   
+      <p>&nbsp;&nbsp;  이미지의 선명도는 픽셀 개수뿐만 아니라 PPI(Pixels Per Inch)처럼 제한된 물리적 공간 안에 모여 있는 픽셀의 개수 등도 고려해야 합니다. 같은 이미지라도 대형 화면으로 보면 품질이 떨어지는 이유가 바로 PPI 때문입니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv221.svg" style="width: 410px;"  alt="Placeholder image" />
+      </div>    
+      <br>
+
+      <p>&nbsp;&nbsp;  자율주행 시스템을 설계할 때 해상도가 높으면 표지판이나 보행자 같이 작은 물체를 정확하게 감지할 수 있지만, 그만큼 메모리와 용량을 많이 차지해 처리 속도를 느리게 만들 수 있습니다. 따라서  영상의 품질과 처리 속도 사이의 균형을 잘 맞추어 해상도를 설정해야 합니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv222.svg" style="width: 440px;"  alt="Placeholder image" />
+      </div>    
+      <br>
+      <br>
+
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>해상도 확인하기</h3>
+      </div>
+      <p>&nbsp;&nbsp;OpenCV에서는 저장된 이미지 파일의 해상도를 확인할 수 있습니다. 해상도를 확인하기 위해서는 사용해 이미지 정보를 불러와야 합니다. 넘파이 속성인 ‘.shape’는 OpenCV에서 이미지의 높이와 너비, 채널 개수를 반환합니다.</p>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          이미지 정보 확인하기
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python">image<strong>.shape</strong></code>
+      </div>
+
+      <ul>
+        <li><strong>image: </strong> 정보를 추출할 이미지 파일입니다. ‘cv2.imread()’를 사용해 넘파이 배열로 변환해야 합니다.</li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+        <div class="example">
+          <div class="icon_ex">
+            <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+          </div>
+          <div class="text-container">
+            <div class="text"><strong>Code A</strong></div>
+            <!-- <div class="line"></div> -->
+          </div>
+        </div>  
+
+      <p>&nbsp;&nbsp;  ‘.shape’를 사용해 예제 이미지의 정보를 확인하고 해상도를 계산해 봅시다. (단, 높이와 너비만을 반환하여 해상도를 계산합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
     </div>
-
-
-
-
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
-
-
 
   </body>
 </html>

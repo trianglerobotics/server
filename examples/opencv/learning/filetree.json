@@ -1,138 +1,168 @@
 [
   {
     "section": 1,
-    "name": "01 OPENCV 기본 개념",
+    "name": "OpenCV 시작하기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 시작하기",
+        "name": "시작하기",
         "env": "type0",
         "location": "learning/1/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 OPENCV 개념",
+        "name": "OpenCV가 무엇인가요?",
         "env": "type0",
         "location": "learning/1/2/codes",
         "target": "2.ipynb"
-      },
-      {
-        "subsection": 3,
-        "name": "03 픽셀의 개념",
-        "env": "type0",
-        "location": "learning/1/3/codes",
-        "target": "3.ipynb"
-      },
-      {
-        "subsection": 4,
-        "name": "04 색상 공간",
-        "env": "type0",
-        "location": "learning/1/4/codes",
-        "target": "4.ipynb"
       }
     ]
   },
   {
     "section": 2,
-    "name": "02 OPENCV 기본 사용법",
+    "name": "1. 디지털 이미지",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 이미지 읽기",
+        "name": "(1) 픽셀(pixel)",
         "env": "type0",
         "location": "learning/2/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "02 이미지 저장",
+        "name": "(2) 이미지 해상도",
         "env": "type0",
         "location": "learning/2/2/codes",
         "target": "2.ipynb"
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 이미지 채널",
+        "env": "type0",
+        "location": "learning/2/3/codes",
+        "target": "3.ipynb"
       }
     ]
   },
   {
     "section": 3,
-    "name": "03 이미지 처리 기초",
+    "name": "2. 이미지 불러오고 저장하기",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 이미지 크기 조정",
+        "name": "(1) 이미지 불러오기",
         "env": "type0",
         "location": "learning/3/1/codes",
         "target": "1.ipynb"
-        
       },
       {
         "subsection": 2,
-        "name": "02 이미지 자르기",
+        "name": "(2) 이미지 확인하기",
         "env": "type0",
         "location": "learning/3/2/codes",
         "target": "2.ipynb"
       },
       {
         "subsection": 3,
-        "name": "03 색상 변환",
+        "name": "(3) 이미지 저장하기",
         "env": "type0",
         "location": "learning/3/3/codes",
         "target": "3.ipynb"
-      },
-      {
-        "subsection": 4,
-        "name": "04 기본 그리기",
-        "env": "type0",
-        "location": "learning/3/4/codes",
-        "target": "4.ipynb"
       }
     ]
   },
   {
     "section": 4,
-    "name": "04 필터링과 변환",
+    "name": "3. 기초 이미지 처리",
     "subsections": [
       {
         "subsection": 1,
-        "name": "01 이미지 블러링",
+        "name": "(1) 이미지 크기 조정하기",
         "env": "type0",
         "location": "learning/4/1/codes",
         "target": "1.ipynb"
-      },
-      {
-        "subsection": 2,
-        "name": "02 엣지 검출",
-        "env": "type0",
-        "location": "learning/4/2/codes",
-        "target": "2.ipynb"
         
       },
       {
+        "subsection": 2,
+        "name": "(2) 이미지 자르기(ROI)",
+        "env": "type0",
+        "location": "learning/4/2/codes",
+        "target": "2.ipynb"
+      },
+      {
         "subsection": 3,
-        "name": "03 이미지 이진화",
+        "name": "(3) 이미지 색상 변환하기",
         "env": "type0",
         "location": "learning/4/3/codes",
         "target": "3.ipynb"
+      },
+      {
+        "subsection": 4,
+        "name": "(4) 그래픽 그리기",
+        "env": "type0",
+        "location": "learning/4/4/codes",
+        "target": "4.ipynb"
       }
     ]
   },
   {
     "section": 5,
-    "name": "05 윤곽선,원 검출",
+    "name": "4. 이미지 블러링",
     "subsections": [
       {
         "subsection": 1,
-        "name": "윤곽선 찾기",
+        "name": "(1) 평균(Average) 블러링",
         "env": "type0",
         "location": "learning/5/1/codes",
         "target": "1.ipynb"
       },
       {
         "subsection": 2,
-        "name": "허프 원 검출",
+        "name": "(2) 가우시안(Gaussian) 블러링",
         "env": "type0",
         "location": "learning/5/2/codes",
         "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 미디언(Median) 블러링",
+        "env": "type0",
+        "location": "learning/5/3/codes",
+        "target": "3.ipynb"
+        
+      }
+    ]
+  },
+  {
+    "section": 6,
+    "name": "5. 윤곽선 검출",
+    "subsections": [
+      {
+        "subsection": 1,
+        "name": "(1) 윤곽선 검출이 필요한 이유",
+        "env": "type0",
+        "location": "learning/6/1/codes",
+        "target": "1.ipynb"
+      },
+      {
+        "subsection": 2,
+        "name": "(2) 소벨(Sobel) 필터",
+        "env": "type0",
+        "location": "learning/6/2/codes",
+        "target": "2.ipynb"
+        
+      },
+      {
+        "subsection": 3,
+        "name": "(3) 캐니(Canny) 알고리즘",
+        "env": "type0",
+        "location": "learning/6/3/codes",
+        "target": "3.ipynb"
+        
       }
     ]
   }

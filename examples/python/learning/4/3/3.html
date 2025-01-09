@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,66 +20,132 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container">
-      <h1>파이썬 While 반복문</h1>
-      <h2 style="margin-bottom: 3px;">파이썬 반복분</h2>
-      <p>Python에는 두 개의 기본 반복문 명령이 있습니다.</p>
-      <p><span class="hlw">for</span> 반복문</p>
-      <p><span class="hlw">while</span> 반복문</p>
-    </div>
-
-    <div class="container">
-      <hr >
-      <h2> While 반복문</h2>
-      <p><span class="hlw">while</span>반복문을 사용하면 조건이 참인 동안 일련의 명령문을 실행할 수 있습니다.</p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>i가 6보다 작은 경우 i를 출력합니다.</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-i = 1
-while i < 6:
-  print(i)
-  i += 1</code>
-        </pre>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>조건문이란?</h3>
       </div>
-      <br></br>
-    </div >
-    <!-- explain-2 -->
-    <div class="container">
-      <hr >
-      <h2 style="margin-bottom: 3px;">break</h2>
-      <p><span class="hlw">break</span>문을 사용하면 while 조건이 참이더라도 루프를 중지할 수 있습니다.</p>
-    </div>
-    <!-- code-2 -->
-    <div class="code"> 
-      <h3>B 를 실행하여 출력 결과를 확인하세요</h3>
-      <p>i가 3일 때 루프를 종료합니다.</p>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-i = 1
-while i < 6:
-  print(i)
-  if i == 3:
-    break
-  i += 1</code>
-        </pre>
-      </div>
-      <br></br>
-    </div >
+      <p>&nbsp;&nbsp;  조건문은 조건식이 참인지 또는 거짓인지에 따라서 코드의 실행 여부를 결정하는 코딩 문법입니다. 조건문은 프로그램이 다양한 상황에 맞추어 동작하도록 하는 핵심적인 요소입니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python431.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
 
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <p>&nbsp;&nbsp;    조건문은 기본적으로 ‘만약’을 의미하는 if로 시작하고, else나 elif를 더해 복잡한 조건도 명료하게 구성할 수 있습니다.</p>   
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>if-else문</h3>
+      </div>
+      <p>&nbsp;&nbsp;  ‘if-else문’은 단일 조건식이 참(True)인지 거짓(False)인지에 따라 특정 행동을 수행하도록 결정하는 파이썬의 기본적인 조건문입니다.</p>
+      <p>&nbsp;&nbsp;  조건문을 작성할 때는 반드시 지켜야 할 규칙이 있습니다. 다음의 규칙을 준수하지 않으면 오류가 발생합니다.</p>   
+      <p>&nbsp;&nbsp;  <strong>첫째</strong>, 조건식 끝에는 항상 콜론(:)을 입력해야 합니다. 콜론은 “여기서부터 조건에 맞는 결과가 실행된다”는 것을 의미합니다.</p>   
+      <p>&nbsp;&nbsp;  <strong>둘째</strong>, 조건문 블록의 들여쓰기를 일정하게 맞춰야 합니다. 파이썬은 들여쓰기를 통해 코드의 계층 구조를 이해하기 때문입니다. 보통 Tab을 사용해 들여쓰기를 합니다.</p>      
+      
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          if-else문 형식
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/python/python432.svg" style="width: 65px;"  alt="Placeholder image" />
+      </div>
+
+      <ul>
+        <li><strong>조건식: </strong> 비교 또는 논리 연산자로 구성된 식입니다.</li>
+        <li><strong>결과1: </strong> 조건식이 True면 실행할 내용입니다.</li>
+        <li><strong> else, 결과2: </strong> 조건식이 False면 실행할 내용입니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  자동차가 주행하다가 벽과의 거리가 10 미만이면 “stop”을 출력하고, 그렇지 않으면 “drive”를 출력하는 조건문을 작성해 봅시다. (단, 조건문 실행 시 거리는 9로 가정합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  콜론(:)을 생략하고 예제 1번의 조건문을 다시 작성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  들여쓰기를 생략하고 예제 1번의 조건문을 다시 작성해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
     </div>
+
   </body>
 </html>

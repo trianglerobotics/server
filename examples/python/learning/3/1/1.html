@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,50 +20,115 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>파이썬 데이터 유형</h1>
-      <h2 style="margin-bottom: 3px;">내장 데이터 유형</h2>
-      <p>프로그래밍에서 데이터 유형은 중요한 개념입니다.</p>
-      <p>변수는 다양한 유형의 데이터를 저장할 수 있으며, 다양한 유형은 다양한 작업을 수행할 수 있습니다.</p>
-      <p>Python에는 기본적으로 다음 카테고리의 데이터 유형이 내장되어 있습니다.</p>
-      <hr >
-      <p><strong>텍스트 유형:</strong> <span class="hlw">str</span></p>
-      <p><strong>숫자 유형:</strong> <span class="hlw">int</span>, <span class="hlw">float</span>, <span class="hlw">complex</span></p>
-      <p><strong>시퀀스 유형:</strong> <span class="hlw">list</span>, <span class="hlw">tuple</span>, <span class="hlw">range</span></p>
-      <p><strong>매핑 유형:</strong> <span class="hlw">dict</span></p>
-      <p><strong>세트 유형:</strong> <span class="hlw">set</span>, <span class="hlw">frozenset</span></p>
-      <p><strong>부울 유형:</strong> <span class="hlw">bool</span></p>
-      <p><strong>이진 유형:</strong> <span class="hlw">bytes</span>, <span class="hlw">bytearray</span>, <span class="hlw">memoryview</span></p>
-      <p><strong>없음 유형:</strong> <span class="hlw">NoneType</span></p>
-      <hr>
-      <h2 style="margin-bottom: 3px;">데이터 유형 가져오기</h2>
-      <p>다음 함수를 사용하면 모든 객체의 데이터 유형을 가져올 수 있습니다 <span class="hlw">type()</span></p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A를 실행하여 출력 결과를 확인하세요</h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-x = 5
-print(type(x))</code>
-        </pre>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>데이터 유형이란?</h3>
       </div>
-      <br></br>
-    </div >
+      <p>&nbsp;&nbsp;  파이썬에서 사용되는 모든 데이터는 변수에 저장될 때 성격과 용도에 따라 역할이 부여됩니다. 이를 데이터 유형이라고 합니다. 파이썬은 데이터 특성에 따라 자동으로 유형을 지정합니다. 예를 들어, ‘hello’는 문자열(str), ‘100’은 정수(int)로 지정됩니다.</p>   
+      
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/python/python311.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>  
 
-    
-    <div class="container">
-      <p>© W3Schools, www.w3schools.com</p>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/python/python_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          데이터 유형 확인 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>type</strong>(data)</code>
+      </div>
+
+      <ul>
+        <li><strong>data: </strong> 유형을 확인할 데이터입니다.</li>
+      </ul>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>정수 유형</h3>
+      </div>
+      <p>&nbsp;&nbsp;  정수 유형은 소수점이 없는 숫자를 나타냅니다. 양수, 음수, 그리고 0을 포함합니다. 정수 유형은 ‘int(integer)’로 지정됩니다.</p>   
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  변수 score에 저장된 데이터의 유형을 확인해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>실수 유형</h3>
+      </div>
+      <p>&nbsp;&nbsp;  실수는 소수점을 포함한 숫자를 나타냅니다. 사람의 체온 36.5°C나 원주율같이 세밀한 값을 표현할 때 사용합니다. 실수 유형은 ‘float’로 지정됩니다.</p>   
+      
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  변수 body_heat에 저장된 데이터의 유형을 확인해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
     </div>
 
-
-    
   </body>
 </html>

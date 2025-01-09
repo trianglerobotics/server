@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,45 +20,75 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>OPENCV 기본개념</h1>
-      <hr></hr>
-      <h2>OPENCV 개념 </h2>
-      <p>**OpenCV(Open Source Computer Vision)**는 이미지 및 비디오 처리 작업을 손쉽게 수행할 수 있도록 설계된 라이브러리입니다. Python에서 OpenCV를 사용하면 다양한 이미지 처리 및 컴퓨터 비전 작업을 간단히 구현할 수 있습니다.</p>
+
+      <br>
+      <br>
+      <p>&nbsp;&nbsp;OpenCV는 Open Source Computer Vision Library의 약자로, 컴퓨터가 
+        이미지를 처리하고 작업할 수 있도록 돕는 라이브러리입니다. NumPy처럼 특정 작업을 쉽고 효율적으로 처리할 수 있는 환경을 제공하며, 사진과 영상을 다루는 다양한 분야에서 활용됩니다.</p>
+
+      <br>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cv_111.svg" style="width: 200px" alt="Placeholder image" />
-      </div>
+        <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(color).svg" style="width: 150px;"  alt="Placeholder image" />
+      </div>       
 
-      <h3>OPENCV 개념 -1 : OPENCV 가져오기</h3>
-      <p>OpenCV를 사용하려면 먼저 OpenCV 라이브러리를 가져와야 합니다. OpenCV 라이브러리를 가져오려면 다음과 같이 cv2 모듈을 임포트하면 됩니다.</p>
+      <br>
+      <p>&nbsp;&nbsp;  단순한 사진 크기 조절이나 자르기 작업뿐 아니라, 얼굴 인식을 통해 스마트폰의 잠금을 해제하거나, 스포츠 경기에서 선수의 
+        움직임을 분석해 전략을 세우는 데에도 사용됩니다. 자율주행차 분야에서는 차선, 신호등, 보행자 감지 같은 핵심 기술 구현에 필수적입니다.</p>
 
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv111.svg" style="width: 340px;"  alt="Placeholder image" />
+      </div>       
 
+      <br>
+      <p>&nbsp;&nbsp;  OpenCV는 NumPy와 밀접한 관계가 있습니다. 컴퓨터의 이미지는 픽셀로 구성되며, O
+        penCV는 이를 NumPy 배열로 표현합니다. 이를 통해 이미지를 행렬처럼 다루며, NumPy의 강력한 수학 연산을 활용해 복잡한 이미지 작업도 쉽게 처리할 수 있습니다.</p>
+
+      <br>
+      <br>
+      <br>
+        <div class="example">
+          <div class="icon_ex">
+            <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+          </div>
+          <div class="text-container">
+            <div class="text"><strong>Code A</strong></div>
+            <!-- <div class="line"></div> -->
+          </div>
+        </div>
+
+        <p>&nbsp;&nbsp;아래에 보이는 사진은 앞으로 OpenCV 단원 예제에서 사용할 이미지 파일입니다. 파일명은 “example.png”입니다.</p>
+
+        <br>
+        <div class="image-div">
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_ex(color).svg" style="width: 310px;"  alt="Placeholder image" />
+        </div>  
+
+        <p>&nbsp;&nbsp;  다음 코드를 실행해 OpenCV에서 “example.png” 파일을 열어 봅시다. 화면 우측의 <img src="http://121.184.63.113:4000/images/opencv/img_streaming.svg" style="width: 30px;"  alt="Placeholder image" /> 버튼을 눌러 이미지 창을 켠 상태에서 코드를 실행해 보세세요.</p>
+
+        <br>
+        <div class="code_box_exe">
+          <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+        </div>
     </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하여 결과를 확인하세요</h3>
-      <div class="code_div">
-      <pre>
-        <code class="language-python">
-# OPECCV 가져오기
-import cv2</code>
-      </pre>
-    </div>
-    <br></br>
-    </div>
-    <div class="container">
-      <p>© JAJUCHA, www.jajucha.com</p>
-    </div> 
-
-
-    </div >
-
 
   </body>
 </html>

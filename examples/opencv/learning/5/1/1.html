@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,141 +20,167 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
+    <div class="container">
     
-
-     <!-- explain-1 -->
-    <div class="container" >
-      <h1>필터링과 변환</h1>
-      <hr></hr>
-      <h2>윤곽선 찾기</h2>
-      <p>OpenCV에서 윤곽선 검출은 이미지 내의 객체 경계를 찾아내는 작업입니다. 윤곽선은 동일한 색상 또는 강도의 픽셀들이 연결된 곡선으로 정의되며, 주로 객체의 외형을 분석하거나 추적할 때 사용됩니다.</p>
-      <h2>윤곽선 찾기 -1 : cv2.findContours()</h2>
-      <p>OpenCV에서 이진화된 이미지 또는 에지 검출된 이미지에서 **윤곽선(Contour)**을 찾는 데 사용되는 함수.</p>
-      <div class="box" style="margin-top: 20px;">contours, hierarchy = cv2.findContours(image, mode, method)</div>
-      <p><strong>image: 이진화된 입력 이미지(Grayscale 필요).</strong></p>
-      <p><strong>mode: 윤곽선 검출 모드</strong></p>
-      <div style="overflow-x: auto; white-space: pre; margin: 0; line-height: 0.5;">
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.RETR_EXTERNAL: <span class="hljs">외곽 윤곽선만 검출.</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.RETR_LIST: <span class="hljs">모든 윤곽선 검출 (계층 정보 없음).</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.RETR_TREE: <span class="hljs">모든 윤곽선을 계층 구조로 검출.</span></p>
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>블러링이 필요한 이유</h3>
       </div>
-      <p><strong>method: 윤곽선 근사화 방법</strong></p>
-      <div style="overflow-x: auto; white-space: pre; margin: 0; line-height: 0.5;">
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.CHAIN_APPROX_NONE: <span class="hljs">모든 점을 저장.</span></p>
-        <p style="margin: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.CHAIN_APPROX_SIMPLE: <span class="hljs">선형 구간의 끝점만 저장(효율적).</span></p>
+      <p>&nbsp;&nbsp;  화면에 노이즈(noise)가 발생하면 중요하지 않은 요소까지 분석 대상에 포함되어 알고리즘이 정상적으로 작동하지 않을 수 있습니다. 자율주행 상황에서는 눈, 비와 같은 기상 환경이나 도로 위 자잘한 돌멩이 같은 것들이 노이즈의 원인이 됩니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv511.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div> 
+      <br>
+
+      <p>&nbsp;&nbsp;  그래서 이미지 블러링(blurring)을 통해 이미지의 노이즈를 제거해야 합니다. 중요하지 않은 미시적 요소는 흐리게 처리해 잘 보이지 않게 만들고, 차선이나 도로 위의 차량, 보행자 같이 크고 중요한 요소들의 형태만 강조하는 것입니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv512.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div> 
+     
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>평균(Average) 블러링의 원리와 특징</h3>
       </div>
-      <br></br>
+      <p>&nbsp;&nbsp;  특정 픽셀을 기준으로 주변 픽셀들의 평균값을 구해 중앙 픽셀 값을 바꾸는 블러링 방법입니다. 각각의 픽셀 값이 커널(kernel)의 평균값으로 대체되어, 픽셀 값 사이의 차이가 줄어들고 이미지의 경계가 흐릿해집니다.</p>
 
-      <h2>윤곽선 찾기 -2 : cv2.drawContours()</h2>
-      <p>OpenCV에서 **윤곽선(Contours)**을 그리는 데 사용되는 함수입니다. cv2.findContours()로 추출된 윤곽선을 시각적으로 확인</p>
-      <div class="box" style="margin-top: 20px;">cv2.drawContours(image, contours, contourIdx, color, thickness)</div>
-      <p><strong>image: 윤곽선을 그릴 대상 이미지.</strong></p>
-      <p><strong>contours: cv2.findContours()로 검출한 윤곽선 리스트</strong></p>
-      <p><strong>contourIdx: 그릴 윤곽선의 인덱스 (-1이면 모든 윤곽선).</strong></p>
-      <p><strong>color: 윤곽선 색상 (BGR 값, 예: (0, 255, 0)은 초록색).</strong></p>
-      <p><strong>thickness: 윤곽선 두께 (음수 값은 내부 채우기).</strong></p>
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A에 있는 빈칸을 채운 후 A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <details >
-        <summary>정답 보기/숨기기</summary>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import jajucha2
-# 이미지 읽기 및 Grayscale 변환
-image = cv2.imread('example.jpg')
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+      <p>&nbsp;&nbsp;  먼저 커널 영역 내 모든 픽셀 값을 더하고, 더한 값을 커널의 크기로 나누어 평균값을 구합니다. 구해진 평균값을 해당 영역의 중앙 픽셀 값으로 대체합니다. 설정한 커널의 크기에 맞추어 이미지의 전 영역에서 해당 과정이 반복됩니다.</p>
 
-# 이진화 처리
-_, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 
-# 윤곽선 검출
-contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+      <br>
 
-# 윤곽선 그리기
-result = image.copy()
-cv2.drawContours(result, contours, -1, (0, 255, 0), 2)
-
-# 결과 보기
-jajucha2.camera.show_image(result)</code>
-        </pre>
-      </div>
-      </details>
-    </div>
-
-    <div class="container" >
-      <h2>윤곽선 찾기 -3 : 윤곽선 특징 분석</h2>
-      <div class="box" style="margin-top: 20px;">cv2.contourArea() #윤곽선의 면적 계산.</div>
-      <div class="box" style="margin-top: 20px;">cv2.arcLength() #윤곽선의 둘레 계산.</div>
-      <br></br>
-    </div>
-    <div class="container" >
-      <h2>윤곽선 찾기 -4 : 윤곽선 근사화</h2>
-      <div class="box" style="margin-top: 20px;">cv2.approxPolyDP() #윤곽선 근사화.</div>
-      <p><strong>epsilon: 근사 정확도. arcLength * 정확도 비율</strong></p>
-      <p><strong>closed: 윤곽선 닫힘 여부 (True or False).</strong></p>
-      <br></br>
-    </div>
-    <div class="container" >
-      <h2>윤곽선 찾기 -5 : 윤곽선 내부 도형 그리기</h2>
-      <div class="box" style="margin-top: 20px;">cv2.boundingRect() #윤곽선을 감싸는 직사각형을 반환.</div>
-      <div class="box" style="margin-top: 20px;">cv2.minEnclosingCircle() #윤곽선을 포함하는 최소 원을 반환.</div>
-      <br></br>
-    </div>
-
-      <!-- code-1 -->
-      <div class="code"> 
-        <h3>B에 있는 빈칸을 채운 후 B 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-        <details>
-          <summary>정답 보기/숨기기</summary>
-        <div class="code_div">
-          <pre>
-            <code class="language-python">
-import cv2
-import jajucha2
-
-# 이미지 읽기
-image = cv2.imread('example.jpg')
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-# 이진화
-_, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
-
-# 윤곽선 검출
-contours, hierarchy = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-# 결과 이미지 복사
-result = image.copy()
-
-# 윤곽선 및 바운딩 박스 그리기
-for contour in contours:
-    # 윤곽선 그리기
-    cv2.drawContours(result, [contour], -1, (0, 255, 0), 2)
-    
-    # 바운딩 박스
-    x, y, w, h = cv2.boundingRect(contour)
-    cv2.rectangle(result, (x, y), (x + w, y + h), (255, 0, 0), 2)
-
-# 결과 보기
-jajucha2.camera.show_image(image)
-jajucha2.camera.show_image(result,'left')</code>
-        </pre>
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
         </div>
-        </details>
-        <br></br>
+        <div class="text">
+          평균 블러링 원리
+        </div>
       </div>
 
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/opencv/cv513.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          평균 블러링 장단점
+        </div>
+      </div>
 
 
+      <table border="1">
+        <thead>
+          <tr>
+            <th>장점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 계산이 단순해 빠른 처리 속도를 보여 줍니다.</td>
+          </tr>
+          <tr>
+            <td>② 이미지 전체에 균일한 블러링 효과를 적용합니다.</td>
+          </tr>
+        </tbody>
+      </table>      
+
+      <br>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>단점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>① 커널 영역의 평균값으로 균일화하기 때문에 경계선같은 주요 정보가 심하게 흐려질 수 있습니다.</td>
+          </tr>
+          <tr>
+            <td>② 노이즈가 복잡한 경우 충분히 제거되지 않을 수 있습니다.</td>
+          </tr>
+        </tbody>
+      </table>  
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>평균(Average) 블러링 함수</h3>
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon" >
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          평균 블러링 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>cv2.blur</strong>(data, ksize)</code>
+      </div>
+
+      <ul>
+        <li><strong>data: </strong> 그래픽을 삽입할 이미지 데이터입니다.</li>
+        <li><strong>ksize: </strong> 평균값을 낼 영역(matrix)입니다. 보통 3x3, 5x5처럼 정사각형 형태의 작은 행렬로 설정합니다. 튜플 형태로 작성하면 됩니다. 커널의 크기가 클수록 블러링 강도가 강해져 이미지의 경계가 더욱 흐릿해집니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>  
+
+      <p>&nbsp;&nbsp;  예제 이미지에 커널 크기 5 X 5로 평균 블러링을 적용해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+    </div>
 
   </body>
 </html>

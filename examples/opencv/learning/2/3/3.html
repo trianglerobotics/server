@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>컬러 이미지</h3>
+      </div>
+      <p>&nbsp;&nbsp;OpenCV에서 컬러 이미지는 3차원 배열로 표현됩니다. 행(row)과 열(column)로 구성된 2차원 배열 3개가 겹쳐 있는 형태입니다.</p>
+      <p>&nbsp;&nbsp;  2차원 배열은 각각 파랑(Blue), 초록(Green), 빨강(Red) 색상을 표현합니다. OpenCV는 처음 개발될 때 Windows 영상 처리 표준을 따랐기 때문에 RGB가 아니라 BGR 순서로 배열되어 있다는 점에 유의해야 합니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv231.svg" style="width: 380px;"  alt="Placeholder image" />
+      </div>  
+
+
+      <br>
+      <hr>
+      <br>
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>흑백 이미지</h3>
+      </div>
+      <p>&nbsp;&nbsp;  흑백 이미지는 밝기 정보로 이미지의 명암만 표현합니다. 그래서 흑백 이미지는 행과 열로 구성된 단일한 2차원 배열로 구성되어 있습니다.</p>
+      <p>&nbsp;&nbsp;  흰색을 표현하고 싶다면 255를, 검정색을 표현하고 싶다면 0을, 그리고 회색을 표현하고 싶다면 원하는 색상에 맞추어 0과 255 사이의 중간값을 설정하면 됩니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv232.svg" style="width: 410px;"  alt="Placeholder image" />
+      </div>  
+
+      <br>
+      <p>&nbsp;&nbsp;  흑백 이미지는 컬러 이미지에 비해 필요한 정보의 양과 채널의 수가 적습니다. 이러한 특성 때문에 색상 정보가 필요 없는 차선 추적, 거리 감지(depth)와 같은 작업에서 컬러 이미지에 비해 빠른 처리 속도를 보여 줍니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv233.svg" style="width: 390px;"  alt="Placeholder image" />
+      </div>  
+      <br>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>알파(alpha) 채널</h3>
+      </div>
+
+      <p>&nbsp;&nbsp;알파 채널(alpha channel)은 이미지에서 투명도를 표현하기 위해 추가된 채널입니다. PNG 파일처럼 투명한 배경을 포함하는 이미지 형식에서 알파 채널이 사용됩니다.</p>
+      <p>&nbsp;&nbsp;다른 채널과 마찬가지로 0-255 사이의 값을 가지며, ‘0’은 완전한 투명, ‘255’는 완전한 불투명을 표현합니다.</p>
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/opencv/cv234.svg" style="width: 390px;"  alt="Placeholder image" />
+      </div>  
+      <br>
+    </div>
+
+  </body>
+</html>

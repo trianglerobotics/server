@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation</title>
     <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
-    <link rel="stylesheet" href="http://121.184.63.113:4000/css/default.min.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -19,59 +20,138 @@
       }
     </style>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
   </head>
   <body class="api-docs">
-
-    
-
-     <!-- explain-1 -->
     <div class="container">
-      <h1>이미지 처리 기초</h1>
-      <hr></hr>
-      <h2>색상변환 </h2>
-      <p>OpenCV에서 색상 변환은 cv2.cvtColor() 함수를 사용하여 다양한 색상 공간 간에 이미지를 변환하는 작업입니다. OpenCV는 여러 색상 공간(BGR, RGB, Grayscale, HSV 등)을 지원하며, 이를 통해 이미지 처리를 효율적으로 수행할 수 있습니다.</p>
-      <div class="box" style="margin-top: 20px;">cv2.cvtColor(src, code)</div>
-      <p><strong>src: 입력 이미지 (numpy.ndarray 형식).</strong></p>
-      <p><strong>code: 색상 변환 코드를 지정.</strong></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.COLOR_BGR2RGB <span class="hlw">BGR에서 RGB로 변환</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.COLOR_RGB2BGR <span class="hlw">RGB에서 BGR로 변환</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.COLOR_BGR2GRAY <span class="hlw">BGR에서 Grayscale로 변환</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.COLOR_GRAY2BGR <span class="hlw">Grayscale에서 BGR로 변환</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.COLOR_BGR2HSV <span class="hlw">BGR에서 HSV로 변환</span></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cv2.COLOR_HSV2BGR <span class="hlw">HSV에서 BGR로 변환</span></p>
-      <!-- <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cv_111.svg" style="width: 200px" alt="Placeholder image" />
-      </div> -->
-    </div>
-    <!-- code-1 -->
-    <div class="code"> 
-      <h3>A 를 실행하기 전에 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width:20px; margin-right: 5px; margin-left: 5px;">를 클릭하여 이미지 뷰어를 활성화 한 후에 결과를 확인하세요 </h3>
-      <div class="code_div">
-        <pre>
-          <code class="language-python">
-import cv2
-import jajucha2
-# 이미지 읽기
-image = cv2.imread('example.jpg')
-
-# BGR → RGB 변환
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-# 결과 보기
-jajucha2.camera.show_image(gray_image)</code>
-        </pre>
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>이미지 저장하기</h3>
       </div>
-      <br></br>
+      <p>&nbsp;&nbsp;  컴퓨터에 이미지를 저장하기 위해서는 픽셀 데이터를 파일로 변환해서 하드디스크에 기록해야 합니다. OpenCV 전용 함수로 이미지를 간편하게 저장할 수 있습니다.</p>   
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          이미지 저장하기 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>cv2.imwrite</strong>(file_path, data, prameters)</code>
+      </div>
+
+      <ul>
+        <li><strong>file_path: </strong> 저장할 이미지 파일의 경로와 이름입니다. "example.jpg"처럼 파일명 뒤에 확장자를 지정하면 해당 형식으로 파일이 저장됩니다.</li>
+        <li><strong>data: </strong> 저장할 이미지 데이터입니다. OpenCV에서 작업한 이미지를 입력하면 됩니다.</li>
+        <li><strong>parameters:</strong> 매개 변수를 의미하며 함수가 수행하는 작업의 세부적인 설정을 조정합니다. ‘cv2.imwrite()’에서는 저장되는 데이터의 품질이나 압축 수준을 결정합니다.</li>
+      </ul>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/opencv/opencv_icon(white).svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          이미지 저장하기 매개 변수 prameters
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>① [cv2.IMWRITE_JPEG_QUALITY, value]: </strong>JPEG로 저장합니다. 0부터 100까지 이미지 품질을 결정하여 value에 입력할 수 있습니다.
+    <br><strong>② [cv2.IMWRITE_PNG_COMPRESSION, value]:</strong>PNG로 저장합니다. 0부터 9까지 압축 수준을 결정하여 value에 입력할 수 있습니다.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>이미지 저장 형식</h3>
+      </div>
+      <p>&nbsp;&nbsp; 이미지를 저장하는 대표적인 형식에는 JPEG, PNG, BMP가 있습니다. 사용하고자 하는 이미지 형식의 확장자를 입력하여 저장할 수 있습니다.</p>   
+      <p>&nbsp;&nbsp; JPEG는 파일 크기가 작아 많은 사람들이 사용합니다. 하지만  그만큼 손실이 많아 원본 품질을 유지하지 못하는 경우가 많습니다.</p>   
+      <p>&nbsp;&nbsp; PNG는 파일 크기를 압축할 수 있으면서 원본 품질을 유지합니다. 투명도까지 지원하여 그래픽 디자인에 자주 사용됩니다. </p>   
+      <p>&nbsp;&nbsp; BMP는 무압축 방식으로 고품질 이미지를 저장합니다. 파일 크기가 커서 일반적인 용도로는 잘 사용되지 않습니다.</p>   
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>특징</th>
+            <th>JPEG</th>
+            <th>PNG</th>
+            <th>BMP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>압축 방식</strong></td>
+            <td>손실 압축</td>
+            <td>비손실 압축</td>
+            <td>압축 없음</td>
+          </tr>
+          <tr>
+            <td><strong>파일 크기</strong></td>
+            <td>작음</td>
+            <td>큼</td>
+            <td>중간</td>
+          </tr>
+          <tr>
+            <td><strong>품질</strong></td>
+            <td>압축률에 따라 상이</td>
+            <td>원본 품질</td>
+            <td>원본 품질</td>
+          </tr>
+          <tr>
+            <td><strong>알파 채널</strong></td>
+            <td>지원 안 함</td>
+            <td>지원</td>
+            <td>지원 안 함</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  예제 이미지를 컬러로 불러오고, 이미지 저장하기 함수를 사용해 JPEG 형식으로 품질 90으로 저장해 봅시다. (단, 저장 시 파일명은 “saved_image”로 설정합니다.)</p>
+
+      <p>&nbsp;&nbsp;  저장한 파일은 <img src="http://121.184.63.113:4000/images/opencv/img_folder.svg" style="width: 30px;"  alt="Placeholder image" /> 버튼을 눌러서 확인할 수 있습니다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
     </div>
-
-
-
-
-  <div class="container">
-    <p>© JAJUCHA, www.jajucha.com</p>
-  </div> 
-
-
 
   </body>
 </html>

@@ -10,7 +10,7 @@
     <script src="http://121.184.63.113:4000/js/highlight.js"></script>
     <style>
       .container {
-        font-family: 'MyFont', Arial, sans-serif;
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
       }
       .code {
         font-family: 'MyFont', Arial, sans-serif;
@@ -41,66 +41,282 @@
     
       <div class="list-item">
         <div class="square-box">1</div>
-        <h3>파이토치 개념</h3>
+        <h3>제곱근 함수</h3>
       </div>
-
-      <p>딥러닝 학습을 위하여 방대한 데이터를 일일이 수식으로 계산하고 손으로 처리하는 것은 현실적으로 어려운 일이기 때문에, 우리는 파이썬 라이브러리인 파이토치(PyTorch)를 사용합니다.</p>
-
+      <p>&nbsp;&nbsp;  배열의 각 요소에 대해 제곱근(square root)을 계산하는 함수입니다. 개별 요소별로 제곱근을 구한 후 그 결과를 새로운 배열로 반환합니다.</p>   
+      
       <br>
-      <hr>
-
-      <div class="list-item">
-        <div class="square-box">2</div>
-        <h3>파이토치 텐서</h3>
-      </div>
-
-      <p> 넘파이에서 배열을 담기 위해서는 ndarray를 사용하였습니다. 파이토치도 이처럼 자체적인 배열을 담는 기능을 가지고 있습니다. 파이토치에서는 이것을 텐서(Tensor)라고 이름 지었습니다.</p>
-
-      <ul style="padding: 10px;">
-        <li>넘파이에서는 numpy.ndarray() 으로 배열을 생성합니다</li>
-        <li>파이토치에서는 torch.tensor() 으로 배열을 생성합니다</li>
-      </ul>
-
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/torch/torch_511.svg" style="width: 350px;"  alt="Placeholder image" />
-      </div> 
-
       <div class="holder">
         <div class="icon">
-          <img src="http://121.184.63.113:4000/images/torch/torch_icon.svg" alt="PyTorch Logo">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
         </div>
         <div class="text">
-          파이토치 텐서
+          제곱근 함수
         </div>
       </div>
 
-      <div class="code_box">
-        <code class="language-python">torch.tensor(data, dtype=None, device=None, requires_grad=False)</code>
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.sqrt</strong>(array)</code>
       </div>
 
       <ul>
-        <li>data : 배열을 생성할 데이터</li>
-        <li>dtype : 데이터 타입</li>
-        <li>device : 텐서를 생성할 디바이스</li>
-        <li>requires_grad : 텐서에 대한 기울기를 저장할지 여부</li>
+        <li><strong>array: </strong> 계산하고자 하는 배열을 입력합니다.</li>
       </ul>
 
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="example">
-        <div class="text">
-          예제
-        </div>
         <div class="icon_ex">
-          1
-          <!-- <img src="http://121.184.63.113:4000/images/torch/torch_icon.svg" alt="PyTorch Logo"> -->
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
         </div>
-      </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
 
-      <p>torch.tensor를 생성하세요</p>
+      <p>&nbsp;&nbsp;  제곱근 함수를 사용해 array1에 저장된 배열을 제곱근해 봅시다.</p>
 
       <div class="code_box_exe">
-        <code class="language-python">Code A 를 실행하여 출력 결과를 확인하세요.</code>
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
       </div>
 
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>지수 함수</h3>
+      </div>
+      <p>&nbsp;&nbsp;  지수 함수(exponential function)는 배열의 각 요소에 대해 자연상수 e(약 2.718)를 밑으로 하는 거듭제곱을 계산하는 함수입니다.</p>   
+      <p>&nbsp;&nbsp;  지수 함수는 모든  x값에서 항상 양수 값을 가지며,  (0, 1) 에서 y축과 교차합니다. x값이 증가함에 따라 함수 값이 급격히 증가하며, 비대칭적인 형태의 그래프를 보여줍니다.</p>   
+          
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          지수 함수(y = aˣ) 그래프
+        </div>
+      </div>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_511.svg" style="width: 470px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          지수 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.exp</strong>(array)</code>
+      </div>
+
+      <ul>
+        <li><strong>array: </strong> 계산하고자 하는 배열을 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  array2에 저장된 배열에 지수 함수를 적용해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+      
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>로그 함수</h3>
+      </div>
+      <p>&nbsp;&nbsp;  로그 함수(logarithmic function)는 배열의 각 요소에 대해 지정된 밑을 기준으로 로그 값을 계산하는 함수입니다. 밑이 자연상수(e)인 자연 로그 함수가 기본적으로 제공되고, 밑이 2와 10인 로그 함수도 사용할 수 있습니다.</p>   
+      <p>&nbsp;&nbsp;  로그 함수는 지수 함수의 역함수입니다. x값이 증가할수록 함수 값은 점점 증가하지만, 증가 속도는 점차 느려지는 형태를 보입니다. 반대로  0 < x < 1  구간에서는 함수 값이 음수가 되며, 그래프는  x = 0 에 가까워질수록 음의 무한대로 발산합니다.</p>   
+          
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          로그 함수(ln(x)) 그래프
+        </div>
+      </div>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_512.svg" style="width: 470px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          로그 함수(ln(x) or log₂(x) or log₁₀(x))
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_513.svg" style="width: 120px;"  alt="Placeholder image" />
+      </div>
+
+      <ul>
+        <li><strong>array: </strong> 계산하고자 하는 배열을 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  array3에 저장된 배열에 로그 함수를 적용해 봅시다. (단, 밑이 자연상수(e)인 자연 로그를 적용합니다.)</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code C</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>삼각 함수</h3>
+      </div>
+      <p>&nbsp;&nbsp;  삼각 함수(trigonometric function)는 배열의 각 요소에 대해 삼각비를 계산하는 함수입니다. 입력된 각도(θ)에 따라 사인(sin), 코사인(cos), 탄젠트(tan) 값을 계산합니다.</p>   
+      <p>&nbsp;&nbsp;  삼각 함수에 입력하는 각도는 라디안(radians)으로 변환해야 합니다. 이 역시 넘파이에서 제공하는 함수로 쉽게 변환할 수 있습니다.</p>   
+          
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          라디안(radians) 산출 공식
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_514.svg" style="width: 360px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          삼각비 계산법
+        </div>
+      </div>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_515.svg" style="width: 470px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          삼각 함수 그래프
+        </div>
+      </div>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_516.svg" style="width: 470px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          라디안(radians) 변환 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.deg2rad</strong>(array)</code>
+      </div>
+
+      <ul>
+        <li><strong>array: </strong> 라디안으로 변환하고자자 하는 배열을 입력합니다.</li>
+      </ul>
+
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          삼각 함수(sin, cos, tan)
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_517.svg" style="width: 140px;"  alt="Placeholder image" />
+      </div>
+
+      <ul>
+        <li><strong>array_rad: </strong> 계산하고자 하는 배열을 입력합니다. 라디안으로 변환한 배열이어야 합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  라디안 변환 함수를 사용해 array4에 저장된 배열을 라디안으로 바꾸고, 사인(sin), 코사인(cos), 탄젠트(tan) 함수를 적용해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code D</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
 
     </div>
 

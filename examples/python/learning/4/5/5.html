@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>if 중첩문</h3>
+      </div>
+      <p>&nbsp;&nbsp;  if문은 여러 개 중첩해서 사용할 수 있습니다. 입력된 데이터를 단계적으로 검사하거나, 조건을 세분화하여 각각의 경우에 맞는 결과를 내보내야 할 때 유용합니다.</p>   
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  if 중첩문을 사용해 다음 조건을 만족하는 자동 대출 시스템의 알고리즘을 설계해 봅시다. (단, 조건문 실행 시 방문자는 “도서관 회원”, “연체 없음”, “A시”에 거주한다고 가정합니다.)</p>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">
+          <strong>① </strong>도서관 회원이어야 대출 가능합니다.<br>
+          <strong>③ </strong>연체된 도서가 없어야 대출 가능합니다.<br>
+          <strong>③ </strong>거주지가 “B시”면 7일 연장 대출 가능합니다.<br>
+      </div>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  if 중첩문을 사용해 다음 조건을 만족하는 자동 주문 시스템의 알고리즘을 설계해 봅시다. (단, 조건문 실행 시 방문자는 “차”, “라지”를 선택한다고 가정합니다.)</p>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;">
+          <strong>① </strong>손님은 메뉴와 사이즈를 선택할 수 있습니다.<br>
+          <strong>③ </strong>메뉴는 총 두 종류로 “커피”와 “차”입니다.<br>
+          <strong>③ </strong>이외의 메뉴를 선택하면 “현재 판매하지 않습니다.”를 안내해야 합니다.<br>
+          <strong>④ </strong>음료 사이즈는 “스몰”, “미디엄”, “라지”로 구분됩니다.<br>
+          <strong>⑤ </strong>라지 사이즈 컵이 없어 현재 판매할 수 없습니다. 손님에게 “품절되었습니다.”를 안내해야 합니다.<br>
+          <strong>⑥ </strong>사이즈 선택 창에서 다른 버튼을 누르면 “사이즈를 선택해 주세요.”를 안내해야 합니다.<br>
+      </div>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+
+    </div>
+
+  </body>
+</html>

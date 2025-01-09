@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/basic.css">
+    <!-- <link rel="stylesheet" href="http://121.184.63.113:4000/css/dark.css" /> -->
+    <link rel="stylesheet" href="http://121.184.63.113:4000/css/gn.css" />
+    <script src="http://121.184.63.113:4000/js/highlight.js"></script>
+    <style>
+      .container {
+        font-family: 'MyFont', Arial, sans-serif, 'MyFont2';
+      }
+      .code {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+      .language-python {
+        font-family: 'MyFont', Arial, sans-serif;
+      }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/ams'] },
+        tex: {
+          packages: ['base', 'ams'],
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
+        },
+        chtml: {
+          fontURL: 'http://121.184.63.113:4000/fonts/woff-v2' // CDN 경로 명시
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="http://121.184.63.113:4000/js/tex-chtml.js">
+    </script>
+  </head>
+  <body class="api-docs">
+    <div class="container">
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>수직 방향 결합</h3>
+      </div>
+      <p>&nbsp;&nbsp;  수직 결합 함수를 사용해 여러 배열을 수직 방향으로 결합할 수 있습니다. 원본 배열들은 그대로 유지하면서, 결합한 배열을 새롭게 생성합니다.</p>   
+      <p>&nbsp;&nbsp;  이때 결합하고자 하는 배열들의 행 축의 크기, 즉 열 개수가 동일해야 합니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_721.svg" style="width: 450px;"  alt="Placeholder image" />
+      </div>  
+  
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          수직 결합 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.vstack</strong>(array_1, array_2, ..., array_n)</code>
+      </div>
+
+      <ul>
+        <li><strong>array_n: </strong> 수직 방향으로 결합하고자 하는 배열을 모두 입력합니다.</li>
+      </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  수직 결합 함수를 사용해 array1에 저장된 3 X 3 크기의 배열과 array2에 저장된 2 X 3 크기의 배열을 수직 방향으로 결합해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code A</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>수평 방향 결합</h3>
+      </div>
+      <p>&nbsp;&nbsp;  수평 결합 함수를 사용해 여러 배열을 수평 방향으로 결합할 수 있습니다. 원본 배열들은 그대로 유지하면서, 결합한 배열을 새롭게 생성합니다.</p>   
+      <p>&nbsp;&nbsp;  이때 결합하고자 하는 배열들의 열 축의 크기, 즉 행 개수가 동일해야 합니다.</p>   
+
+      <br>
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/numpy/numpy_722.svg" style="width: 450px;"  alt="Placeholder image" />
+      </div>  
+  
+      <br>
+      <br>
+      <div class="holder">
+        <div class="icon">
+          <img src="http://121.184.63.113:4000/images/numpy/numpy_icon.svg" alt="PyTorch Logo">
+        </div>
+        <div class="text">
+          수평 결합 함수
+        </div>
+      </div>
+
+      <div class="code_box_exp">
+        <code class="language-python" style="text-align: left;"><strong>np.hstack</strong>(array_1, array_2, ..., array_n)</code>
+      </div>
+
+      <ul>
+        <li><strong>array_n: </strong> 수직 방향으로 결합하고자 하는 배열을 모두 입력합니다.</li>
+      </ul>
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>      
+
+      <p>&nbsp;&nbsp;  수평 결합 함수를 사용해 array3에 저장된 3 X 3 크기의 배열과 array4에 저장된 3 X 4 크기의 배열을 수직 방향으로 결합해 봅시다.</p>
+
+      <div class="code_box_exe">
+        <code class="language-python"><strong>Code B</strong> 를 실행하여 출력 결과를 확인하세요.</code>
+      </div>
+
+    </div>
+
+  </body>
+</html>
