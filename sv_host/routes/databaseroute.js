@@ -69,13 +69,12 @@ router.get('/api/db/lastlocation/set/:location', async (req, res) => {
 
 router.delete('/api/db/trainedmodels/delete/:modelToDelete', async (req, res) => {
   const { modelToDelete } = req.params;
-  console.log(modelToDelete);
   try {
   //get the model uuid from the db
     const modeluuid = await getTrainedModelsUUID(modelToDelete);
     console.log(modeluuid[0].uuid);
     //delete the model from the file system
-    const modelPath2 = `${home}/server/models/usermodels/${modeluuid[0].uuid}.pth`;
+    const modelPath2 = `${home}/server/usermodels/${modeluuid[0].uuid}.pt`;
     //actual delete
     try {
       fs.unlinkSync(modelPath2);

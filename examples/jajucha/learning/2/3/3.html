@@ -99,6 +99,11 @@ import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
       <code class="language-python" style="text-align: left;">theta_array, dist_array = jajucha2.lidar.get_lidar()</code>
     </div>
 
+    <ul>
+      <li>theta_array : 라이다에서 측정하고 있는 거리값 배열에 대응 하는 각도입니다.  0-360도의 범위를 가지고 있습니다</li>
+      <li>dist_array : 라이다에서 측정하고 있는 거리값 배열입니다, 0-12M 의 범위를 가지고 있습니다.</li>
+    </ul>
+
     <br>
     <br>
 
@@ -138,8 +143,14 @@ import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
     </div>
 
     <div class="code_box_exp">
-      <code class="language-python" style="text-align: left; margin-left: 100px;">jajucha2.camera.show_image(frame,window_name='center')</code>
+      <code class="language-python" style="text-align: left;">jajucha2.lidar.show_lidar(theta_array, dist_array,max_dist=5000)</code>
     </div>
+
+    <ul>
+      <li>theta_array : 라이다에서 측정하고 있는 거리값 배열에 대응 하는 각도입니다.  0-360도의 범위를 가지고 있습니다</li>
+      <li>dist_array : 라이다에서 측정하고 있는 거리값 배열입니다, 0-12M 의 범위를 가지고 있습니다.</li>
+      <li>max_dist : 라이다 데이터의 최대 거리를 설정합니다</li>
+    </ul>
 
     <p>C를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 이미지 뷰어를 활성화 합니다 이후, 이미지뷰어 에서 라이다를 선택합니다</p>
 

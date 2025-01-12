@@ -167,6 +167,9 @@ router.post('/api/image/get/image', (req, res) => {
 router.post('/api/image/save/image', (req, res) => {
     const image = req.body.image; // Ensure you are accessing image from body
     const project = req.body.project;
+    const speed = req.body.speed;
+    const leftangle = req.body.leftangle;
+    const rightangle = req.body.rightangle;
     const classid = req.body.classid;
     const savetype = req.body.savetype;
     const dbtype = req.body.dbtype;
@@ -175,7 +178,7 @@ router.post('/api/image/save/image', (req, res) => {
         return res.status(400).json({ success: false, message: 'Image data is required' });
     }
     //console.log("try to save2")
-    const imagename = `image_${Date.now()}.jpg`;
+    const imagename = `${Date.now()}_${leftangle}${rightangle}${speed}.jpg`;
     const buffer = Buffer.from(image, 'base64'); // Decode base64 image
     const filePath = path.join(home ,'server' ,'projects',req.body.project,'databases','data',req.body.classid, imagename); // Create a unique file name
 

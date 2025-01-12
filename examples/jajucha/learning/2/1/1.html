@@ -99,6 +99,9 @@ import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
       <code class="language-python" style="text-align: left; ">image = jajucha2.camera.get_image(location='center')</code>
     </div>
     
+    <ul>
+      <li>location : 이미지를 가져올 카메라 입니다 ('left','right','center')</li>
+    </ul>
 
     <br>
     <br>
@@ -116,10 +119,8 @@ import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
     <p>&nbsp;&nbsp;Code B 를 실행하여 왼쪽,가운데,오른쪽 이미지를 받아와서 각각의 변수에 저장합니다</p>
 
 
-
     <br>
     <hr>
-
 
     <!-- explain-3 -->
     <div class="list-item">
@@ -137,8 +138,14 @@ import jajucha2&nbsp;&nbsp;&nbsp;&nbsp;</code>
     </div>
 
     <div class="code_box_exp">
-      <code class="language-python" style="text-align: left; margin-left: 100px;">jajucha2.camera.show_image(frame,window_name='center')</code>
+      <code class="language-python" style="text-align: left; margin-left: 100px;">jajucha2.camera.show_image(frame,window_name='center',quality=20)</code>
     </div>
+
+    <ul>
+      <li>frame : 표시할 이미지 데이터 입니다. numpy.ndarray 형식이어야 합니다</li>
+      <li>window_name : 이미지를 표시할 위치 입니다 ('left','right','center')</li>
+      <li>quality : 이미지의 화질을 조절합니다 (0-100)</li>
+    </ul>
 
     <p>C를 실행하기 전에 우측 상단의 <img src="http://121.184.63.113:4000/images/jaju_213.svg" style="width: 20px; border-radius: 0px;"  alt="Placeholder image" />를 눌러 이미지 뷰어를 활성화 홥니다</p>
 

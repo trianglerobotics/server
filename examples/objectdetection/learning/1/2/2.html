@@ -19,42 +19,64 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
-
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
     <div class="container">
-      <h1>데이터 수집하기</h1>
-      <hr>
-      <h2>캡처를 위한 이미지 재생하기</h2>
-       
-      <div class="box"> <img style="width: 20px; margin-right: 3px; margin-bottom:3px;" src="http://121.184.63.113:4000/images/cls_121.svg"  alt="Placeholder image" />버튼을 눌러 재생을 시작합니다</div>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_122.svg"  alt="Placeholder image" />
+    
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>객체인식 기반 장애물 감지 개요 </h3>
       </div>
-      
-      <hr>
-      <h2>이미지 캡처하기</h2>
-      <div class="box">  화면이 보이면 <img style="width: 20px; margin-right: 3px; margin-bottom:3px;" src="http://121.184.63.113:4000/images/cls_120.svg"  alt="Placeholder image" /> 버튼을 눌러 이미지를 저장 할 수 있습니다 </div>
+      <p>자율주행 자동차가 장애물을 감지하는 방법중 하나로 인공지능 기반 객체감지를 사용 할 수 있습니다. 장애물로는 15cm*15cm*15cm 검정 스펀지를 사용합니다</p>
       <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_124.svg"  alt="Placeholder image" />
+        <img src="http://121.184.63.113:4000/images/OBJ/obj_121.svg"  style="width: 100px;" alt="Placeholder image" />
       </div>
-      <div class="box">   <img style="width: 20px; margin-right: 3px; margin-bottom:3px;" src="http://121.184.63.113:4000/images/cls_120.svg"  alt="Placeholder image" /> 버튼을 눌러 이미지들이 100장 이상 저장되게 반복합니다 </div>
-      <div class="image-div">
-        <img src="http://121.184.63.113:4000/images/cls_125.svg"  alt="Placeholder image" />
-      </div>
-       
 
-      <br></br>
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>클래스 설정하기 - 1</h3>
+      </div>
+      <p>감지할 물체에 해당하는 클래스를 만들어야 합니다.
+       <span class="blue">Add Classes</span> 버튼을 누르면 다음과 같은 화면이 표시됩니다 </p>
+
+       <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/OBJ/obj_122.svg" style="width: 400px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>클래스 설정하기 - 2</h3>
+      </div>
+      <p>입력할 클래스(‘cube’)를 타이핑 한 후 <span class="blue">Add</span>  버튼을 누르면 클래스를 생성 할 수 있습니다 </p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/OBJ/obj_123.svg" style="width: 400px;"  alt="Placeholder image" />
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>클래스 관리하기</h3>
+      </div>
+      <p><span class="blue">Modify Classes</span> 를 클릭하면 클래스를 삭제 할 수 있는 창이 표시됩니다.</p>
+
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/OBJ/obj_124.svg" style="width: 300px;"  alt="Placeholder image" />
+      </div>
+
+      <p>삭제할 클래스의 체크박스를 클릭 한 후 <span class="blue">Execute Job</span>을 클릭하면 클래스를 삭제 할 수 있습니다</p>
+
+
     </div>
-    <!-- <div class="add-comment">
-        <h2>코딩해 보세요!</h3>
-        <ul>
-            <div class="box"> 삼행시를 따옴표로 묶는 걸 잊지 마세요.</div>
-            <div class="box"> [Enter]를 눌러 줄을 바꿔요!</div>
-            <p>
-                코드를 작성한 후 실행 버튼을  클릭해 보세요. 바밤바 삼행시가 짠! 하고 나타나면 성공한 거예요. 
-            </p>
-        </ul>
-    </div> -->
+
   </body>
 </html>

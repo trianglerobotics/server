@@ -28,7 +28,7 @@ import disk from 'diskusage';
 // 데이터베이스 모듈 가져오기
 // import { getDatabases } from './database.js';
 
-const version = 1.61;  // Replace with your own version number
+const version = 1.62;  // Replace with your own version number
 
 let storedData = '';
 
@@ -42,7 +42,7 @@ const PORT = 33333;
 motorserver.on('message', (msg, rinfo) => {
   //console.log(`${msg.toString()}`);
   storedData = msg.toString();
-  console.log(storedData);
+  //console.log(storedData);
 });
 
 // Event listener for handling errors
@@ -227,18 +227,82 @@ app.get('/stop', (req, res) => {
   console.log("stop signal sent");
 });
 
+app.get('/off', (req, res) => {
+
+  const destIP = '121.184.63.113';
+  const destPort = 22222;
+  //send udp signal to stop
+  const message = Buffer.from('45455000');
+  motorserver.send(message, 0, message.length, destPort, destIP, (err) => {
+    if (err) {
+        console.log('Error sending message:', err);
+    } else {
+        console.log(`Message sent to ${destIP}:${destPort}`);
+        res.sendStatus(200);
+    }
+  });
+});
+
+app.post('/set/motor/both', (req, res) => {
+
+  let leftsteer = req.body.leftsteer+45;
+  let rightsteer = req.body.rightsteer+45;
+  let speed = req.body.speed+50;
+
+  if(leftsteer <= 35)
+  {
+    leftsteer = 35;
+  }
+  else if(leftsteer >= 55)
+  {
+    leftsteer = 55;
+  }
+
+  if(rightsteer <= 35)
+  {
+    rightsteer = 35;
+  }
+  else if(rightsteer >= 55)
+  {
+    rightsteer = 55;
+  }
+
+  speed = 100-speed;
+  leftsteer = 90-leftsteer;
+  rightsteer = 90-rightsteer;
+  
+  //make value to the required format
+  const rightsteerstr = leftsteer.toString();
+  const leftsteerstr = rightsteer.toString();
+  const speedstr = speed.toString();
+  const steerstterspeed = leftsteerstr +rightsteerstr+  speedstr +'09';
+
+  const destIP = '121.184.63.113';
+  const destPort = 22222;
+  //send udp signal to stop
+  const message = Buffer.from(steerstterspeed);
+  motorserver.send(message, 0, message.length, destPort, destIP, (err) => {
+    if (err) {
+        console.log('Error sending message:', err);
+    } else {
+        // console.log(`Message sent to ${destIP}:${destPort}:${message}`);
+        res.sendStatus(200);
+    }
+  });
+});
+
 app.post('/set/motor', (req, res) => {
 
   let steer = req.body.steer+45;
   let speed = req.body.speed+50;
 
-  if(steer <= 37)
+  if(steer <= 35)
   {
-    steer = 37;
+    steer = 35;
   }
-  else if(steer >= 53)
+  else if(steer >= 55)
   {
-    steer = 53;
+    steer = 55;
   }
 
   speed = 100-speed;
@@ -262,7 +326,6 @@ app.post('/set/motor', (req, res) => {
         res.sendStatus(200);
     }
   });
-  // console.log("stop signal sent");
 });
 
 //Watch the file changes

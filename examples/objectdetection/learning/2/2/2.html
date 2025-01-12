@@ -19,60 +19,126 @@
         font-family: 'MyFont', Arial, sans-serif;
       }
     </style>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body class="api-docs">
     <div class="container">
-      <h1>이미지에 바운딩 박스 그리기</h1>
-      <hr>
-      <h2>YOLO</h2>
-      <div class="box"> YOLO(You Only Look Once)에서 바운딩 박스를 그리는 이유는 객체 검출(Object Detection) 결과를 시각적으로 표현하기 위함입니다. 바운딩 박스는 이미지나 영상에서 검출된 객체의 위치와 크기를 나타내는 사각형 입니다</div>
-      <div class="image-div">
-        <img style='width:400px' src="http://121.184.63.113:4000/images/obj_225.png"  alt="Placeholder image" />
-      </div> 
-    </div>
-    <div class="container">
-        <hr>
-        <h2>이미지에 바운딩 박스 그리기</h2>
-        <div class="box"> 분류할 사물에 마우스를 클릭하여 움직이면 박스가 만들어지게 됩니다</div>
-        <div class="image-div">
-          <img src="http://121.184.63.113:4000/images/obj_221.svg"  alt="Placeholder image" />
-        </div>
-        <br></br>
-        <div class="box"> 박스가 만들어지게 되면 클래스 선택창이 표시됩니다 박스에 부여할 클래스를 선택한 후 <span class="blue">Finish</span> 버튼을 눌러 
-          박스를 저장하세요
-        </div>
-    </div>
-    <div class="container">
-      <div class="image-div">
-        <img style='width:200px' src="http://121.184.63.113:4000/images/obj_222.svg"  alt="Placeholder image" />
-      </div>
-      <br></br>
-      <div class="box">  이미지별 각각 만들어진 박스, 클래스는 <span style="color:#81a1fb">CLASSES</span> 창에서 확인 할 수 있습니다 </div>
-
-      <div class="image-div">
-        <img style='width:200px' src="http://121.184.63.113:4000/images/obj_223.svg"  alt="Placeholder image" />
-      </div>
-      <br></br>
-      <div class="box">  상단 중앙의 버튼을 눌러 이미지를 교체하여 모든 이미지에 대한 라벨링을 완료하세요  </div>
-
-      <div class="image-div">
-        <img style='width:200px' src="http://121.184.63.113:4000/images/obj_224.svg"  alt="Placeholder image" />
-      </div>
-    </div>
-  <div class="container">
-    <hr>
-    <h2>데이터 생성하기</h2>
-      <div class="box">  모든 이미지에 대해서 박스를 그렸다면 <span class="blue">Generate</span> 버튼을 눌러 
-        데이터를 생성하세요  </div>
-      <p>*데이터 생성 과정은 현재 그린 바운딩 박스를 학습에 필요한 텍스트 파일로 만드는 과정입니다</p>
-      
-      <br></br>
-      <div class="box">  <span class="blue">Next</span> 버튼을 눌러 
-        다음으로 이동하세요  </div>
     
+      <div class="list-item">
+        <div class="square-box">1</div>
+        <h3>필요한 기능 가져오기</h3>
+      </div>
+      <p>인공지능 모델을 학습하기 위해서는 우선 YOLO 라이브러리를 가지고 와야 합니다. </p>
 
-      <br></br>
-       
+      <br>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code A</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp; Code A  실행하여 필요한 기능을 가져오세요</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">2</div>
+        <h3>학습 파라미터 설정하기</h3>
+      </div>
+      <p>인공지능 학습을 위해서는 사람이 수동으로 지정 해주어야 할 하이퍼 파라미터가 있습니다. </p>
+      <ul>
+        <li>EPOCH(에폭) : 전체 데이터로 학습할 횟수</li>
+        <li>BATCH_SIZE(배치크기) : 미니배치 경사하강법에서 이터레이션 당 사용할 데이터의 갯수</li>
+      </ul>
+      
+      <br>
+      <br>
+
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code B</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+      <p>&nbsp;&nbsp; Code B 를 실행하여 파라미터를 설정하세요</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">3</div>
+        <h3>YOLO모델 가져오기</h3>
+      </div>
+      <p>YOLO모델을 가져옵니다. YOLO 모델은 가중치들이 학습이 어느정도 되어있는 모델을 사용하여 학습속도를 빠르게 합니다.</p>
+
+      <br>
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code C</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp; Code C 를 실행하여 YOLO 모델을 가져오세요</p>
+
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">4</div>
+        <h3>학습 시작하기 - 1</h3>
+      </div>
+      <p>본격적인 인공지능 학습을 진행하고자 합니다. YOLO는 다음과 같은 손실 함수를 사용합니다</p>
+      <ul>
+        <li>box_loss : 예측한 박스, 정답한 박스와의 손실 함수 값</li>
+        <li>cls_loss : 박스내에서 예측한 클래스와 정답 클래스의 손실함수 값</li>
+        <li>dfl_loss : 바운딩 박스를 정확하게 학습시키기 위한 손실 함수 값</li>
+      </ul>
+      
+      <br>
+
+      <div class="example">
+        <div class="icon_ex">
+          <img src="http://121.184.63.113:4000/images/assets/code_icon.svg" style="width:20px">
+        </div>
+        <div class="text-container">
+          <div class="text"><strong>Code D</strong></div>
+          <!-- <div class="line"></div> -->
+        </div>
+      </div>
+
+      <p>&nbsp;&nbsp; Code D 를 실행하여 학습을 실행하세요</p>
+
+      <br>
+      <hr>
+
+      <div class="list-item">
+        <div class="square-box">5</div>
+        <h3>학습 시작하기 - 2</h3>
+      </div>
+      <p>학습이 시작되면 다음과 같은 코드가 표시됩니다. Epoch에서 (시작 / 종료) 까지 학습을 진행합니다. 데이터의 수 에따라 다르지만 10-20분정도가 소요 됩니다</p>
+
+            
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/OBJ/obj_221.svg"  alt="Placeholder image" />
+      </div>
+
     </div>
 
   </body>

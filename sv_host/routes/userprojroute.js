@@ -360,7 +360,7 @@ router.post('/api/user/model/save', async (req, res) => {
   
   source = path.join(home, 'server','projects', projectname, 'databases', 'checkpoints', 'train', 'weights', filename);
 
-  const destination = path.join(home, 'server', 'models', 'usermodels', `${uuid}.pt`);
+  const destination = path.join(home, 'server', 'usermodels', `${uuid}.pt`);
 
   const model = await getUserModel(projectname);
 

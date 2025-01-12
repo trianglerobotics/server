@@ -79,8 +79,11 @@
         </div>
       </div>
 
-      <p>&nbsp;&nbsp;Code A 에서 (1m,1m)에 장애물의 유무를 판단 할 수 있는 코드를 작성하세요 </p>
+      <p>&nbsp;&nbsp;Code A 에서 (1m,1m)에 장애물의 유무를 판단 할 수 있는 코드를 작성하세요, 라이다 거리단위는 mm 입니다. </p>
 
+      <div class="image-div">
+        <img src="http://121.184.63.113:4000/images/LOB/lob_144.svg" style="width: 200px; "  alt="Placeholder image" />
+      </div>
 
       <div class="code_box_exe">
         <details>
@@ -89,10 +92,11 @@
           <pre>
             <code class="language-python">
 # 목표 지점 (x, y) -> (1, 1)
-target_r = np.sqrt(1**2 + 1**2)  # r = 1.41m
+target_r = np.sqrt(1**2 + 1**2)*1000  # r = 1.41m
 target_theta = 45  # 45도
 
 # 가장 가까운 각도 인덱스 찾기
+
 angle_index = np.argmin(np.abs(angle_array - target_theta))
 
 # 거리 확인

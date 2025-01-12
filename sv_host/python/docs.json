@@ -107,7 +107,7 @@
         ]
         },
         {
-          "name": "show_image(frame,window_name='center',quality=20):",
+          "name": "show_image(frame,window_name='center',quality=20)",
           "description": "이미지를 컴퓨터 화면으로 전송합니다",
           "parameters": [
             {
@@ -151,7 +151,7 @@
           ]
         },
         {
-          "name": "show_lidar(numpy.ndarray theta_array, numpy.ndarray dist_array)",
+          "name": "show_lidar(theta_array, dist_array)",
           "description": "각도배열 , 거리배열을 입력하면 라이다 이미지를 보여줍니다",
           "parameters": [
             {

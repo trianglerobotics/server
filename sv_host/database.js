@@ -176,7 +176,7 @@ export async function getTrainedModelsUUID(modelname) {
 }
 
 export async function saveUserModel(newname,model,uuid) {
-    const [result] = await pool.query("INSERT INTO UserModels (Name, Location ,Model,uuid) VALUES (?, ?, ? ,?)", [newname,'server/models/usermodels', model , uuid]);
+    const [result] = await pool.query("INSERT INTO UserModels (Name, Location ,Model,uuid) VALUES (?, ?, ? ,?)", [newname,'server/usermodels', model , uuid]);
     return result
 }
 
