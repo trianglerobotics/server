@@ -341,13 +341,16 @@ app.get('/api/control/update', async (req, res) => {
         await executecommand('echo 1111 | sudo -S chmod 777 ~/server/updatedb/updatemysql.sh')
         await executecommand('echo 1111 | sudo -S ~/server/updatedb/updatemysql.sh')
 
-        // Step 4: Restart services
+        // Step 5: Update Python services
+        await executecommand('pip3 install jajucha2 --upgrade')
+
+        // Step 6: Restart services
           //1. ui_host
           //2. sv_host
         await executecommand('echo 1111 | sudo -S systemctl restart jc_sv.service')
         await executecommand('echo 1111 | sudo -S systemctl restart jc_ui.service')
 
-        // Step 5: Cleanup
+        // Step 7: Cleanup
 
         let broadcast_data = prepareBroadcastData('finished', 'starting', 'stderr');
         broadcast(broadcast_data);

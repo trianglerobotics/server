@@ -11,7 +11,7 @@ router.get('/')
 router.get('/api/exam/examples', async (req, res) => {
   try {
     const examples = await getExamples();
-    console.log(examples);
+    //console.log(examples);
     res.json(examples); // 결과를 응답으로 전송
   } catch (error) {
     console.error('Error fetching notes:', error);

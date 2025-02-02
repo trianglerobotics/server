@@ -54,7 +54,7 @@ function connectToWifi(ssid, password, sudoPassword) {
   return new Promise((resolve, reject) => {
     const command = `echo '${sudoPassword}' | sudo -S nmcli device wifi connect "${ssid}" password "${password}"`;
 
-    console.log('Executing command:', command);
+    //console.log('Executing command:', command);
 
     exec(command, (error, stdout, stderr) => {
       if (error) {

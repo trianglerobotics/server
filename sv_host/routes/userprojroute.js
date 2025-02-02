@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getUserProjects,deleteUserProject,setModel,getExamples,getUserModel,checkImported, importModel, resetModel,addProj,saveUserModel,updateProjectSection, checkGenerated,resetgenerateDatasets,deleteimage} from '../database.js';
+import { getUserProjects,deleteUserProject,setModel,getExamples,getUserModel,checkImported, importModel, resetModel,addProj,saveUserModel,updateProjectSection, checkGenerated,resetgenerateDatasets,deleteimage,renameProject} from '../database.js';
 import {copyAndRenameFolder,copyFilesAndFolders,deleteFilesAndFoldersExceptData,copyAndSaveFile} from '../filecontrol.js';  
 import fs from 'fs';
 import path  from 'path';
@@ -50,7 +50,7 @@ try {
     //get the dbtype
     const examples = await getExamples();
     const projectinfo = examples.filter((example) => example.name === exampleType);
-    console.log('dbtype',projectinfo[0].dbtype);
+    //console.log('dbtype',projectinfo[0].dbtype);
 
 
     copyAndRenameFolder(`../examples/${exampleType}`, `../projects/${projectName}`, projectName, exampleType, initsection,projectinfo[0].dbtype);
@@ -60,6 +60,29 @@ try {
     res.status(500).json({ error: 'Internal Server Error' });
 }
 });
+
+//Rename Project
+router.post('/api/user/project/rename', async (req, res) => {
+  try {
+      const { oldName, newName } = req.body;
+      const oldPath = path.join(home,'server','projects', oldName);
+      const newPath = path.join(home,'server','projects', newName);
+      fs.rename(oldPath, newPath, (err) => {
+        if (err) {
+          console.error('Error renaming project folder:', err);
+          return res.status(500).json({ error: 'Failed to rename project folder' });
+        }
+        res.status(200).json({ message: 'Project folder renamed successfully' });
+      });
+
+      await renameProject(oldName , newName);
+  } catch (error) {
+      console.error('Error fetching notes:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+
+  });
 
 router.post('/api/user/dataset/create', async (req, res) => {
   try {
@@ -120,7 +143,7 @@ router.get('/api/user/project/check/generated/:projectname', async (req, res) =>
   try {
     const {projectname} = req.params;
     const generated = await checkGenerated(projectname);
-    console.log('generated',generated);
+    //console.log('generated',generated);
     res.json(generated);
   } catch (error) {
     
@@ -258,7 +281,7 @@ router.post('/api/user/project/delete/file', (req, res) => {
     const { projectname, projectlocation, targetfile } = req.body;
 
     const filePath = path.join(home, 'server', 'projects', projectname, projectlocation, targetfile);
-    console.log('Attempting to delete file:', filePath);
+    //console.log('Attempting to delete file:', filePath);
 
     fs.access(filePath, fs.constants.F_OK, (err) => {
       if (err) {
@@ -271,7 +294,7 @@ router.post('/api/user/project/delete/file', (req, res) => {
           console.error('Error deleting file:', err);
           return res.status(500).json({ error: 'Internal Server Error' });
         }
-        console.log('File deleted successfully:', filePath);
+        //console.log('File deleted successfully:', filePath);
         res.status(200).json({ message: 'File deleted successfully' });
       });
     });
@@ -285,8 +308,9 @@ router.post('/api/user/project/delete/image', (req, res) => {
   try {
     const { project, Name} = req.body;
     const filePath = path.join(home, 'server', 'projects', project, 'databases','data', Name);
-    console.log('delete image',filePath);
+    //console.log('delete image',filePath);
 
+    console.log('Attempting to delete file:', filePath);
     //delete image file
 
     fs.access(filePath, fs.constants.F_OK, (err) => {
@@ -300,7 +324,7 @@ router.post('/api/user/project/delete/image', (req, res) => {
           console.error('Error deleting file:', err);
           return res.status(500).json({ error: 'Internal Server Error' });
         }
-        console.log('File deleted successfully:', filePath);
+        //console.log('File deleted successfully:', filePath);
         res.status(200).json({ message: 'File deleted successfully' });
       });
     });
@@ -371,7 +395,7 @@ router.post('/api/user/model/save', async (req, res) => {
 
 router.post('/api/user/project/save/update/section', async (req, res) => {
   const {projectname,section,subsection} = req.body;
-  console.log('update section',projectname,section,subsection);
+  //console.log('update section',projectname,section,subsection);
   updateProjectSection(projectname,section,subsection);
   //update db
   return res.status(200).json({ message: 'section updated successfully' });

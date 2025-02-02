@@ -39,6 +39,11 @@ export async function addProj(projectName, projectType , databasetype) {
     return result
 }
 
+export async function renameProject(oldName, newName) {
+    const [result] = await pool.query("UPDATE Projects SET Name = ? WHERE Name = ?", [newName, oldName]);
+    return result
+}
+
 export async function setWorkingDirectory(projectname, location) {
     const [result] = await pool.query("UPDATE WorkingDirectory SET projectname = ? , location = ? WHERE id = 1", [projectname, location]);
     return result

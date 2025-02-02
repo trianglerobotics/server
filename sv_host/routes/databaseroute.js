@@ -14,7 +14,7 @@ router.get('/')
 router.get('/api/db/projects', async (req, res) => {
   try {
     const notes = await getDatabases();
-    console.log(notes);
+    //console.log(notes);
     res.json(notes); // 결과를 응답으로 전송
   } catch (error) {
     console.error('Error fetching notes:', error);
@@ -72,13 +72,13 @@ router.delete('/api/db/trainedmodels/delete/:modelToDelete', async (req, res) =>
   try {
   //get the model uuid from the db
     const modeluuid = await getTrainedModelsUUID(modelToDelete);
-    console.log(modeluuid[0].uuid);
+    //console.log(modeluuid[0].uuid);
     //delete the model from the file system
     const modelPath2 = `${home}/server/usermodels/${modeluuid[0].uuid}.pt`;
     //actual delete
     try {
       fs.unlinkSync(modelPath2);
-      console.log('File deleted successfully');
+      //console.log('File deleted successfully');
     } catch (err) {
       console.error(err);
     }
@@ -96,7 +96,7 @@ router.delete('/api/db/trainedmodels/delete/:modelToDelete', async (req, res) =>
 router.get('/api/db/models/get', async (req, res) => {
   try{
     const models = await getModels();
-    console.log(models)
+    //console.log(models)
     res.json(models);
   }
   catch (error)
@@ -147,6 +147,12 @@ function getRandomColor() {
   return color;
 }
 
+router.post('/api/db/classes/check', async (req, res) => {
+  const { Name, projectname } = req.body;
+  const result = await checkClassExist(Name,projectname);
+  res.json(result);
+});
+
 router.post('/api/db/classes/add/:projectname', async (req, res) => {
   const projectname = req.params.projectname;
   const dbtype = req.body.dbtype;
@@ -154,8 +160,6 @@ router.post('/api/db/classes/add/:projectname', async (req, res) => {
   const { Name } = req.body;
   const home = os.homedir();
   const dataArray = Name.split(',');
-
-
 
   for (let i = 0; i < dataArray.length; i++) {
     const value = dataArray[i];
@@ -168,7 +172,7 @@ router.post('/api/db/classes/add/:projectname', async (req, res) => {
   }
   if(existArray.length !== 0)
   {
-    console.log('already exist')
+    //console.log('already exist')
     res.status(400).json({ 
       error: true, 
       message: 'Some classes already exist.', 
@@ -180,15 +184,15 @@ router.post('/api/db/classes/add/:projectname', async (req, res) => {
       if(dataArray[i] != '')
       {
         const randomColor = getRandomColor();
-        console.log('randomColor',randomColor);
+        //console.log('randomColor',randomColor);
         addClass(dataArray[i],projectname,randomColor);
         //Make folder to the target path
-        if(dbtype == 'classification')
+        if(dbtype == 'classification' || dbtype == 'custom')
         {  
           const folderPath = `${home}/server/projects/${projectname}/databases/data/${dataArray[i]}`;
           try {
             fs.mkdirSync(folderPath);
-            console.log('Directory created successfully!');
+            //console.log('Directory created successfully!');
           } catch (err) {
             console.error(err);
           }
@@ -203,21 +207,21 @@ router.post('/api/db/classes/add/:projectname', async (req, res) => {
 
 router.post('/api/db/boxes/add', async (req, res) => {
   const { Name, x, y, w, h, classname, color, num,projectname } = req.body;
-  console.log(Name, x, y, w, h, classname, color, num,projectname);
+  //console.log(Name, x, y, w, h, classname, color, num,projectname);
   addBoxes(Name, x, y, w, h, classname, color, num, projectname);
   res.status(200).json({ message: 'box successfully added' });
 });
 
 router.post('/api/db/boxes/delete', async (req, res) => {
   const { Name, project, num, cls} = req.body;
-  console.log(Name, project, num, cls);
+  //console.log(Name, project, num, cls);
   delBoxes(Name, project, num, cls);
   res.status(200).json({ message: 'box successfully deleted' });
 });
 
 router.post('/api/db/boxes/update', async (req, res) => {
   const { Name, x, y, w, h, classname, color, num,projectname } = req.body;
-  console.log(Name, x, y, w, h, classname, color, num,projectname);
+  //console.log(Name, x, y, w, h, classname, color, num,projectname);
   updateBoxes(Name, x, y, w, h, classname, color, num,projectname);
   res.status(200).json({ message: 'box successfully updated' });
 });
@@ -244,16 +248,16 @@ router.post('/api/db/classes/del/:projectname', async (req, res) => {
 
   for (let i = 0; i < Name.length; i++) {
     const value = Name[i];
-    console.log(value.Name);
+    //console.log(value.Name);
     delClass(value.Name,projectname,dbtype);
 
     //Delete folder to the target path
-    if(dbtype == 'classification')
+    if(dbtype == 'classification' || dbtype == 'custom')
     {
       const folderPath = `${home}/server/projects/${projectname}/databases/data/${value.Name}`;
       try {
         fs.rmdirSync(folderPath,{ recursive: true, force: true });
-        console.log('Directory deleted successfully!');
+        //console.log('Directory deleted successfully!');
       } catch (err) {
         console.error(err);
       }
@@ -265,7 +269,7 @@ router.post('/api/db/classes/del/:projectname', async (req, res) => {
 
 router.post('/api/db/set/WorkingDirectory', async (req, res) => {
   const { projectname, location } = req.body;
-  console.log('Received:', projectname, location);
+  //console.log('Received:', projectname, location);
   // Add any logic needed to handle setting the working directory
   setWorkingDirectory(projectname, location);
   res.status(200).json({ message: 'Working Directory set successfully' });
@@ -275,15 +279,15 @@ router.get('/api/db/get/WorkingDirectory', async (req, res) => {
 
   // Add any logic needed to handle setting the working directory
   const dir = await getWorkingDirectory();
-  console.log('Working Directory:', dir);
+  //console.log('Working Directory:', dir);
   res.status(200).json({ workingDirectory: dir, message: 'Working Directory retrieved successfully' });
 });
 
 router.post('/api/db/check/UserModel', async (req, res) => {
   const { modelname } = req.body;
-  console.log('Received:', modelname);
+  //console.log('Received:', modelname);
   const location = await checkUserModelExist(modelname);
-  console.log('location',location[0]);
+  //console.log('location',location[0]);
   res.json(location);
 });
 

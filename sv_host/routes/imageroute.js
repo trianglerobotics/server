@@ -27,7 +27,7 @@ function startPythonScript(dbtype) {
     {
         pythonScriptPath = path.resolve(__dirname, '../python/stream_yolo.py');
     }
-    else if(dbtype === 'classification')
+    else if(dbtype === 'classification' || dbtype === 'custom')
     {
         pythonScriptPath = path.resolve(__dirname, '../python/stream_yolo.py');
     }
@@ -70,7 +70,7 @@ function stopPythonScript() {
 router.get('/api/image/stream-start/:dbtype', (req, res) => {
 
     const {dbtype} = req.params;
-    console.log(dbtype);
+    //console.log(dbtype);
     if (pythonProcess) {
         res.status(400).json({ success: false, message: 'Python script is already running' });
     } else {
@@ -123,7 +123,7 @@ router.post('/api/image/get/image', (req, res) => {
 
     const imgpath = path.join(home, 'server', 'projects', project, relativePath);
 
-    console.log("Full image path:", imgpath);
+    //console.log("Full image path:", imgpath);
     fs.access(imgpath, fs.constants.F_OK, (err) => {
         if (err) {
             console.error("File does not exist:", imgpath);
@@ -189,7 +189,7 @@ router.post('/api/image/save/image', (req, res) => {
         }
         if(dbtype == 'objectdetection')
         {
-            console.log(imagename,'dfdfdfdfd')
+            //console.log(imagename,'dfdfdfdfd')
             addImage(imagename,project);
         }
         //save to database

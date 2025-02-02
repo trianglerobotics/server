@@ -4,18 +4,21 @@
       "name": "control",
       "methods": [
         {
+          "title": "구동모터 초기화 함수",
           "name": "init_motor()",
           "description": "조향모터, 구동모터를 초기화 합니다 *초기화 없이 set_motor 사용이 가 합니다",
           "parameters": [],
           "return": null
         },
         {
+          "title": "구동모터 정지 함수",
           "name": "stop_motor()",
           "description": "조향모터, 구동모터의 속도 제어를 중지 합니다",
           "parameters": [],
           "return": null
         },
         {
+          "title": "모터 제어 함수",
           "name": "set_motor(int left, int right ,int speed)",
           "description": "조향모터, 구동모터의 제어값을 설정 합니다",
           "parameters": [
@@ -43,6 +46,7 @@
       "name": "camera",
       "methods": [
         {
+          "title": "이미지 받아오기 함수",
           "name": "get_image(location='center')",
           "description": "RGB 이미지를 받아옵니다",
           "parameters": [
@@ -59,6 +63,7 @@
           }]
         },
         {
+          "title": "DEPTH 이미지 받아오기 함수",
           "name": "get_depth()",
           "description": "DEPTH 이미지를 받아옵니다",
           "parameters": [],
@@ -69,6 +74,7 @@
           }]
         },
         {
+          "title": "그리드 생성 함수",
           "name": "gridFront(img, cols=7, rows=3, update_img=False)",
           "description": "이미지를 받아 격자를 생성합니다",
           "parameters": [
@@ -95,18 +101,19 @@
           ],
           "return": [
           {
-            "name": "grid",
-            "type": "numpy.ndarray",
-            "description": "격자가 생성된 이미지"
-          },
-          {
             "name": "(V, L, R)",
             "type": "tuple",
             "description": "격자의 위치 값"
+          },
+          {
+            "name": "grid",
+            "type": "numpy.ndarray",
+            "description": "격자가 생성된 이미지"
           }
         ]
         },
         {
+          "title": "이미지 전송 함수",
           "name": "show_image(frame,window_name='center',quality=20)",
           "description": "이미지를 컴퓨터 화면으로 전송합니다",
           "parameters": [
@@ -134,6 +141,7 @@
       "name": "lidar",
       "methods": [
         {
+          "title": "라이다 데이터 받아오기 함수",
           "name": "get_lidar()",
           "description": "라이다 데이터를 받아옵니다",
           "parameters": [],
@@ -151,6 +159,7 @@
           ]
         },
         {
+          "title": "라이다 이미지 출력 함수",
           "name": "show_lidar(theta_array, dist_array)",
           "description": "각도배열 , 거리배열을 입력하면 라이다 이미지를 보여줍니다",
           "parameters": [
@@ -172,6 +181,7 @@
       "name": "ai",
       "methods": [
         {
+          "title": "모델 받아오기 함수",
           "name": "get_model(name)",
           "description": "저장한 ai모델을 가져옵니다",
           "parameters": [
@@ -188,6 +198,7 @@
           }]
         },
         {
+          "title": "모델 입력값 받아오기 함수",
           "name": "get_model_input(name)",
           "description": "입력한 이름을 가진 모델에 필요한 input 크기를 출력합니다",
           "parameters": [
@@ -200,6 +211,7 @@
           "return": null
         },
         {
+          "title": "모델 출력값 받아오기 함수",
           "name": "get_model_output(input,name)",
           "description": "모델에 입력값을 넣으면 연산값을 출력합니다",
           "parameters": [

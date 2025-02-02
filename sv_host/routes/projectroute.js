@@ -19,14 +19,14 @@ function listFiles(directoryPath) {
 }
 
 router.post('/api/json/get', (req, res) => {
-  console.log("filecalled");
+  //console.log("filecalled");
   
   const {targetpath } = req.body;
-  console.log('targetpath',targetpath);
+  //console.log('targetpath',targetpath);
 
   // Resolve the target location to an absolute path
   const directoryPath = path.resolve(__dirname, targetpath);
-  console.log(directoryPath);
+  //console.log(directoryPath);
 
   // Function to read and parse JSON file
   const parseJsonFromFile = (filePath) => {
@@ -58,7 +58,7 @@ router.post('/api/json/get', (req, res) => {
 
 router.get('/api/update/section/:name/:section/:subsection', (req, res) => {
   const { name, section, subsection } = req.params;
-  console.log(name, section, subsection);
+  //console.log(name, section, subsection);
 
 
   
@@ -70,7 +70,7 @@ router.use(express.static(path.join(__dirname, '../../projects')));
 router.get('/api/markdown/:name/:section/:subsection', (req, res) => {
   const { name,section,subsection } = req.params;
   const markdownFile = path.join(__dirname, `../../projects/${name}/learning/${section}/${subsection}/${subsection}.html`);
-   console.log(markdownFile); 
+   //console.log(markdownFile); 
    
   fs.readFile(markdownFile, 'utf8', (err, data) => {
     if (err) {
@@ -89,9 +89,9 @@ router.use('/js', express.static(path.join(__dirname, 'js')));
 router.use('/fonts', express.static(path.join(__dirname, 'fonts')));
 
 router.post('/api/user/project/file-lists', (req, res) => {
-  console.log("filecalled");
+  //console.log("filecalled");
   const { targetLocation } = req.body;
-  console.log(targetLocation);
+  //console.log(targetLocation);
 
   // Resolve the target location to an absolute path
   const directoryPath = path.resolve(__dirname, targetLocation);
