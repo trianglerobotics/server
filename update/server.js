@@ -335,6 +335,8 @@ app.get('/api/control/update', async (req, res) => {
         await installUpdatedFiles("/tmp/update/server/sv_host",`${home}/server/sv_host`) //sv_host
         await installUpdatedFiles("/tmp/update/server/ui_host",`${home}/server/ui_host`) //ui_host
         await installUpdatedFiles("/tmp/update/server/updatedb",`${home}/server/updatedb`) //updatedb
+        await installUpdatedFiles("/tmp/update/server/update",`${home}/server/update`) //updatedb
+        
 
 
         // Step 4: Update DB
