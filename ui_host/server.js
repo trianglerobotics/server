@@ -34,7 +34,6 @@ app.get('/logout', (req, res) => {
 app.get('/check', (req, res) => {
   console.log('현재 세션:', req.session ? req.session.id : '세션 없음', '활성 세션:', activeSession);
   
-
   //res.send('connected');
   if (!activeSession || activeSession===null) {
     // No active session at the moment
