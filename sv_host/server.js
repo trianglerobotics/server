@@ -28,7 +28,7 @@ import disk from 'diskusage';
 // 데이터베이스 모듈 가져오기
 // import { getDatabases } from './database.js';
 
-const version = 1.68;  // Replace with your own version number
+const version = 1.69;  // Replace with your own version number
 
 let storedData = '';
 

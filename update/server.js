@@ -304,6 +304,7 @@ app.get('/api/control/update', async (req, res) => {
           });
         } catch (error) {
           console.error(`Error downloading file: ${error.message}`);
+          prepareBroadcastData('', `failed`, '');
           return; // Stop execution if download fails
         }
 
