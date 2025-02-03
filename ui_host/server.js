@@ -56,9 +56,9 @@ app.get('/check', (req, res) => {
 // Middleware to allow only one active session at a time
 app.use((req, res, next) => {
   console.log('세션:', req.session.id);
-  if (activeSession && activeSession !== req.session.id) {
-    return res.status(403).send("현재 다른 사용자가 접속 중입니다.");
-  }
+  // if (activeSession && activeSession !== req.session.id) {
+  //   return res.status(403).send("현재 다른 사용자가 접속 중입니다.");
+  // }
   activeSession = req.session.id; // 현재 세션을 활성 세션으로 설정
   next();
 });
