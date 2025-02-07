@@ -58,6 +58,20 @@ async function handleWifiConnection(ssid, password, sudoPassword) {
   }
 }
 
+async function handleWifiConnectionNoSecured(ssid, sudoPassword) {
+  try {
+    const result = await connectToWifiNoSecured(ssid, sudoPassword);
+    // console.log(result);
+
+    // Wi-Fi is connected, now perform the next action
+    console.log('Wi-Fi connection successful, proceeding with next steps...');
+    // You can trigger the next action here after successful connection
+  } catch (error) {
+    console.error('Failed to connect to Wi-Fi:', error);
+    // Handle the error case here (retry, show message, etc.)
+  }
+}
+
 function prepareBroadcastData(status, stdout, stderr) {
   return {
       status: status || "unknown", // Default value if status is undefined
@@ -124,6 +138,29 @@ function connectToWifi(ssid, password, sudoPassword) {
         resolve('Connected to Wi-Fi');
       });
     });
+}
+
+function connectToWifiNoSecured(ssid, sudoPassword) {
+  return new Promise((resolve, reject) => {
+    const command = `echo '${sudoPassword}' | sudo -S nmcli device wifi connect "${ssid}"`;
+
+    console.log('Executing command:', command);
+
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error connecting to Wi-Fi: ${error.message}`);
+        reject(`Error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        reject(`Error: ${stderr}`);
+        return;
+      }
+
+      resolve('Connected to Wi-Fi');
+    });
+  });
 }
 
   
@@ -220,6 +257,26 @@ app.get('/api/control/conn/networks/:selectedNetwork/:password', async (req, res
     }
 });
 
+app.get('/api/control/conn/networks/:selectedNetwork', async (req, res) => {
+  const network = req.params.selectedNetwork;
+
+  // console.log('Trying to connect to:', network, password);
+
+  try {
+    // Wait for the Wi-Fi connection attempt
+    const result = await handleWifiConnectionNoSecured(network, '1111'); // Replace '1111' with the actual sudo password if needed
+    console.log('Connection result:', result);
+
+    // Send the connection result back to the client
+    res.status(200).json({ message: 'Wi-Fi connection successful', result });
+  } catch (error) {
+    console.error('Failed to connect to Wi-Fi:', error);
+
+    // Send an error response to the client
+    res.status(500).json({ message: 'Failed to connect to Wi-Fi', error: error.message });
+  }
+});
+
 async function installUpdatedFiles(downloadedPath, targetPath) {
   try {
       console.log(`Installing updated files from ${downloadedPath} to ${targetPath}...`);
@@ -304,7 +361,6 @@ app.get('/api/control/update', async (req, res) => {
           });
         } catch (error) {
           console.error(`Error downloading file: ${error.message}`);
-          prepareBroadcastData('', `failed`, '');
           return; // Stop execution if download fails
         }
 
@@ -336,24 +392,21 @@ app.get('/api/control/update', async (req, res) => {
         await installUpdatedFiles("/tmp/update/server/sv_host",`${home}/server/sv_host`) //sv_host
         await installUpdatedFiles("/tmp/update/server/ui_host",`${home}/server/ui_host`) //ui_host
         await installUpdatedFiles("/tmp/update/server/updatedb",`${home}/server/updatedb`) //updatedb
-        await installUpdatedFiles("/tmp/update/server/update",`${home}/server/update`) //updatedb
-        
-
 
         // Step 4: Update DB
         await executecommand('echo 1111 | sudo -S chmod 777 ~/server/updatedb/updatemysql.sh')
         await executecommand('echo 1111 | sudo -S ~/server/updatedb/updatemysql.sh')
+        
+        // Step5: python update
+        await executecommand('pip install jajucha2 --upgrade')
 
-        // Step 5: Update Python services
-        await executecommand('pip3 install jajucha2 --upgrade')
-
-        // Step 6: Restart services
+        // Step 4: Restart services
           //1. ui_host
           //2. sv_host
         await executecommand('echo 1111 | sudo -S systemctl restart jc_sv.service')
         await executecommand('echo 1111 | sudo -S systemctl restart jc_ui.service')
 
-        // Step 7: Cleanup
+        // Step 5: Cleanup
 
         let broadcast_data = prepareBroadcastData('finished', 'starting', 'stderr');
         broadcast(broadcast_data);

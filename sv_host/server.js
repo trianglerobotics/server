@@ -28,7 +28,7 @@ import disk from 'diskusage';
 // 데이터베이스 모듈 가져오기
 // import { getDatabases } from './database.js';
 
-const version = 1.69;  // Replace with your own version number
+const version = 1.7;  // Replace with your own version number
 
 let storedData = '';
 
@@ -54,7 +54,7 @@ motorserver.on('error', (err) => {
 // Event listener when the server starts listening
 motorserver.on('listening', () => {
   const address = server.address();
-  console.log(`Server listening on ${address.address}:${address.port}`);
+  // console.log(`Server listening on ${address.address}:${address.port}`);
 });
 
 motorserver.bind(PORT,HOST);
@@ -79,8 +79,11 @@ const io = new Server(server, {
   });
 
 const allowedOrigins = [
-  'http://121.184.63.113:3000'
+  'http://121.184.63.113:3000',
+  'https://14.51.43.21:3000'
 ];
+
+
   
 app.use(cors());
 
@@ -381,6 +384,10 @@ const watcher = chokidar.watch(directoryPath, {
     .on('error', error => console.log(`Watcher error: ${error}`));
 
 
-server.listen(port, () => {
+// server.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+
+server.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });
